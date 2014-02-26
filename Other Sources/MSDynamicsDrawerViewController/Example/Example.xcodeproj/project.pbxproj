@@ -52,8 +52,32 @@
 		3AD1E43F183AEBB40006322C /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A3CB260183AE9B40089BED5 /* Storyboard.storyboard */; };
 		3AD72A7D182CB84600B826B3 /* MSLogoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AD72A7C182CB84600B826B3 /* MSLogoViewController.m */; };
 		3AF15312184FE70200CBDA25 /* MSEditableTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AF15311184FE70200CBDA25 /* MSEditableTableViewController.m */; };
-		64426731F992431F8994F641 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FC49385B7B83484EBE303C5E /* libPods.a */; };
+		EFA8EC0018BDD9D400144B75 /* libPods-MSDynamicsDrawerViewController.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EFA8EBFD18BDD9B600144B75 /* libPods-MSDynamicsDrawerViewController.a */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		EFA8EBFA18BDD9B600144B75 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EFA8EBF518BDD9B600144B75 /* Pods.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = C1ADFA99E300446DBFBB75B2;
+			remoteInfo = Pods;
+		};
+		EFA8EBFC18BDD9B600144B75 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EFA8EBF518BDD9B600144B75 /* Pods.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 502A4B59D90A41A9B0798682;
+			remoteInfo = "Pods-MSDynamicsDrawerViewController";
+		};
+		EFA8EBFE18BDD9C700144B75 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EFA8EBF518BDD9B600144B75 /* Pods.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 39D0F67472C943BAA1E19DF4;
+			remoteInfo = "Pods-MSDynamicsDrawerViewController";
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		0BCBD77F8F1A4697976A8AFA /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
@@ -99,6 +123,7 @@
 		3AD72A7C182CB84600B826B3 /* MSLogoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSLogoViewController.m; sourceTree = "<group>"; };
 		3AF15310184FE70200CBDA25 /* MSEditableTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSEditableTableViewController.h; sourceTree = "<group>"; };
 		3AF15311184FE70200CBDA25 /* MSEditableTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSEditableTableViewController.m; sourceTree = "<group>"; };
+		EFA8EBF518BDD9B600144B75 /* Pods.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Pods.xcodeproj; path = Pods/Pods.xcodeproj; sourceTree = SOURCE_ROOT; };
 		FC49385B7B83484EBE303C5E /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -107,12 +132,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EFA8EC0018BDD9D400144B75 /* libPods-MSDynamicsDrawerViewController.a in Frameworks */,
 				3A4AA44E18133EB4006EC889 /* MapKit.framework in Frameworks */,
 				3A11672C167E8F1900DBD12B /* QuartzCore.framework in Frameworks */,
 				3A11669B167E8C3E00DBD12B /* UIKit.framework in Frameworks */,
 				3A11669D167E8C3E00DBD12B /* Foundation.framework in Frameworks */,
 				3A11669F167E8C3E00DBD12B /* CoreGraphics.framework in Frameworks */,
-				64426731F992431F8994F641 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -169,9 +194,10 @@
 			children = (
 				3A558AA4182B136300319DA5 /* MSAppDelegate.h */,
 				3A558AA5182B136300319DA5 /* MSAppDelegate.m */,
-				3A558AEC182B166700319DA5 /* View Controllers */,
+				EFA8EBF418BDD9AB00144B75 /* Other Sources */,
 				3A558AEB182B165600319DA5 /* Reusable Views */,
 				3A1166A1167E8C3E00DBD12B /* Supporting Files */,
+				3A558AEC182B166700319DA5 /* View Controllers */,
 			);
 			path = Example;
 			sourceTree = "<group>";
@@ -270,6 +296,23 @@
 			name = Panes;
 			sourceTree = "<group>";
 		};
+		EFA8EBF418BDD9AB00144B75 /* Other Sources */ = {
+			isa = PBXGroup;
+			children = (
+				EFA8EBF518BDD9B600144B75 /* Pods.xcodeproj */,
+			);
+			name = "Other Sources";
+			sourceTree = "<group>";
+		};
+		EFA8EBF618BDD9B600144B75 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				EFA8EBFB18BDD9B600144B75 /* libPods.a */,
+				EFA8EBFD18BDD9B600144B75 /* libPods-MSDynamicsDrawerViewController.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -286,6 +329,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				EFA8EBFF18BDD9C700144B75 /* PBXTargetDependency */,
 			);
 			name = "MSDynamicsDrawerViewController Example";
 			productName = Example;
@@ -331,6 +375,12 @@
 			mainGroup = 3A11668B167E8C3E00DBD12B;
 			productRefGroup = 3A116697167E8C3E00DBD12B /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = EFA8EBF618BDD9B600144B75 /* Products */;
+					ProjectRef = EFA8EBF518BDD9B600144B75 /* Pods.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				3A116695167E8C3E00DBD12B /* MSDynamicsDrawerViewController Example */,
@@ -338,6 +388,23 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		EFA8EBFB18BDD9B600144B75 /* libPods.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libPods.a;
+			remoteRef = EFA8EBFA18BDD9B600144B75 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		EFA8EBFD18BDD9B600144B75 /* libPods-MSDynamicsDrawerViewController.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = "libPods-MSDynamicsDrawerViewController.a";
+			remoteRef = EFA8EBFC18BDD9B600144B75 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		3A116694167E8C3E00DBD12B /* Resources */ = {
@@ -465,6 +532,14 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		EFA8EBFF18BDD9C700144B75 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "Pods-MSDynamicsDrawerViewController";
+			targetProxy = EFA8EBFE18BDD9C700144B75 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		3A1166A3167E8C3E00DBD12B /* InfoPlist.strings */ = {

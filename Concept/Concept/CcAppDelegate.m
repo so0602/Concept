@@ -8,6 +8,8 @@
 
 #import "CcAppDelegate.h"
 
+#import "MSDynamicsDrawerViewController.h"
+
 @implementation CcAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions

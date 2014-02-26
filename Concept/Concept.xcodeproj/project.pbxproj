@@ -21,6 +21,7 @@
 		EFA8EBE118BDD87100144B75 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EFA8EBC318BDD87100144B75 /* UIKit.framework */; };
 		EFA8EBE918BDD87100144B75 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = EFA8EBE718BDD87100144B75 /* InfoPlist.strings */; };
 		EFA8EBEB18BDD87100144B75 /* ConceptTests.m in Sources */ = {isa = PBXBuildFile; fileRef = EFA8EBEA18BDD87100144B75 /* ConceptTests.m */; };
+		EFA8EC0E18BDDA8F00144B75 /* libMSDynamicsDrawerViewController.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EFA8EC0918BDDA6D00144B75 /* libMSDynamicsDrawerViewController.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -31,7 +32,41 @@
 			remoteGlobalIDString = EFA8EBBB18BDD87100144B75;
 			remoteInfo = Concept;
 		};
+		EFA8EC0818BDDA6D00144B75 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EFA8EC0218BDDA6D00144B75 /* MSDynamicsDrawerViewController.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 3AAD490B1830929B003FAFA8;
+			remoteInfo = MSDynamicsDrawerViewController;
+		};
+		EFA8EC0A18BDDA6D00144B75 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EFA8EC0218BDDA6D00144B75 /* MSDynamicsDrawerViewController.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 3AAD491B1830929B003FAFA8;
+			remoteInfo = MSDynamicsDrawerViewControllerTests;
+		};
+		EFA8EC0C18BDDA8600144B75 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EFA8EC0218BDDA6D00144B75 /* MSDynamicsDrawerViewController.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 3AAD490A1830929B003FAFA8;
+			remoteInfo = MSDynamicsDrawerViewController;
+		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		EF658E4C18BDE4A900FC9E07 /* Copy Files */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 16;
+			files = (
+			);
+			name = "Copy Files";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		EFA8EBBC18BDD87100144B75 /* Concept.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Concept.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -53,6 +88,7 @@
 		EFA8EBE618BDD87100144B75 /* ConceptTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ConceptTests-Info.plist"; sourceTree = "<group>"; };
 		EFA8EBE818BDD87100144B75 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		EFA8EBEA18BDD87100144B75 /* ConceptTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ConceptTests.m; sourceTree = "<group>"; };
+		EFA8EC0218BDDA6D00144B75 /* MSDynamicsDrawerViewController.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = MSDynamicsDrawerViewController.xcodeproj; path = "../Other Sources/MSDynamicsDrawerViewController/MSDynamicsDrawerViewController.xcodeproj"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +96,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EFA8EC0E18BDDA8F00144B75 /* libMSDynamicsDrawerViewController.a in Frameworks */,
 				EFA8EBC218BDD87100144B75 /* CoreGraphics.framework in Frameworks */,
 				EFA8EBC418BDD87100144B75 /* UIKit.framework in Frameworks */,
 				EFA8EBC018BDD87100144B75 /* Foundation.framework in Frameworks */,
@@ -85,6 +122,7 @@
 				EFA8EBC518BDD87100144B75 /* Concept */,
 				EFA8EBE418BDD87100144B75 /* ConceptTests */,
 				EFA8EBBE18BDD87100144B75 /* Frameworks */,
+				EFA8EC0118BDDA4A00144B75 /* Other Sources */,
 				EFA8EBBD18BDD87100144B75 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -152,6 +190,23 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		EFA8EC0118BDDA4A00144B75 /* Other Sources */ = {
+			isa = PBXGroup;
+			children = (
+				EFA8EC0218BDDA6D00144B75 /* MSDynamicsDrawerViewController.xcodeproj */,
+			);
+			name = "Other Sources";
+			sourceTree = "<group>";
+		};
+		EFA8EC0318BDDA6D00144B75 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				EFA8EC0918BDDA6D00144B75 /* libMSDynamicsDrawerViewController.a */,
+				EFA8EC0B18BDDA6D00144B75 /* MSDynamicsDrawerViewControllerTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -162,10 +217,12 @@
 				EFA8EBB818BDD87100144B75 /* Sources */,
 				EFA8EBB918BDD87100144B75 /* Frameworks */,
 				EFA8EBBA18BDD87100144B75 /* Resources */,
+				EF658E4C18BDE4A900FC9E07 /* Copy Files */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				EFA8EC0D18BDDA8600144B75 /* PBXTargetDependency */,
 			);
 			name = Concept;
 			productName = Concept;
@@ -216,6 +273,12 @@
 			mainGroup = EFA8EBB318BDD87100144B75;
 			productRefGroup = EFA8EBBD18BDD87100144B75 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = EFA8EC0318BDDA6D00144B75 /* Products */;
+					ProjectRef = EFA8EC0218BDDA6D00144B75 /* MSDynamicsDrawerViewController.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				EFA8EBBB18BDD87100144B75 /* Concept */,
@@ -223,6 +286,23 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		EFA8EC0918BDDA6D00144B75 /* libMSDynamicsDrawerViewController.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libMSDynamicsDrawerViewController.a;
+			remoteRef = EFA8EC0818BDDA6D00144B75 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		EFA8EC0B18BDDA6D00144B75 /* MSDynamicsDrawerViewControllerTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = MSDynamicsDrawerViewControllerTests.xctest;
+			remoteRef = EFA8EC0A18BDDA6D00144B75 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		EFA8EBBA18BDD87100144B75 /* Resources */ = {
@@ -271,6 +351,11 @@
 			isa = PBXTargetDependency;
 			target = EFA8EBBB18BDD87100144B75 /* Concept */;
 			targetProxy = EFA8EBE218BDD87100144B75 /* PBXContainerItemProxy */;
+		};
+		EFA8EC0D18BDDA8600144B75 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = MSDynamicsDrawerViewController;
+			targetProxy = EFA8EC0C18BDDA8600144B75 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -377,12 +462,23 @@
 		EFA8EBEF18BDD87100144B75 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Concept/Concept-Prefix.pch";
+				HEADER_SEARCH_PATHS = (
+					"$(SOURCE_ROOT)/../Other\\ Sources/MSDynamicsDrawerViewController/MSDynamicsDrawerViewController",
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+				);
 				INFOPLIST_FILE = "Concept/Concept-Info.plist";
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-all_load",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				USER_HEADER_SEARCH_PATHS = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -390,12 +486,23 @@
 		EFA8EBF018BDD87100144B75 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Concept/Concept-Prefix.pch";
+				HEADER_SEARCH_PATHS = (
+					"$(SOURCE_ROOT)/../Other\\ Sources/MSDynamicsDrawerViewController/MSDynamicsDrawerViewController",
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+				);
 				INFOPLIST_FILE = "Concept/Concept-Info.plist";
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-all_load",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				USER_HEADER_SEARCH_PATHS = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -461,6 +568,7 @@
 				EFA8EBF018BDD87100144B75 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		EFA8EBF118BDD87100144B75 /* Build configuration list for PBXNativeTarget "ConceptTests" */ = {
 			isa = XCConfigurationList;
@@ -469,6 +577,7 @@
 				EFA8EBF318BDD87100144B75 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
