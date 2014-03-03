@@ -1,18 +1,18 @@
 //
-//  CcViewController.m
+//  SDViewController.m
 //  Concept
 //
 //  Created by Freddy So on 2/26/14.
 //  Copyright (c) 2014 Freddy So. All rights reserved.
 //
 
-#import "CcViewController.h"
+#import "SDViewController.h"
 
-@interface CcViewController ()
+@interface SDViewController ()
 
 @end
 
-@implementation CcViewController
+@implementation SDViewController
 
 - (void)viewDidLoad
 {

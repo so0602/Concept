@@ -1,16 +1,16 @@
 //
-//  CcAppDelegate.m
+//  SDAppDelegate.m
 //  Concept
 //
 //  Created by Freddy So on 2/26/14.
 //  Copyright (c) 2014 Freddy So. All rights reserved.
 //
 
-#import "CcAppDelegate.h"
+#import "SDAppDelegate.h"
 
 #import "MSDynamicsDrawerViewController.h"
 
-@implementation CcAppDelegate
+@implementation SDAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {

@@ -1,5 +1,5 @@
 //
-//  CcViewController.h
+//  SDViewController.h
 //  Concept
 //
 //  Created by Freddy So on 2/26/14.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface CcViewController : UIViewController
+@interface SDViewController : UIViewController
 
 @end

@@ -12,9 +12,9 @@
 		EFA8EBC418BDD87100144B75 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EFA8EBC318BDD87100144B75 /* UIKit.framework */; };
 		EFA8EBCA18BDD87100144B75 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = EFA8EBC818BDD87100144B75 /* InfoPlist.strings */; };
 		EFA8EBCC18BDD87100144B75 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = EFA8EBCB18BDD87100144B75 /* main.m */; };
-		EFA8EBD018BDD87100144B75 /* CcAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = EFA8EBCF18BDD87100144B75 /* CcAppDelegate.m */; };
+		EFA8EBD018BDD87100144B75 /* SDAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = EFA8EBCF18BDD87100144B75 /* SDAppDelegate.m */; };
 		EFA8EBD318BDD87100144B75 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EFA8EBD118BDD87100144B75 /* Main.storyboard */; };
-		EFA8EBD618BDD87100144B75 /* CcViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EFA8EBD518BDD87100144B75 /* CcViewController.m */; };
+		EFA8EBD618BDD87100144B75 /* SDViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EFA8EBD518BDD87100144B75 /* SDViewController.m */; };
 		EFA8EBD818BDD87100144B75 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EFA8EBD718BDD87100144B75 /* Images.xcassets */; };
 		EFA8EBDF18BDD87100144B75 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EFA8EBDE18BDD87100144B75 /* XCTest.framework */; };
 		EFA8EBE018BDD87100144B75 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EFA8EBBF18BDD87100144B75 /* Foundation.framework */; };
@@ -77,11 +77,11 @@
 		EFA8EBC918BDD87100144B75 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		EFA8EBCB18BDD87100144B75 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		EFA8EBCD18BDD87100144B75 /* Concept-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Concept-Prefix.pch"; sourceTree = "<group>"; };
-		EFA8EBCE18BDD87100144B75 /* CcAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CcAppDelegate.h; sourceTree = "<group>"; };
-		EFA8EBCF18BDD87100144B75 /* CcAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CcAppDelegate.m; sourceTree = "<group>"; };
+		EFA8EBCE18BDD87100144B75 /* SDAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SDAppDelegate.h; sourceTree = "<group>"; };
+		EFA8EBCF18BDD87100144B75 /* SDAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SDAppDelegate.m; sourceTree = "<group>"; };
 		EFA8EBD218BDD87100144B75 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		EFA8EBD418BDD87100144B75 /* CcViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CcViewController.h; sourceTree = "<group>"; };
-		EFA8EBD518BDD87100144B75 /* CcViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CcViewController.m; sourceTree = "<group>"; };
+		EFA8EBD418BDD87100144B75 /* SDViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SDViewController.h; sourceTree = "<group>"; };
+		EFA8EBD518BDD87100144B75 /* SDViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SDViewController.m; sourceTree = "<group>"; };
 		EFA8EBD718BDD87100144B75 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		EFA8EBDD18BDD87100144B75 /* ConceptTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ConceptTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		EFA8EBDE18BDD87100144B75 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
@@ -150,11 +150,11 @@
 		EFA8EBC518BDD87100144B75 /* Concept */ = {
 			isa = PBXGroup;
 			children = (
-				EFA8EBCE18BDD87100144B75 /* CcAppDelegate.h */,
-				EFA8EBCF18BDD87100144B75 /* CcAppDelegate.m */,
+				EFA8EBCE18BDD87100144B75 /* SDAppDelegate.h */,
+				EFA8EBCF18BDD87100144B75 /* SDAppDelegate.m */,
 				EFA8EBD118BDD87100144B75 /* Main.storyboard */,
-				EFA8EBD418BDD87100144B75 /* CcViewController.h */,
-				EFA8EBD518BDD87100144B75 /* CcViewController.m */,
+				EFA8EBD418BDD87100144B75 /* SDViewController.h */,
+				EFA8EBD518BDD87100144B75 /* SDViewController.m */,
 				EFA8EBD718BDD87100144B75 /* Images.xcassets */,
 				EFA8EBC618BDD87100144B75 /* Supporting Files */,
 			);
@@ -330,8 +330,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EFA8EBD018BDD87100144B75 /* CcAppDelegate.m in Sources */,
-				EFA8EBD618BDD87100144B75 /* CcViewController.m in Sources */,
+				EFA8EBD018BDD87100144B75 /* SDAppDelegate.m in Sources */,
+				EFA8EBD618BDD87100144B75 /* SDViewController.m in Sources */,
 				EFA8EBCC18BDD87100144B75 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
