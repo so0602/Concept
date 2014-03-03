@@ -7,7 +7,7 @@
         <!--Dynamics Drawer View Controller-->
         <scene sceneID="ufC-wZ-h7g">
             <objects>
-                <viewController id="vXZ-lx-hvc" customClass="MSDynamicsDrawerViewController" sceneMemberID="viewController">
+                <viewController id="vXZ-lx-hvc" customClass="SDDynamicsDrawerViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="4cW-Gf-XYf"/>
                         <viewControllerLayoutGuide type="bottom" id="Q8Z-Z5-mSo"/>

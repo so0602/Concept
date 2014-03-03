@@ -8,13 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
-#import "MSDynamicsDrawerViewController.h"
+#import "SDDynamicsDrawerViewController.h"
 
 @interface SDAppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
 
-@property (strong, nonatomic) IBOutlet MSDynamicsDrawerViewController* mainViewController;
-
+@property (strong, nonatomic) SDDynamicsDrawerViewController* mainViewController;
 
 @end

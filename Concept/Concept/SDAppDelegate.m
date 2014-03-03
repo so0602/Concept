@@ -14,7 +14,10 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    // Override point for customization after application launch.
+    if( [self.window.rootViewController isKindOfClass:[SDDynamicsDrawerViewController class]] ){
+        self.mainViewController = (id)self.window.rootViewController;
+    }
+    
     return YES;
 }
 							
