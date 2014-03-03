@@ -8,9 +8,11 @@
 
 #import "SDDynamicsDrawerViewController.h"
 
+#import "SDMenuViewController.h"
+
 @interface SDDynamicsDrawerViewController ()
 
--(void)setup;
+-(void)initialize;
 
 @end
 
@@ -18,7 +20,7 @@
 
 -(id)initWithCoder:(NSCoder *)aDecoder{
     if( self = [super initWithCoder:aDecoder] ){
-        [self setup];
+        [self initialize];
     }
     
     return self;
@@ -26,7 +28,7 @@
 
 -(id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil{
     if( self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil] ){
-        [self setup];
+        [self initialize];
     }
     return self;
 }
@@ -34,9 +36,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    self.view.backgroundColor = [UIColor redColor];
-	// Do any additional setup after loading the view, typically from a nib.
 }
 
 - (void)didReceiveMemoryWarning
@@ -47,12 +46,13 @@
 
 #pragma mark - Private Functions
 
--(void)setup{
-    UIViewController* viewConttroller = [[UIViewController alloc] init];
-    viewConttroller.view.backgroundColor = [UIColor blueColor];
-    [self setDrawerViewController:viewConttroller forDirection:MSDynamicsDrawerDirectionLeft];
-    
-//    [self transitionToViewController:[[UIViewController alloc] init]];
+-(void)initialize{
+//    SDMenuViewController* menuViewConttroller = [[SDMenuViewController alloc] init];
+//    menuViewConttroller.dynamicsDrawerViewController = self;
+//    
+//    [self setDrawerViewController:menuViewConttroller forDirection:MSDynamicsDrawerDirectionLeft];
+//    
+//    [menuViewConttroller transitionToViewController:SDPaneViewControllerType_Home];
 }
 
 @end
