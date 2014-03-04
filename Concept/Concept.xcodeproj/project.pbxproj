@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B65DDC0F18C57D1E0076408C /* SDUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = B65DDC0E18C57D1E0076408C /* SDUtils.m */; };
+		B65DDC1218C57FB30076408C /* UIViewController+Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = B65DDC1118C57FB30076408C /* UIViewController+Addition.m */; };
 		EF658E5E18C461C400FC9E07 /* SDMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EF658E5D18C461C400FC9E07 /* SDMenuViewController.m */; };
 		EFA8EBC018BDD87100144B75 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EFA8EBBF18BDD87100144B75 /* Foundation.framework */; };
 		EFA8EBC218BDD87100144B75 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EFA8EBC118BDD87100144B75 /* CoreGraphics.framework */; };
@@ -70,6 +72,10 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		B65DDC0D18C57D1E0076408C /* SDUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SDUtils.h; path = Classes/SDUtils.h; sourceTree = "<group>"; };
+		B65DDC0E18C57D1E0076408C /* SDUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SDUtils.m; path = Classes/SDUtils.m; sourceTree = "<group>"; };
+		B65DDC1018C57FB30076408C /* UIViewController+Addition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIViewController+Addition.h"; path = "Classes/UIViewController+Addition.h"; sourceTree = "<group>"; };
+		B65DDC1118C57FB30076408C /* UIViewController+Addition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIViewController+Addition.m"; path = "Classes/UIViewController+Addition.m"; sourceTree = "<group>"; };
 		EF658E5C18C461C400FC9E07 /* SDMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SDMenuViewController.h; path = Classes/SDMenuViewController.h; sourceTree = "<group>"; };
 		EF658E5D18C461C400FC9E07 /* SDMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SDMenuViewController.m; path = Classes/SDMenuViewController.m; sourceTree = "<group>"; };
 		EFA8EBBC18BDD87100144B75 /* Concept.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Concept.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -119,10 +125,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B65DDC0A18C57D050076408C /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				B65DDC0D18C57D1E0076408C /* SDUtils.h */,
+				B65DDC0E18C57D1E0076408C /* SDUtils.m */,
+				B65DDC1018C57FB30076408C /* UIViewController+Addition.h */,
+				B65DDC1118C57FB30076408C /* UIViewController+Addition.m */,
+			);
+			name = Utils;
+			sourceTree = "<group>";
+		};
 		EF658E4D18C459D000FC9E07 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
 				EF658E5A18C4615C00FC9E07 /* App Delegate */,
+				B65DDC0A18C57D050076408C /* Utils */,
 				EF658E5B18C4616D00FC9E07 /* ViewControllers */,
 			);
 			name = Classes;
@@ -359,9 +377,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B65DDC0F18C57D1E0076408C /* SDUtils.m in Sources */,
 				EF658E5E18C461C400FC9E07 /* SDMenuViewController.m in Sources */,
 				EFA8EBD018BDD87100144B75 /* SDAppDelegate.m in Sources */,
 				EFA8EBD618BDD87100144B75 /* SDDynamicsDrawerViewController.m in Sources */,
+				B65DDC1218C57FB30076408C /* UIViewController+Addition.m in Sources */,
 				EFA8EBCC18BDD87100144B75 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

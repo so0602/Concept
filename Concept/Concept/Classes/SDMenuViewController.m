@@ -8,6 +8,10 @@
 
 #import "SDMenuViewController.h"
 
+#import "SDUtils.h"
+
+#import "UIViewController+Addition.h"
+
 @interface SDMenuViewController ()
 
 @property (nonatomic, strong) NSDictionary* paneViewControllerTitles;
@@ -74,9 +78,16 @@
     
     BOOL animationTransition = self.dynamicsDrawerViewController.paneViewController != nil;
     
-    UIViewController* paneViewController = [self.storyboard instantiateViewControllerWithIdentifier:self.paneViewControllerIdentifiers[@(paneViewControllerType)]];
-    if( !paneViewController ){
+    UIViewController* paneViewController = nil;
+    @try {
+        paneViewController = [UIViewController viewControllerFromStoryboardWithIdentifier:self.paneViewControllerIdentifiers[@(paneViewControllerType)]];
+    }
+    @catch (NSException *exception) {
+        SDLog(@"Exception: %@", exception);
+    }
+    @finally {
         paneViewController = [[UIViewController alloc] init];
+        paneViewController.view.backgroundColor = [UIColor redColor];
     }
     
     paneViewController.navigationItem.title = self.paneViewControllerTitles[@(paneViewControllerType)];

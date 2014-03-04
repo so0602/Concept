@@ -20,7 +20,7 @@ typedef NS_ENUM(NSUInteger, SDPaneViewControllerType){
     SDPaneViewControllerType_Settings
 };
 
-@interface SDMenuViewController : UIViewController
+@interface SDMenuViewController : UITableViewController
 
 @property (nonatomic, assign) SDPaneViewControllerType paneViewControllerType;
 @property (nonatomic, weak) SDDynamicsDrawerViewController* dynamicsDrawerViewController;

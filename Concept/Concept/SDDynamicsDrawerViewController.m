@@ -10,6 +10,10 @@
 
 #import "SDMenuViewController.h"
 
+#import "SDUtils.h"
+
+#import "UIViewController+Addition.h"
+
 @interface MSDynamicsDrawerViewController ()
 
 -(void)initialize;
@@ -38,12 +42,14 @@
 -(void)initialize{
     [super initialize];
     
-    SDMenuViewController* menuViewConttroller = [[SDMenuViewController alloc] init];
-    menuViewConttroller.dynamicsDrawerViewController = self;
+    SDMenuViewController* menuViewController = [SDMenuViewController viewControllerFromStoryboardWithIdentifier:@"MainMenu"];
+    menuViewController.dynamicsDrawerViewController = self;
     
-    [self setDrawerViewController:menuViewConttroller forDirection:MSDynamicsDrawerDirectionLeft];
+    [self setDrawerViewController:menuViewController forDirection:MSDynamicsDrawerDirectionLeft];
     
-    [menuViewConttroller transitionToViewController:SDPaneViewControllerType_Home];
+    [menuViewController transitionToViewController:SDPaneViewControllerType_Home];
+    
+    [self setRevealWidth:60 forDirection:MSDynamicsDrawerDirectionLeft];
 }
 
 @end
