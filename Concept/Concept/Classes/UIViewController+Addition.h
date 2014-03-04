@@ -8,10 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
+#import "UIView+Addition.h"
+
 @interface UIViewController (Addition)
 
 +(instancetype)viewControllerFromStoryboard;
 +(instancetype)viewControllerFromStoryboardWithIdentifier:(NSString*)identifier;
 
+-(void)touchUpInside:(id)sender;
 
 @end

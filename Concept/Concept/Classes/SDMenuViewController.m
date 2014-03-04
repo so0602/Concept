@@ -8,6 +8,8 @@
 
 #import "SDMenuViewController.h"
 
+#import "SDMenuTableViewCell.h"
+
 #import "SDUtils.h"
 
 #import "UIViewController+Addition.h"
@@ -103,6 +105,46 @@
 
 -(void)dynamicsDrawerMenuBarButtonItemTapped:(id)sender{
     [self.dynamicsDrawerViewController setPaneState:MSDynamicsDrawerPaneStateOpen inDirection:MSDynamicsDrawerDirectionLeft animated:TRUE allowUserInterruption:TRUE completion:nil];
+}
+
+#pragma mark - UITableViewDataSource
+
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    return self.paneViewControllerTitles.count;
+}
+
+-(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    SDMenuTableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:@"SDMenuTableViewCell"];
+    
+    [cell populateData:self.paneViewControllerTitles[@(indexPath.row)]];
+    
+    return cell;
+}
+
+#pragma mark - UITableViewDelegate
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    [self transitionToViewController:indexPath.row];
+}
+
+#pragma mark - MSDynamicsDrawerViewControllerDelegate
+
+-(void)dynamicsDrawerViewController:(MSDynamicsDrawerViewController *)drawerViewController mayUpdateToPaneState:(MSDynamicsDrawerPaneState)paneState forDirection:(MSDynamicsDrawerDirection)direction{
+    
+}
+-(void)dynamicsDrawerViewController:(MSDynamicsDrawerViewController *)drawerViewController didUpdateToPaneState:(MSDynamicsDrawerPaneState)paneState forDirection:(MSDynamicsDrawerDirection)direction{
+    
+}
+-(BOOL)dynamicsDrawerViewController:(MSDynamicsDrawerViewController *)drawerViewController shouldBeginPanePan:(UIPanGestureRecognizer *)panGestureRecognizer{
+    SDLog(@"Gesture: %@", panGestureRecognizer);
+    SDLog(@"-- translationInView: %@", NSStringFromCGPoint([panGestureRecognizer translationInView:panGestureRecognizer.view]));
+    return TRUE;
+}
+
+#pragma mark - SDDynamicsDrawerViewControllerDelegate
+
+-(void)dynamicsDrawerViewController:(MSDynamicsDrawerViewController *)drawerViewController paneViewPositionDidChanged:(CGPoint)position{
+    SDLog(@"position: %@", NSStringFromCGPoint(position));
 }
 
 @end
