@@ -17,6 +17,8 @@ typedef NS_ENUM(NSInteger, SDDynamicsDrawerPaneState) {
     SDDynamicsDrawerPaneStateHalfOpen,     // Drawer view revealed to open width (60px)
 };
 
+static const CGFloat SDDynamicsDrawerViewController_MenuWidth = 60.0;
+
 @protocol SDDynamicsDrawerViewControllerDelegate
 
 @optional

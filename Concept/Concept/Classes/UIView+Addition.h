@@ -10,6 +10,8 @@
 
 @interface UIView (Addition)
 
+-(UIImage*)convertViewToImage;
+
 -(IBAction)touchUpInside:(id)sender;
 
 @end

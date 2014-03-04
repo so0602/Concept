@@ -8,6 +8,8 @@
 
 #import "SDMenuViewController.h"
 
+#import "SDSearchViewController.h"
+
 #import "SDMenuTableViewCell.h"
 
 #import "SDUtils.h"
@@ -15,6 +17,8 @@
 #import "UIViewController+Addition.h"
 
 @interface SDMenuViewController ()
+
+@property (nonatomic, strong) IBOutlet UITableView* tableView;
 
 @property (nonatomic, strong) NSDictionary* paneViewControllerTitles;
 @property (nonatomic, strong) NSDictionary* paneViewControllerIdentifiers;
@@ -78,6 +82,24 @@
         return;
     }
     
+    if( paneViewControllerType == SDPaneViewControllerType_Search ){
+        [self.dynamicsDrawerViewController setPaneState:MSDynamicsDrawerPaneStateOpen animated:TRUE allowUserInterruption:TRUE completion:nil];
+        SDSearchViewController* viewController = [self.storyboard instantiateViewControllerWithIdentifier:self.paneViewControllerIdentifiers[@(SDPaneViewControllerType_Search)]];
+//        viewController.backgroundImage = [UIApplication sharedApplication].keyWindow.convertViewToImage;
+        viewController.backgroundImage = self.view.convertViewToImage;
+        [self addChildViewController:viewController];
+        [viewController viewDidLoad];
+        [self.view addSubview:viewController.view];
+        viewController.view.alpha = 0.0;
+        [UIView animateWithDuration:1.0 delay:0.0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+            viewController.view.alpha = 1.0;
+            self.tableView.alpha = 0.0;
+        } completion:^(BOOL finished) {
+            
+        }];
+        return;
+    }
+    
     BOOL animationTransition = self.dynamicsDrawerViewController.paneViewController != nil;
     
     UIViewController* paneViewController = nil;
@@ -88,8 +110,10 @@
         SDLog(@"Exception: %@", exception);
     }
     @finally {
-        paneViewController = [[UIViewController alloc] init];
-        paneViewController.view.backgroundColor = [UIColor redColor];
+        if( !paneViewController ){
+            paneViewController = [[UIViewController alloc] init];
+            paneViewController.view.backgroundColor = [UIColor redColor];
+        }
     }
     
     paneViewController.navigationItem.title = self.paneViewControllerTitles[@(paneViewControllerType)];
@@ -115,7 +139,7 @@
 
 -(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     SDMenuTableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:@"SDMenuTableViewCell"];
-    
+    cell.backgroundColor = [UIColor clearColor];
     [cell populateData:self.paneViewControllerTitles[@(indexPath.row)]];
     
     return cell;

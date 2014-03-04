@@ -12,6 +12,9 @@
 		B65DDC1818C586760076408C /* SDMenuTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B65DDC1718C586760076408C /* SDMenuTableViewCell.m */; };
 		B65DDC1B18C587130076408C /* UITableViewCell+Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = B65DDC1A18C587130076408C /* UITableViewCell+Addition.m */; };
 		B65DDC1F18C58EE60076408C /* UIView+Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = B65DDC1E18C58EE60076408C /* UIView+Addition.m */; };
+		B65DDC3118C5B1590076408C /* libGPUImage.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B65DDC2C18C5B1420076408C /* libGPUImage.a */; };
+		B65DDC3518C5B2690076408C /* SDSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B65DDC3418C5B2690076408C /* SDSearchViewController.m */; };
+		B65DDC3818C5C05E0076408C /* dump_bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B65DDC3718C5C05E0076408C /* dump_bg@2x.png */; };
 		EF658E5E18C461C400FC9E07 /* SDMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EF658E5D18C461C400FC9E07 /* SDMenuViewController.m */; };
 		EFA8EBC018BDD87100144B75 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EFA8EBBF18BDD87100144B75 /* Foundation.framework */; };
 		EFA8EBC218BDD87100144B75 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EFA8EBC118BDD87100144B75 /* CoreGraphics.framework */; };
@@ -31,6 +34,27 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		B65DDC2B18C5B1420076408C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B65DDC2518C5B1410076408C /* GPUImage.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = BCF1A33414DDB1EC00852800;
+			remoteInfo = GPUImage;
+		};
+		B65DDC2D18C5B1420076408C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B65DDC2518C5B1410076408C /* GPUImage.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = BCF1A34414DDB1EC00852800;
+			remoteInfo = GPUImageTests;
+		};
+		B65DDC2F18C5B1500076408C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B65DDC2518C5B1410076408C /* GPUImage.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = BCF1A33314DDB1EC00852800;
+			remoteInfo = GPUImage;
+		};
 		EFA8EBE218BDD87100144B75 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = EFA8EBB418BDD87100144B75 /* Project object */;
@@ -85,6 +109,10 @@
 		B65DDC1A18C587130076408C /* UITableViewCell+Addition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UITableViewCell+Addition.m"; path = "Classes/UITableViewCell+Addition.m"; sourceTree = "<group>"; };
 		B65DDC1D18C58EE60076408C /* UIView+Addition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIView+Addition.h"; path = "Classes/UIView+Addition.h"; sourceTree = "<group>"; };
 		B65DDC1E18C58EE60076408C /* UIView+Addition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIView+Addition.m"; path = "Classes/UIView+Addition.m"; sourceTree = "<group>"; };
+		B65DDC2518C5B1410076408C /* GPUImage.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = GPUImage.xcodeproj; path = "../Other Sources/GPUImage/framework/GPUImage.xcodeproj"; sourceTree = "<group>"; };
+		B65DDC3318C5B2690076408C /* SDSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SDSearchViewController.h; path = Classes/SDSearchViewController.h; sourceTree = "<group>"; };
+		B65DDC3418C5B2690076408C /* SDSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SDSearchViewController.m; path = Classes/SDSearchViewController.m; sourceTree = "<group>"; };
+		B65DDC3718C5C05E0076408C /* dump_bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "dump_bg@2x.png"; sourceTree = "<group>"; };
 		EF658E5C18C461C400FC9E07 /* SDMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SDMenuViewController.h; path = Classes/SDMenuViewController.h; sourceTree = "<group>"; };
 		EF658E5D18C461C400FC9E07 /* SDMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SDMenuViewController.m; path = Classes/SDMenuViewController.m; sourceTree = "<group>"; };
 		EFA8EBBC18BDD87100144B75 /* Concept.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Concept.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -114,6 +142,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B65DDC3118C5B1590076408C /* libGPUImage.a in Frameworks */,
 				EFA8EC0E18BDDA8F00144B75 /* libMSDynamicsDrawerViewController.a in Frameworks */,
 				EFA8EBC218BDD87100144B75 /* CoreGraphics.framework in Frameworks */,
 				EFA8EBC418BDD87100144B75 /* UIKit.framework in Frameworks */,
@@ -177,6 +206,32 @@
 			name = Cells;
 			sourceTree = "<group>";
 		};
+		B65DDC2618C5B1410076408C /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				B65DDC2C18C5B1420076408C /* libGPUImage.a */,
+				B65DDC2E18C5B1420076408C /* GPUImageTests.octest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		B65DDC3218C5B2560076408C /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				B65DDC3318C5B2690076408C /* SDSearchViewController.h */,
+				B65DDC3418C5B2690076408C /* SDSearchViewController.m */,
+			);
+			name = Search;
+			sourceTree = "<group>";
+		};
+		B65DDC3618C5C05E0076408C /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				B65DDC3718C5C05E0076408C /* dump_bg@2x.png */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 		EF658E4D18C459D000FC9E07 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
@@ -199,6 +254,7 @@
 		EF658E5B18C4616D00FC9E07 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				B65DDC3218C5B2560076408C /* Search */,
 				B65DDC1418C5865C0076408C /* Main */,
 				B65DDC1318C586520076408C /* Menu */,
 			);
@@ -248,6 +304,7 @@
 		EFA8EBC618BDD87100144B75 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				B65DDC3618C5C05E0076408C /* Resources */,
 				EFA8EBD718BDD87100144B75 /* Images.xcassets */,
 				EFA8EBD118BDD87100144B75 /* Main.storyboard */,
 				EFA8EBC718BDD87100144B75 /* Concept-Info.plist */,
@@ -279,6 +336,7 @@
 		EFA8EC0118BDDA4A00144B75 /* Other Sources */ = {
 			isa = PBXGroup;
 			children = (
+				B65DDC2518C5B1410076408C /* GPUImage.xcodeproj */,
 				EFA8EC0218BDDA6D00144B75 /* MSDynamicsDrawerViewController.xcodeproj */,
 			);
 			name = "Other Sources";
@@ -308,6 +366,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				B65DDC3018C5B1500076408C /* PBXTargetDependency */,
 				EFA8EC0D18BDDA8600144B75 /* PBXTargetDependency */,
 			);
 			name = Concept;
@@ -361,6 +420,10 @@
 			projectDirPath = "";
 			projectReferences = (
 				{
+					ProductGroup = B65DDC2618C5B1410076408C /* Products */;
+					ProjectRef = B65DDC2518C5B1410076408C /* GPUImage.xcodeproj */;
+				},
+				{
 					ProductGroup = EFA8EC0318BDDA6D00144B75 /* Products */;
 					ProjectRef = EFA8EC0218BDDA6D00144B75 /* MSDynamicsDrawerViewController.xcodeproj */;
 				},
@@ -374,6 +437,20 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
+		B65DDC2C18C5B1420076408C /* libGPUImage.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libGPUImage.a;
+			remoteRef = B65DDC2B18C5B1420076408C /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		B65DDC2E18C5B1420076408C /* GPUImageTests.octest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = GPUImageTests.octest;
+			remoteRef = B65DDC2D18C5B1420076408C /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 		EFA8EC0918BDDA6D00144B75 /* libMSDynamicsDrawerViewController.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
@@ -396,6 +473,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EFA8EBD818BDD87100144B75 /* Images.xcassets in Resources */,
+				B65DDC3818C5C05E0076408C /* dump_bg@2x.png in Resources */,
 				EFA8EBCA18BDD87100144B75 /* InfoPlist.strings in Resources */,
 				EFA8EBD318BDD87100144B75 /* Main.storyboard in Resources */,
 			);
@@ -425,6 +503,7 @@
 				B65DDC1B18C587130076408C /* UITableViewCell+Addition.m in Sources */,
 				B65DDC1218C57FB30076408C /* UIViewController+Addition.m in Sources */,
 				EFA8EBCC18BDD87100144B75 /* main.m in Sources */,
+				B65DDC3518C5B2690076408C /* SDSearchViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -439,6 +518,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		B65DDC3018C5B1500076408C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = GPUImage;
+			targetProxy = B65DDC2F18C5B1500076408C /* PBXContainerItemProxy */;
+		};
 		EFA8EBE318BDD87100144B75 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = EFA8EBBB18BDD87100144B75 /* Concept */;
@@ -555,11 +639,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Concept/Concept-Prefix.pch";
 				HEADER_SEARCH_PATHS = (
+					"$(SOURCE_ROOT)/../Other\\ Sources/GPUImage/framework/Source",
+					"$(SOURCE_ROOT)/../Other\\ Sources/GPUImage/framework/Source/iOS",
 					"$(SOURCE_ROOT)/../Other\\ Sources/MSDynamicsDrawerViewController/MSDynamicsDrawerViewController",
 					"$(inherited)",
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
@@ -579,11 +666,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Concept/Concept-Prefix.pch";
 				HEADER_SEARCH_PATHS = (
+					"$(SOURCE_ROOT)/../Other\\ Sources/GPUImage/framework/Source",
+					"$(SOURCE_ROOT)/../Other\\ Sources/GPUImage/framework/Source/iOS",
 					"$(SOURCE_ROOT)/../Other\\ Sources/MSDynamicsDrawerViewController/MSDynamicsDrawerViewController",
 					"$(inherited)",
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,

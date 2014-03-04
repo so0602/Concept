@@ -197,16 +197,16 @@ const CGFloat MSPaneViewVelocityMultiplier_Copy = 5.0;
         case SDDynamicsDrawerPaneStateHalfOpen:
             switch (self.currentDrawerDirection) {
                 case MSDynamicsDrawerDirectionTop:
-                    paneViewOrigin.y = 60;
+                    paneViewOrigin.y = SDDynamicsDrawerViewController_MenuWidth;
                     break;
                 case MSDynamicsDrawerDirectionLeft:
-                    paneViewOrigin.x = 60;
+                    paneViewOrigin.x = SDDynamicsDrawerViewController_MenuWidth;
                     break;
                 case MSDynamicsDrawerDirectionBottom:
-                    paneViewOrigin.y = -60;
+                    paneViewOrigin.y = -SDDynamicsDrawerViewController_MenuWidth;
                     break;
                 case MSDynamicsDrawerDirectionRight:
-                    paneViewOrigin.x = -60;
+                    paneViewOrigin.x = -SDDynamicsDrawerViewController_MenuWidth;
                     break;
                 default:
                     break;
@@ -271,7 +271,7 @@ const CGFloat MSPaneViewVelocityMultiplier_Copy = 5.0;
                 boundary.size.width = ((CGRectGetWidth(self.paneView.frame) + self.openStateRevealWidth) + 2.0);
                 break;
             case SDDynamicsDrawerPaneStateHalfOpen:
-                boundary.size.width = ((CGRectGetWidth(self.paneView.frame) + 60) + 2.0);
+                boundary.size.width = ((CGRectGetWidth(self.paneView.frame) + SDDynamicsDrawerViewController_MenuWidth) + 2.0);
                 break;
             case SDDynamicsDrawerPaneStateOpenWide:
                 boundary.size.width = ((CGRectGetWidth(self.paneView.frame) * 2.0) + self.paneStateOpenWideEdgeOffset + 2.0);
@@ -287,7 +287,7 @@ const CGFloat MSPaneViewVelocityMultiplier_Copy = 5.0;
                 boundary.size.height = ((CGRectGetHeight(self.paneView.frame) + self.openStateRevealWidth) + 2.0);
                 break;
             case SDDynamicsDrawerPaneStateHalfOpen:
-                boundary.size.height = ((CGRectGetHeight(self.paneView.frame) + 60) + 2.0);
+                boundary.size.height = ((CGRectGetHeight(self.paneView.frame) + SDDynamicsDrawerViewController_MenuWidth) + 2.0);
                 break;
             case SDDynamicsDrawerPaneStateOpenWide:
                 boundary.size.height = ((CGRectGetHeight(self.paneView.frame) * 2.0) + self.paneStateOpenWideEdgeOffset + 2.0);
