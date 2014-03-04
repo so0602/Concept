@@ -15,6 +15,6 @@
 +(instancetype)viewControllerFromStoryboard;
 +(instancetype)viewControllerFromStoryboardWithIdentifier:(NSString*)identifier;
 
--(void)touchUpInside:(id)sender;
+-(IBAction)touchUpInside:(id)sender;
 
 @end

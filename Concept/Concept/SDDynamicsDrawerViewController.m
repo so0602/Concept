@@ -180,7 +180,7 @@ const CGFloat MSPaneViewVelocityMultiplier_Copy = 5.0;
         CGPoint paneStatePaneViewOrigin = [self paneViewOriginForPaneState:(MSDynamicsDrawerPaneState)currentPaneState];
         CGPoint currentPaneViewOrigin = (CGPoint){roundf(self.paneView.frame.origin.x), roundf(self.paneView.frame.origin.y)};
         CGFloat distance = sqrt(pow((paneStatePaneViewOrigin.x - currentPaneViewOrigin.x), 2) + pow((paneStatePaneViewOrigin.y - currentPaneViewOrigin.y), 2));
-//        NSLog(@"paneStatePaneViewOrigin: %@, currentPaneViewOrigin: %@, distance: %f", NSStringFromCGPoint(paneStatePaneViewOrigin), NSStringFromCGPoint(currentPaneViewOrigin), distance);
+        NSLog(@"paneStatePaneViewOrigin: %@, currentPaneViewOrigin: %@, distance: %f", NSStringFromCGPoint(paneStatePaneViewOrigin), NSStringFromCGPoint(currentPaneViewOrigin), distance);
         if (distance < minDistance) {
             minDistance = distance;
             minPaneState = currentPaneState;
@@ -271,7 +271,16 @@ const CGFloat MSPaneViewVelocityMultiplier_Copy = 5.0;
                 boundary.size.width = ((CGRectGetWidth(self.paneView.frame) + self.openStateRevealWidth) + 2.0);
                 break;
             case SDDynamicsDrawerPaneStateHalfOpen:
-                boundary.size.width = ((CGRectGetWidth(self.paneView.frame) + SDDynamicsDrawerViewController_MenuWidth) + 2.0);
+                switch( self.paneState ){
+                    case MSDynamicsDrawerPaneStateClosed:
+                        boundary.size.width = ((CGRectGetWidth(self.paneView.frame) + SDDynamicsDrawerViewController_MenuWidth) + 2.0);
+                        break;
+                    case MSDynamicsDrawerPaneStateOpen:
+                        boundary.size.width = ((CGRectGetWidth(self.paneView.frame) + SDDynamicsDrawerViewController_MenuWidth) + 2.0);
+                        break;
+                    default:
+                        break;
+                }
                 break;
             case SDDynamicsDrawerPaneStateOpenWide:
                 boundary.size.width = ((CGRectGetWidth(self.paneView.frame) * 2.0) + self.paneStateOpenWideEdgeOffset + 2.0);
@@ -287,7 +296,16 @@ const CGFloat MSPaneViewVelocityMultiplier_Copy = 5.0;
                 boundary.size.height = ((CGRectGetHeight(self.paneView.frame) + self.openStateRevealWidth) + 2.0);
                 break;
             case SDDynamicsDrawerPaneStateHalfOpen:
-                boundary.size.height = ((CGRectGetHeight(self.paneView.frame) + SDDynamicsDrawerViewController_MenuWidth) + 2.0);
+                switch( self.paneState ){
+                    case MSDynamicsDrawerPaneStateClosed:
+                        boundary.size.height = ((CGRectGetHeight(self.paneView.frame) + SDDynamicsDrawerViewController_MenuWidth) + 2.0);
+                        break;
+                    case MSDynamicsDrawerPaneStateOpen:
+                        boundary.size.height = ((CGRectGetHeight(self.paneView.frame) * 2.0) + self.paneStateOpenWideEdgeOffset + 2.0);
+                        break;
+                    default:
+                        break;
+                }
                 break;
             case SDDynamicsDrawerPaneStateOpenWide:
                 boundary.size.height = ((CGRectGetHeight(self.paneView.frame) * 2.0) + self.paneStateOpenWideEdgeOffset + 2.0);
@@ -307,6 +325,7 @@ const CGFloat MSPaneViewVelocityMultiplier_Copy = 5.0;
         default:
             break;
     }
+    NSLog(@"boundary: %@, state: %d, paneState: %d", NSStringFromCGRect(boundary), state, self.paneState);
     return [UIBezierPath bezierPathWithRect:boundary];
 }
 
