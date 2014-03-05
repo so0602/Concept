@@ -28,11 +28,15 @@
 @property (nonatomic, strong) UIBarButtonItem* menuBarButtonItem;
 
 @property (nonatomic, strong) SDSearchViewController* searchViewController;
+@property (nonatomic, strong) NSTimer* animationTimer;
+
+@property (nonatomic) BOOL changingTab;
 
 -(void)initialize;
 
 -(void)showSearchView;
 -(void)hideSearchView;
+-(void)addSearchView:(BOOL)screenCapture;
 
 @end
 
@@ -103,20 +107,11 @@
     [self.dynamicsDrawerViewController setPaneState:MSDynamicsDrawerPaneStateOpen animated:TRUE allowUserInterruption:TRUE completion:nil];
     
     SDSearchViewController* viewController = self.searchViewController;
+    [self addSearchView:TRUE];
     
-    self.tableView.alpha = 0.0;
-    viewController.backgroundImage = self.view.convertViewToImage;
-    self.tableView.alpha = 1.0;
-    
-    [self addChildViewController:viewController];
-    
-    if( !viewController.isViewLoaded ){
-        [viewController viewDidLoad];
+    if( viewController.view.alpha == 1.0 ){
+        viewController.view.alpha = 0.0;
     }
-    
-    [self.view addSubview:viewController.view];
-    
-    viewController.view.alpha = 0.0;
     [UIView animateWithDuration:1.0 delay:0.0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
         viewController.view.alpha = 1.0;
     } completion:^(BOOL finished) {
@@ -127,7 +122,7 @@
 -(void)hideSearchView{
     [self.dynamicsDrawerViewController setPaneState:(MSDynamicsDrawerPaneState)SDDynamicsDrawerPaneStateClosed animated:TRUE allowUserInterruption:TRUE completion:nil];
     [self.dynamicsDrawerViewController setPaneState:(MSDynamicsDrawerPaneState)SDDynamicsDrawerPaneStateClosed animated:TRUE allowUserInterruption:TRUE completion:^{
-        [self.dynamicsDrawerViewController setPaneState:(MSDynamicsDrawerPaneState)SDDynamicsDrawerPaneStateHalfOpen animated:TRUE allowUserInterruption:TRUE completion:nil];
+        [self.dynamicsDrawerViewController setPaneState:(MSDynamicsDrawerPaneState)SDDynamicsDrawerPaneStateMenu animated:TRUE allowUserInterruption:TRUE completion:nil];
     }];
     
     SDSearchViewController* viewController = self.searchViewController;
@@ -137,6 +132,28 @@
     } completion:^(BOOL finished) {
         [viewController.view removeFromSuperview];
     }];
+}
+
+-(void)addSearchView:(BOOL)screenCapture{
+    SDSearchViewController* viewController = self.searchViewController;
+    
+    if( screenCapture ){
+        self.tableView.alpha = 0.0;
+        viewController.backgroundImage = self.view.convertViewToImage;
+        self.tableView.alpha = 1.0;
+    }
+    
+    if( ![self.childViewControllers containsObject:viewController] ){
+        [self addChildViewController:viewController];
+    }
+    
+    if( !viewController.isViewLoaded ){
+        [viewController viewDidLoad];
+    }
+    
+    if( !viewController.view.superview ){
+        [self.view addSubview:viewController.view];
+    }
 }
 
 -(SDPaneViewControllerType)paneViewControllerTypeForIndexPath:(NSIndexPath*)indexPath{
@@ -176,12 +193,15 @@
             
             paneViewController.navigationItem.title = self.paneViewControllerTitles[@(paneViewControllerType)];
             
-            self.menuBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Home" style:UIBarButtonItemStylePlain target:self action:@selector(dynamicsDrawerMenuBarButtonItemTapped:)];
+            
+            self.menuBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"icons-shadow-24px_menu"] style:UIBarButtonItemStylePlain target:self action:@selector(dynamicsDrawerMenuBarButtonItemTapped:)];
             paneViewController.navigationItem.leftBarButtonItem = self.menuBarButtonItem;
             
+            self.changingTab = TRUE;
             UINavigationController* navigationController = [[UINavigationController alloc] initWithRootViewController:paneViewController];
-            [self.dynamicsDrawerViewController setPaneViewController:navigationController animated:animationTransition completion:nil];
-            
+            [self.dynamicsDrawerViewController setPaneViewController:navigationController animated:animationTransition completion:^{
+                self.changingTab = FALSE;
+            }];
             self.paneViewControllerType = paneViewControllerType;
         }
             break;
@@ -189,7 +209,7 @@
 }
 
 -(void)dynamicsDrawerMenuBarButtonItemTapped:(id)sender{
-    [self.dynamicsDrawerViewController setPaneState:(MSDynamicsDrawerPaneState)SDDynamicsDrawerPaneStateHalfOpen inDirection:MSDynamicsDrawerDirectionLeft animated:TRUE allowUserInterruption:TRUE completion:nil];
+    [self.dynamicsDrawerViewController setPaneState:(MSDynamicsDrawerPaneState)SDDynamicsDrawerPaneStateMenu inDirection:MSDynamicsDrawerDirectionLeft animated:TRUE allowUserInterruption:TRUE completion:nil];
 }
 
 #pragma mark - UITableViewDataSource
@@ -200,7 +220,6 @@
 
 -(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     SDMenuTableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:@"SDMenuTableViewCell"];
-//    cell.backgroundColor = [UIColor clearColor];
     [cell populateData:self.paneViewControllerIcons[@(indexPath.row)]];
     
     return cell;
@@ -218,7 +237,19 @@
     SDLog(@"paneState: %ld", paneState);
 }
 -(void)dynamicsDrawerViewController:(MSDynamicsDrawerViewController *)drawerViewController didUpdateToPaneState:(MSDynamicsDrawerPaneState)paneState forDirection:(MSDynamicsDrawerDirection)direction{
-    
+    if( !self.changingTab ){
+        if( paneState == MSDynamicsDrawerPaneStateOpen || paneState == MSDynamicsDrawerPaneStateOpenWide ){
+            self.searchViewController.view.alpha = 1.0;
+            self.tableView.alpha = 0.0;
+        }else{
+            self.searchViewController.view.alpha = 0.0;
+            self.tableView.alpha = 1.0;
+            [self.searchViewController.view removeFromSuperview];
+        }
+        
+        [self.animationTimer invalidate];
+        self.animationTimer = nil;
+    }
 }
 -(BOOL)dynamicsDrawerViewController:(MSDynamicsDrawerViewController *)drawerViewController shouldBeginPanePan:(UIPanGestureRecognizer *)panGestureRecognizer{
     SDLog(@"Gesture: %@", panGestureRecognizer);
@@ -229,7 +260,29 @@
 #pragma mark - SDDynamicsDrawerViewControllerDelegate
 
 -(void)dynamicsDrawerViewController:(MSDynamicsDrawerViewController *)drawerViewController paneViewPositionDidChanged:(CGPoint)position{
-    SDLog(@"position: %@", NSStringFromCGPoint(position));
+    if( position.x >= SDDynamicsDrawerViewController_MenuWidth ){
+        SDSearchViewController* viewController = self.searchViewController;
+        [self addSearchView:TRUE];
+        
+        CGFloat width = CGRectGetWidth(self.view.frame);
+        CGFloat alpha = (position.x - SDDynamicsDrawerViewController_MenuWidth) / (width - SDDynamicsDrawerViewController_MenuWidth);
+        viewController.view.alpha = alpha;
+        self.tableView.alpha = 1 - alpha;
+    }
+    
+    if( !self.animationTimer ){
+        self.animationTimer = [NSTimer scheduledTimerWithTimeInterval:0.1 target:self selector:@selector(searchViewAnimationUpdate) userInfo:nil repeats:TRUE];
+    }
+}
+
+-(void)searchViewAnimationUpdate{
+    [self addSearchView:self.searchViewController.backgroundImage ? FALSE : TRUE];
+    CGPoint position = self.dynamicsDrawerViewController.paneView.frame.origin;
+    SDSearchViewController* viewController = self.searchViewController;
+    CGFloat width = CGRectGetWidth(self.view.frame);
+    CGFloat alpha = (position.x - SDDynamicsDrawerViewController_MenuWidth) / (width - SDDynamicsDrawerViewController_MenuWidth);
+    viewController.view.alpha = alpha;
+    self.tableView.alpha = 1 - alpha;
 }
 
 #pragma mark - SDSearchViewControllerDelegate
