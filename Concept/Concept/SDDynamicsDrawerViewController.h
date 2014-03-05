@@ -19,7 +19,7 @@ typedef NS_ENUM(NSInteger, SDDynamicsDrawerPaneState) {
 
 static const CGFloat SDDynamicsDrawerViewController_MenuWidth = 60.0;
 
-@protocol SDDynamicsDrawerViewControllerDelegate
+@protocol SDDynamicsDrawerViewControllerDelegate<NSObject>
 
 @optional
 -(void)dynamicsDrawerViewController:(MSDynamicsDrawerViewController *)drawerViewController paneViewPositionDidChanged:(CGPoint)position;

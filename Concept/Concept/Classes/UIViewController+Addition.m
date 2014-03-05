@@ -20,7 +20,7 @@
     return [[SDUtils mainStoryboard] instantiateViewControllerWithIdentifier:(identifier ? : NSStringFromClass(self.class))];
 }
 
--(void)touchUpInside:(id)sender{
+-(IBAction)touchUpInside:(id)sender{
     
 }
 

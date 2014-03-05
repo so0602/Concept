@@ -10,9 +10,13 @@
 
 #import "GPUImage.h"
 
+#import "UIViewController+Addition.h"
+
 @interface SDSearchViewController ()
 
 @property (nonatomic, strong) IBOutlet GPUImageView* backgroundImageView;
+@property (nonatomic, strong) IBOutlet UIButton* backButton;
+@property (nonatomic, strong) IBOutlet UITextField* searchTextField;
 
 @property (nonatomic, strong) GPUImageiOSBlurFilter* blurFilter;
 
@@ -40,6 +44,16 @@
 
 -(void)viewDidLoad{
     [super viewDidLoad];
+}
+
+#pragma mark - UIViewController Additions
+
+-(void)touchUpInside:(id)sender{
+    if( [self.backButton isEqual:sender] ){
+        if( self.delegate && [self.delegate respondsToSelector:@selector(backButtonDidClick:)] ){
+            [self.delegate backButtonDidClick:self];
+        }
+    }
 }
 
 @end

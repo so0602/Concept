@@ -33,8 +33,10 @@
 
 -(void)populateData:(id)data{
     if( [data isKindOfClass:[NSString class]] ){
-        NSString* string = (id)data;
-        [self.menuButton setTitle:string forState:UIControlStateNormal];
+//        NSString* string = (id)data;
+//        [self.menuButton setTitle:string forState:UIControlStateNormal];
+        NSString* imageName = (id)data;
+        [self.menuButton setImage:[UIImage imageNamed:imageName] forState:UIControlStateNormal];
     }
 }
 

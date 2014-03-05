@@ -16,16 +16,23 @@
 
 #import "UIViewController+Addition.h"
 
-@interface SDMenuViewController ()
+@interface SDMenuViewController ()<SDSearchViewControllerDelegate>
 
+@property (nonatomic, strong) IBOutlet UIImageView* backgroundImageView;
 @property (nonatomic, strong) IBOutlet UITableView* tableView;
 
 @property (nonatomic, strong) NSDictionary* paneViewControllerTitles;
 @property (nonatomic, strong) NSDictionary* paneViewControllerIdentifiers;
+@property (nonatomic, strong) NSDictionary* paneViewControllerIcons;
 
 @property (nonatomic, strong) UIBarButtonItem* menuBarButtonItem;
 
+@property (nonatomic, strong) SDSearchViewController* searchViewController;
+
 -(void)initialize;
+
+-(void)showSearchView;
+-(void)hideSearchView;
 
 @end
 
@@ -47,7 +54,19 @@
     return self;
 }
 
+-(void)viewDidLoad{
+    [super viewDidLoad];
+}
+
 #pragma mark - SDMenuViewController
+
+-(SDSearchViewController*)searchViewController{
+    if( !_searchViewController ){
+        _searchViewController = [SDSearchViewController viewControllerFromStoryboardWithIdentifier:self.paneViewControllerIdentifiers[@(SDPaneViewControllerType_Search)]];
+        _searchViewController.delegate = self;
+    }
+    return _searchViewController;
+}
 
 -(void)initialize{
     self.paneViewControllerType = NSUIntegerMax;
@@ -69,6 +88,55 @@
                                       @(SDPaneViewControllerType_Chats) : @"Chats",
                                       @(SDPaneViewControllerType_Settings) : @"Settings"
                                       };
+    self.paneViewControllerIcons = @{
+                                     @(SDPaneViewControllerType_Search) : @"icons-shadow-24px_search",
+                                     @(SDPaneViewControllerType_Home) : @"icons-shadow-24px_home",
+                                     @(SDPaneViewControllerType_User) : @"icons-shadow-24px_myself",
+                                     @(SDPaneViewControllerType_Friends) : @"icons-shadow-24px_closeFriends",
+                                     @(SDPaneViewControllerType_Agenda) : @"icons-shadow-24px_calendar",
+                                     @(SDPaneViewControllerType_Chats) : @"icons-shadow-24px_chats",
+                                     @(SDPaneViewControllerType_Settings) : @"icons-shadow-24px_setting"
+                                     };
+}
+
+-(void)showSearchView{
+    [self.dynamicsDrawerViewController setPaneState:MSDynamicsDrawerPaneStateOpen animated:TRUE allowUserInterruption:TRUE completion:nil];
+    
+    SDSearchViewController* viewController = self.searchViewController;
+    
+    self.tableView.alpha = 0.0;
+    viewController.backgroundImage = self.view.convertViewToImage;
+    self.tableView.alpha = 1.0;
+    
+    [self addChildViewController:viewController];
+    
+    if( !viewController.isViewLoaded ){
+        [viewController viewDidLoad];
+    }
+    
+    [self.view addSubview:viewController.view];
+    
+    viewController.view.alpha = 0.0;
+    [UIView animateWithDuration:1.0 delay:0.0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+        viewController.view.alpha = 1.0;
+    } completion:^(BOOL finished) {
+        
+    }];
+}
+
+-(void)hideSearchView{
+    [self.dynamicsDrawerViewController setPaneState:(MSDynamicsDrawerPaneState)SDDynamicsDrawerPaneStateClosed animated:TRUE allowUserInterruption:TRUE completion:nil];
+    [self.dynamicsDrawerViewController setPaneState:(MSDynamicsDrawerPaneState)SDDynamicsDrawerPaneStateClosed animated:TRUE allowUserInterruption:TRUE completion:^{
+        [self.dynamicsDrawerViewController setPaneState:(MSDynamicsDrawerPaneState)SDDynamicsDrawerPaneStateHalfOpen animated:TRUE allowUserInterruption:TRUE completion:nil];
+    }];
+    
+    SDSearchViewController* viewController = self.searchViewController;
+    
+    [UIView animateWithDuration:1.0 delay:0.0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+        viewController.view.alpha = 0.0;
+    } completion:^(BOOL finished) {
+        [viewController.view removeFromSuperview];
+    }];
 }
 
 -(SDPaneViewControllerType)paneViewControllerTypeForIndexPath:(NSIndexPath*)indexPath{
@@ -82,53 +150,46 @@
         return;
     }
     
-    if( paneViewControllerType == SDPaneViewControllerType_Search ){
-        [self.dynamicsDrawerViewController setPaneState:MSDynamicsDrawerPaneStateOpen animated:TRUE allowUserInterruption:TRUE completion:nil];
-        SDSearchViewController* viewController = [self.storyboard instantiateViewControllerWithIdentifier:self.paneViewControllerIdentifiers[@(SDPaneViewControllerType_Search)]];
-//        viewController.backgroundImage = [UIApplication sharedApplication].keyWindow.convertViewToImage;
-        viewController.backgroundImage = self.view.convertViewToImage;
-        [self addChildViewController:viewController];
-        [viewController viewDidLoad];
-        [self.view addSubview:viewController.view];
-        viewController.view.alpha = 0.0;
-        [UIView animateWithDuration:1.0 delay:0.0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
-            viewController.view.alpha = 1.0;
-            self.tableView.alpha = 0.0;
-        } completion:^(BOOL finished) {
-            
-        }];
-        return;
-    }
-    
-    BOOL animationTransition = self.dynamicsDrawerViewController.paneViewController != nil;
-    
-    UIViewController* paneViewController = nil;
-    @try {
-        paneViewController = [UIViewController viewControllerFromStoryboardWithIdentifier:self.paneViewControllerIdentifiers[@(paneViewControllerType)]];
-    }
-    @catch (NSException *exception) {
-        SDLog(@"Exception: %@", exception);
-    }
-    @finally {
-        if( !paneViewController ){
-            paneViewController = [[UIViewController alloc] init];
-            paneViewController.view.backgroundColor = [UIColor redColor];
+    switch( paneViewControllerType ){
+        case SDPaneViewControllerType_Search:
+        {
+            [self showSearchView];
         }
+            break;
+        default:
+        {
+            BOOL animationTransition = self.dynamicsDrawerViewController.paneViewController != nil;
+            
+            UIViewController* paneViewController = nil;
+            @try {
+                paneViewController = [UIViewController viewControllerFromStoryboardWithIdentifier:self.paneViewControllerIdentifiers[@(paneViewControllerType)]];
+            }
+            @catch (NSException *exception) {
+                SDLog(@"Exception: %@", exception);
+            }
+            @finally {
+                if( !paneViewController ){
+                    paneViewController = [[UIViewController alloc] init];
+                    paneViewController.view.backgroundColor = [UIColor redColor];
+                }
+            }
+            
+            paneViewController.navigationItem.title = self.paneViewControllerTitles[@(paneViewControllerType)];
+            
+            self.menuBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Home" style:UIBarButtonItemStylePlain target:self action:@selector(dynamicsDrawerMenuBarButtonItemTapped:)];
+            paneViewController.navigationItem.leftBarButtonItem = self.menuBarButtonItem;
+            
+            UINavigationController* navigationController = [[UINavigationController alloc] initWithRootViewController:paneViewController];
+            [self.dynamicsDrawerViewController setPaneViewController:navigationController animated:animationTransition completion:nil];
+            
+            self.paneViewControllerType = paneViewControllerType;
+        }
+            break;
     }
-    
-    paneViewController.navigationItem.title = self.paneViewControllerTitles[@(paneViewControllerType)];
-    
-    self.menuBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Home" style:UIBarButtonItemStylePlain target:self action:@selector(dynamicsDrawerMenuBarButtonItemTapped:)];
-    paneViewController.navigationItem.leftBarButtonItem = self.menuBarButtonItem;
-    
-    UINavigationController* navigationController = [[UINavigationController alloc] initWithRootViewController:paneViewController];
-    [self.dynamicsDrawerViewController setPaneViewController:navigationController animated:animationTransition completion:nil];
-    
-    self.paneViewControllerType = paneViewControllerType;
 }
 
 -(void)dynamicsDrawerMenuBarButtonItemTapped:(id)sender{
-    [self.dynamicsDrawerViewController setPaneState:SDDynamicsDrawerPaneStateHalfOpen inDirection:MSDynamicsDrawerDirectionLeft animated:TRUE allowUserInterruption:TRUE completion:nil];
+    [self.dynamicsDrawerViewController setPaneState:(MSDynamicsDrawerPaneState)SDDynamicsDrawerPaneStateHalfOpen inDirection:MSDynamicsDrawerDirectionLeft animated:TRUE allowUserInterruption:TRUE completion:nil];
 }
 
 #pragma mark - UITableViewDataSource
@@ -140,7 +201,7 @@
 -(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     SDMenuTableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:@"SDMenuTableViewCell"];
     cell.backgroundColor = [UIColor clearColor];
-    [cell populateData:self.paneViewControllerTitles[@(indexPath.row)]];
+    [cell populateData:self.paneViewControllerIcons[@(indexPath.row)]];
     
     return cell;
 }
@@ -169,6 +230,12 @@
 
 -(void)dynamicsDrawerViewController:(MSDynamicsDrawerViewController *)drawerViewController paneViewPositionDidChanged:(CGPoint)position{
     SDLog(@"position: %@", NSStringFromCGPoint(position));
+}
+
+#pragma mark - SDSearchViewControllerDelegate
+
+-(void)backButtonDidClick:(SDSearchViewController*)searchViewController{
+    [self hideSearchView];
 }
 
 @end
