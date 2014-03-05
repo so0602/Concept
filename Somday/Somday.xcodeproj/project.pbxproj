@@ -848,7 +848,7 @@
 		EFA8EBE018BDD87100144B75 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EFA8EBBF18BDD87100144B75 /* Foundation.framework */; };
 		EFA8EBE118BDD87100144B75 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EFA8EBC318BDD87100144B75 /* UIKit.framework */; };
 		EFA8EBE918BDD87100144B75 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = EFA8EBE718BDD87100144B75 /* InfoPlist.strings */; };
-		EFA8EBEB18BDD87100144B75 /* ConceptTests.m in Sources */ = {isa = PBXBuildFile; fileRef = EFA8EBEA18BDD87100144B75 /* ConceptTests.m */; };
+		EFA8EBEB18BDD87100144B75 /* SomdayTests.m in Sources */ = {isa = PBXBuildFile; fileRef = EFA8EBEA18BDD87100144B75 /* SomdayTests.m */; };
 		EFA8EC0E18BDDA8F00144B75 /* libMSDynamicsDrawerViewController.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EFA8EC0918BDDA6D00144B75 /* libMSDynamicsDrawerViewController.a */; };
 /* End PBXBuildFile section */
 
@@ -1761,25 +1761,25 @@
 		B65DDF5D18C60EB10076408C /* icons-shadow-24px_warning@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icons-shadow-24px_warning@2x.png"; sourceTree = "<group>"; };
 		EF658E5C18C461C400FC9E07 /* SDMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SDMenuViewController.h; path = Classes/SDMenuViewController.h; sourceTree = "<group>"; };
 		EF658E5D18C461C400FC9E07 /* SDMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SDMenuViewController.m; path = Classes/SDMenuViewController.m; sourceTree = "<group>"; };
-		EFA8EBBC18BDD87100144B75 /* Concept.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Concept.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		EFA8EBBC18BDD87100144B75 /* Somday.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Somday.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EFA8EBBF18BDD87100144B75 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		EFA8EBC118BDD87100144B75 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		EFA8EBC318BDD87100144B75 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
-		EFA8EBC718BDD87100144B75 /* Concept-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Concept-Info.plist"; sourceTree = "<group>"; };
+		EFA8EBC718BDD87100144B75 /* Somday-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Somday-Info.plist"; sourceTree = "<group>"; };
 		EFA8EBC918BDD87100144B75 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		EFA8EBCB18BDD87100144B75 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		EFA8EBCD18BDD87100144B75 /* Concept-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Concept-Prefix.pch"; sourceTree = "<group>"; };
+		EFA8EBCD18BDD87100144B75 /* Somday-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Somday-Prefix.pch"; sourceTree = "<group>"; };
 		EFA8EBCE18BDD87100144B75 /* SDAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SDAppDelegate.h; sourceTree = "<group>"; };
 		EFA8EBCF18BDD87100144B75 /* SDAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SDAppDelegate.m; sourceTree = "<group>"; };
 		EFA8EBD218BDD87100144B75 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		EFA8EBD418BDD87100144B75 /* SDDynamicsDrawerViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SDDynamicsDrawerViewController.h; sourceTree = "<group>"; };
 		EFA8EBD518BDD87100144B75 /* SDDynamicsDrawerViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SDDynamicsDrawerViewController.m; sourceTree = "<group>"; };
 		EFA8EBD718BDD87100144B75 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		EFA8EBDD18BDD87100144B75 /* ConceptTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ConceptTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		EFA8EBDD18BDD87100144B75 /* SomdayTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SomdayTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		EFA8EBDE18BDD87100144B75 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
-		EFA8EBE618BDD87100144B75 /* ConceptTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ConceptTests-Info.plist"; sourceTree = "<group>"; };
+		EFA8EBE618BDD87100144B75 /* SomdayTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "SomdayTests-Info.plist"; path = "../SomdayTests/SomdayTests-Info.plist"; sourceTree = "<group>"; };
 		EFA8EBE818BDD87100144B75 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		EFA8EBEA18BDD87100144B75 /* ConceptTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ConceptTests.m; sourceTree = "<group>"; };
+		EFA8EBEA18BDD87100144B75 /* SomdayTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = SomdayTests.m; path = ../SomdayTests/SomdayTests.m; sourceTree = "<group>"; };
 		EFA8EC0218BDDA6D00144B75 /* MSDynamicsDrawerViewController.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = MSDynamicsDrawerViewController.xcodeproj; path = "../Other Sources/MSDynamicsDrawerViewController/MSDynamicsDrawerViewController.xcodeproj"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -2809,8 +2809,8 @@
 		EFA8EBB318BDD87100144B75 = {
 			isa = PBXGroup;
 			children = (
-				EFA8EBC518BDD87100144B75 /* Concept */,
-				EFA8EBE418BDD87100144B75 /* ConceptTests */,
+				EFA8EBC518BDD87100144B75 /* Somday */,
+				EFA8EBE418BDD87100144B75 /* SomdayTests */,
 				EFA8EBBE18BDD87100144B75 /* Frameworks */,
 				EFA8EC0118BDDA4A00144B75 /* Other Sources */,
 				EFA8EBBD18BDD87100144B75 /* Products */,
@@ -2820,8 +2820,8 @@
 		EFA8EBBD18BDD87100144B75 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				EFA8EBBC18BDD87100144B75 /* Concept.app */,
-				EFA8EBDD18BDD87100144B75 /* ConceptTests.xctest */,
+				EFA8EBBC18BDD87100144B75 /* Somday.app */,
+				EFA8EBDD18BDD87100144B75 /* SomdayTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -2837,13 +2837,13 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		EFA8EBC518BDD87100144B75 /* Concept */ = {
+		EFA8EBC518BDD87100144B75 /* Somday */ = {
 			isa = PBXGroup;
 			children = (
 				EF658E4D18C459D000FC9E07 /* Classes */,
 				EFA8EBC618BDD87100144B75 /* Supporting Files */,
 			);
-			path = Concept;
+			path = Somday;
 			sourceTree = "<group>";
 		};
 		EFA8EBC618BDD87100144B75 /* Supporting Files */ = {
@@ -2852,27 +2852,27 @@
 				B65DDC3618C5C05E0076408C /* Resources */,
 				EFA8EBD718BDD87100144B75 /* Images.xcassets */,
 				EFA8EBD118BDD87100144B75 /* Main.storyboard */,
-				EFA8EBC718BDD87100144B75 /* Concept-Info.plist */,
+				EFA8EBC718BDD87100144B75 /* Somday-Info.plist */,
 				EFA8EBC818BDD87100144B75 /* InfoPlist.strings */,
 				EFA8EBCB18BDD87100144B75 /* main.m */,
-				EFA8EBCD18BDD87100144B75 /* Concept-Prefix.pch */,
+				EFA8EBCD18BDD87100144B75 /* Somday-Prefix.pch */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		EFA8EBE418BDD87100144B75 /* ConceptTests */ = {
+		EFA8EBE418BDD87100144B75 /* SomdayTests */ = {
 			isa = PBXGroup;
 			children = (
-				EFA8EBEA18BDD87100144B75 /* ConceptTests.m */,
+				EFA8EBEA18BDD87100144B75 /* SomdayTests.m */,
 				EFA8EBE518BDD87100144B75 /* Supporting Files */,
 			);
-			path = ConceptTests;
+			path = SomdayTests;
 			sourceTree = "<group>";
 		};
 		EFA8EBE518BDD87100144B75 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				EFA8EBE618BDD87100144B75 /* ConceptTests-Info.plist */,
+				EFA8EBE618BDD87100144B75 /* SomdayTests-Info.plist */,
 				EFA8EBE718BDD87100144B75 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
@@ -2899,9 +2899,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		EFA8EBBB18BDD87100144B75 /* Concept */ = {
+		EFA8EBBB18BDD87100144B75 /* Somday */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = EFA8EBEE18BDD87100144B75 /* Build configuration list for PBXNativeTarget "Concept" */;
+			buildConfigurationList = EFA8EBEE18BDD87100144B75 /* Build configuration list for PBXNativeTarget "Somday" */;
 			buildPhases = (
 				EFA8EBB818BDD87100144B75 /* Sources */,
 				EFA8EBB918BDD87100144B75 /* Frameworks */,
@@ -2914,14 +2914,14 @@
 				B65DDC3018C5B1500076408C /* PBXTargetDependency */,
 				EFA8EC0D18BDDA8600144B75 /* PBXTargetDependency */,
 			);
-			name = Concept;
+			name = Somday;
 			productName = Concept;
-			productReference = EFA8EBBC18BDD87100144B75 /* Concept.app */;
+			productReference = EFA8EBBC18BDD87100144B75 /* Somday.app */;
 			productType = "com.apple.product-type.application";
 		};
-		EFA8EBDC18BDD87100144B75 /* ConceptTests */ = {
+		EFA8EBDC18BDD87100144B75 /* SomdayTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = EFA8EBF118BDD87100144B75 /* Build configuration list for PBXNativeTarget "ConceptTests" */;
+			buildConfigurationList = EFA8EBF118BDD87100144B75 /* Build configuration list for PBXNativeTarget "SomdayTests" */;
 			buildPhases = (
 				EFA8EBD918BDD87100144B75 /* Sources */,
 				EFA8EBDA18BDD87100144B75 /* Frameworks */,
@@ -2932,9 +2932,9 @@
 			dependencies = (
 				EFA8EBE318BDD87100144B75 /* PBXTargetDependency */,
 			);
-			name = ConceptTests;
+			name = SomdayTests;
 			productName = ConceptTests;
-			productReference = EFA8EBDD18BDD87100144B75 /* ConceptTests.xctest */;
+			productReference = EFA8EBDD18BDD87100144B75 /* SomdayTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -2943,7 +2943,7 @@
 		EFA8EBB418BDD87100144B75 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				CLASSPREFIX = Cc;
+				CLASSPREFIX = SD;
 				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = "Freddy So";
 				TargetAttributes = {
@@ -2952,7 +2952,7 @@
 					};
 				};
 			};
-			buildConfigurationList = EFA8EBB718BDD87100144B75 /* Build configuration list for PBXProject "Concept" */;
+			buildConfigurationList = EFA8EBB718BDD87100144B75 /* Build configuration list for PBXProject "Somday" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -2975,8 +2975,8 @@
 			);
 			projectRoot = "";
 			targets = (
-				EFA8EBBB18BDD87100144B75 /* Concept */,
-				EFA8EBDC18BDD87100144B75 /* ConceptTests */,
+				EFA8EBBB18BDD87100144B75 /* Somday */,
+				EFA8EBDC18BDD87100144B75 /* SomdayTests */,
 			);
 		};
 /* End PBXProject section */
@@ -3877,7 +3877,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EFA8EBEB18BDD87100144B75 /* ConceptTests.m in Sources */,
+				EFA8EBEB18BDD87100144B75 /* SomdayTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3891,7 +3891,7 @@
 		};
 		EFA8EBE318BDD87100144B75 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = EFA8EBBB18BDD87100144B75 /* Concept */;
+			target = EFA8EBBB18BDD87100144B75 /* Somday */;
 			targetProxy = EFA8EBE218BDD87100144B75 /* PBXContainerItemProxy */;
 		};
 		EFA8EC0D18BDDA8600144B75 /* PBXTargetDependency */ = {
@@ -3924,6 +3924,7 @@
 				EFA8EBE818BDD87100144B75 /* en */,
 			);
 			name = InfoPlist.strings;
+			path = ../SomdayTests;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -4009,7 +4010,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Concept/Concept-Prefix.pch";
+				GCC_PREFIX_HEADER = "Somday/Somday-Prefix.pch";
 				HEADER_SEARCH_PATHS = (
 					"$(SOURCE_ROOT)/../Other\\ Sources/GPUImage/framework/Source",
 					"$(SOURCE_ROOT)/../Other\\ Sources/GPUImage/framework/Source/iOS",
@@ -4017,12 +4018,12 @@
 					"$(inherited)",
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
 				);
-				INFOPLIST_FILE = "Concept/Concept-Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/Somday/Somday-Info.plist";
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-all_load",
 				);
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Somday;
 				USER_HEADER_SEARCH_PATHS = "";
 				WRAPPER_EXTENSION = app;
 			};
@@ -4036,7 +4037,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Concept/Concept-Prefix.pch";
+				GCC_PREFIX_HEADER = "Somday/Somday-Prefix.pch";
 				HEADER_SEARCH_PATHS = (
 					"$(SOURCE_ROOT)/../Other\\ Sources/GPUImage/framework/Source",
 					"$(SOURCE_ROOT)/../Other\\ Sources/GPUImage/framework/Source/iOS",
@@ -4044,12 +4045,12 @@
 					"$(inherited)",
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
 				);
-				INFOPLIST_FILE = "Concept/Concept-Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/Somday/Somday-Info.plist";
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-all_load",
 				);
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Somday;
 				USER_HEADER_SEARCH_PATHS = "";
 				WRAPPER_EXTENSION = app;
 			};
@@ -4071,8 +4072,8 @@
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = "ConceptTests/ConceptTests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				INFOPLIST_FILE = "ConceptTests/SomdayTests-Info.plist";
+				PRODUCT_NAME = SomdayTests;
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
 			};
@@ -4090,8 +4091,8 @@
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Concept/Concept-Prefix.pch";
-				INFOPLIST_FILE = "ConceptTests/ConceptTests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				INFOPLIST_FILE = "ConceptTests/SomdayTests-Info.plist";
+				PRODUCT_NAME = SomdayTests;
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
 			};
@@ -4100,7 +4101,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		EFA8EBB718BDD87100144B75 /* Build configuration list for PBXProject "Concept" */ = {
+		EFA8EBB718BDD87100144B75 /* Build configuration list for PBXProject "Somday" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				EFA8EBEC18BDD87100144B75 /* Debug */,
@@ -4109,7 +4110,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		EFA8EBEE18BDD87100144B75 /* Build configuration list for PBXNativeTarget "Concept" */ = {
+		EFA8EBEE18BDD87100144B75 /* Build configuration list for PBXNativeTarget "Somday" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				EFA8EBEF18BDD87100144B75 /* Debug */,
@@ -4118,7 +4119,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		EFA8EBF118BDD87100144B75 /* Build configuration list for PBXNativeTarget "ConceptTests" */ = {
+		EFA8EBF118BDD87100144B75 /* Build configuration list for PBXNativeTarget "SomdayTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				EFA8EBF218BDD87100144B75 /* Debug */,
