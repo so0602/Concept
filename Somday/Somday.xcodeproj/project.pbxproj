@@ -28,6 +28,7 @@
 		2EC3785B18C6266C00D4161B /* UILabel+Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EC3785A18C6266C00D4161B /* UILabel+Addition.m */; };
 		2EC3786818C6C6BE00D4161B /* Montserrat-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2EC3786618C6C6BE00D4161B /* Montserrat-Bold.ttf */; };
 		2EC3786918C6C6BE00D4161B /* Montserrat-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2EC3786718C6C6BE00D4161B /* Montserrat-Regular.ttf */; };
+		2ED27A6218C6CA2700DB4EC9 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2ED27A6118C6CA2700DB4EC9 /* Images.xcassets */; };
 		B65DDC0F18C57D1E0076408C /* SDUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = B65DDC0E18C57D1E0076408C /* SDUtils.m */; };
 		B65DDC1218C57FB30076408C /* UIViewController+Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = B65DDC1118C57FB30076408C /* UIViewController+Addition.m */; };
 		B65DDC1818C586760076408C /* SDMenuTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B65DDC1718C586760076408C /* SDMenuTableViewCell.m */; };
@@ -843,7 +844,6 @@
 		EFA8EBD018BDD87100144B75 /* SDAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = EFA8EBCF18BDD87100144B75 /* SDAppDelegate.m */; };
 		EFA8EBD318BDD87100144B75 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EFA8EBD118BDD87100144B75 /* Main.storyboard */; };
 		EFA8EBD618BDD87100144B75 /* SDDynamicsDrawerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EFA8EBD518BDD87100144B75 /* SDDynamicsDrawerViewController.m */; };
-		EFA8EBD818BDD87100144B75 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EFA8EBD718BDD87100144B75 /* Images.xcassets */; };
 		EFA8EBDF18BDD87100144B75 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EFA8EBDE18BDD87100144B75 /* XCTest.framework */; };
 		EFA8EBE018BDD87100144B75 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EFA8EBBF18BDD87100144B75 /* Foundation.framework */; };
 		EFA8EBE118BDD87100144B75 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EFA8EBC318BDD87100144B75 /* UIKit.framework */; };
@@ -947,6 +947,7 @@
 		2EC3785A18C6266C00D4161B /* UILabel+Addition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UILabel+Addition.m"; path = "Classes/UILabel+Addition.m"; sourceTree = "<group>"; };
 		2EC3786618C6C6BE00D4161B /* Montserrat-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Bold.ttf"; sourceTree = "<group>"; };
 		2EC3786718C6C6BE00D4161B /* Montserrat-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Regular.ttf"; sourceTree = "<group>"; };
+		2ED27A6118C6CA2700DB4EC9 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		B65DDC0D18C57D1E0076408C /* SDUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SDUtils.h; path = Classes/SDUtils.h; sourceTree = "<group>"; };
 		B65DDC0E18C57D1E0076408C /* SDUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SDUtils.m; path = Classes/SDUtils.m; sourceTree = "<group>"; };
 		B65DDC1018C57FB30076408C /* UIViewController+Addition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIViewController+Addition.h"; path = "Classes/UIViewController+Addition.h"; sourceTree = "<group>"; };
@@ -1774,7 +1775,6 @@
 		EFA8EBD218BDD87100144B75 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		EFA8EBD418BDD87100144B75 /* SDDynamicsDrawerViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SDDynamicsDrawerViewController.h; sourceTree = "<group>"; };
 		EFA8EBD518BDD87100144B75 /* SDDynamicsDrawerViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SDDynamicsDrawerViewController.m; sourceTree = "<group>"; };
-		EFA8EBD718BDD87100144B75 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		EFA8EBDD18BDD87100144B75 /* SomdayTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SomdayTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		EFA8EBDE18BDD87100144B75 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		EFA8EBE618BDD87100144B75 /* SomdayTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "SomdayTests-Info.plist"; path = "../SomdayTests/SomdayTests-Info.plist"; sourceTree = "<group>"; };
@@ -2850,12 +2850,12 @@
 			isa = PBXGroup;
 			children = (
 				B65DDC3618C5C05E0076408C /* Resources */,
-				EFA8EBD718BDD87100144B75 /* Images.xcassets */,
 				EFA8EBD118BDD87100144B75 /* Main.storyboard */,
 				EFA8EBC718BDD87100144B75 /* Somday-Info.plist */,
 				EFA8EBC818BDD87100144B75 /* InfoPlist.strings */,
 				EFA8EBCB18BDD87100144B75 /* main.m */,
 				EFA8EBCD18BDD87100144B75 /* Somday-Prefix.pch */,
+				2ED27A6118C6CA2700DB4EC9 /* Images.xcassets */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -3017,7 +3017,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EFA8EBD818BDD87100144B75 /* Images.xcassets in Resources */,
 				2E54CAE718C5DB9300B23A96 /* JosefinSans-ThinItalic.ttf in Resources */,
 				2E54CAE218C5DB9300B23A96 /* JosefinSans-LightItalic.ttf in Resources */,
 				2E54CAE118C5DB9300B23A96 /* JosefinSans-Light.ttf in Resources */,
@@ -3133,7 +3132,6 @@
 				B65DE0AF18C60EB10076408C /* icons-24px_supported@2x.png in Resources */,
 				B65DE1A018C60EB10076408C /* icons-shadow-16px_arrowRight.png in Resources */,
 				B65DE1BF18C60EB10076408C /* icons-shadow-16px_friends@2x.png in Resources */,
-				EFA8EBD818BDD87100144B75 /* Images.xcassets in Resources */,
 				B65DE05718C60EB10076408C /* icons-24px_chats@2x.png in Resources */,
 				B65DE20E18C60EB10076408C /* icons-shadow-24px_arrowDown.png in Resources */,
 				B65DE1CA18C60EB10076408C /* icons-shadow-16px_joinedEvent.png in Resources */,
@@ -3676,6 +3674,7 @@
 				B65DE21418C60EB10076408C /* icons-shadow-24px_arrowUp.png in Resources */,
 				B65DE25118C60EB10076408C /* icons-shadow-24px_more@2x.png in Resources */,
 				B65DE25B18C60EB10076408C /* icons-shadow-24px_play@2x.png in Resources */,
+				2ED27A6218C6CA2700DB4EC9 /* Images.xcassets in Resources */,
 				B65DE06018C60EB10076408C /* icons-24px_cross.png in Resources */,
 				B65DDF7718C60EB10076408C /* icons-12px_comment@2x.png in Resources */,
 				B65DE03118C60EB10076408C /* icons-16px_share@2x.png in Resources */,
