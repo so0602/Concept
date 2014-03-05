@@ -276,7 +276,7 @@
 }
 
 -(void)searchViewAnimationUpdate{
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
         dispatch_async(dispatch_get_main_queue(), ^{
             CGPoint position = self.dynamicsDrawerViewController.paneView.frame.origin;
             if( position.x >= SDDynamicsDrawerViewController_MenuWidth ){
@@ -286,6 +286,7 @@
                 CGFloat alpha = (position.x - SDDynamicsDrawerViewController_MenuWidth) / (width - SDDynamicsDrawerViewController_MenuWidth);
                 viewController.view.alpha = alpha;
                 self.tableView.alpha = 1 - alpha;
+                SDLog(@"x,y: %@, alpha: %f", NSStringFromCGPoint(position), alpha);
             }
         });
     });
