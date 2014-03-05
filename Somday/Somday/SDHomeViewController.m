@@ -9,6 +9,8 @@
 #import "SDHomeViewController.h"
 #import "SDHomeHeaderCollectionViewCell.h"
 #import "SDHomeNavigationTitleView.h"
+
+#import "GPUImage.h"
 #import "UINavigationItem+Addition.h"
 #import "UILabel+Addition.h"
 #import "UICollectionView+Addition.h"
@@ -22,8 +24,9 @@
 @property (nonatomic) NSMutableArray *dataSource;
 @property (nonatomic) IBOutletCollection(UIButton) NSArray *buttons;
 @property (nonatomic) IBOutlet UICollectionView *collectionView;
-@property (nonatomic) IBOutlet UIImageView *bgImageView;
+@property (nonatomic) IBOutlet GPUImageView *bgImageView;
 @property (nonatomic) SDHomeHeaderCollectionViewCell *headerCollectionViewCell;
+@property (nonatomic) GPUImageiOSBlurFilter* blurFilter;
 @end
 
 @implementation SDHomeViewController
@@ -49,14 +52,30 @@ static NSString *CellIdentifier = @"CollectionViewCell";
     [self.navigationItem showSDTitleView];
     [_collectionView addMotionEffect:[SDUtils sharedMotionEffectGroup]];
     
+    // Add blur
+    self.bgImageView.clipsToBounds = TRUE;
+    self.bgImageView.layer.contentsGravity = kCAGravityTop;
+    self.blurFilter = [[GPUImageiOSBlurFilter alloc] init];
+    self.blurFilter.blurRadiusInPixels = 1.0f;
+    [self.blurFilter addTarget:self.bgImageView];
+    
     // Debug
-    BOOL toggle = YES;
+    BOOL toggle = NO;
     self.dataSource = [NSMutableArray new];
     for (int i = 0; i <= 10; i++) {
-        [_dataSource addObject:toggle?@"dump_bg":@"Debug_Story_1"];
+        [_dataSource addObject:toggle?@"dump_bg":@"Debug_Story_2"];
         toggle = !toggle;
     }
     
+    
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    GPUImagePicture* picture = [[GPUImagePicture alloc] initWithImage:[UIImage imageNamed:@"Debug_Story_1"]];
+    [picture addTarget:self.blurFilter];
+    [picture processImage];
 }
 
 - (void)didReceiveMemoryWarning
@@ -73,8 +92,14 @@ static NSString *CellIdentifier = @"CollectionViewCell";
     if (visibleItems.count > 2) {
         NSIndexPath *index = visibleItems[visibleItems.count-2];
         NSLog(@"row: %li", (long)index.row);
-        _bgImageView.image = [UIImage imageNamed:[_dataSource objectAtIndex:index.row]];
+
+        
+        GPUImagePicture* picture = [[GPUImagePicture alloc] initWithImage:[UIImage imageNamed:[_dataSource objectAtIndex:index.row]]];
+        [picture addTarget:self.blurFilter];
+        [picture processImage];        
     }
+    
+
 }
 
 #pragma mark - IBAction
@@ -144,22 +169,24 @@ static NSString *CellIdentifier = @"CollectionViewCell";
     CGFloat dateFontFactor = ([SDHomeHeaderCollectionViewCell fontForDateLabel].pointSize -navigationTitleDateLabel.font.pointSize)/(HeightForFullyDisplayNavigationBar);
     CGFloat netOffset = scrollView.contentOffset.y-HeightForTriggerNavigationBarAnimation;
     
-    NSLog(@"Offset: %.2f", scrollView.contentOffset.y);
+    // Alpha Animation
     if (scrollView.contentOffset.y <= HeightForTriggerNavigationBarAnimation) {
         self.navigationController.navigationBarHidden = YES;
         self.navigationController.navigationBar.alpha = 0.0f;
-        headerDayLabel.alpha = headerDateLabel.alpha = headerWeekDayLabel.alpha = 0.9f;
-        [headerDayLabel setFontSize:MIN([SDHomeHeaderCollectionViewCell fontForDayLabel].pointSize, [SDHomeHeaderCollectionViewCell fontForDayLabel].pointSize-(dayFontFactor*scrollView.contentOffset.y))];
-        [headerDateLabel setFontSize:MIN([SDHomeHeaderCollectionViewCell fontForDateLabel].pointSize, [SDHomeHeaderCollectionViewCell fontForDateLabel].pointSize-(dateFontFactor*scrollView.contentOffset.y))];
+        headerDayLabel.alpha = headerDateLabel.alpha = headerWeekDayLabel.alpha = ((UIButton*)_buttons[0]).alpha = ((UIButton*)_buttons[1]).alpha = 1.0f;
     } else if (scrollView.contentOffset.y >= HeightForFullyDisplayNavigationBar) {
         self.navigationController.navigationBarHidden = NO;
         self.navigationController.navigationBar.alpha = 1.0f;
-        headerDayLabel.alpha = headerDateLabel.alpha = headerWeekDayLabel.alpha = 0.0f;
+        headerDayLabel.alpha = headerDateLabel.alpha = headerWeekDayLabel.alpha = ((UIButton*)_buttons[0]).alpha = ((UIButton*)_buttons[1]).alpha = 0.0f;
     } else {
         self.navigationController.navigationBarHidden = NO;
         self.navigationController.navigationBar.alpha = alphaFactor*netOffset;
         headerDayLabel.alpha = headerDateLabel.alpha = 1.0f;
-        headerWeekDayLabel.alpha = 1-(alphaFactor*netOffset);
+        headerWeekDayLabel.alpha = ((UIButton*)_buttons[0]).alpha = ((UIButton*)_buttons[1]).alpha = 1-(alphaFactor*netOffset);
+    }
+    
+    // Font Animation
+    if (scrollView.contentOffset.y > 0 && scrollView.contentOffset.y <= HeightForFullyDisplayNavigationBar) {
         [headerDayLabel setFontSize:[SDHomeHeaderCollectionViewCell fontForDayLabel].pointSize-(dayFontFactor*scrollView.contentOffset.y)];
         [headerDateLabel setFontSize:[SDHomeHeaderCollectionViewCell fontForDateLabel].pointSize-(dateFontFactor*scrollView.contentOffset.y)];
     }
