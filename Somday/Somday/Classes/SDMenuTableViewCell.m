@@ -18,6 +18,13 @@
 
 @implementation SDMenuTableViewCell
 
+-(id)initWithCoder:(NSCoder *)aDecoder{
+    if( self = [super initWithCoder:aDecoder] ){
+        self.backgroundColor = [UIColor clearColor];
+    }
+    return self;
+}
+
 -(UITableView*)tableView{
     UITableView* tableView = (id)self;
     while( tableView.superview != nil ){

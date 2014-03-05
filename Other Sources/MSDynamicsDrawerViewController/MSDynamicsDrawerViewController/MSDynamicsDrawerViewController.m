@@ -488,7 +488,9 @@ void MSDynamicsDrawerDirectionActionForMaskedValues(NSInteger direction, MSDynam
     [self setPaneViewControllerViewUserInteractionEnabled:(paneState == MSDynamicsDrawerPaneStateClosed)];
     
     [self.paneBoundaryCollisionBehavior removeAllBoundaries];
-    [self.paneBoundaryCollisionBehavior addBoundaryWithIdentifier:MSDynamicsDrawerBoundaryIdentifier forPath:[self boundaryPathForState:paneState direction:self.currentDrawerDirection]];
+    UIBezierPath* path = [self boundaryPathForState:paneState direction:self.currentDrawerDirection];
+    NSLog(@"path: %@", path);
+    [self.paneBoundaryCollisionBehavior addBoundaryWithIdentifier:MSDynamicsDrawerBoundaryIdentifier forPath:path];
     [self.dynamicAnimator addBehavior:self.paneBoundaryCollisionBehavior];
     
     self.paneGravityBehavior.magnitude = [self gravityMagnitude];
