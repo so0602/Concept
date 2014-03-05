@@ -20,14 +20,14 @@
 		2E54CAE518C5DB9300B23A96 /* JosefinSans-SemiBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2E54CADA18C5DB9300B23A96 /* JosefinSans-SemiBoldItalic.ttf */; };
 		2E54CAE618C5DB9300B23A96 /* JosefinSans-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2E54CADB18C5DB9300B23A96 /* JosefinSans-Thin.ttf */; };
 		2E54CAE718C5DB9300B23A96 /* JosefinSans-ThinItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2E54CADC18C5DB9300B23A96 /* JosefinSans-ThinItalic.ttf */; };
-		2E54CAEB18C5DBB200B23A96 /* Montserrat-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2E54CAE918C5DBB200B23A96 /* Montserrat-Bold.ttf */; };
-		2E54CAEC18C5DBB200B23A96 /* Montserrat-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2E54CAEA18C5DBB200B23A96 /* Montserrat-Regular.ttf */; };
 		2E54CAF218C5DE1A00B23A96 /* UIFont+Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E54CAF118C5DE1A00B23A96 /* UIFont+Addition.m */; };
 		2EC3784918C5F0BA00D4161B /* SDHomeNavigationTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EC3784818C5F0BA00D4161B /* SDHomeNavigationTitleView.m */; };
 		2EC3784F18C5F0D100D4161B /* SDHomeNavigationTitleView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2EC3784E18C5F0D100D4161B /* SDHomeNavigationTitleView.xib */; };
 		2EC3785218C6130800D4161B /* UIColor+Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EC3785118C6130800D4161B /* UIColor+Extensions.m */; };
 		2EC3785818C61B0F00D4161B /* UINavigationItem+Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EC3785718C61B0F00D4161B /* UINavigationItem+Addition.m */; };
 		2EC3785B18C6266C00D4161B /* UILabel+Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EC3785A18C6266C00D4161B /* UILabel+Addition.m */; };
+		2EC3786818C6C6BE00D4161B /* Montserrat-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2EC3786618C6C6BE00D4161B /* Montserrat-Bold.ttf */; };
+		2EC3786918C6C6BE00D4161B /* Montserrat-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2EC3786718C6C6BE00D4161B /* Montserrat-Regular.ttf */; };
 		B65DDC0F18C57D1E0076408C /* SDUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = B65DDC0E18C57D1E0076408C /* SDUtils.m */; };
 		B65DDC1218C57FB30076408C /* UIViewController+Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = B65DDC1118C57FB30076408C /* UIViewController+Addition.m */; };
 		B65DDC1818C586760076408C /* SDMenuTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B65DDC1718C586760076408C /* SDMenuTableViewCell.m */; };
@@ -934,8 +934,6 @@
 		2E54CADA18C5DB9300B23A96 /* JosefinSans-SemiBoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "JosefinSans-SemiBoldItalic.ttf"; sourceTree = "<group>"; };
 		2E54CADB18C5DB9300B23A96 /* JosefinSans-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "JosefinSans-Thin.ttf"; sourceTree = "<group>"; };
 		2E54CADC18C5DB9300B23A96 /* JosefinSans-ThinItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "JosefinSans-ThinItalic.ttf"; sourceTree = "<group>"; };
-		2E54CAE918C5DBB200B23A96 /* Montserrat-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Montserrat-Bold.ttf"; path = "../../../../../../Downloads/Montserrat/Montserrat-Bold.ttf"; sourceTree = "<group>"; };
-		2E54CAEA18C5DBB200B23A96 /* Montserrat-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Montserrat-Regular.ttf"; path = "../../../../../../Downloads/Montserrat/Montserrat-Regular.ttf"; sourceTree = "<group>"; };
 		2E54CAF018C5DE1A00B23A96 /* UIFont+Addition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIFont+Addition.h"; path = "Classes/UIFont+Addition.h"; sourceTree = "<group>"; };
 		2E54CAF118C5DE1A00B23A96 /* UIFont+Addition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIFont+Addition.m"; path = "Classes/UIFont+Addition.m"; sourceTree = "<group>"; };
 		2EC3784718C5F0BA00D4161B /* SDHomeNavigationTitleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SDHomeNavigationTitleView.h; path = Classes/SDHomeNavigationTitleView.h; sourceTree = "<group>"; };
@@ -947,6 +945,8 @@
 		2EC3785718C61B0F00D4161B /* UINavigationItem+Addition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UINavigationItem+Addition.m"; path = "Classes/UINavigationItem+Addition.m"; sourceTree = "<group>"; };
 		2EC3785918C6266C00D4161B /* UILabel+Addition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UILabel+Addition.h"; path = "Classes/UILabel+Addition.h"; sourceTree = "<group>"; };
 		2EC3785A18C6266C00D4161B /* UILabel+Addition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UILabel+Addition.m"; path = "Classes/UILabel+Addition.m"; sourceTree = "<group>"; };
+		2EC3786618C6C6BE00D4161B /* Montserrat-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Bold.ttf"; sourceTree = "<group>"; };
+		2EC3786718C6C6BE00D4161B /* Montserrat-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Regular.ttf"; sourceTree = "<group>"; };
 		B65DDC0D18C57D1E0076408C /* SDUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SDUtils.h; path = Classes/SDUtils.h; sourceTree = "<group>"; };
 		B65DDC0E18C57D1E0076408C /* SDUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SDUtils.m; path = Classes/SDUtils.m; sourceTree = "<group>"; };
 		B65DDC1018C57FB30076408C /* UIViewController+Addition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIViewController+Addition.h"; path = "Classes/UIViewController+Addition.h"; sourceTree = "<group>"; };
@@ -1809,7 +1809,7 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		2E54CACC18C5D78E00B23A96 /* View */ = {
+		2E54CACC18C5D78E00B23A96 /* Views */ = {
 			isa = PBXGroup;
 			children = (
 				2E54CACD18C5D7BF00B23A96 /* SDHomeHeaderCollectionViewCell.h */,
@@ -1818,14 +1818,14 @@
 				2EC3784818C5F0BA00D4161B /* SDHomeNavigationTitleView.m */,
 				2EC3784E18C5F0D100D4161B /* SDHomeNavigationTitleView.xib */,
 			);
-			name = View;
+			name = Views;
 			sourceTree = "<group>";
 		};
 		2E54CAD218C5DB8800B23A96 /* Font */ = {
 			isa = PBXGroup;
 			children = (
-				2E54CAE918C5DBB200B23A96 /* Montserrat-Bold.ttf */,
-				2E54CAEA18C5DBB200B23A96 /* Montserrat-Regular.ttf */,
+				2EC3786618C6C6BE00D4161B /* Montserrat-Bold.ttf */,
+				2EC3786718C6C6BE00D4161B /* Montserrat-Regular.ttf */,
 				2E54CAD318C5DB9300B23A96 /* JosefinSans-Bold.ttf */,
 				2E54CAD418C5DB9300B23A96 /* JosefinSans-BoldItalic.ttf */,
 				2E54CAD518C5DB9300B23A96 /* JosefinSans-Italic.ttf */,
@@ -2781,7 +2781,7 @@
 			children = (
 				EF658E5A18C4615C00FC9E07 /* App Delegate */,
 				B65DDC0A18C57D050076408C /* Utils */,
-				2E54CACC18C5D78E00B23A96 /* View */,
+				2E54CACC18C5D78E00B23A96 /* Views */,
 				EF658E5B18C4616D00FC9E07 /* ViewControllers */,
 			);
 			name = Classes;
@@ -3017,14 +3017,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2E54CAEC18C5DBB200B23A96 /* Montserrat-Regular.ttf in Resources */,
 				EFA8EBD818BDD87100144B75 /* Images.xcassets in Resources */,
 				2E54CAE718C5DB9300B23A96 /* JosefinSans-ThinItalic.ttf in Resources */,
 				2E54CAE218C5DB9300B23A96 /* JosefinSans-LightItalic.ttf in Resources */,
 				2E54CAE118C5DB9300B23A96 /* JosefinSans-Light.ttf in Resources */,
 				2E54CAE518C5DB9300B23A96 /* JosefinSans-SemiBoldItalic.ttf in Resources */,
 				2EC3784F18C5F0D100D4161B /* SDHomeNavigationTitleView.xib in Resources */,
-				2E54CAEB18C5DBB200B23A96 /* Montserrat-Bold.ttf in Resources */,
 				2E54CAE318C5DB9300B23A96 /* JosefinSans-Regular.ttf in Resources */,
 				2E54CADF18C5DB9300B23A96 /* JosefinSans-BoldItalic.ttf in Resources */,
 				B65DE17618C60EB10076408C /* icons-shadow-12px_play.png in Resources */,
@@ -3063,6 +3061,7 @@
 				B65DE1B318C60EB10076408C /* icons-shadow-16px_contrast-hi@2x.png in Resources */,
 				B65DE22018C60EB10076408C /* icons-shadow-24px_closeFriends.png in Resources */,
 				B65DDFDE18C60EB10076408C /* icons-16px_calendar-border.png in Resources */,
+				2EC3786818C6C6BE00D4161B /* Montserrat-Bold.ttf in Resources */,
 				B65DE0E918C60EB10076408C /* icons-color-12px_like@2x.png in Resources */,
 				B65DE00818C60EB10076408C /* icons-16px_location-bold.png in Resources */,
 				B65DDFDA18C60EB10076408C /* icons-16px_arrowUp.png in Resources */,
@@ -3633,6 +3632,7 @@
 				B65DE22F18C60EB10076408C /* icons-shadow-24px_disliked@2x.png in Resources */,
 				B65DE15618C60EB10076408C /* icons-shadow-12px_joinedEvent-bold.png in Resources */,
 				B65DE13818C60EB10076408C /* icons-shadow-12px_camera.png in Resources */,
+				2EC3786918C6C6BE00D4161B /* Montserrat-Regular.ttf in Resources */,
 				B65DE14F18C60EB10076408C /* icons-shadow-12px_home@2x.png in Resources */,
 				B65DDF9818C60EB10076408C /* icons-12px_location.png in Resources */,
 				B65DE10218C60EB10076408C /* icons-color-12px_play-bold.png in Resources */,
