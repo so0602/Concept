@@ -139,9 +139,16 @@
                                 </connections>
                             </collectionView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zlk-2i-E0e">
-                                <rect key="frame" x="137" y="269" width="81" height="26"/>
+                                <rect key="frame" x="275" y="39" width="26" height="26"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" image="icons-24px_add.png">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ehq-x2-nxa">
+                                <rect key="frame" x="147" y="271" width="26" height="26"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="icons-24px_menu.png">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
@@ -273,6 +280,7 @@
         <image name="Debug_Story_1" width="320" height="568"/>
         <image name="dump_bg.png" width="320" height="568"/>
         <image name="icons-24px_add.png" width="26" height="26"/>
+        <image name="icons-24px_menu.png" width="26" height="26"/>
         <image name="icons-shadow-24px_arrowLeft.png" width="26" height="26"/>
         <image name="icons-shadow-24px_friends.png" width="26" height="26"/>
     </resources>
