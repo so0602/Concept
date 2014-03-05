@@ -138,27 +138,38 @@
                                     <outlet property="delegate" destination="2cq-Bh-txa" id="mXj-9r-ePX"/>
                                 </connections>
                             </collectionView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zlk-2i-E0e">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ehq-x2-nxa">
+                                <rect key="frame" x="19" y="39" width="26" height="26"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="icons-24px_menu.png">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="actionForItem:" destination="2cq-Bh-txa" eventType="touchUpInside" id="sic-EH-FSM"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zlk-2i-E0e">
                                 <rect key="frame" x="275" y="39" width="26" height="26"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" image="icons-24px_add.png">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ehq-x2-nxa">
-                                <rect key="frame" x="147" y="271" width="26" height="26"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" image="icons-24px_menu.png">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="zlk-2i-E0e" secondAttribute="trailing" constant="19" id="3TI-Tt-y2e"/>
+                            <constraint firstItem="ehq-x2-nxa" firstAttribute="leading" secondItem="aYH-lB-KeN" secondAttribute="leading" constant="19" id="N3Z-n0-8j3"/>
+                            <constraint firstItem="ehq-x2-nxa" firstAttribute="top" secondItem="aYH-lB-KeN" secondAttribute="top" constant="39" id="cHl-ZV-eAd"/>
+                            <constraint firstItem="ehq-x2-nxa" firstAttribute="top" secondItem="zlk-2i-E0e" secondAttribute="top" id="jal-Rw-bcS"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Qjx-NR-CEA"/>
                     <connections>
                         <outlet property="bgImageView" destination="s4A-4P-8Pd" id="u8u-iW-R8I"/>
                         <outlet property="collectionView" destination="9Cs-Oj-N38" id="3KY-c9-gFn"/>
+                        <outletCollection property="buttons" destination="ehq-x2-nxa" id="et3-d1-g2e"/>
+                        <outletCollection property="buttons" destination="zlk-2i-E0e" id="i81-Y7-brF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hET-0g-uRz" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -277,7 +288,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Debug_Story_1" width="320" height="568"/>
+        <image name="Debug_Story_1" width="160" height="284"/>
         <image name="dump_bg.png" width="320" height="568"/>
         <image name="icons-24px_add.png" width="26" height="26"/>
         <image name="icons-24px_menu.png" width="26" height="26"/>
