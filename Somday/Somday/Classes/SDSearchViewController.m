@@ -19,6 +19,7 @@
 @property (nonatomic, strong) IBOutlet UITextField* searchTextField;
 
 @property (nonatomic, strong) GPUImageiOSBlurFilter* blurFilter;
+@property (nonatomic, strong) GPUImagePicture* backgroundPicture;
 
 @end
 
@@ -35,11 +36,13 @@
         self.blurFilter.blurRadiusInPixels = 1.0f;
     }
     
-    GPUImagePicture* picture = [[GPUImagePicture alloc] initWithImage:self.backgroundImage];
-    [picture addTarget:self.blurFilter];
-    [self.blurFilter addTarget:self.backgroundImageView];
+    if( !self.backgroundPicture ){
+        self.backgroundPicture = [[GPUImagePicture alloc] initWithImage:self.backgroundImage];
+        [self.backgroundPicture addTarget:self.blurFilter];
+        [self.blurFilter addTarget:self.backgroundImageView];
+    }
     
-    [picture processImage];
+    [self.backgroundPicture processImage];
 }
 
 -(void)viewDidLoad{

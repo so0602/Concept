@@ -260,15 +260,15 @@
 #pragma mark - SDDynamicsDrawerViewControllerDelegate
 
 -(void)dynamicsDrawerViewController:(MSDynamicsDrawerViewController *)drawerViewController paneViewPositionDidChanged:(CGPoint)position{
-    if( position.x >= SDDynamicsDrawerViewController_MenuWidth ){
-        SDSearchViewController* viewController = self.searchViewController;
-        [self addSearchView:TRUE];
-        
-        CGFloat width = CGRectGetWidth(self.view.frame);
-        CGFloat alpha = (position.x - SDDynamicsDrawerViewController_MenuWidth) / (width - SDDynamicsDrawerViewController_MenuWidth);
-        viewController.view.alpha = alpha;
-        self.tableView.alpha = 1 - alpha;
-    }
+//    if( position.x >= SDDynamicsDrawerViewController_MenuWidth ){
+//        SDSearchViewController* viewController = self.searchViewController;
+//        [self addSearchView:TRUE];
+//        
+//        CGFloat width = CGRectGetWidth(self.view.frame);
+//        CGFloat alpha = (position.x - SDDynamicsDrawerViewController_MenuWidth) / (width - SDDynamicsDrawerViewController_MenuWidth);
+//        viewController.view.alpha = alpha;
+//        self.tableView.alpha = 1 - alpha;
+//    }
     
     if( !self.animationTimer ){
         self.animationTimer = [NSTimer scheduledTimerWithTimeInterval:0.1 target:self selector:@selector(searchViewAnimationUpdate) userInfo:nil repeats:TRUE];
@@ -276,13 +276,20 @@
 }
 
 -(void)searchViewAnimationUpdate{
-    [self addSearchView:self.searchViewController.backgroundImage ? FALSE : TRUE];
-    CGPoint position = self.dynamicsDrawerViewController.paneView.frame.origin;
-    SDSearchViewController* viewController = self.searchViewController;
-    CGFloat width = CGRectGetWidth(self.view.frame);
-    CGFloat alpha = (position.x - SDDynamicsDrawerViewController_MenuWidth) / (width - SDDynamicsDrawerViewController_MenuWidth);
-    viewController.view.alpha = alpha;
-    self.tableView.alpha = 1 - alpha;
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        dispatch_async(dispatch_get_main_queue(), ^{
+            CGPoint position = self.dynamicsDrawerViewController.paneView.frame.origin;
+            if( position.x >= SDDynamicsDrawerViewController_MenuWidth ){
+                [self addSearchView:self.searchViewController.backgroundImage ? FALSE : TRUE];
+                SDSearchViewController* viewController = self.searchViewController;
+                CGFloat width = CGRectGetWidth(self.view.frame);
+                CGFloat alpha = (position.x - SDDynamicsDrawerViewController_MenuWidth) / (width - SDDynamicsDrawerViewController_MenuWidth);
+                viewController.view.alpha = alpha;
+                self.tableView.alpha = 1 - alpha;
+            }
+        });
+    });
+
 }
 
 #pragma mark - SDSearchViewControllerDelegate
