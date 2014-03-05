@@ -200,7 +200,7 @@
 
 -(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     SDMenuTableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:@"SDMenuTableViewCell"];
-    cell.backgroundColor = [UIColor clearColor];
+//    cell.backgroundColor = [UIColor clearColor];
     [cell populateData:self.paneViewControllerIcons[@(indexPath.row)]];
     
     return cell;
@@ -215,7 +215,7 @@
 #pragma mark - MSDynamicsDrawerViewControllerDelegate
 
 -(void)dynamicsDrawerViewController:(MSDynamicsDrawerViewController *)drawerViewController mayUpdateToPaneState:(MSDynamicsDrawerPaneState)paneState forDirection:(MSDynamicsDrawerDirection)direction{
-    
+    SDLog(@"paneState: %ld", paneState);
 }
 -(void)dynamicsDrawerViewController:(MSDynamicsDrawerViewController *)drawerViewController didUpdateToPaneState:(MSDynamicsDrawerPaneState)paneState forDirection:(MSDynamicsDrawerDirection)direction{
     
