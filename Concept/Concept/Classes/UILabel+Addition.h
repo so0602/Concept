@@ -10,4 +10,6 @@
 
 @interface UILabel (Addition)
 
+-(void)setFontSize:(CGFloat)fontSize;
+
 @end

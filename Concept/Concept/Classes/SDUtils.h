@@ -13,8 +13,11 @@
 #define SDLogE(fmt, ...) NSLog((@"ERROR >> %s [Line %d] " fmt), __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__)
 #define SDLogW(fmt, ...) NSLog((@"WARNING >> %s [Line %d] " fmt), __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__)
 
+#define SDDateFormat_dd_MMM_yyyy @"dd MMM yyyy"
+
 @interface SDUtils : NSObject
 
 +(UIStoryboard*)mainStoryboard;
++(UIMotionEffectGroup *)sharedMotionEffectGroup;
 
 @end

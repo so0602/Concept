@@ -128,7 +128,7 @@
 }
 
 -(void)dynamicsDrawerMenuBarButtonItemTapped:(id)sender{
-    [self.dynamicsDrawerViewController setPaneState:MSDynamicsDrawerPaneStateOpen inDirection:MSDynamicsDrawerDirectionLeft animated:TRUE allowUserInterruption:TRUE completion:nil];
+    [self.dynamicsDrawerViewController setPaneState:SDDynamicsDrawerPaneStateHalfOpen inDirection:MSDynamicsDrawerDirectionLeft animated:TRUE allowUserInterruption:TRUE completion:nil];
 }
 
 #pragma mark - UITableViewDataSource

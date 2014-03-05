@@ -10,4 +10,9 @@
 
 @implementation UILabel (Addition)
 
+-(void)setFontSize:(CGFloat)fontSize
+{
+    self.font = [UIFont fontWithName:self.font.fontName size:fontSize];
+}
+
 @end

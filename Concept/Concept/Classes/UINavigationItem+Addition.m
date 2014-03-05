@@ -8,6 +8,14 @@
 
 #import "UINavigationItem+Addition.h"
 
+#import "SDHomeNavigationTitleView.h"
+
 @implementation UINavigationItem (Addition)
+
+- (void)showSDTitleView
+{
+    SDHomeNavigationTitleView *titleView = [[NSBundle mainBundle] loadNibNamed:@"SDHomeNavigationTitleView" owner:self options:nil][0];
+    self.titleView = titleView;
+}
 
 @end

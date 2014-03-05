@@ -14,4 +14,30 @@
     return [UIStoryboard storyboardWithName:@"Main" bundle:nil];
 }
 
++(UIMotionEffectGroup *)sharedMotionEffectGroup
+{
+    static UIMotionEffectGroup *_sharedInstance = nil;
+    static dispatch_once_t oncePredicate;
+    
+    dispatch_once(&oncePredicate, ^{
+        // Set vertical effect
+        UIInterpolatingMotionEffect *verticalMotionEffect = [[UIInterpolatingMotionEffect alloc] initWithKeyPath:@"center.y" type:UIInterpolatingMotionEffectTypeTiltAlongVerticalAxis];
+        verticalMotionEffect.minimumRelativeValue = @(-20);
+        verticalMotionEffect.maximumRelativeValue = @(20);
+        
+        // Set horizontal effect
+        UIInterpolatingMotionEffect *horizontalMotionEffect = [[UIInterpolatingMotionEffect alloc] initWithKeyPath:@"center.x" type:UIInterpolatingMotionEffectTypeTiltAlongHorizontalAxis];
+        horizontalMotionEffect.minimumRelativeValue = @(-20);
+        horizontalMotionEffect.maximumRelativeValue = @(20);
+        
+        // Create group to combine both
+        _sharedInstance = [UIMotionEffectGroup new];
+        _sharedInstance.motionEffects = @[horizontalMotionEffect, verticalMotionEffect];
+        
+    });
+    
+    return _sharedInstance;
+}
+
+
 @end

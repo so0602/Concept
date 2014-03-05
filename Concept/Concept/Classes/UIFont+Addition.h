@@ -10,4 +10,6 @@
 
 @interface UIFont (Addition)
 
++(UIFont *)josefinSansFontOfSize:(CGFloat)fontSize;
++(UIFont *)josefinSansSemiBoldFontOfSize:(CGFloat)fontSize;
 @end

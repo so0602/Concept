@@ -8,6 +8,7 @@
 
 #import "MSDynamicsDrawerViewController.h"
 
-@interface SDHomeViewController : MSDynamicsDrawerViewController
+//@interface SDHomeViewController : MSDynamicsDrawerViewController <UICollectionViewDataSource>
+@interface SDHomeViewController : UIViewController <UICollectionViewDataSource>
 
 @end

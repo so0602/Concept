@@ -8,6 +8,10 @@
 
 #import "SDHomeNavigationTitleView.h"
 
+@interface SDHomeNavigationTitleView ()
+@property (nonatomic) NSDateFormatter *dateformatter;
+@end
+
 @implementation SDHomeNavigationTitleView
 
 - (id)initWithFrame:(CGRect)frame
@@ -19,13 +23,25 @@
     return self;
 }
 
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect
+- (id)initWithCoder:(NSCoder *)aDecoder
 {
-    // Drawing code
+    self = [super initWithCoder:aDecoder];
+    if (self) {
+        // Initialization code
+        _dayLabel.font = [UIFont josefinSansFontOfSize:20];
+        _dateLabel.font = [UIFont josefinSansFontOfSize:13];
+        _dateformatter = [[NSDateFormatter alloc] init];
+        [_dateformatter setLocale:[NSLocale currentLocale]];
+        [_dateformatter setDateFormat:SDDateFormat_dd_MMM_yyyy];
+    }
+    return self;
 }
-*/
+
+- (void)layoutSubviews
+{
+    [super layoutSubviews];
+    _dateLabel.text = [_dateformatter stringFromDate:[NSDate date]];
+    
+}
 
 @end

@@ -10,4 +10,7 @@
 
 @interface SDHomeNavigationTitleView : UIView
 
+@property (nonatomic) IBOutlet UILabel *dayLabel;
+@property (nonatomic) IBOutlet UILabel *dateLabel;
+
 @end

@@ -7,6 +7,27 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2E54CABF18C5D1D900B23A96 /* SDHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E54CABE18C5D1D900B23A96 /* SDHomeViewController.m */; };
+		2E54CAC618C5D2C200B23A96 /* SDCollectionViewFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E54CAC518C5D2C200B23A96 /* SDCollectionViewFlowLayout.m */; };
+		2E54CACF18C5D7BF00B23A96 /* SDHomeHeaderCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E54CACE18C5D7BF00B23A96 /* SDHomeHeaderCollectionViewCell.m */; };
+		2E54CADE18C5DB9300B23A96 /* JosefinSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2E54CAD318C5DB9300B23A96 /* JosefinSans-Bold.ttf */; };
+		2E54CADF18C5DB9300B23A96 /* JosefinSans-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2E54CAD418C5DB9300B23A96 /* JosefinSans-BoldItalic.ttf */; };
+		2E54CAE018C5DB9300B23A96 /* JosefinSans-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2E54CAD518C5DB9300B23A96 /* JosefinSans-Italic.ttf */; };
+		2E54CAE118C5DB9300B23A96 /* JosefinSans-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2E54CAD618C5DB9300B23A96 /* JosefinSans-Light.ttf */; };
+		2E54CAE218C5DB9300B23A96 /* JosefinSans-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2E54CAD718C5DB9300B23A96 /* JosefinSans-LightItalic.ttf */; };
+		2E54CAE318C5DB9300B23A96 /* JosefinSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2E54CAD818C5DB9300B23A96 /* JosefinSans-Regular.ttf */; };
+		2E54CAE418C5DB9300B23A96 /* JosefinSans-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2E54CAD918C5DB9300B23A96 /* JosefinSans-SemiBold.ttf */; };
+		2E54CAE518C5DB9300B23A96 /* JosefinSans-SemiBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2E54CADA18C5DB9300B23A96 /* JosefinSans-SemiBoldItalic.ttf */; };
+		2E54CAE618C5DB9300B23A96 /* JosefinSans-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2E54CADB18C5DB9300B23A96 /* JosefinSans-Thin.ttf */; };
+		2E54CAE718C5DB9300B23A96 /* JosefinSans-ThinItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2E54CADC18C5DB9300B23A96 /* JosefinSans-ThinItalic.ttf */; };
+		2E54CAEB18C5DBB200B23A96 /* Montserrat-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2E54CAE918C5DBB200B23A96 /* Montserrat-Bold.ttf */; };
+		2E54CAEC18C5DBB200B23A96 /* Montserrat-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2E54CAEA18C5DBB200B23A96 /* Montserrat-Regular.ttf */; };
+		2E54CAF218C5DE1A00B23A96 /* UIFont+Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E54CAF118C5DE1A00B23A96 /* UIFont+Addition.m */; };
+		2EC3784918C5F0BA00D4161B /* SDHomeNavigationTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EC3784818C5F0BA00D4161B /* SDHomeNavigationTitleView.m */; };
+		2EC3784F18C5F0D100D4161B /* SDHomeNavigationTitleView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2EC3784E18C5F0D100D4161B /* SDHomeNavigationTitleView.xib */; };
+		2EC3785218C6130800D4161B /* UIColor+Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EC3785118C6130800D4161B /* UIColor+Extensions.m */; };
+		2EC3785818C61B0F00D4161B /* UINavigationItem+Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EC3785718C61B0F00D4161B /* UINavigationItem+Addition.m */; };
+		2EC3785B18C6266C00D4161B /* UILabel+Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EC3785A18C6266C00D4161B /* UILabel+Addition.m */; };
 		B65DDC0F18C57D1E0076408C /* SDUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = B65DDC0E18C57D1E0076408C /* SDUtils.m */; };
 		B65DDC1218C57FB30076408C /* UIViewController+Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = B65DDC1118C57FB30076408C /* UIViewController+Addition.m */; };
 		B65DDC1818C586760076408C /* SDMenuTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B65DDC1718C586760076408C /* SDMenuTableViewCell.m */; };
@@ -99,6 +120,35 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		2E54CABD18C5D1D900B23A96 /* SDHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDHomeViewController.h; sourceTree = "<group>"; };
+		2E54CABE18C5D1D900B23A96 /* SDHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDHomeViewController.m; sourceTree = "<group>"; };
+		2E54CAC418C5D2C200B23A96 /* SDCollectionViewFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDCollectionViewFlowLayout.h; sourceTree = "<group>"; };
+		2E54CAC518C5D2C200B23A96 /* SDCollectionViewFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDCollectionViewFlowLayout.m; sourceTree = "<group>"; };
+		2E54CACD18C5D7BF00B23A96 /* SDHomeHeaderCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SDHomeHeaderCollectionViewCell.h; path = Classes/SDHomeHeaderCollectionViewCell.h; sourceTree = "<group>"; };
+		2E54CACE18C5D7BF00B23A96 /* SDHomeHeaderCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SDHomeHeaderCollectionViewCell.m; path = Classes/SDHomeHeaderCollectionViewCell.m; sourceTree = "<group>"; };
+		2E54CAD318C5DB9300B23A96 /* JosefinSans-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "JosefinSans-Bold.ttf"; sourceTree = "<group>"; };
+		2E54CAD418C5DB9300B23A96 /* JosefinSans-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "JosefinSans-BoldItalic.ttf"; sourceTree = "<group>"; };
+		2E54CAD518C5DB9300B23A96 /* JosefinSans-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "JosefinSans-Italic.ttf"; sourceTree = "<group>"; };
+		2E54CAD618C5DB9300B23A96 /* JosefinSans-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "JosefinSans-Light.ttf"; sourceTree = "<group>"; };
+		2E54CAD718C5DB9300B23A96 /* JosefinSans-LightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "JosefinSans-LightItalic.ttf"; sourceTree = "<group>"; };
+		2E54CAD818C5DB9300B23A96 /* JosefinSans-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "JosefinSans-Regular.ttf"; sourceTree = "<group>"; };
+		2E54CAD918C5DB9300B23A96 /* JosefinSans-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "JosefinSans-SemiBold.ttf"; sourceTree = "<group>"; };
+		2E54CADA18C5DB9300B23A96 /* JosefinSans-SemiBoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "JosefinSans-SemiBoldItalic.ttf"; sourceTree = "<group>"; };
+		2E54CADB18C5DB9300B23A96 /* JosefinSans-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "JosefinSans-Thin.ttf"; sourceTree = "<group>"; };
+		2E54CADC18C5DB9300B23A96 /* JosefinSans-ThinItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "JosefinSans-ThinItalic.ttf"; sourceTree = "<group>"; };
+		2E54CAE918C5DBB200B23A96 /* Montserrat-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Montserrat-Bold.ttf"; path = "../../../../../../Downloads/Montserrat/Montserrat-Bold.ttf"; sourceTree = "<group>"; };
+		2E54CAEA18C5DBB200B23A96 /* Montserrat-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Montserrat-Regular.ttf"; path = "../../../../../../Downloads/Montserrat/Montserrat-Regular.ttf"; sourceTree = "<group>"; };
+		2E54CAF018C5DE1A00B23A96 /* UIFont+Addition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIFont+Addition.h"; path = "Classes/UIFont+Addition.h"; sourceTree = "<group>"; };
+		2E54CAF118C5DE1A00B23A96 /* UIFont+Addition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIFont+Addition.m"; path = "Classes/UIFont+Addition.m"; sourceTree = "<group>"; };
+		2EC3784718C5F0BA00D4161B /* SDHomeNavigationTitleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SDHomeNavigationTitleView.h; path = Classes/SDHomeNavigationTitleView.h; sourceTree = "<group>"; };
+		2EC3784818C5F0BA00D4161B /* SDHomeNavigationTitleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SDHomeNavigationTitleView.m; path = Classes/SDHomeNavigationTitleView.m; sourceTree = "<group>"; };
+		2EC3784E18C5F0D100D4161B /* SDHomeNavigationTitleView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SDHomeNavigationTitleView.xib; path = Classes/SDHomeNavigationTitleView.xib; sourceTree = "<group>"; };
+		2EC3785018C6130800D4161B /* UIColor+Extensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Extensions.h"; sourceTree = "<group>"; };
+		2EC3785118C6130800D4161B /* UIColor+Extensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Extensions.m"; sourceTree = "<group>"; };
+		2EC3785618C61B0F00D4161B /* UINavigationItem+Addition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UINavigationItem+Addition.h"; path = "Classes/UINavigationItem+Addition.h"; sourceTree = "<group>"; };
+		2EC3785718C61B0F00D4161B /* UINavigationItem+Addition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UINavigationItem+Addition.m"; path = "Classes/UINavigationItem+Addition.m"; sourceTree = "<group>"; };
+		2EC3785918C6266C00D4161B /* UILabel+Addition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UILabel+Addition.h"; path = "Classes/UILabel+Addition.h"; sourceTree = "<group>"; };
+		2EC3785A18C6266C00D4161B /* UILabel+Addition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UILabel+Addition.m"; path = "Classes/UILabel+Addition.m"; sourceTree = "<group>"; };
 		B65DDC0D18C57D1E0076408C /* SDUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SDUtils.h; path = Classes/SDUtils.h; sourceTree = "<group>"; };
 		B65DDC0E18C57D1E0076408C /* SDUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SDUtils.m; path = Classes/SDUtils.m; sourceTree = "<group>"; };
 		B65DDC1018C57FB30076408C /* UIViewController+Addition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIViewController+Addition.h"; path = "Classes/UIViewController+Addition.h"; sourceTree = "<group>"; };
@@ -163,6 +213,37 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2E54CACC18C5D78E00B23A96 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				2E54CACD18C5D7BF00B23A96 /* SDHomeHeaderCollectionViewCell.h */,
+				2E54CACE18C5D7BF00B23A96 /* SDHomeHeaderCollectionViewCell.m */,
+				2EC3784718C5F0BA00D4161B /* SDHomeNavigationTitleView.h */,
+				2EC3784818C5F0BA00D4161B /* SDHomeNavigationTitleView.m */,
+				2EC3784E18C5F0D100D4161B /* SDHomeNavigationTitleView.xib */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		2E54CAD218C5DB8800B23A96 /* Font */ = {
+			isa = PBXGroup;
+			children = (
+				2E54CAE918C5DBB200B23A96 /* Montserrat-Bold.ttf */,
+				2E54CAEA18C5DBB200B23A96 /* Montserrat-Regular.ttf */,
+				2E54CAD318C5DB9300B23A96 /* JosefinSans-Bold.ttf */,
+				2E54CAD418C5DB9300B23A96 /* JosefinSans-BoldItalic.ttf */,
+				2E54CAD518C5DB9300B23A96 /* JosefinSans-Italic.ttf */,
+				2E54CAD618C5DB9300B23A96 /* JosefinSans-Light.ttf */,
+				2E54CAD718C5DB9300B23A96 /* JosefinSans-LightItalic.ttf */,
+				2E54CAD818C5DB9300B23A96 /* JosefinSans-Regular.ttf */,
+				2E54CAD918C5DB9300B23A96 /* JosefinSans-SemiBold.ttf */,
+				2E54CADA18C5DB9300B23A96 /* JosefinSans-SemiBoldItalic.ttf */,
+				2E54CADB18C5DB9300B23A96 /* JosefinSans-Thin.ttf */,
+				2E54CADC18C5DB9300B23A96 /* JosefinSans-ThinItalic.ttf */,
+			);
+			path = Font;
+			sourceTree = "<group>";
+		};
 		B65DDC0A18C57D050076408C /* Utils */ = {
 			isa = PBXGroup;
 			children = (
@@ -174,6 +255,16 @@
 				B65DDC1E18C58EE60076408C /* UIView+Addition.m */,
 				B65DDC1018C57FB30076408C /* UIViewController+Addition.h */,
 				B65DDC1118C57FB30076408C /* UIViewController+Addition.m */,
+				2E54CAC418C5D2C200B23A96 /* SDCollectionViewFlowLayout.h */,
+				2E54CAC518C5D2C200B23A96 /* SDCollectionViewFlowLayout.m */,
+				2E54CAF018C5DE1A00B23A96 /* UIFont+Addition.h */,
+				2E54CAF118C5DE1A00B23A96 /* UIFont+Addition.m */,
+				2EC3785018C6130800D4161B /* UIColor+Extensions.h */,
+				2EC3785118C6130800D4161B /* UIColor+Extensions.m */,
+				2EC3785618C61B0F00D4161B /* UINavigationItem+Addition.h */,
+				2EC3785718C61B0F00D4161B /* UINavigationItem+Addition.m */,
+				2EC3785918C6266C00D4161B /* UILabel+Addition.h */,
+				2EC3785A18C6266C00D4161B /* UILabel+Addition.m */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
@@ -193,6 +284,8 @@
 			children = (
 				EFA8EBD418BDD87100144B75 /* SDDynamicsDrawerViewController.h */,
 				EFA8EBD518BDD87100144B75 /* SDDynamicsDrawerViewController.m */,
+				2E54CABD18C5D1D900B23A96 /* SDHomeViewController.h */,
+				2E54CABE18C5D1D900B23A96 /* SDHomeViewController.m */,
 			);
 			name = Main;
 			sourceTree = "<group>";
@@ -227,6 +320,7 @@
 		B65DDC3618C5C05E0076408C /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				2E54CAD218C5DB8800B23A96 /* Font */,
 				B65DDC3718C5C05E0076408C /* dump_bg@2x.png */,
 			);
 			path = Resources;
@@ -237,6 +331,7 @@
 			children = (
 				EF658E5A18C4615C00FC9E07 /* App Delegate */,
 				B65DDC0A18C57D050076408C /* Utils */,
+				2E54CACC18C5D78E00B23A96 /* View */,
 				EF658E5B18C4616D00FC9E07 /* ViewControllers */,
 			);
 			name = Classes;
@@ -472,10 +567,23 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2E54CAEC18C5DBB200B23A96 /* Montserrat-Regular.ttf in Resources */,
 				EFA8EBD818BDD87100144B75 /* Images.xcassets in Resources */,
+				2E54CAE718C5DB9300B23A96 /* JosefinSans-ThinItalic.ttf in Resources */,
+				2E54CAE218C5DB9300B23A96 /* JosefinSans-LightItalic.ttf in Resources */,
+				2E54CAE118C5DB9300B23A96 /* JosefinSans-Light.ttf in Resources */,
+				2E54CAE518C5DB9300B23A96 /* JosefinSans-SemiBoldItalic.ttf in Resources */,
+				2EC3784F18C5F0D100D4161B /* SDHomeNavigationTitleView.xib in Resources */,
+				2E54CAEB18C5DBB200B23A96 /* Montserrat-Bold.ttf in Resources */,
+				2E54CAE318C5DB9300B23A96 /* JosefinSans-Regular.ttf in Resources */,
+				2E54CADF18C5DB9300B23A96 /* JosefinSans-BoldItalic.ttf in Resources */,
 				B65DDC3818C5C05E0076408C /* dump_bg@2x.png in Resources */,
 				EFA8EBCA18BDD87100144B75 /* InfoPlist.strings in Resources */,
+				2E54CAE418C5DB9300B23A96 /* JosefinSans-SemiBold.ttf in Resources */,
+				2E54CAE018C5DB9300B23A96 /* JosefinSans-Italic.ttf in Resources */,
 				EFA8EBD318BDD87100144B75 /* Main.storyboard in Resources */,
+				2E54CAE618C5DB9300B23A96 /* JosefinSans-Thin.ttf in Resources */,
+				2E54CADE18C5DB9300B23A96 /* JosefinSans-Bold.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -496,14 +604,22 @@
 			files = (
 				B65DDC0F18C57D1E0076408C /* SDUtils.m in Sources */,
 				EF658E5E18C461C400FC9E07 /* SDMenuViewController.m in Sources */,
+				2E54CABF18C5D1D900B23A96 /* SDHomeViewController.m in Sources */,
 				EFA8EBD018BDD87100144B75 /* SDAppDelegate.m in Sources */,
 				B65DDC1818C586760076408C /* SDMenuTableViewCell.m in Sources */,
 				EFA8EBD618BDD87100144B75 /* SDDynamicsDrawerViewController.m in Sources */,
+				2E54CAF218C5DE1A00B23A96 /* UIFont+Addition.m in Sources */,
+				2EC3785818C61B0F00D4161B /* UINavigationItem+Addition.m in Sources */,
+				2EC3785B18C6266C00D4161B /* UILabel+Addition.m in Sources */,
+				2EC3785218C6130800D4161B /* UIColor+Extensions.m in Sources */,
 				B65DDC1F18C58EE60076408C /* UIView+Addition.m in Sources */,
+				2E54CACF18C5D7BF00B23A96 /* SDHomeHeaderCollectionViewCell.m in Sources */,
+				2E54CAC618C5D2C200B23A96 /* SDCollectionViewFlowLayout.m in Sources */,
 				B65DDC1B18C587130076408C /* UITableViewCell+Addition.m in Sources */,
 				B65DDC1218C57FB30076408C /* UIViewController+Addition.m in Sources */,
 				EFA8EBCC18BDD87100144B75 /* main.m in Sources */,
 				B65DDC3518C5B2690076408C /* SDSearchViewController.m in Sources */,
+				2EC3784918C5F0BA00D4161B /* SDHomeNavigationTitleView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

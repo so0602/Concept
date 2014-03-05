@@ -10,4 +10,6 @@
 
 @interface UINavigationItem (Addition)
 
+- (void)showSDTitleView;
+
 @end

@@ -10,4 +10,15 @@
 
 @implementation UIFont (Addition)
 
++(UIFont *)josefinSansFontOfSize:(CGFloat)fontSize
+{
+    return [UIFont fontWithName:@"JosefinSans" size:fontSize];
+}
+
++(UIFont *)josefinSansSemiBoldFontOfSize:(CGFloat)fontSize
+{
+    return [UIFont fontWithName:@"JosefinSans-SemiBold" size:fontSize];
+}
+
+
 @end
