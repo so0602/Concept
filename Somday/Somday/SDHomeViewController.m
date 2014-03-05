@@ -11,12 +11,16 @@
 #import "SDHomeNavigationTitleView.h"
 #import "UINavigationItem+Addition.h"
 #import "UILabel+Addition.h"
+#import "UICollectionView+Addition.h"
+#import <objc/message.h>
 
 #define WidthForGrid [UIScreen mainScreen].bounds.size.width - 16 // padding = 8
 #define HeightForFullyDisplayNavigationBar 57.0f
 #define HeightForTriggerNavigationBarAnimation 23.0f
 
 @interface SDHomeViewController ()
+@property (nonatomic) NSMutableArray *dataSource;
+@property (nonatomic) IBOutletCollection(UIButton) NSArray *buttons;
 @property (nonatomic) IBOutlet UICollectionView *collectionView;
 @property (nonatomic) IBOutlet UIImageView *bgImageView;
 @property (nonatomic) SDHomeHeaderCollectionViewCell *headerCollectionViewCell;
@@ -44,6 +48,15 @@ static NSString *CellIdentifier = @"CollectionViewCell";
     self.navigationController.navigationBar.alpha = 0.0f;
     [self.navigationItem showSDTitleView];
     [_collectionView addMotionEffect:[SDUtils sharedMotionEffectGroup]];
+    
+    // Debug
+    BOOL toggle = YES;
+    self.dataSource = [NSMutableArray new];
+    for (int i = 0; i <= 10; i++) {
+        [_dataSource addObject:toggle?@"dump_bg":@"Debug_Story_1"];
+        toggle = !toggle;
+    }
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -52,10 +65,43 @@ static NSString *CellIdentifier = @"CollectionViewCell";
     // Dispose of any resources that can be recreated.
 }
 
+#pragma mark -
+
+- (void)updateBackgroundImage
+{
+    NSArray *visibleItems = [_collectionView indexPathsForSortedVisibleItems];
+    if (visibleItems.count > 2) {
+        NSIndexPath *index = visibleItems[visibleItems.count-2];
+        NSLog(@"row: %li", (long)index.row);
+        _bgImageView.image = [UIImage imageNamed:[_dataSource objectAtIndex:index.row]];
+    }
+}
+
+#pragma mark - IBAction
+
+- (IBAction)actionForItem:(id)sender
+{
+    switch ([_buttons indexOfObject:sender]) {
+        case 0:{
+            // menu button
+            SEL selector = self.navigationItem.leftBarButtonItem.action;
+            UIViewController *_target = self.navigationItem.leftBarButtonItem.target;
+            objc_msgSend(_target, selector);
+//            [_target  performSelector:selector];
+//            IMP imp = [_target methodForSelector:selector];
+//            void (*func)(id, SEL) = (void *)imp;
+//            func(_target, selector);
+        }
+            break;
+        default:
+            break;
+    }
+}
+
 #pragma mark - UICollectionViewDataSource Methods
 
--(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return 100;
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
+    return 10;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
@@ -64,7 +110,7 @@ static NSString *CellIdentifier = @"CollectionViewCell";
     UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:isFirstRow?HeaderCellIdentifier:CellIdentifier forIndexPath:indexPath];
     
     if (!isFirstRow) {
-        cell.backgroundColor = [UIColor grayColor];
+        cell.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:[_dataSource objectAtIndex:indexPath.row]]];
     } else {
         self.headerCollectionViewCell = (SDHomeHeaderCollectionViewCell*)cell;
     }
@@ -126,7 +172,15 @@ static NSString *CellIdentifier = @"CollectionViewCell";
         if (scrollView.contentOffset.y < HeightForFullyDisplayNavigationBar) {
             [scrollView setContentOffset:CGPointMake(0, 0) animated:YES];
         }
+        
+        [self updateBackgroundImage];
+        
     }
+}
+
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
+{
+    [self updateBackgroundImage];
 }
 
 @end
