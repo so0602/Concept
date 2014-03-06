@@ -96,10 +96,8 @@ static NSString *CellIdentifier = @"CollectionViewCell";
         
         GPUImagePicture* picture = [[GPUImagePicture alloc] initWithImage:[UIImage imageNamed:[_dataSource objectAtIndex:index.row]]];
         [picture addTarget:self.blurFilter];
-        [picture processImage];        
+        [picture processImage];
     }
-    
-
 }
 
 #pragma mark - IBAction
@@ -112,10 +110,11 @@ static NSString *CellIdentifier = @"CollectionViewCell";
             SEL selector = self.navigationItem.leftBarButtonItem.action;
             UIViewController *_target = self.navigationItem.leftBarButtonItem.target;
             objc_msgSend(_target, selector);
-//            [_target  performSelector:selector];
-//            IMP imp = [_target methodForSelector:selector];
-//            void (*func)(id, SEL) = (void *)imp;
-//            func(_target, selector);
+        }
+            break;
+        case 1:{
+            // add button
+
         }
             break;
         default:
@@ -180,8 +179,8 @@ static NSString *CellIdentifier = @"CollectionViewCell";
         headerDayLabel.alpha = headerDateLabel.alpha = headerWeekDayLabel.alpha = ((UIButton*)_buttons[0]).alpha = ((UIButton*)_buttons[1]).alpha = 0.0f;
     } else {
         self.navigationController.navigationBarHidden = NO;
-        self.navigationController.navigationBar.alpha = alphaFactor*netOffset;
-        headerDayLabel.alpha = headerDateLabel.alpha = 1.0f;
+        self.navigationController.navigationBar.alpha = MIN(0.8f,alphaFactor*netOffset);
+        headerDayLabel.alpha = headerDateLabel.alpha = MIN(0.8f, 1-(alphaFactor*netOffset));
         headerWeekDayLabel.alpha = ((UIButton*)_buttons[0]).alpha = ((UIButton*)_buttons[1]).alpha = 1-(alphaFactor*netOffset);
     }
     
@@ -189,6 +188,9 @@ static NSString *CellIdentifier = @"CollectionViewCell";
     if (scrollView.contentOffset.y > 0 && scrollView.contentOffset.y <= HeightForFullyDisplayNavigationBar) {
         [headerDayLabel setFontSize:[SDHomeHeaderCollectionViewCell fontForDayLabel].pointSize-(dayFontFactor*scrollView.contentOffset.y)];
         [headerDateLabel setFontSize:[SDHomeHeaderCollectionViewCell fontForDateLabel].pointSize-(dateFontFactor*scrollView.contentOffset.y)];
+    } else {
+        [headerDayLabel setFontSize:[SDHomeHeaderCollectionViewCell fontForDayLabel].pointSize];
+        [headerDateLabel setFontSize:[SDHomeHeaderCollectionViewCell fontForDateLabel].pointSize];
     }
     
 }
