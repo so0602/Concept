@@ -34,12 +34,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Debug_Story_1" translatesAutoresizingMaskIntoConstraints="NO" id="s4A-4P-8Pd">
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="z2I-yH-0kz" userLabel="Image 1" customClass="GPUImageView">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
-                            </imageView>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hKr-Q9-Hws" customClass="GPUImageView">
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <view alpha="0.0" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hKr-Q9-Hws" userLabel="Image 2" customClass="GPUImageView">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
@@ -171,7 +171,8 @@
                     </view>
                     <navigationItem key="navigationItem" id="Qjx-NR-CEA"/>
                     <connections>
-                        <outlet property="bgImageView" destination="hKr-Q9-Hws" id="PJi-dA-XJt"/>
+                        <outlet property="bgImageView1" destination="z2I-yH-0kz" id="OD4-cd-c6Y"/>
+                        <outlet property="bgImageView2" destination="hKr-Q9-Hws" id="ym4-6n-Fmt"/>
                         <outlet property="collectionView" destination="9Cs-Oj-N38" id="3KY-c9-gFn"/>
                         <outletCollection property="buttons" destination="ehq-x2-nxa" id="et3-d1-g2e"/>
                         <outletCollection property="buttons" destination="zlk-2i-E0e" id="i81-Y7-brF"/>
@@ -293,7 +294,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Debug_Story_1" width="160" height="284"/>
         <image name="dump_bg.png" width="320" height="568"/>
         <image name="icons-24px_add.png" width="26" height="26"/>
         <image name="icons-24px_menu.png" width="26" height="26"/>

@@ -8,6 +8,8 @@
 
 #import "SDUtils.h"
 
+#import "GPUImage.h"
+
 @implementation SDUtils
 
 +(UIStoryboard*)mainStoryboard{
@@ -38,6 +40,7 @@
     
     return _sharedInstance;
 }
+
 
 
 @end

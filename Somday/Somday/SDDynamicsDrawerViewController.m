@@ -40,6 +40,8 @@ const CGFloat MSPaneViewVelocityMultiplier_Copy = 5.0;
 
 @interface SDDynamicsDrawerViewController ()
 
+@property (nonatomic, strong) UIViewController* prePaneViewController;
+
 @end
 
 @implementation SDDynamicsDrawerViewController
@@ -69,6 +71,8 @@ const CGFloat MSPaneViewVelocityMultiplier_Copy = 5.0;
     
     [menuViewController transitionToViewController:SDPaneViewControllerType_Home];
     [self setRevealWidth:320 forDirection:MSDynamicsDrawerDirectionLeft];
+    
+    self.paneViewSlideOffAnimationEnabled = FALSE;
 }
 
 #pragma mark - MSDynamicsDrawerViewController Override
@@ -309,6 +313,116 @@ const CGFloat MSPaneViewVelocityMultiplier_Copy = 5.0;
     }
     NSLog(@"boundary: %@, state: %ld, paneState: %ld", NSStringFromCGRect(boundary), state, self.paneState);
     return [UIBezierPath bezierPathWithRect:boundary];
+}
+
+- (void)setPaneViewController:(UIViewController *)paneViewController animated:(BOOL)animated completion:(void (^)(void))completion
+{
+    NSParameterAssert(paneViewController);
+    if (!animated) {
+        self.paneViewController = paneViewController;
+        if (completion) completion();
+        return;
+    }
+    if (self.paneViewController != paneViewController) {
+        [self.paneViewController willMoveToParentViewController:nil];
+        [self.paneViewController beginAppearanceTransition:NO animated:animated];
+        void(^transitionToNewPaneViewController)() = ^{
+            [paneViewController willMoveToParentViewController:self];
+            self.prePaneViewController = self.paneViewController;
+//            [self.paneViewController.view removeFromSuperview];
+//            [self.paneViewController removeFromParentViewController];
+//            [self.paneViewController didMoveToParentViewController:nil];
+//            [self.paneViewController endAppearanceTransition];
+            [self addChildViewController:paneViewController];
+            paneViewController.view.frame = self.paneView.bounds;
+            [paneViewController beginAppearanceTransition:YES animated:animated];
+            [self.paneView addSubview:paneViewController.view];
+            self.paneViewController = paneViewController;
+            CGRect frame = self.paneViewController.view.frame;
+            frame.origin.x = frame.size.width;
+            self.paneViewController.view.frame = frame;
+            // Force redraw of the new pane view (drastically smoothes animation)
+            [self.paneView setNeedsDisplay];
+            [CATransaction flush];
+            [self setNeedsStatusBarAppearanceUpdate];
+            
+            [UIView animateWithDuration:0.3 delay:0.0 options:UIViewAnimationOptionCurveLinear animations:^{
+                CGRect frame = self.paneViewController.view.frame;
+                frame.origin.x = 0;
+                self.paneViewController.view.frame = frame;
+            } completion:^(BOOL finished) {
+                [self.prePaneViewController.view removeFromSuperview];
+                [self.prePaneViewController removeFromParentViewController];
+                [self.prePaneViewController didMoveToParentViewController:nil];
+                [self.prePaneViewController endAppearanceTransition];
+                self.prePaneViewController = nil;
+            }];
+            
+            // After drawing has finished, set new pane view controller view and close
+            dispatch_async(dispatch_get_main_queue(), ^{
+                __weak typeof(self) weakSelf = self;
+                self.paneViewController = paneViewController;
+                [self setPaneState:MSDynamicsDrawerPaneStateClosed animated:animated allowUserInterruption:YES completion:^{
+                    [paneViewController didMoveToParentViewController:weakSelf];
+                    [paneViewController endAppearanceTransition];
+                    if (completion) completion();
+                }];
+            });
+        };
+        if (self.paneViewSlideOffAnimationEnabled) {
+            [self setPaneState:MSDynamicsDrawerPaneStateOpenWide animated:animated allowUserInterruption:NO completion:transitionToNewPaneViewController];
+        } else {
+            transitionToNewPaneViewController();
+        }
+    }
+    // If trying to set to the currently visible pane view controller, just close
+    else {
+        [self setPaneState:MSDynamicsDrawerPaneStateClosed animated:animated allowUserInterruption:YES completion:^{
+            if (completion) completion();
+        }];
+    }
+}
+
+- (void)replaceViewController:(UIViewController *)existingViewController withViewController:(UIViewController *)newViewController inContainerView:(UIView *)containerView completion:(void (^)(void))completion
+{
+    // Add initial view controller
+	if (!existingViewController && newViewController) {
+        [newViewController willMoveToParentViewController:self];
+        [newViewController beginAppearanceTransition:YES animated:NO];
+		[self addChildViewController:newViewController];
+        newViewController.view.frame = containerView.bounds;
+		[containerView addSubview:newViewController.view];
+		[newViewController didMoveToParentViewController:self];
+        [newViewController endAppearanceTransition];
+        if (completion) completion();
+	}
+    // Remove existing view controller
+    else if (existingViewController && !newViewController) {
+        [existingViewController willMoveToParentViewController:nil];
+        [existingViewController beginAppearanceTransition:NO animated:NO];
+        [existingViewController.view removeFromSuperview];
+        [existingViewController removeFromParentViewController];
+        [existingViewController didMoveToParentViewController:nil];
+        [existingViewController endAppearanceTransition];
+        if (completion) completion();
+    }
+    // Replace existing view controller with new view controller
+    else if ((existingViewController != newViewController) && newViewController) {
+        [newViewController willMoveToParentViewController:self];
+//        [existingViewController willMoveToParentViewController:nil];
+//        [existingViewController beginAppearanceTransition:NO animated:NO];
+//        [existingViewController.view removeFromSuperview];
+//        [existingViewController removeFromParentViewController];
+//        [existingViewController didMoveToParentViewController:nil];
+//        [existingViewController endAppearanceTransition];
+        [newViewController beginAppearanceTransition:YES animated:NO];
+        newViewController.view.frame = containerView.bounds;
+        [self addChildViewController:newViewController];
+        [containerView addSubview:newViewController.view];
+        [newViewController didMoveToParentViewController:self];
+        [newViewController endAppearanceTransition];
+        if (completion) completion();
+    }
 }
 
 @end

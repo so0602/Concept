@@ -24,9 +24,12 @@
 @property (nonatomic) NSMutableArray *dataSource;
 @property (nonatomic) IBOutletCollection(UIButton) NSArray *buttons;
 @property (nonatomic) IBOutlet UICollectionView *collectionView;
-@property (nonatomic) IBOutlet GPUImageView *bgImageView;
+@property (nonatomic) IBOutlet GPUImageView *bgImageView1;
+@property (nonatomic) IBOutlet GPUImageView *bgImageView2;
 @property (nonatomic) SDHomeHeaderCollectionViewCell *headerCollectionViewCell;
-@property (nonatomic) GPUImageiOSBlurFilter* blurFilter;
+@property (nonatomic) GPUImageiOSBlurFilter *bgImageFilter1;
+@property (nonatomic) GPUImageiOSBlurFilter *bgImageFilter2;
+@property (nonatomic) BOOL isbgImageAnimating;
 @end
 
 @implementation SDHomeViewController
@@ -53,11 +56,21 @@ static NSString *CellIdentifier = @"CollectionViewCell";
     [_collectionView addMotionEffect:[SDUtils sharedMotionEffectGroup]];
     
     // Add blur
-    self.bgImageView.clipsToBounds = TRUE;
-    self.bgImageView.layer.contentsGravity = kCAGravityTop;
-    self.blurFilter = [[GPUImageiOSBlurFilter alloc] init];
-    self.blurFilter.blurRadiusInPixels = 1.0f;
-    [self.blurFilter addTarget:self.bgImageView];
+    _bgImageView1.clipsToBounds = _bgImageView2.clipsToBounds = YES;
+    _bgImageView1.layer.contentsGravity = _bgImageView2.layer.contentsGravity = kCAGravityTop;
+    
+    self.bgImageFilter1 = [[GPUImageiOSBlurFilter alloc] init];
+    _bgImageFilter1.blurRadiusInPixels = 1.0f;
+    [_bgImageFilter1 addTarget:_bgImageView1];
+    
+    self.bgImageFilter2 = [[GPUImageiOSBlurFilter alloc] init];
+    _bgImageFilter2.blurRadiusInPixels = 1.0f;
+    [_bgImageFilter2 addTarget:_bgImageView2];
+    
+    // Show default place holder for the background
+    GPUImagePicture* picture = [[GPUImagePicture alloc] initWithImage:[UIImage imageNamed:@"Debug_Story_1"]];
+    [picture addTarget:_bgImageFilter1];
+    [picture processImage];
     
     // Debug
     BOOL toggle = NO;
@@ -67,15 +80,12 @@ static NSString *CellIdentifier = @"CollectionViewCell";
         toggle = !toggle;
     }
     
-    
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    GPUImagePicture* picture = [[GPUImagePicture alloc] initWithImage:[UIImage imageNamed:@"Debug_Story_1"]];
-    [picture addTarget:self.blurFilter];
-    [picture processImage];
+    [self updateBackgroundImage];
 }
 
 - (void)didReceiveMemoryWarning
@@ -88,15 +98,30 @@ static NSString *CellIdentifier = @"CollectionViewCell";
 
 - (void)updateBackgroundImage
 {
+    if (_isbgImageAnimating)
+        return;
+    
     NSArray *visibleItems = [_collectionView indexPathsForSortedVisibleItems];
     if (visibleItems.count > 2) {
+        _isbgImageAnimating = YES;
         NSIndexPath *index = visibleItems[visibleItems.count-2];
         NSLog(@"row: %li", (long)index.row);
-
+        
+        _bgImageView2.alpha = 0.0f;
         
         GPUImagePicture* picture = [[GPUImagePicture alloc] initWithImage:[UIImage imageNamed:[_dataSource objectAtIndex:index.row]]];
-        [picture addTarget:self.blurFilter];
+        [picture addTarget:_bgImageFilter2];
         [picture processImage];
+        
+        [UIView animateWithDuration:0.4 animations:^{
+            _bgImageView2.alpha = 1.0f;
+        } completion:^(BOOL finished) {
+            _isbgImageAnimating = NO;
+            GPUImagePicture* picture = [[GPUImagePicture alloc] initWithImage:[UIImage imageNamed:[_dataSource objectAtIndex:index.row]]];
+            [picture addTarget:_bgImageFilter1];
+            [picture processImage];
+            
+        }];
     }
 }
 
@@ -109,7 +134,8 @@ static NSString *CellIdentifier = @"CollectionViewCell";
             // menu button
             SEL selector = self.navigationItem.leftBarButtonItem.action;
             UIViewController *_target = self.navigationItem.leftBarButtonItem.target;
-            objc_msgSend(_target, selector);
+
+            objc_msgSend(_target, selector, self.navigationItem.leftBarButtonItem);
         }
             break;
         case 1:{
@@ -202,8 +228,7 @@ static NSString *CellIdentifier = @"CollectionViewCell";
             [scrollView setContentOffset:CGPointMake(0, 0) animated:YES];
         }
         
-        [self updateBackgroundImage];
-        
+        [self updateBackgroundImage];        
     }
 }
 
