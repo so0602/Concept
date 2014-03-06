@@ -111,7 +111,7 @@ static NSString *CellIdentifier = @"CollectionViewCell";
             // menu button
             SEL selector = self.navigationItem.leftBarButtonItem.action;
             UIViewController *_target = self.navigationItem.leftBarButtonItem.target;
-            objc_msgSend(_target, selector);
+            objc_msgSend(_target, selector, self.navigationItem.leftBarButtonItem);
 //            [_target  performSelector:selector];
 //            IMP imp = [_target methodForSelector:selector];
 //            void (*func)(id, SEL) = (void *)imp;
