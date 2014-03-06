@@ -30,4 +30,10 @@ static const CGFloat SDDynamicsDrawerViewController_MenuWidth = 60.0;
 
 @property (nonatomic, weak) id<SDDynamicsDrawerViewControllerDelegate> customDelegate;
 
+@property (nonatomic, strong) UIBarButtonItem* menuBarButtonItem;
+@property (nonatomic, strong) UIBarButtonItem* addBarButtonItem;
+
+-(void)showLeftMenu;
+-(void)showTopMenu;
+
 @end

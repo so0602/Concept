@@ -112,10 +112,15 @@ static NSString *CellIdentifier = @"CollectionViewCell";
             SEL selector = self.navigationItem.leftBarButtonItem.action;
             UIViewController *_target = self.navigationItem.leftBarButtonItem.target;
             objc_msgSend(_target, selector, self.navigationItem.leftBarButtonItem);
-//            [_target  performSelector:selector];
-//            IMP imp = [_target methodForSelector:selector];
-//            void (*func)(id, SEL) = (void *)imp;
-//            func(_target, selector);
+        }
+            break;
+        case 1:{
+            // add button
+            SEL selector = self.navigationItem.rightBarButtonItem.action;
+            UIViewController *_target = self.navigationItem.rightBarButtonItem.target;
+            objc_msgSend(_target, selector, self.navigationItem.rightBarButtonItem);
+            
+            [SDUtils rotateView:sender];
         }
             break;
         default:

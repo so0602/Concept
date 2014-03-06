@@ -20,4 +20,7 @@
 +(UIStoryboard*)mainStoryboard;
 +(UIMotionEffectGroup *)sharedMotionEffectGroup;
 
++(void)rotateView:(UIView*)view;
++(void)rotateBackView:(UIView*)view;
+
 @end

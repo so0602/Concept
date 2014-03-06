@@ -8,6 +8,8 @@
 
 #import "SDUtils.h"
 
+#import <QuartzCore/QuartzCore.h>
+
 @implementation SDUtils
 
 +(UIStoryboard*)mainStoryboard{
@@ -39,5 +41,16 @@
     return _sharedInstance;
 }
 
++(void)rotateView:(UIView*)view{
+    [UIView animateWithDuration:1.0 animations:^{
+        view.transform = CGAffineTransformMakeRotation(M_PI_4);
+    }];
+}
+
++(void)rotateBackView:(UIView*)view{
+    [UIView animateWithDuration:1.0 animations:^{
+        view.transform = CGAffineTransformMakeRotation(-M_PI_4);
+    }];
+}
 
 @end
