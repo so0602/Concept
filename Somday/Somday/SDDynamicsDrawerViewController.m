@@ -346,10 +346,13 @@ const CGFloat MSPaneViewVelocityMultiplier_Copy = 5.0;
             [CATransaction flush];
             [self setNeedsStatusBarAppearanceUpdate];
             
-            [UIView animateWithDuration:0.3 delay:0.0 options:UIViewAnimationOptionCurveLinear animations:^{
+            [UIView animateWithDuration:0.3 delay:0.1 options:UIViewAnimationOptionCurveLinear animations:^{
                 CGRect frame = self.paneViewController.view.frame;
                 frame.origin.x = 0;
                 self.paneViewController.view.frame = frame;
+                
+                UIView* view = self.prePaneViewController.view;
+                view.alpha = 0.0;
             } completion:^(BOOL finished) {
                 [self.prePaneViewController.view removeFromSuperview];
                 [self.prePaneViewController removeFromParentViewController];
