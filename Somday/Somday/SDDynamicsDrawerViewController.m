@@ -14,6 +14,7 @@
 #import "SDUtils.h"
 
 #import "UIViewController+Addition.h"
+#import "NSNotificationCenter+Name.h"
 
 const CGFloat MSPaneViewVelocityThreshold_Copy = 5.0;
 const CGFloat MSPaneViewVelocityMultiplier_Copy = 5.0;
@@ -68,7 +69,8 @@ const CGFloat MSPaneViewVelocityMultiplier_Copy = 5.0;
         [self setDrawerViewController:nil forDirection:MSDynamicsDrawerDirectionTop];
     }
     [self setDrawerViewController:self.menuViewController forDirection:MSDynamicsDrawerDirectionLeft];
-//    [self setPaneState:(MSDynamicsDrawerPaneState)SDDynamicsDrawerPaneStateMenu inDirection:MSDynamicsDrawerDirectionLeft animated:TRUE allowUserInterruption:TRUE completion:nil];
+    self.delegate = self.menuViewController;
+    self.customDelegate = self.menuViewController;
     
     [self setPaneState:MSDynamicsDrawerPaneStateMenu inDirection:MSDynamicsDrawerDirectionLeft animated:TRUE allowUserInterruption:TRUE completion:nil];
 }
@@ -83,8 +85,26 @@ const CGFloat MSPaneViewVelocityMultiplier_Copy = 5.0;
     [SDUtils rotateView:view];
     
     [self setDrawerViewController:self.topMenuViewController forDirection:MSDynamicsDrawerDirectionTop];
-//    [self setPaneState:(MSDynamicsDrawerPaneState)SDDynamicsDrawerPaneStateOpen inDirection:MSDynamicsDrawerDirectionTop animated:TRUE allowUserInterruption:TRUE completion:nil];
+    self.delegate = self.topMenuViewController;
+    self.customDelegate = self.topMenuViewController;
+    
     [self setPaneState:MSDynamicsDrawerPaneStateMenu inDirection:MSDynamicsDrawerDirectionTop animated:TRUE allowUserInterruption:TRUE completion:nil];
+}
+
+-(void)topMenuWillClose{
+    UIView* view = self.addBarButtonItem.customView;
+    view = view.subviews.firstObject;
+    [SDUtils rotateBackView:view];
+}
+
+-(void)topMenuDidClosed{
+    self.delegate = self.menuViewController;
+    self.customDelegate = self.menuViewController;
+    
+    if( [self drawerViewControllerForDirection:MSDynamicsDrawerDirectionTop] ){
+        [self setDrawerViewController:nil forDirection:MSDynamicsDrawerDirectionTop];
+    }
+    [self setDrawerViewController:self.menuViewController forDirection:MSDynamicsDrawerDirectionLeft];
 }
 
 -(UIBarButtonItem*)menuBarButtonItem{
@@ -129,6 +149,7 @@ const CGFloat MSPaneViewVelocityMultiplier_Copy = 5.0;
     self.customDelegate = self.menuViewController;
     
     self.topMenuViewController = [SDTopMenuViewController viewControllerFromStoryboardWithIdentifier:@"TopMenu"];
+    self.topMenuViewController.dynamicsDrawerViewController = self;
     
     [self setDrawerViewController:self.menuViewController forDirection:MSDynamicsDrawerDirectionLeft];
     
@@ -142,6 +163,10 @@ const CGFloat MSPaneViewVelocityMultiplier_Copy = 5.0;
     });
     
     self.paneViewSlideOffAnimationEnabled = FALSE;
+    
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(topMenuWillClose) name:TopMenuWillClose object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(topMenuDidClosed) name:TopMenuDidClosed object:nil];
 }
 
 #pragma mark - MSDynamicsDrawerViewController Override

@@ -31,6 +31,7 @@
 		2EC3786918C6C6BE00D4161B /* Montserrat-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2EC3786718C6C6BE00D4161B /* Montserrat-Regular.ttf */; };
 		2ED27A6218C6CA2700DB4EC9 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2ED27A6118C6CA2700DB4EC9 /* Images.xcassets */; };
 		2ED35BC718C70A3500EDA245 /* UICollectionView+Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = 2ED35BC618C70A3500EDA245 /* UICollectionView+Addition.m */; };
+		B64444A918CA374800CDD2D4 /* NSNotificationCenter+Name.m in Sources */ = {isa = PBXBuildFile; fileRef = B64444A818CA374800CDD2D4 /* NSNotificationCenter+Name.m */; };
 		B65DDC0F18C57D1E0076408C /* SDUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = B65DDC0E18C57D1E0076408C /* SDUtils.m */; };
 		B65DDC1218C57FB30076408C /* UIViewController+Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = B65DDC1118C57FB30076408C /* UIViewController+Addition.m */; };
 		B65DDC1818C586760076408C /* SDMenuTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B65DDC1718C586760076408C /* SDMenuTableViewCell.m */; };
@@ -955,6 +956,8 @@
 		2ED27A6118C6CA2700DB4EC9 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		2ED35BC518C70A3500EDA245 /* UICollectionView+Addition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UICollectionView+Addition.h"; path = "Classes/UICollectionView+Addition.h"; sourceTree = "<group>"; };
 		2ED35BC618C70A3500EDA245 /* UICollectionView+Addition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UICollectionView+Addition.m"; path = "Classes/UICollectionView+Addition.m"; sourceTree = "<group>"; };
+		B64444A718CA374800CDD2D4 /* NSNotificationCenter+Name.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSNotificationCenter+Name.h"; path = "Classes/NSNotificationCenter+Name.h"; sourceTree = "<group>"; };
+		B64444A818CA374800CDD2D4 /* NSNotificationCenter+Name.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSNotificationCenter+Name.m"; path = "Classes/NSNotificationCenter+Name.m"; sourceTree = "<group>"; };
 		B65DDC0D18C57D1E0076408C /* SDUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SDUtils.h; path = Classes/SDUtils.h; sourceTree = "<group>"; };
 		B65DDC0E18C57D1E0076408C /* SDUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SDUtils.m; path = Classes/SDUtils.m; sourceTree = "<group>"; };
 		B65DDC1018C57FB30076408C /* UIViewController+Addition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIViewController+Addition.h"; path = "Classes/UIViewController+Addition.h"; sourceTree = "<group>"; };
@@ -1872,6 +1875,8 @@
 				2EC3785A18C6266C00D4161B /* UILabel+Addition.m */,
 				2ED35BC518C70A3500EDA245 /* UICollectionView+Addition.h */,
 				2ED35BC618C70A3500EDA245 /* UICollectionView+Addition.m */,
+				B64444A718CA374800CDD2D4 /* NSNotificationCenter+Name.h */,
+				B64444A818CA374800CDD2D4 /* NSNotificationCenter+Name.m */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
@@ -3899,6 +3904,7 @@
 				2E54CACF18C5D7BF00B23A96 /* SDHomeHeaderCollectionViewCell.m in Sources */,
 				2E54CAC618C5D2C200B23A96 /* SDCollectionViewFlowLayout.m in Sources */,
 				B65DDC1B18C587130076408C /* UITableViewCell+Addition.m in Sources */,
+				B64444A918CA374800CDD2D4 /* NSNotificationCenter+Name.m in Sources */,
 				B65DDC1218C57FB30076408C /* UIViewController+Addition.m in Sources */,
 				EFA8EBCC18BDD87100144B75 /* main.m in Sources */,
 				B65DDC3518C5B2690076408C /* SDSearchViewController.m in Sources */,

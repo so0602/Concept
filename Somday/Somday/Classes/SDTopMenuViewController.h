@@ -10,7 +10,7 @@
 
 #import "SDDynamicsDrawerViewController.h"
 
-@interface SDTopMenuViewController : UIViewController
+@interface SDTopMenuViewController : UIViewController<MSDynamicsDrawerViewControllerDelegate, SDDynamicsDrawerViewControllerDelegate>
 
 @property (nonatomic, weak) SDDynamicsDrawerViewController* dynamicsDrawerViewController;
 

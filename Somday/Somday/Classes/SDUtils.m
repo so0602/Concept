@@ -49,7 +49,7 @@
 
 +(void)rotateBackView:(UIView*)view{
     [UIView animateWithDuration:0.3 animations:^{
-        view.transform = CGAffineTransformMakeRotation(-(M_PI - M_PI_4));
+        view.transform = CGAffineTransformMakeRotation(0);
     }];
 }
 

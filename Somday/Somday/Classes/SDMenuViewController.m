@@ -249,15 +249,13 @@
     }
 }
 -(BOOL)dynamicsDrawerViewController:(MSDynamicsDrawerViewController *)drawerViewController shouldBeginPanePan:(UIPanGestureRecognizer *)panGestureRecognizer{
-    SDLog(@"Gesture: %@", panGestureRecognizer);
-    SDLog(@"-- translationInView: %@", NSStringFromCGPoint([panGestureRecognizer translationInView:panGestureRecognizer.view]));
     return TRUE;
 }
 
 #pragma mark - SDDynamicsDrawerViewControllerDelegate
 
 -(void)dynamicsDrawerViewController:(MSDynamicsDrawerViewController *)drawerViewController paneViewPositionDidChanged:(CGPoint)position{
-    if( !self.animationTimer ){
+    if( !self.animationTimer && [drawerViewController drawerViewControllerForDirection:MSDynamicsDrawerDirectionLeft] ){
         self.animationTimer = [NSTimer scheduledTimerWithTimeInterval:0.1 target:self selector:@selector(searchViewAnimationUpdate) userInfo:nil repeats:TRUE];
     }
 }

@@ -37,4 +37,7 @@ static const CGFloat SDDynamicsDrawerViewController_MenuWidth = 60.0;
 -(void)showLeftMenu;
 -(void)showTopMenu;
 
+-(void)topMenuWillClose;
+-(void)topMenuDidClosed;
+
 @end
