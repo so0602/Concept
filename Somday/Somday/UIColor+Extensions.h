@@ -14,5 +14,7 @@
 +(UIColor*)colorWithRed:(CGFloat)red green:(CGFloat)green blue:(CGFloat)blue;
 +(UIColor *)colorWithHex:(UInt32)col;
 +(UIColor *)colorWithHexString:(NSString *)str;
-
+- (UIColor*)blackOrWhiteContrastingColor;
+- (CGFloat)luminosity;
+- (CGFloat)luminosityDifference:(UIColor*)otherColor;
 @end

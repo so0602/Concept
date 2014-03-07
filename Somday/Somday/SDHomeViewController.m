@@ -223,7 +223,7 @@ static NSString *CellIdentifier = @"CollectionViewCell";
     } else {
         self.navigationController.navigationBarHidden = NO;
         self.navigationController.navigationBar.alpha = MIN(0.8f,alphaFactor*netOffset);
-        headerDayLabel.alpha = headerDateLabel.alpha = MIN(0.8f, 1-(alphaFactor*netOffset));
+        headerDayLabel.alpha = headerDateLabel.alpha = MAX(0.8f, 1-(alphaFactor*netOffset));
         headerWeekDayLabel.alpha = ((UIButton*)_buttons[0]).alpha = ((UIButton*)_buttons[1]).alpha = 1-(alphaFactor*netOffset);
     }
     
