@@ -42,14 +42,14 @@
 }
 
 +(void)rotateView:(UIView*)view{
-    [UIView animateWithDuration:1.0 animations:^{
-        view.transform = CGAffineTransformMakeRotation(M_PI_4);
+    [UIView animateWithDuration:0.3 animations:^{
+        view.transform = CGAffineTransformMakeRotation(M_PI - M_PI_4);
     }];
 }
 
 +(void)rotateBackView:(UIView*)view{
-    [UIView animateWithDuration:1.0 animations:^{
-        view.transform = CGAffineTransformMakeRotation(-M_PI_4);
+    [UIView animateWithDuration:0.3 animations:^{
+        view.transform = CGAffineTransformMakeRotation(-(M_PI - M_PI_4));
     }];
 }
 
