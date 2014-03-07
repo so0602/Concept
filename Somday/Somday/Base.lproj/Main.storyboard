@@ -157,7 +157,7 @@
                                 <rect key="frame" x="275" y="39" width="26" height="26"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zlk-2i-E0e">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zlk-2i-E0e">
                                         <rect key="frame" x="0.0" y="0.0" width="26" height="26"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <state key="normal" image="icons-24px_add.png">
@@ -168,19 +168,20 @@
                                         </connections>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" red="0.09803922474" green="0.58039218189999997" blue="0.98039221759999995" alpha="1" colorSpace="deviceRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="26" id="UnO-IE-MgU"/>
+                                    <constraint firstAttribute="centerY" secondItem="zlk-2i-E0e" secondAttribute="centerY" id="EZx-7e-fva"/>
+                                    <constraint firstAttribute="width" constant="26" id="K0H-DY-7Tm"/>
+                                    <constraint firstAttribute="centerX" secondItem="zlk-2i-E0e" secondAttribute="centerX" id="WwS-b3-PiK"/>
                                 </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="XJS-mC-OuD" firstAttribute="bottom" secondItem="ehq-x2-nxa" secondAttribute="bottom" id="7pT-4i-dnq"/>
+                            <constraint firstAttribute="trailing" secondItem="XJS-mC-OuD" secondAttribute="trailing" constant="19" id="2JZ-C6-mKo"/>
+                            <constraint firstItem="XJS-mC-OuD" firstAttribute="bottom" secondItem="ehq-x2-nxa" secondAttribute="bottom" id="DZj-xT-onk"/>
                             <constraint firstItem="ehq-x2-nxa" firstAttribute="leading" secondItem="aYH-lB-KeN" secondAttribute="leading" constant="19" id="N3Z-n0-8j3"/>
                             <constraint firstItem="ehq-x2-nxa" firstAttribute="top" secondItem="aYH-lB-KeN" secondAttribute="top" constant="39" id="cHl-ZV-eAd"/>
-                            <constraint firstAttribute="trailing" secondItem="XJS-mC-OuD" secondAttribute="trailing" constant="19" id="gVp-w8-Dm3"/>
-                            <constraint firstItem="XJS-mC-OuD" firstAttribute="top" secondItem="ehq-x2-nxa" secondAttribute="top" id="mUq-9l-Ion"/>
+                            <constraint firstItem="XJS-mC-OuD" firstAttribute="top" secondItem="ehq-x2-nxa" secondAttribute="top" id="rhI-su-leT"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Qjx-NR-CEA"/>

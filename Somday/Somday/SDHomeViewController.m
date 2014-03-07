@@ -154,7 +154,7 @@ static NSString *CellIdentifier = @"CollectionViewCell";
             SEL selector = self.navigationItem.rightBarButtonItem.action;
             UIViewController *_target = self.navigationItem.rightBarButtonItem.target;
             objc_msgSend(_target, selector, self.navigationItem.rightBarButtonItem);
-            
+
             [SDUtils rotateView:sender];
         }
             break;
