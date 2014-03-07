@@ -489,17 +489,20 @@ void MSDynamicsDrawerDirectionActionForMaskedValues(NSInteger direction, MSDynam
     [self setPaneViewControllerViewUserInteractionEnabled:(paneState == MSDynamicsDrawerPaneStateClosed)];
     
     [self.paneBoundaryCollisionBehavior removeAllBoundaries];
-    if( paneState == MSDynamicsDrawerPaneStateMenu && self.paneState == MSDynamicsDrawerPaneStateOpen ){
+    if( (paneState == MSDynamicsDrawerPaneStateMenu && self.paneState == MSDynamicsDrawerPaneStateOpen) ||
+       (paneState == MSDynamicsDrawerPaneStateMenu && self.paneState == MSDynamicsDrawerPaneStateMenu) ){
         UIBezierPath* path = [self boundaryPathForState:MSDynamicsDrawerPaneStateClosed direction:self.currentDrawerDirection];
         
         CGRect boundary = CGRectZero;
         boundary.origin = (CGPoint){-1.0, -1.0};
         if (self.possibleDrawerDirection & MSDynamicsDrawerDirectionHorizontal) {
             boundary.size.height = (CGRectGetHeight(self.paneView.frame) + 1.0);
-            boundary.size.width = 661;
+            boundary.size.width = ((CGRectGetWidth(self.paneView.frame) * 2.0) + self.paneStateOpenWideEdgeOffset + 2.0);
+            boundary.origin.x += MSMenuWidth;
         } else if (self.possibleDrawerDirection & MSDynamicsDrawerDirectionVertical) {
             boundary.size.width = (CGRectGetWidth(self.paneView.frame) + 1.0);
-            boundary.size.height = ((CGRectGetHeight(self.paneView.frame) * 2.0) + self.paneStateOpenWideEdgeOffset + 2.0 + 10);
+            boundary.size.height = ((CGRectGetHeight(self.paneView.frame) * 2.0) + self.paneStateOpenWideEdgeOffset + 2.0);
+            boundary.origin.y += MSMenuWidth;
         }
         path = [UIBezierPath bezierPathWithRect:boundary];
         
