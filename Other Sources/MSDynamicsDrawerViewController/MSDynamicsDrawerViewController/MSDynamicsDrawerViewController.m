@@ -36,6 +36,7 @@ const CGFloat MSDynamicsDrawerDefaultOpenStateRevealWidthVertical = 300.0;
 const CGFloat MSPaneViewVelocityThreshold = 5.0;
 const CGFloat MSPaneViewVelocityMultiplier = 5.0;
 const CGFloat MSPaneViewScreenEdgeThreshold = 24.0; // After testing Apple's `UIScreenEdgePanGestureRecognizer` this seems to be the closest value to create an equivalent effect.
+const CGFloat MSMenuWidth = 60.0;
 
 NSString * const MSDynamicsDrawerBoundaryIdentifier = @"MSDynamicsDrawerBoundaryIdentifier";
 
@@ -488,14 +489,40 @@ void MSDynamicsDrawerDirectionActionForMaskedValues(NSInteger direction, MSDynam
     [self setPaneViewControllerViewUserInteractionEnabled:(paneState == MSDynamicsDrawerPaneStateClosed)];
     
     [self.paneBoundaryCollisionBehavior removeAllBoundaries];
-    UIBezierPath* path = [self boundaryPathForState:paneState direction:self.currentDrawerDirection];
-    NSLog(@"path: %@", path);
-    [self.paneBoundaryCollisionBehavior addBoundaryWithIdentifier:MSDynamicsDrawerBoundaryIdentifier forPath:path];
-    [self.dynamicAnimator addBehavior:self.paneBoundaryCollisionBehavior];
-    
-    self.paneGravityBehavior.magnitude = [self gravityMagnitude];
-    self.paneGravityBehavior.angle = [self gravityAngleForState:paneState direction:self.currentDrawerDirection];
-    [self.dynamicAnimator addBehavior:self.paneGravityBehavior];
+    if( paneState == MSDynamicsDrawerPaneStateMenu && self.paneState == MSDynamicsDrawerPaneStateOpen ){
+        UIBezierPath* path = [self boundaryPathForState:MSDynamicsDrawerPaneStateClosed direction:self.currentDrawerDirection];
+        
+        CGRect boundary = CGRectZero;
+        boundary.origin = (CGPoint){-1.0, -1.0};
+        if (self.possibleDrawerDirection & MSDynamicsDrawerDirectionHorizontal) {
+            boundary.size.height = (CGRectGetHeight(self.paneView.frame) + 1.0);
+            boundary.size.width = 661;
+        } else if (self.possibleDrawerDirection & MSDynamicsDrawerDirectionVertical) {
+            boundary.size.width = (CGRectGetWidth(self.paneView.frame) + 1.0);
+            boundary.size.height = ((CGRectGetHeight(self.paneView.frame) * 2.0) + self.paneStateOpenWideEdgeOffset + 2.0 + 10);
+        }
+        path = [UIBezierPath bezierPathWithRect:boundary];
+        
+        [self.paneBoundaryCollisionBehavior addBoundaryWithIdentifier:MSDynamicsDrawerBoundaryIdentifier forPath:path];
+        [self.dynamicAnimator addBehavior:self.paneBoundaryCollisionBehavior];
+        
+        self.paneGravityBehavior.magnitude = [self gravityMagnitude];
+        self.paneGravityBehavior.angle = [self gravityAngleForState:MSDynamicsDrawerPaneStateClosed direction:self.currentDrawerDirection];
+        [self.dynamicAnimator addBehavior:self.paneGravityBehavior];
+        NSLog(@"angle: %f", self.paneGravityBehavior.angle);
+    }else{
+        UIBezierPath* path = [self boundaryPathForState:paneState direction:self.currentDrawerDirection];
+        [self.paneBoundaryCollisionBehavior addBoundaryWithIdentifier:MSDynamicsDrawerBoundaryIdentifier forPath:path];
+        NSLog(@"path: %@", path);
+        
+        [self.dynamicAnimator addBehavior:self.paneBoundaryCollisionBehavior];
+        
+        self.paneGravityBehavior.magnitude = [self gravityMagnitude];
+        self.paneGravityBehavior.angle = [self gravityAngleForState:paneState direction:self.currentDrawerDirection];
+        [self.dynamicAnimator addBehavior:self.paneGravityBehavior];
+        NSLog(@"angle: %f", self.paneGravityBehavior.angle);
+    }
+
     
     if (elasticity != 0.0) {
         self.paneElasticityBehavior.elasticity = elasticity;
@@ -527,6 +554,9 @@ void MSDynamicsDrawerDirectionActionForMaskedValues(NSInteger direction, MSDynam
             case MSDynamicsDrawerPaneStateClosed:
                 boundary.size.width = ((CGRectGetWidth(self.paneView.frame) * 2.0) + self.paneStateOpenWideEdgeOffset + 2.0);
                 break;
+            case MSDynamicsDrawerPaneStateMenu:
+                boundary.size.width = ((CGRectGetWidth(self.paneView.frame) + MSMenuWidth) + 2.0);
+                break;
             case MSDynamicsDrawerPaneStateOpen:
                 boundary.size.width = ((CGRectGetWidth(self.paneView.frame) + self.openStateRevealWidth) + 2.0);
                 break;
@@ -539,6 +569,9 @@ void MSDynamicsDrawerDirectionActionForMaskedValues(NSInteger direction, MSDynam
         switch (state) {
             case MSDynamicsDrawerPaneStateClosed:
                 boundary.size.height = ((CGRectGetHeight(self.paneView.frame) * 2.0) + self.paneStateOpenWideEdgeOffset + 2.0);
+                break;
+            case MSDynamicsDrawerPaneStateMenu:
+                boundary.size.height = ((CGRectGetHeight(self.paneView.frame) + MSMenuWidth) + 2.0);
                 break;
             case MSDynamicsDrawerPaneStateOpen:
                 boundary.size.height = ((CGRectGetHeight(self.paneView.frame) + self.openStateRevealWidth) + 2.0);
@@ -561,6 +594,7 @@ void MSDynamicsDrawerDirectionActionForMaskedValues(NSInteger direction, MSDynam
         default:
             break;
     }
+    NSLog(@"state: %ld, boundary: %@", state, NSStringFromCGRect(boundary));
     return [UIBezierPath bezierPathWithRect:boundary];
 }
 
@@ -790,7 +824,6 @@ void MSDynamicsDrawerDirectionActionForMaskedValues(NSInteger direction, MSDynam
 - (void)_setPaneState:(MSDynamicsDrawerPaneState)paneState
 {
     MSDynamicsDrawerDirection previousDirection = self.currentDrawerDirection;
-    
     // When we've actually upated to a pane state, invalidate the `potentialPaneState`
     self.potentialPaneState = NSIntegerMax;
     
@@ -798,7 +831,7 @@ void MSDynamicsDrawerDirectionActionForMaskedValues(NSInteger direction, MSDynam
         [self willChangeValueForKey:NSStringFromSelector(@selector(paneState))];
         _paneState = paneState;
         if ([self.delegate respondsToSelector:@selector(dynamicsDrawerViewController:didUpdateToPaneState:forDirection:)]) {
-            if (self.paneState & (MSDynamicsDrawerPaneStateOpen | MSDynamicsDrawerPaneStateOpenWide)) {
+            if (self.paneState & (MSDynamicsDrawerPaneStateOpen | MSDynamicsDrawerPaneStateOpenWide )) {
                 [self.delegate dynamicsDrawerViewController:self didUpdateToPaneState:paneState forDirection:self.currentDrawerDirection];
             } else {
                 [self.delegate dynamicsDrawerViewController:self didUpdateToPaneState:paneState forDirection:previousDirection];
@@ -820,6 +853,24 @@ void MSDynamicsDrawerDirectionActionForMaskedValues(NSInteger direction, MSDynam
 {
     CGPoint paneViewOrigin = CGPointZero;
     switch (paneState) {
+        case MSDynamicsDrawerPaneStateMenu:
+            switch (self.currentDrawerDirection) {
+                case MSDynamicsDrawerDirectionTop:
+                    paneViewOrigin.y = MSMenuWidth;
+                    break;
+                case MSDynamicsDrawerDirectionLeft:
+                    paneViewOrigin.x = MSMenuWidth;
+                    break;
+                case MSDynamicsDrawerDirectionBottom:
+                    paneViewOrigin.y = -MSMenuWidth;
+                    break;
+                case MSDynamicsDrawerDirectionRight:
+                    paneViewOrigin.x = -MSMenuWidth;
+                    break;
+                default:
+                    break;
+            }
+            break;
         case MSDynamicsDrawerPaneStateOpen:
             switch (self.currentDrawerDirection) {
                 case MSDynamicsDrawerDirectionTop:
@@ -865,7 +916,7 @@ void MSDynamicsDrawerDirectionActionForMaskedValues(NSInteger direction, MSDynam
 - (BOOL)paneViewIsPositionedInValidState:(inout MSDynamicsDrawerPaneState *)paneState
 {
     BOOL validState = NO;
-    for (MSDynamicsDrawerPaneState currentPaneState = MSDynamicsDrawerPaneStateClosed; currentPaneState <= MSDynamicsDrawerPaneStateOpenWide; currentPaneState++) {
+    for (MSDynamicsDrawerPaneState currentPaneState = MSDynamicsDrawerPaneStateClosed; currentPaneState <= MSDynamicsDrawerPaneStateMax; currentPaneState++) {
         CGPoint paneStatePaneViewOrigin = [self paneViewOriginForPaneState:currentPaneState];
         CGPoint currentPaneViewOrigin = (CGPoint){roundf(self.paneView.frame.origin.x), roundf(self.paneView.frame.origin.y)};
         CGFloat epsilon = 2.0;
@@ -882,7 +933,7 @@ void MSDynamicsDrawerDirectionActionForMaskedValues(NSInteger direction, MSDynam
 {
     CGFloat minDistance = CGFLOAT_MAX;
     MSDynamicsDrawerPaneState minPaneState = NSIntegerMax;
-    for (MSDynamicsDrawerPaneState currentPaneState = MSDynamicsDrawerPaneStateClosed; currentPaneState <= MSDynamicsDrawerPaneStateOpenWide; currentPaneState++) {
+    for (MSDynamicsDrawerPaneState currentPaneState = MSDynamicsDrawerPaneStateClosed; currentPaneState <= MSDynamicsDrawerPaneStateMax; currentPaneState++) {
         CGPoint paneStatePaneViewOrigin = [self paneViewOriginForPaneState:currentPaneState];
         CGPoint currentPaneViewOrigin = (CGPoint){roundf(self.paneView.frame.origin.x), roundf(self.paneView.frame.origin.y)};
         CGFloat distance = sqrt(pow((paneStatePaneViewOrigin.x - currentPaneViewOrigin.x), 2) + pow((paneStatePaneViewOrigin.y - currentPaneViewOrigin.y), 2));

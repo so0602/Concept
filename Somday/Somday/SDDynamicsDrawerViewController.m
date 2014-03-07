@@ -23,6 +23,7 @@ const CGFloat MSPaneViewVelocityMultiplier_Copy = 5.0;
 -(void)initialize;
 
 @property (nonatomic, assign) MSDynamicsDrawerDirection currentDrawerDirection;
+@property (nonatomic, assign) MSDynamicsDrawerPaneState potentialPaneState;
 @property (nonatomic, strong) UIDynamicAnimator *dynamicAnimator;
 
 - (MSDynamicsDrawerDirection)directionForPanWithStartLocation:(CGPoint)startLocation currentLocation:(CGPoint)currentLocation;
@@ -36,6 +37,7 @@ const CGFloat MSPaneViewVelocityMultiplier_Copy = 5.0;
 - (CGFloat)gravityAngleForState:(MSDynamicsDrawerPaneState)state direction:(MSDynamicsDrawerDirection)direction;
 - (void)addDynamicsBehaviorsToCreatePaneState:(MSDynamicsDrawerPaneState)paneState pushMagnitude:(CGFloat)pushMagnitude pushAngle:(CGFloat)pushAngle pushElasticity:(CGFloat)elasticity;
 - (CGFloat)openStateRevealWidth;
+- (void)updateStylers;
 
 @end
 
@@ -66,7 +68,9 @@ const CGFloat MSPaneViewVelocityMultiplier_Copy = 5.0;
         [self setDrawerViewController:nil forDirection:MSDynamicsDrawerDirectionTop];
     }
     [self setDrawerViewController:self.menuViewController forDirection:MSDynamicsDrawerDirectionLeft];
-    [self setPaneState:(MSDynamicsDrawerPaneState)SDDynamicsDrawerPaneStateMenu inDirection:MSDynamicsDrawerDirectionLeft animated:TRUE allowUserInterruption:TRUE completion:nil];
+//    [self setPaneState:(MSDynamicsDrawerPaneState)SDDynamicsDrawerPaneStateMenu inDirection:MSDynamicsDrawerDirectionLeft animated:TRUE allowUserInterruption:TRUE completion:nil];
+    
+    [self setPaneState:MSDynamicsDrawerPaneStateMenu inDirection:MSDynamicsDrawerDirectionLeft animated:TRUE allowUserInterruption:TRUE completion:nil];
 }
 
 -(void)showTopMenu{
@@ -78,7 +82,8 @@ const CGFloat MSPaneViewVelocityMultiplier_Copy = 5.0;
     [SDUtils rotateView:view];
     
     [self setDrawerViewController:self.topMenuViewController forDirection:MSDynamicsDrawerDirectionTop];
-    [self setPaneState:(MSDynamicsDrawerPaneState)SDDynamicsDrawerPaneStateOpen inDirection:MSDynamicsDrawerDirectionTop animated:TRUE allowUserInterruption:TRUE completion:nil];
+//    [self setPaneState:(MSDynamicsDrawerPaneState)SDDynamicsDrawerPaneStateOpen inDirection:MSDynamicsDrawerDirectionTop animated:TRUE allowUserInterruption:TRUE completion:nil];
+    [self setPaneState:MSDynamicsDrawerPaneStateMenu inDirection:MSDynamicsDrawerDirectionTop animated:TRUE allowUserInterruption:TRUE completion:nil];
 }
 
 -(UIBarButtonItem*)menuBarButtonItem{
@@ -130,7 +135,7 @@ const CGFloat MSPaneViewVelocityMultiplier_Copy = 5.0;
     double delayInSeconds = 0.1;
     dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
     dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
-        [self setRevealWidth:CGRectGetWidth(self.view.frame) forDirection:MSDynamicsDrawerDirectionLeft];
+//        [self setRevealWidth:CGRectGetWidth(self.view.frame) forDirection:MSDynamicsDrawerDirectionLeft];
         [self setRevealWidth:60 forDirection:MSDynamicsDrawerDirectionTop];
     });
     
@@ -238,144 +243,128 @@ const CGFloat MSPaneViewVelocityMultiplier_Copy = 5.0;
     }
 }
 
-- (MSDynamicsDrawerPaneState)nearestPaneState
-{
-    CGFloat minDistance = CGFLOAT_MAX;
-    SDDynamicsDrawerPaneState minPaneState = NSIntegerMax;
-    for (SDDynamicsDrawerPaneState currentPaneState = SDDynamicsDrawerPaneStateClosed; currentPaneState <= SDDynamicsDrawerPaneStateMenu; currentPaneState++) {
-        CGPoint paneStatePaneViewOrigin = [self paneViewOriginForPaneState:(MSDynamicsDrawerPaneState)currentPaneState];
-        CGPoint currentPaneViewOrigin = (CGPoint){roundf(self.paneView.frame.origin.x), roundf(self.paneView.frame.origin.y)};
-        CGFloat distance = sqrt(pow((paneStatePaneViewOrigin.x - currentPaneViewOrigin.x), 2) + pow((paneStatePaneViewOrigin.y - currentPaneViewOrigin.y), 2));
-//        NSLog(@"paneStatePaneViewOrigin: %@, currentPaneViewOrigin: %@, distance: %f", NSStringFromCGPoint(paneStatePaneViewOrigin), NSStringFromCGPoint(currentPaneViewOrigin), distance);
-        if (distance < minDistance) {
-            minDistance = distance;
-            minPaneState = currentPaneState;
-        }
-    }
-    return (MSDynamicsDrawerPaneState)minPaneState;
-}
+//- (CGPoint)paneViewOriginForPaneState:(MSDynamicsDrawerPaneState)_paneState
+//{
+//    CGPoint paneViewOrigin = CGPointZero;
+//    SDDynamicsDrawerPaneState paneState = (SDDynamicsDrawerPaneState)_paneState;
+//    switch (paneState) {
+//        case SDDynamicsDrawerPaneStateMenu:
+//            switch (self.currentDrawerDirection) {
+//                case MSDynamicsDrawerDirectionTop:
+//                    paneViewOrigin.y = SDDynamicsDrawerViewController_MenuWidth;
+//                    break;
+//                case MSDynamicsDrawerDirectionLeft:
+//                    paneViewOrigin.x = SDDynamicsDrawerViewController_MenuWidth;
+//                    break;
+//                case MSDynamicsDrawerDirectionBottom:
+//                    paneViewOrigin.y = -SDDynamicsDrawerViewController_MenuWidth;
+//                    break;
+//                case MSDynamicsDrawerDirectionRight:
+//                    paneViewOrigin.x = -SDDynamicsDrawerViewController_MenuWidth;
+//                    break;
+//                default:
+//                    break;
+//            }
+//            break;
+//        case SDDynamicsDrawerPaneStateOpen:
+//            switch (self.currentDrawerDirection) {
+//                case MSDynamicsDrawerDirectionTop:
+//                    paneViewOrigin.y = self.openStateRevealWidth;
+//                    break;
+//                case MSDynamicsDrawerDirectionLeft:
+//                    paneViewOrigin.x = self.openStateRevealWidth;
+//                    break;
+//                case MSDynamicsDrawerDirectionBottom:
+//                    paneViewOrigin.y = -self.openStateRevealWidth;
+//                    break;
+//                case MSDynamicsDrawerDirectionRight:
+//                    paneViewOrigin.x = -self.openStateRevealWidth;
+//                    break;
+//                default:
+//                    break;
+//            }
+//            break;
+//        case SDDynamicsDrawerPaneStateOpenWide:
+//            switch (self.currentDrawerDirection) {
+//                case MSDynamicsDrawerDirectionLeft:
+//                    paneViewOrigin.x = (CGRectGetWidth(self.paneView.frame) + self.paneStateOpenWideEdgeOffset);
+//                    break;
+//                case MSDynamicsDrawerDirectionTop:
+//                    paneViewOrigin.y = (CGRectGetHeight(self.paneView.frame) + self.paneStateOpenWideEdgeOffset);
+//                    break;
+//                case MSDynamicsDrawerDirectionBottom:
+//                    paneViewOrigin.y = (CGRectGetHeight(self.paneView.frame) + self.paneStateOpenWideEdgeOffset);
+//                    break;
+//                case MSDynamicsDrawerDirectionRight:
+//                    paneViewOrigin.x = -(CGRectGetWidth(self.paneView.frame) + self.paneStateOpenWideEdgeOffset);
+//                    break;
+//                default:
+//                    break;
+//            }
+//            break;
+//        default:
+//            break;
+//    }
+//    return paneViewOrigin;
+//}
 
-- (CGPoint)paneViewOriginForPaneState:(MSDynamicsDrawerPaneState)_paneState
-{
-    CGPoint paneViewOrigin = CGPointZero;
-    SDDynamicsDrawerPaneState paneState = (SDDynamicsDrawerPaneState)_paneState;
-    switch (paneState) {
-        case SDDynamicsDrawerPaneStateMenu:
-            switch (self.currentDrawerDirection) {
-                case MSDynamicsDrawerDirectionTop:
-                    paneViewOrigin.y = SDDynamicsDrawerViewController_MenuWidth;
-                    break;
-                case MSDynamicsDrawerDirectionLeft:
-                    paneViewOrigin.x = SDDynamicsDrawerViewController_MenuWidth;
-                    break;
-                case MSDynamicsDrawerDirectionBottom:
-                    paneViewOrigin.y = -SDDynamicsDrawerViewController_MenuWidth;
-                    break;
-                case MSDynamicsDrawerDirectionRight:
-                    paneViewOrigin.x = -SDDynamicsDrawerViewController_MenuWidth;
-                    break;
-                default:
-                    break;
-            }
-            break;
-        case SDDynamicsDrawerPaneStateOpen:
-            switch (self.currentDrawerDirection) {
-                case MSDynamicsDrawerDirectionTop:
-                    paneViewOrigin.y = self.openStateRevealWidth;
-                    break;
-                case MSDynamicsDrawerDirectionLeft:
-                    paneViewOrigin.x = self.openStateRevealWidth;
-                    break;
-                case MSDynamicsDrawerDirectionBottom:
-                    paneViewOrigin.y = -self.openStateRevealWidth;
-                    break;
-                case MSDynamicsDrawerDirectionRight:
-                    paneViewOrigin.x = -self.openStateRevealWidth;
-                    break;
-                default:
-                    break;
-            }
-            break;
-        case SDDynamicsDrawerPaneStateOpenWide:
-            switch (self.currentDrawerDirection) {
-                case MSDynamicsDrawerDirectionLeft:
-                    paneViewOrigin.x = (CGRectGetWidth(self.paneView.frame) + self.paneStateOpenWideEdgeOffset);
-                    break;
-                case MSDynamicsDrawerDirectionTop:
-                    paneViewOrigin.y = (CGRectGetHeight(self.paneView.frame) + self.paneStateOpenWideEdgeOffset);
-                    break;
-                case MSDynamicsDrawerDirectionBottom:
-                    paneViewOrigin.y = (CGRectGetHeight(self.paneView.frame) + self.paneStateOpenWideEdgeOffset);
-                    break;
-                case MSDynamicsDrawerDirectionRight:
-                    paneViewOrigin.x = -(CGRectGetWidth(self.paneView.frame) + self.paneStateOpenWideEdgeOffset);
-                    break;
-                default:
-                    break;
-            }
-            break;
-        default:
-            break;
-    }
-    return paneViewOrigin;
-}
-
-- (UIBezierPath *)boundaryPathForState:(MSDynamicsDrawerPaneState)_state direction:(MSDynamicsDrawerDirection)direction
-{
-//    NSAssert(MSDynamicsDrawerDirectionIsCardinal(direction), @"Boundary is undefined for a non-cardinal reveal direction");
-    
-    SDDynamicsDrawerPaneState state = (SDDynamicsDrawerPaneState)_state;
-    CGRect boundary = CGRectZero;
-    boundary.origin = (CGPoint){-1.0, -1.0};
-    if (self.possibleDrawerDirection & MSDynamicsDrawerDirectionHorizontal) {
-        boundary.size.height = (CGRectGetHeight(self.paneView.frame) + 1.0);
-        switch (state) {
-            case SDDynamicsDrawerPaneStateClosed:
-                boundary.size.width = ((CGRectGetWidth(self.paneView.frame) * 2.0) + self.paneStateOpenWideEdgeOffset + 2.0);
-                break;
-            case SDDynamicsDrawerPaneStateOpen:
-                boundary.size.width = ((CGRectGetWidth(self.paneView.frame) + self.openStateRevealWidth) + 2.0);
-                break;
-            case SDDynamicsDrawerPaneStateMenu:
-                boundary.size.width = ((CGRectGetWidth(self.paneView.frame) + SDDynamicsDrawerViewController_MenuWidth) + 2.0);
-                break;
-            case SDDynamicsDrawerPaneStateOpenWide:
-                boundary.size.width = ((CGRectGetWidth(self.paneView.frame) * 2.0) + self.paneStateOpenWideEdgeOffset + 2.0);
-                break;
-        }
-    } else if (self.possibleDrawerDirection & MSDynamicsDrawerDirectionVertical) {
-        boundary.size.width = (CGRectGetWidth(self.paneView.frame) + 1.0);
-        switch (state) {
-            case SDDynamicsDrawerPaneStateClosed:
-                boundary.size.height = ((CGRectGetHeight(self.paneView.frame) * 2.0) + self.paneStateOpenWideEdgeOffset + 2.0);
-                break;
-            case SDDynamicsDrawerPaneStateOpen:
-                boundary.size.height = ((CGRectGetHeight(self.paneView.frame) + self.openStateRevealWidth) + 2.0);
-                break;
-            case SDDynamicsDrawerPaneStateMenu:
-                boundary.size.height = ((CGRectGetHeight(self.paneView.frame) + SDDynamicsDrawerViewController_MenuWidth) + 2.0);
-                break;
-            case SDDynamicsDrawerPaneStateOpenWide:
-                boundary.size.height = ((CGRectGetHeight(self.paneView.frame) * 2.0) + self.paneStateOpenWideEdgeOffset + 2.0);
-                break;
-        }
-    }
-    switch (direction) {
-        case MSDynamicsDrawerDirectionRight:
-            boundary.origin.x = ((CGRectGetWidth(self.paneView.frame) + 1.0) - boundary.size.width);
-            break;
-        case MSDynamicsDrawerDirectionBottom:
-            boundary.origin.y = ((CGRectGetHeight(self.paneView.frame) + 1.0) - boundary.size.height);
-            break;
-        case MSDynamicsDrawerDirectionNone:
-            boundary = CGRectZero;
-            break;
-        default:
-            break;
-    }
-    NSLog(@"boundary: %@, state: %ld, paneState: %ld", NSStringFromCGRect(boundary), state, self.paneState);
-    return [UIBezierPath bezierPathWithRect:boundary];
-}
+//- (UIBezierPath *)boundaryPathForState:(MSDynamicsDrawerPaneState)_state direction:(MSDynamicsDrawerDirection)direction
+//{
+////    NSAssert(MSDynamicsDrawerDirectionIsCardinal(direction), @"Boundary is undefined for a non-cardinal reveal direction");
+//    
+//    SDDynamicsDrawerPaneState state = (SDDynamicsDrawerPaneState)_state;
+//    CGRect boundary = CGRectZero;
+//    boundary.origin = (CGPoint){-1.0, -1.0};
+//    if (self.possibleDrawerDirection & MSDynamicsDrawerDirectionHorizontal) {
+//        boundary.size.height = (CGRectGetHeight(self.paneView.frame) + 1.0);
+//        switch (state) {
+//            case SDDynamicsDrawerPaneStateClosed:
+//                boundary.size.width = ((CGRectGetWidth(self.paneView.frame) * 2.0) + self.paneStateOpenWideEdgeOffset + 2.0);
+//                break;
+//            case SDDynamicsDrawerPaneStateOpen:
+//                boundary.size.width = ((CGRectGetWidth(self.paneView.frame) + self.openStateRevealWidth) + 2.0);
+//                break;
+//            case SDDynamicsDrawerPaneStateMenu:
+//                boundary.size.width = ((CGRectGetWidth(self.paneView.frame) + SDDynamicsDrawerViewController_MenuWidth) + 2.0);
+////                boundary.size.width = ((CGRectGetWidth(self.paneView.frame) * 2.0) + self.paneStateOpenWideEdgeOffset + 2.0);
+//                break;
+//            case SDDynamicsDrawerPaneStateOpenWide:
+//                boundary.size.width = ((CGRectGetWidth(self.paneView.frame) * 2.0) + self.paneStateOpenWideEdgeOffset + 2.0);
+//                break;
+//        }
+//    } else if (self.possibleDrawerDirection & MSDynamicsDrawerDirectionVertical) {
+//        boundary.size.width = (CGRectGetWidth(self.paneView.frame) + 1.0);
+//        switch (state) {
+//            case SDDynamicsDrawerPaneStateClosed:
+//                boundary.size.height = ((CGRectGetHeight(self.paneView.frame) * 2.0) + self.paneStateOpenWideEdgeOffset + 2.0);
+//                break;
+//            case SDDynamicsDrawerPaneStateOpen:
+//                boundary.size.height = ((CGRectGetHeight(self.paneView.frame) + self.openStateRevealWidth) + 2.0);
+//                break;
+//            case SDDynamicsDrawerPaneStateMenu:
+//                boundary.size.height = ((CGRectGetHeight(self.paneView.frame) + SDDynamicsDrawerViewController_MenuWidth) + 2.0);
+//                break;
+//            case SDDynamicsDrawerPaneStateOpenWide:
+//                boundary.size.height = ((CGRectGetHeight(self.paneView.frame) * 2.0) + self.paneStateOpenWideEdgeOffset + 2.0);
+//                break;
+//        }
+//    }
+//    switch (direction) {
+//        case MSDynamicsDrawerDirectionRight:
+//            boundary.origin.x = ((CGRectGetWidth(self.paneView.frame) + 1.0) - boundary.size.width);
+//            break;
+//        case MSDynamicsDrawerDirectionBottom:
+//            boundary.origin.y = ((CGRectGetHeight(self.paneView.frame) + 1.0) - boundary.size.height);
+//            break;
+//        case MSDynamicsDrawerDirectionNone:
+//            boundary = CGRectZero;
+//            break;
+//        default:
+//            break;
+//    }
+//    NSLog(@"boundary: %@, state: %ld, paneState: %ld", NSStringFromCGRect(boundary), state, self.paneState);
+//    return [UIBezierPath bezierPathWithRect:boundary];
+//}
 
 - (void)setPaneViewController:(UIViewController *)paneViewController animated:(BOOL)animated completion:(void (^)(void))completion
 {
@@ -474,12 +463,6 @@ const CGFloat MSPaneViewVelocityMultiplier_Copy = 5.0;
     // Replace existing view controller with new view controller
     else if ((existingViewController != newViewController) && newViewController) {
         [newViewController willMoveToParentViewController:self];
-//        [existingViewController willMoveToParentViewController:nil];
-//        [existingViewController beginAppearanceTransition:NO animated:NO];
-//        [existingViewController.view removeFromSuperview];
-//        [existingViewController removeFromParentViewController];
-//        [existingViewController didMoveToParentViewController:nil];
-//        [existingViewController endAppearanceTransition];
         [newViewController beginAppearanceTransition:YES animated:NO];
         newViewController.view.frame = containerView.bounds;
         [self addChildViewController:newViewController];
@@ -489,5 +472,45 @@ const CGFloat MSPaneViewVelocityMultiplier_Copy = 5.0;
         if (completion) completion();
     }
 }
+
+//- (void)paneViewDidUpdateFrame
+//{
+//    if (self.shouldAlignStatusBarToPaneView) {
+//        NSString *key = [[NSString alloc] initWithData:[NSData dataWithBytes:(unsigned char []){0x73, 0x74, 0x61, 0x74, 0x75, 0x73, 0x42, 0x61, 0x72} length:9] encoding:NSASCIIStringEncoding];
+//        id object = [UIApplication sharedApplication];
+//        UIView *statusBar;
+//        if ([object respondsToSelector:NSSelectorFromString(key)]) {
+//            statusBar = [object valueForKey:key];
+//        }
+//        statusBar.transform = CGAffineTransformMakeTranslation(self.paneView.frame.origin.x, self.paneView.frame.origin.y);
+//    }
+//    
+//    CGPoint openWidePoint = [self paneViewOriginForPaneState:(MSDynamicsDrawerPaneState)SDDynamicsDrawerPaneStateOpenWide];
+//    CGRect paneFrame = self.paneView.frame;
+//    CGFloat *openWideLocation = NULL;
+//    CGFloat *paneLocation = NULL;
+//    if (self.currentDrawerDirection & MSDynamicsDrawerDirectionHorizontal) {
+//        openWideLocation = &openWidePoint.x;
+//        paneLocation = &paneFrame.origin.x;
+//    } else if (self.currentDrawerDirection & MSDynamicsDrawerDirectionVertical) {
+//        openWideLocation = &openWidePoint.y;
+//        paneLocation = &paneFrame.origin.y;
+//    }
+//    BOOL reachedOpenWideState = NO;
+//    if (self.currentDrawerDirection & (MSDynamicsDrawerDirectionLeft | MSDynamicsDrawerDirectionTop)) {
+//        if (paneLocation && (*paneLocation >= *openWideLocation)) {
+//            reachedOpenWideState = YES;
+//        }
+//    } else if (self.currentDrawerDirection & (MSDynamicsDrawerDirectionRight | MSDynamicsDrawerDirectionBottom)) {
+//        if (paneLocation && (*paneLocation <= *openWideLocation)) {
+//            reachedOpenWideState = YES;
+//        }
+//    }
+//    if (reachedOpenWideState && (self.potentialPaneState == MSDynamicsDrawerPaneStateOpenWide)) {
+//        [self.dynamicAnimator removeAllBehaviors];
+//    }
+//    
+//    [self updateStylers];
+//}
 
 @end
