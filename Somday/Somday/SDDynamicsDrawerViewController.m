@@ -79,6 +79,7 @@ const CGFloat MSPaneViewVelocityMultiplier_Copy = 5.0;
     }
     
     UIView* view = self.addBarButtonItem.customView;
+    view = view.subviews.firstObject;
     [SDUtils rotateView:view];
     
     [self setDrawerViewController:self.topMenuViewController forDirection:MSDynamicsDrawerDirectionTop];
@@ -93,7 +94,6 @@ const CGFloat MSPaneViewVelocityMultiplier_Copy = 5.0;
         [button addTarget:self action:action forControlEvents:UIControlEventTouchUpInside];
         [button setImage:[UIImage imageNamed:@"icons-shadow-24px_menu"] forState:UIControlStateNormal];
         [button sizeToFit];
-        button.backgroundColor = [UIColor redColor];
         _menuBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:button];
         _menuBarButtonItem.target = self;
         _menuBarButtonItem.action = action;
@@ -108,8 +108,10 @@ const CGFloat MSPaneViewVelocityMultiplier_Copy = 5.0;
         [button addTarget:self action:action forControlEvents:UIControlEventTouchUpInside];
         [button setImage:[UIImage imageNamed:@"icons-shadow-24px_add"] forState:UIControlStateNormal];
         [button sizeToFit];
-        button.backgroundColor = [UIColor redColor];
-        _addBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:button];
+        
+        UIView* view = [[UIView alloc] initWithFrame:button.bounds];
+        [view addSubview:button];
+        _addBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:view];
         _addBarButtonItem.target = self;
         _addBarButtonItem.action = action;
     }

@@ -86,7 +86,6 @@ static NSString *CellIdentifier = @"CollectionViewCell";
         [_dataSource addObject:toggle?@"dump_bg":@"Debug_Story_2"];
         toggle = !toggle;
     }
-    
 }
 
 - (void)viewWillAppear:(BOOL)animated
