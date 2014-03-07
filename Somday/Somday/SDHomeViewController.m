@@ -20,6 +20,8 @@
 #define HeightForFullyDisplayNavigationBar 57.0f
 #define HeightForTriggerNavigationBarAnimation 23.0f
 
+#define Debug_count 500
+
 @interface SDHomeViewController ()
 @property (nonatomic) NSMutableArray *dataSource;
 @property (nonatomic) IBOutletCollection(UIButton) NSArray *buttons;
@@ -53,7 +55,7 @@ static NSString *CellIdentifier = @"CollectionViewCell";
     self.navigationController.navigationBarHidden = YES;
     self.navigationController.navigationBar.alpha = 0.0f;
     [self.navigationItem showSDTitleView];
-    [_collectionView addMotionEffect:[SDUtils sharedMotionEffectGroup]];
+//    [_collectionView addMotionEffect:[SDUtils sharedMotionEffectGroup]];
     
     // Add blur
     _bgImageView1.clipsToBounds = _bgImageView2.clipsToBounds = YES;
@@ -71,11 +73,16 @@ static NSString *CellIdentifier = @"CollectionViewCell";
     GPUImagePicture* picture = [[GPUImagePicture alloc] initWithImage:[UIImage imageNamed:@"Debug_Story_1"]];
     [picture addTarget:_bgImageFilter1];
     [picture processImage];
+    GPUImagePicture* picture1 = [[GPUImagePicture alloc] initWithImage:[UIImage imageNamed:@"Debug_Story_1"]];
+    [picture1 addTarget:_bgImageFilter2];
+    [picture1 processImage];
+    
+    
     
     // Debug
-    BOOL toggle = NO;
+    BOOL toggle = YES;
     self.dataSource = [NSMutableArray new];
-    for (int i = 0; i <= 10; i++) {
+    for (int i = 0; i <= Debug_count; i++) {
         [_dataSource addObject:toggle?@"dump_bg":@"Debug_Story_2"];
         toggle = !toggle;
     }
@@ -85,7 +92,7 @@ static NSString *CellIdentifier = @"CollectionViewCell";
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    [self updateBackgroundImage];
+    [self updateBackgroundImageToCurrentIndex:YES];
 }
 
 - (void)didReceiveMemoryWarning
@@ -96,16 +103,21 @@ static NSString *CellIdentifier = @"CollectionViewCell";
 
 #pragma mark -
 
-- (void)updateBackgroundImage
+
+- (void)updateBackgroundImageToCurrentIndex:(BOOL)toCurrentIndex
 {
     if (_isbgImageAnimating)
         return;
     
     NSArray *visibleItems = [_collectionView indexPathsForSortedVisibleItems];
-    if (visibleItems.count > 2) {
+    if (visibleItems.count > 2 || !toCurrentIndex) {
         _isbgImageAnimating = YES;
-        NSIndexPath *index = visibleItems[visibleItems.count-2];
-        NSLog(@"row: %li", (long)index.row);
+        NSIndexPath *index;
+
+        if (!toCurrentIndex)
+            index = [NSIndexPath indexPathForRow:0 inSection:0];
+        else
+            index = visibleItems[visibleItems.count-2];
         
         _bgImageView2.alpha = 0.0f;
         
@@ -140,7 +152,11 @@ static NSString *CellIdentifier = @"CollectionViewCell";
             break;
         case 1:{
             // add button
-
+            SEL selector = self.navigationItem.rightBarButtonItem.action;
+            UIViewController *_target = self.navigationItem.rightBarButtonItem.target;
+            objc_msgSend(_target, selector, self.navigationItem.rightBarButtonItem);
+            
+            [SDUtils rotateView:sender];
         }
             break;
         default:
@@ -151,7 +167,7 @@ static NSString *CellIdentifier = @"CollectionViewCell";
 #pragma mark - UICollectionViewDataSource Methods
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return 10;
+    return Debug_count;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
@@ -163,6 +179,7 @@ static NSString *CellIdentifier = @"CollectionViewCell";
         cell.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:[_dataSource objectAtIndex:indexPath.row]]];
     } else {
         self.headerCollectionViewCell = (SDHomeHeaderCollectionViewCell*)cell;
+        [self.headerCollectionViewCell addMotionEffect:[SDUtils sharedMotionEffectGroup]];
     }
     
     
@@ -228,13 +245,19 @@ static NSString *CellIdentifier = @"CollectionViewCell";
             [scrollView setContentOffset:CGPointMake(0, 0) animated:YES];
         }
         
-        [self updateBackgroundImage];        
+        [self updateBackgroundImageToCurrentIndex:YES];
     }
 }
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
 {
-    [self updateBackgroundImage];
+    [self updateBackgroundImageToCurrentIndex:YES];
+}
+
+- (void)scrollViewDidScrollToTop:(UIScrollView *)scrollView
+{
+    [self updateBackgroundImageToCurrentIndex:NO];
+
 }
 
 @end

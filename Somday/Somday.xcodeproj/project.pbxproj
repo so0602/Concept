@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2E524E7018C8E204000C0C27 /* THSpringyFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E524E6F18C8E204000C0C27 /* THSpringyFlowLayout.m */; };
 		2E54CABF18C5D1D900B23A96 /* SDHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E54CABE18C5D1D900B23A96 /* SDHomeViewController.m */; };
 		2E54CAC618C5D2C200B23A96 /* SDCollectionViewFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E54CAC518C5D2C200B23A96 /* SDCollectionViewFlowLayout.m */; };
 		2E54CACF18C5D7BF00B23A96 /* SDHomeHeaderCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E54CACE18C5D7BF00B23A96 /* SDHomeHeaderCollectionViewCell.m */; };
@@ -836,6 +837,7 @@
 		B65DE27918C60EB10076408C /* icons-shadow-24px_tick@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B65DDF5B18C60EB10076408C /* icons-shadow-24px_tick@2x.png */; };
 		B65DE27A18C60EB10076408C /* icons-shadow-24px_warning.png in Resources */ = {isa = PBXBuildFile; fileRef = B65DDF5C18C60EB10076408C /* icons-shadow-24px_warning.png */; };
 		B65DE27B18C60EB10076408C /* icons-shadow-24px_warning@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B65DDF5D18C60EB10076408C /* icons-shadow-24px_warning@2x.png */; };
+		B65DE2B218C884D50076408C /* SDTopMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B65DE2B118C884D50076408C /* SDTopMenuViewController.m */; };
 		EF658E5E18C461C400FC9E07 /* SDMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EF658E5D18C461C400FC9E07 /* SDMenuViewController.m */; };
 		EFA8EBC018BDD87100144B75 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EFA8EBBF18BDD87100144B75 /* Foundation.framework */; };
 		EFA8EBC218BDD87100144B75 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EFA8EBC118BDD87100144B75 /* CoreGraphics.framework */; };
@@ -919,6 +921,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		2E524E6E18C8E204000C0C27 /* THSpringyFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = THSpringyFlowLayout.h; path = Somday/THSpringyFlowLayout.h; sourceTree = "<group>"; };
+		2E524E6F18C8E204000C0C27 /* THSpringyFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = THSpringyFlowLayout.m; path = Somday/THSpringyFlowLayout.m; sourceTree = "<group>"; };
 		2E54CABD18C5D1D900B23A96 /* SDHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDHomeViewController.h; sourceTree = "<group>"; };
 		2E54CABE18C5D1D900B23A96 /* SDHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDHomeViewController.m; sourceTree = "<group>"; };
 		2E54CAC418C5D2C200B23A96 /* SDCollectionViewFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDCollectionViewFlowLayout.h; sourceTree = "<group>"; };
@@ -1763,6 +1767,8 @@
 		B65DDF5B18C60EB10076408C /* icons-shadow-24px_tick@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icons-shadow-24px_tick@2x.png"; sourceTree = "<group>"; };
 		B65DDF5C18C60EB10076408C /* icons-shadow-24px_warning.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icons-shadow-24px_warning.png"; sourceTree = "<group>"; };
 		B65DDF5D18C60EB10076408C /* icons-shadow-24px_warning@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icons-shadow-24px_warning@2x.png"; sourceTree = "<group>"; };
+		B65DE2B018C884D50076408C /* SDTopMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SDTopMenuViewController.h; path = Classes/SDTopMenuViewController.h; sourceTree = "<group>"; };
+		B65DE2B118C884D50076408C /* SDTopMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SDTopMenuViewController.m; path = Classes/SDTopMenuViewController.m; sourceTree = "<group>"; };
 		EF658E5C18C461C400FC9E07 /* SDMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SDMenuViewController.h; path = Classes/SDMenuViewController.h; sourceTree = "<group>"; };
 		EF658E5D18C461C400FC9E07 /* SDMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SDMenuViewController.m; path = Classes/SDMenuViewController.m; sourceTree = "<group>"; };
 		EFA8EBBC18BDD87100144B75 /* Somday.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Somday.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1870,14 +1876,14 @@
 			name = Utils;
 			sourceTree = "<group>";
 		};
-		B65DDC1318C586520076408C /* Menu */ = {
+		B65DDC1318C586520076408C /* Menu - Left */ = {
 			isa = PBXGroup;
 			children = (
 				B65DDC1518C586640076408C /* Cells */,
 				EF658E5C18C461C400FC9E07 /* SDMenuViewController.h */,
 				EF658E5D18C461C400FC9E07 /* SDMenuViewController.m */,
 			);
-			name = Menu;
+			name = "Menu - Left";
 			sourceTree = "<group>";
 		};
 		B65DDC1418C5865C0076408C /* Main */ = {
@@ -1885,8 +1891,6 @@
 			children = (
 				EFA8EBD418BDD87100144B75 /* SDDynamicsDrawerViewController.h */,
 				EFA8EBD518BDD87100144B75 /* SDDynamicsDrawerViewController.m */,
-				2E54CABD18C5D1D900B23A96 /* SDHomeViewController.h */,
-				2E54CABE18C5D1D900B23A96 /* SDHomeViewController.m */,
 			);
 			name = Main;
 			sourceTree = "<group>";
@@ -2781,6 +2785,24 @@
 			path = "icons-shadow-24px";
 			sourceTree = "<group>";
 		};
+		B65DE2AA18C884940076408C /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				2E54CABD18C5D1D900B23A96 /* SDHomeViewController.h */,
+				2E54CABE18C5D1D900B23A96 /* SDHomeViewController.m */,
+			);
+			name = Home;
+			sourceTree = "<group>";
+		};
+		B65DE2AF18C884A80076408C /* Menu - Top */ = {
+			isa = PBXGroup;
+			children = (
+				B65DE2B018C884D50076408C /* SDTopMenuViewController.h */,
+				B65DE2B118C884D50076408C /* SDTopMenuViewController.m */,
+			);
+			name = "Menu - Top";
+			sourceTree = "<group>";
+		};
 		EF658E4D18C459D000FC9E07 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
@@ -2804,9 +2826,11 @@
 		EF658E5B18C4616D00FC9E07 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				B65DDC3218C5B2560076408C /* Search */,
+				B65DE2AA18C884940076408C /* Home */,
 				B65DDC1418C5865C0076408C /* Main */,
-				B65DDC1318C586520076408C /* Menu */,
+				B65DDC1318C586520076408C /* Menu - Left */,
+				B65DE2AF18C884A80076408C /* Menu - Top */,
+				B65DDC3218C5B2560076408C /* Search */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -2886,6 +2910,8 @@
 		EFA8EC0118BDDA4A00144B75 /* Other Sources */ = {
 			isa = PBXGroup;
 			children = (
+				2E524E6E18C8E204000C0C27 /* THSpringyFlowLayout.h */,
+				2E524E6F18C8E204000C0C27 /* THSpringyFlowLayout.m */,
 				B65DDC2518C5B1410076408C /* GPUImage.xcodeproj */,
 				EFA8EC0218BDDA6D00144B75 /* MSDynamicsDrawerViewController.xcodeproj */,
 			);
@@ -3857,11 +3883,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				B65DDC0F18C57D1E0076408C /* SDUtils.m in Sources */,
+				2E524E7018C8E204000C0C27 /* THSpringyFlowLayout.m in Sources */,
 				EF658E5E18C461C400FC9E07 /* SDMenuViewController.m in Sources */,
 				2ED35BC718C70A3500EDA245 /* UICollectionView+Addition.m in Sources */,
 				2E54CABF18C5D1D900B23A96 /* SDHomeViewController.m in Sources */,
 				EFA8EBD018BDD87100144B75 /* SDAppDelegate.m in Sources */,
 				B65DDC1818C586760076408C /* SDMenuTableViewCell.m in Sources */,
+				B65DE2B218C884D50076408C /* SDTopMenuViewController.m in Sources */,
 				EFA8EBD618BDD87100144B75 /* SDDynamicsDrawerViewController.m in Sources */,
 				2E54CAF218C5DE1A00B23A96 /* UIFont+Addition.m in Sources */,
 				2EC3785818C61B0F00D4161B /* UINavigationItem+Addition.m in Sources */,

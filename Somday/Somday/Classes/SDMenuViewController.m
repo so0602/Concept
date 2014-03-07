@@ -25,8 +25,6 @@
 @property (nonatomic, strong) NSDictionary* paneViewControllerIdentifiers;
 @property (nonatomic, strong) NSDictionary* paneViewControllerIcons;
 
-@property (nonatomic, strong) UIBarButtonItem* menuBarButtonItem;
-
 @property (nonatomic, strong) SDSearchViewController* searchViewController;
 @property (nonatomic, strong) NSTimer* animationTimer;
 
@@ -193,9 +191,11 @@
             
             paneViewController.navigationItem.title = self.paneViewControllerTitles[@(paneViewControllerType)];
             
+            paneViewController.navigationItem.leftBarButtonItem = self.dynamicsDrawerViewController.menuBarButtonItem;
             
-            self.menuBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"icons-shadow-24px_menu"] style:UIBarButtonItemStylePlain target:self action:@selector(dynamicsDrawerMenuBarButtonItemTapped:)];
-            paneViewController.navigationItem.leftBarButtonItem = self.menuBarButtonItem;
+            if( paneViewControllerType == SDPaneViewControllerType_Home ){
+                paneViewController.navigationItem.rightBarButtonItem = self.dynamicsDrawerViewController.addBarButtonItem;
+            }
             
             self.changingTab = TRUE;
             UINavigationController* navigationController = [[UINavigationController alloc] initWithRootViewController:paneViewController];
@@ -206,10 +206,6 @@
         }
             break;
     }
-}
-
--(void)dynamicsDrawerMenuBarButtonItemTapped:(id)sender{
-    [self.dynamicsDrawerViewController setPaneState:(MSDynamicsDrawerPaneState)SDDynamicsDrawerPaneStateMenu inDirection:MSDynamicsDrawerDirectionLeft animated:TRUE allowUserInterruption:TRUE completion:nil];
 }
 
 #pragma mark - UITableViewDataSource
@@ -260,16 +256,6 @@
 #pragma mark - SDDynamicsDrawerViewControllerDelegate
 
 -(void)dynamicsDrawerViewController:(MSDynamicsDrawerViewController *)drawerViewController paneViewPositionDidChanged:(CGPoint)position{
-//    if( position.x >= SDDynamicsDrawerViewController_MenuWidth ){
-//        SDSearchViewController* viewController = self.searchViewController;
-//        [self addSearchView:TRUE];
-//        
-//        CGFloat width = CGRectGetWidth(self.view.frame);
-//        CGFloat alpha = (position.x - SDDynamicsDrawerViewController_MenuWidth) / (width - SDDynamicsDrawerViewController_MenuWidth);
-//        viewController.view.alpha = alpha;
-//        self.tableView.alpha = 1 - alpha;
-//    }
-    
     if( !self.animationTimer ){
         self.animationTimer = [NSTimer scheduledTimerWithTimeInterval:0.1 target:self selector:@selector(searchViewAnimationUpdate) userInfo:nil repeats:TRUE];
     }

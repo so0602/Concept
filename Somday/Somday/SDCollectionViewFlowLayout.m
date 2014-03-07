@@ -34,7 +34,7 @@
     
     // Need to overflow our actual visible rect slightly to avoid flickering.
     CGRect visibleRect = CGRectInset((CGRect){.origin = self.collectionView.bounds.origin, .size = self.collectionView.frame.size}, -100, -100);
-    
+
     NSArray *itemsInVisibleRectArray = [super layoutAttributesForElementsInRect:visibleRect];
     
     NSSet *itemsIndexPathsInVisibleRectSet = [NSSet setWithArray:[itemsInVisibleRectArray valueForKey:@"indexPath"]];    
@@ -71,7 +71,7 @@
         if (!CGPointEqualToPoint(CGPointZero, touchLocation)) {
             CGFloat yDistanceFromTouch = fabsf(touchLocation.y - springBehaviour.anchorPoint.y);
             CGFloat xDistanceFromTouch = fabsf(touchLocation.x - springBehaviour.anchorPoint.x);
-            CGFloat scrollResistance = (yDistanceFromTouch + xDistanceFromTouch) / 1500.0f;
+            CGFloat scrollResistance = (yDistanceFromTouch + xDistanceFromTouch) / 2500.0f;
             
             if (self.latestDelta < 0) {
                 center.y += MAX(self.latestDelta, self.latestDelta*scrollResistance);
@@ -106,7 +106,7 @@
     [self.dynamicAnimator.behaviors enumerateObjectsUsingBlock:^(UIAttachmentBehavior *springBehaviour, NSUInteger idx, BOOL *stop) {
         CGFloat yDistanceFromTouch = fabsf(touchLocation.y - springBehaviour.anchorPoint.y);
         CGFloat xDistanceFromTouch = fabsf(touchLocation.x - springBehaviour.anchorPoint.x);
-        CGFloat scrollResistance = (yDistanceFromTouch + xDistanceFromTouch) / 1500.0f;
+        CGFloat scrollResistance = (yDistanceFromTouch + xDistanceFromTouch) / 2500.0f;
         
         UICollectionViewLayoutAttributes *item = [springBehaviour.items firstObject];
         CGPoint center = item.center;

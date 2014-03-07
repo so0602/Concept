@@ -9,6 +9,7 @@
 #import "SDDynamicsDrawerViewController.h"
 
 #import "SDMenuViewController.h"
+#import "SDTopMenuViewController.h"
 
 #import "SDUtils.h"
 
@@ -40,6 +41,9 @@ const CGFloat MSPaneViewVelocityMultiplier_Copy = 5.0;
 
 @interface SDDynamicsDrawerViewController ()
 
+@property (nonatomic, strong) SDMenuViewController* menuViewController;
+@property (nonatomic, strong) SDTopMenuViewController* topMenuViewController;
+
 @property (nonatomic, strong) UIViewController* prePaneViewController;
 
 @end
@@ -57,20 +61,78 @@ const CGFloat MSPaneViewVelocityMultiplier_Copy = 5.0;
     // Dispose of any resources that can be recreated.
 }
 
+-(void)showLeftMenu{
+    if( [self drawerViewControllerForDirection:MSDynamicsDrawerDirectionTop] ){
+        [self setDrawerViewController:nil forDirection:MSDynamicsDrawerDirectionTop];
+    }
+    [self setDrawerViewController:self.menuViewController forDirection:MSDynamicsDrawerDirectionLeft];
+    [self setPaneState:(MSDynamicsDrawerPaneState)SDDynamicsDrawerPaneStateMenu inDirection:MSDynamicsDrawerDirectionLeft animated:TRUE allowUserInterruption:TRUE completion:nil];
+}
+
+-(void)showTopMenu{
+    if( [self drawerViewControllerForDirection:MSDynamicsDrawerDirectionLeft] ){
+        [self setDrawerViewController:nil forDirection:MSDynamicsDrawerDirectionLeft];
+    }
+    
+    UIView* view = self.addBarButtonItem.customView;
+    [SDUtils rotateView:view];
+    
+    [self setDrawerViewController:self.topMenuViewController forDirection:MSDynamicsDrawerDirectionTop];
+    [self setPaneState:(MSDynamicsDrawerPaneState)SDDynamicsDrawerPaneStateOpen inDirection:MSDynamicsDrawerDirectionTop animated:TRUE allowUserInterruption:TRUE completion:nil];
+}
+
+-(UIBarButtonItem*)menuBarButtonItem{
+    if( !_menuBarButtonItem ){
+        SEL action = @selector(showLeftMenu);
+        UIButton* button = [UIButton buttonWithType:UIButtonTypeCustom];
+        [button addTarget:self action:action forControlEvents:UIControlEventTouchUpInside];
+        [button setImage:[UIImage imageNamed:@"icons-shadow-24px_menu"] forState:UIControlStateNormal];
+        [button sizeToFit];
+        button.backgroundColor = [UIColor redColor];
+        _menuBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:button];
+        _menuBarButtonItem.target = self;
+        _menuBarButtonItem.action = action;
+    }
+    return _menuBarButtonItem;
+}
+
+-(UIBarButtonItem*)addBarButtonItem{
+    if( !_addBarButtonItem ){
+        SEL action = @selector(showTopMenu);
+        UIButton* button = [UIButton buttonWithType:UIButtonTypeCustom];
+        [button addTarget:self action:action forControlEvents:UIControlEventTouchUpInside];
+        [button setImage:[UIImage imageNamed:@"icons-shadow-24px_add"] forState:UIControlStateNormal];
+        [button sizeToFit];
+        button.backgroundColor = [UIColor redColor];
+        _addBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:button];
+        _addBarButtonItem.target = self;
+        _addBarButtonItem.action = action;
+    }
+    return _addBarButtonItem;
+}
+
 #pragma mark - Private Functions
 
 -(void)initialize{
     [super initialize];
     
-    SDMenuViewController* menuViewController = [SDMenuViewController viewControllerFromStoryboardWithIdentifier:@"MainMenu"];
-    menuViewController.dynamicsDrawerViewController = self;
-    self.delegate = menuViewController;
-    self.customDelegate = menuViewController;
+    self.menuViewController = [SDMenuViewController viewControllerFromStoryboardWithIdentifier:@"MainMenu"];
+    self.menuViewController.dynamicsDrawerViewController = self;
+    self.delegate = self.menuViewController;
+    self.customDelegate = self.menuViewController;
     
-    [self setDrawerViewController:menuViewController forDirection:MSDynamicsDrawerDirectionLeft];
+    self.topMenuViewController = [SDTopMenuViewController viewControllerFromStoryboardWithIdentifier:@"TopMenu"];
     
-    [menuViewController transitionToViewController:SDPaneViewControllerType_Home];
-    [self setRevealWidth:320 forDirection:MSDynamicsDrawerDirectionLeft];
+    [self setDrawerViewController:self.menuViewController forDirection:MSDynamicsDrawerDirectionLeft];
+    
+    [self.menuViewController transitionToViewController:SDPaneViewControllerType_Home];
+    
+    double delayInSeconds = 0.1;
+    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
+    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+        [self setRevealWidth:CGRectGetWidth(self.view.frame) forDirection:MSDynamicsDrawerDirectionLeft];
+        [self setRevealWidth:60 forDirection:MSDynamicsDrawerDirectionTop];
+    });
     
     self.paneViewSlideOffAnimationEnabled = FALSE;
 }
@@ -346,10 +408,13 @@ const CGFloat MSPaneViewVelocityMultiplier_Copy = 5.0;
             [CATransaction flush];
             [self setNeedsStatusBarAppearanceUpdate];
             
-            [UIView animateWithDuration:0.3 delay:0.0 options:UIViewAnimationOptionCurveLinear animations:^{
+            [UIView animateWithDuration:0.3 delay:0.1 options:UIViewAnimationOptionCurveLinear animations:^{
                 CGRect frame = self.paneViewController.view.frame;
                 frame.origin.x = 0;
                 self.paneViewController.view.frame = frame;
+                
+                UIView* view = self.prePaneViewController.view;
+                view.alpha = 0.0;
             } completion:^(BOOL finished) {
                 [self.prePaneViewController.view removeFromSuperview];
                 [self.prePaneViewController removeFromParentViewController];
