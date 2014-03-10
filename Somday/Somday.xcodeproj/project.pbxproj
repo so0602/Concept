@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2E524E7018C8E204000C0C27 /* THSpringyFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E524E6F18C8E204000C0C27 /* THSpringyFlowLayout.m */; };
 		2E54CABF18C5D1D900B23A96 /* SDHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E54CABE18C5D1D900B23A96 /* SDHomeViewController.m */; };
 		2E54CAC618C5D2C200B23A96 /* SDCollectionViewFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E54CAC518C5D2C200B23A96 /* SDCollectionViewFlowLayout.m */; };
 		2E54CACF18C5D7BF00B23A96 /* SDHomeHeaderCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E54CACE18C5D7BF00B23A96 /* SDHomeHeaderCollectionViewCell.m */; };
@@ -961,8 +960,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		2E524E6E18C8E204000C0C27 /* THSpringyFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = THSpringyFlowLayout.h; path = Somday/THSpringyFlowLayout.h; sourceTree = "<group>"; };
-		2E524E6F18C8E204000C0C27 /* THSpringyFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = THSpringyFlowLayout.m; path = Somday/THSpringyFlowLayout.m; sourceTree = "<group>"; };
 		2E54CABD18C5D1D900B23A96 /* SDHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDHomeViewController.h; sourceTree = "<group>"; };
 		2E54CABE18C5D1D900B23A96 /* SDHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDHomeViewController.m; sourceTree = "<group>"; };
 		2E54CAC418C5D2C200B23A96 /* SDCollectionViewFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDCollectionViewFlowLayout.h; sourceTree = "<group>"; };
@@ -3096,8 +3093,6 @@
 				EF891DC918CD8CB5005DC780 /* ASIHTTPRequest.xcodeproj */,
 				B65DDC2518C5B1410076408C /* GPUImage.xcodeproj */,
 				EFA8EC0218BDDA6D00144B75 /* MSDynamicsDrawerViewController.xcodeproj */,
-				2E524E6E18C8E204000C0C27 /* THSpringyFlowLayout.h */,
-				2E524E6F18C8E204000C0C27 /* THSpringyFlowLayout.m */,
 			);
 			name = "Other Sources";
 			sourceTree = "<group>";
@@ -4097,7 +4092,6 @@
 			files = (
 				B65DDC0F18C57D1E0076408C /* SDUtils.m in Sources */,
 				2E84744918CD895100D49FBA /* SDBaseGridView.m in Sources */,
-				2E524E7018C8E204000C0C27 /* THSpringyFlowLayout.m in Sources */,
 				EF658E5E18C461C400FC9E07 /* SDMenuViewController.m in Sources */,
 				EFD0FC1218CD92CF0026F54F /* ASIFormDataRequest+Addition.m in Sources */,
 				EF3B650A18CDA8AA00B0CF1C /* SDLogin.m in Sources */,
