@@ -16,8 +16,8 @@
 #import "UIViewController+Addition.h"
 #import "NSNotificationCenter+Name.h"
 
-const CGFloat MSPaneViewVelocityThreshold_Copy = 5.0;
-const CGFloat MSPaneViewVelocityMultiplier_Copy = 5.0;
+const CGFloat SDPaneViewVelocityThreshold = 5.0;
+const CGFloat SDPaneViewVelocityMultiplier = 5.0;
 
 @interface MSDynamicsDrawerViewController ()
 
@@ -256,9 +256,9 @@ const CGFloat MSPaneViewVelocityMultiplier_Copy = 5.0;
         case UIGestureRecognizerStateEnded: {
             if (self.currentDrawerDirection != MSDynamicsDrawerDirectionNone) {
                 // If the user released the pane over the velocity threshold
-                if (fabsf(paneVelocity) > MSPaneViewVelocityThreshold_Copy) {
+                if (fabsf(paneVelocity) > SDPaneViewVelocityThreshold) {
                     MSDynamicsDrawerPaneState state = [self paneStateForPanVelocity:paneVelocity];
-                    [self addDynamicsBehaviorsToCreatePaneState:state pushMagnitude:(fabsf(paneVelocity) * MSPaneViewVelocityMultiplier_Copy) pushAngle:[self gravityAngleForState:state direction:self.currentDrawerDirection] pushElasticity:self.elasticity];
+                    [self addDynamicsBehaviorsToCreatePaneState:state pushMagnitude:(fabsf(paneVelocity) * SDPaneViewVelocityMultiplier) pushAngle:[self gravityAngleForState:state direction:self.currentDrawerDirection] pushElasticity:self.elasticity];
                 }
                 // If not released with a velocity over the threhold, update to nearest `paneState`
                 else {
