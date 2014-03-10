@@ -53,7 +53,7 @@ const CGFloat SDTimeOutSeconds = 60.0f;
     NSMutableDictionary* attributes = [NSMutableDictionary dictionary];
     [attributes setObject:[NSDictionary dictionaryWithObject:username forKey:SDUrlAttribute_Username] forKey:SDUrlAttribute_User];
     
-    ASIHTTPRequest* request = [SDNetworkUtils requestWithUrl:UserLoginUrl attributes:attributes completion:completionBlock failed:failedBlock returnClass:[SDCheckUserExist class]];
+    ASIHTTPRequest* request = [SDNetworkUtils requestWithUrl:CheckUserExistUrl attributes:attributes completion:completionBlock failed:failedBlock returnClass:[SDCheckUserExist class]];
     
     [request startAsynchronous];
     
@@ -68,7 +68,20 @@ const CGFloat SDTimeOutSeconds = 60.0f;
     [attributes setObject:password forKey:SDUrlAttribute_Password];
     attributes = [NSMutableDictionary dictionaryWithObject:attributes forKey:SDUrlAttribute_User];
     
-    ASIHTTPRequest* request = [SDNetworkUtils requestWithUrl:UserLoginUrl attributes:attributes completion:completionBlock failed:failedBlock returnClass:[SDCreateUser class]];
+    ASIHTTPRequest* request = [SDNetworkUtils requestWithUrl:CreateUserUrl attributes:attributes completion:completionBlock failed:failedBlock returnClass:[SDCreateUser class]];
+    
+    [request startAsynchronous];
+    
+    return request;
+}
+
++(ASIHTTPRequest*)storiesWithUsername:(NSString*)username completion:(void(^)(SDStories* response))completionBlock failed:(void(^)(SDStories* response))failedBlock{
+    NSAssert(username, @"Username must not be empty.");
+    
+    NSMutableDictionary* attributes = [NSMutableDictionary dictionary];
+    [attributes setObject:username forKey:SDUrlAttribute_Username];
+    
+    ASIHTTPRequest* request = [SDNetworkUtils requestWithUrl:GetStoryListUrl attributes:attributes completion:completionBlock failed:failedBlock returnClass:[SDStories class]];
     
     [request startAsynchronous];
     
@@ -116,19 +129,6 @@ const CGFloat SDTimeOutSeconds = 60.0f;
             failedBlock(response);
         }
     }];
-    
-    return request;
-}
-
-+(ASIHTTPRequest*)storiesWithUsername:(NSString*)username completion:(void(^)(SDStories* response))completionBlock failed:(void(^)(SDStories* response))failedBlock{
-    NSAssert(username, @"Username must not be empty.");
-    
-    NSMutableDictionary* attributes = [NSMutableDictionary dictionary];
-    [attributes setObject:username forKey:SDUrlAttribute_Username];
-    
-    ASIHTTPRequest* request = [SDNetworkUtils requestWithUrl:UserLoginUrl attributes:attributes completion:completionBlock failed:failedBlock returnClass:[SDStories class]];
-    
-    [request startAsynchronous];
     
     return request;
 }
