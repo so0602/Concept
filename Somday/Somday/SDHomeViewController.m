@@ -9,7 +9,7 @@
 #import "SDHomeViewController.h"
 #import "SDHomeHeaderCollectionViewCell.h"
 #import "SDHomeNavigationTitleView.h"
-
+#import "SDBaseGridView.h"
 #import "GPUImage.h"
 #import "UINavigationItem+Addition.h"
 #import "UILabel+Addition.h"
@@ -55,11 +55,11 @@ static NSString *CellIdentifier = @"CollectionViewCell";
     self.navigationController.navigationBarHidden = YES;
     self.navigationController.navigationBar.alpha = 0.0f;
     [self.navigationItem showSDTitleView];
-//    [_collectionView addMotionEffect:[SDUtils sharedMotionEffectGroup]];
     
     // Add blur
     _bgImageView1.clipsToBounds = _bgImageView2.clipsToBounds = YES;
     _bgImageView1.layer.contentsGravity = _bgImageView2.layer.contentsGravity = kCAGravityTop;
+    _bgImageView1.fillMode = _bgImageView2.fillMode = kGPUImageFillModePreserveAspectRatioAndFill;
     
     self.bgImageFilter1 = [[GPUImageiOSBlurFilter alloc] init];
     _bgImageFilter1.blurRadiusInPixels = 1.0f;
@@ -78,13 +78,14 @@ static NSString *CellIdentifier = @"CollectionViewCell";
     [picture1 processImage];
     
     
-    
-    // Debug
-    BOOL toggle = YES;
-    self.dataSource = [NSMutableArray new];
-    for (int i = 0; i <= Debug_count; i++) {
-        [_dataSource addObject:toggle?@"dump_bg":@"Debug_Story_2"];
-        toggle = !toggle;
+    {
+        // Debug
+        BOOL toggle = YES;
+        self.dataSource = [NSMutableArray new];
+        for (int i = 0; i <= Debug_count; i++) {
+            [_dataSource addObject:toggle?@"Debug_Grid_Event":@"Debug_Grid"];
+            toggle = !toggle;
+        }
     }
 }
 
@@ -102,7 +103,6 @@ static NSString *CellIdentifier = @"CollectionViewCell";
 
 #pragma mark -
 
-
 - (void)updateBackgroundImageToCurrentIndex:(BOOL)toCurrentIndex
 {
     if (_isbgImageAnimating)
@@ -119,7 +119,6 @@ static NSString *CellIdentifier = @"CollectionViewCell";
             index = visibleItems[visibleItems.count-2];
         
         _bgImageView2.alpha = 0.0f;
-        
         GPUImagePicture* picture = [[GPUImagePicture alloc] initWithImage:[UIImage imageNamed:[_dataSource objectAtIndex:index.row]]];
         [picture addTarget:_bgImageFilter2];
         [picture processImage];
