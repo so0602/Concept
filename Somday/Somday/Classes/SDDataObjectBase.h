@@ -12,4 +12,7 @@
 
 -(instancetype)initWithDictionary:(id)dictionary;
 
+@optional
++(NSArray*)arrayWithDictionaries:(NSArray*)dictionaries;
+
 @end

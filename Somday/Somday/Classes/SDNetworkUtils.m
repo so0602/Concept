@@ -120,6 +120,19 @@ const CGFloat SDTimeOutSeconds = 60.0f;
     return request;
 }
 
++(ASIHTTPRequest*)storiesWithUsername:(NSString*)username completion:(void(^)(SDStories* response))completionBlock failed:(void(^)(SDStories* response))failedBlock{
+    NSAssert(username, @"Username must not be empty.");
+    
+    NSMutableDictionary* attributes = [NSMutableDictionary dictionary];
+    [attributes setObject:username forKey:SDUrlAttribute_Username];
+    
+    ASIHTTPRequest* request = [SDNetworkUtils requestWithUrl:UserLoginUrl attributes:attributes completion:completionBlock failed:failedBlock returnClass:[SDStories class]];
+    
+    [request startAsynchronous];
+    
+    return request;
+}
+
 @end
 
 NSString* SDUrlAttribute_Header = @"header";
@@ -132,3 +145,5 @@ NSString* SDUrlAttribute_Password = @"password";
 NSString* SDUrlAttribute_Status = @"status";
 NSString* SDUrlAttribute_Code = @"code";
 NSString* SDUrlAttribute_Message = @"message";
+
+NSString* SDUrlAttribute_Stories = @"stories";

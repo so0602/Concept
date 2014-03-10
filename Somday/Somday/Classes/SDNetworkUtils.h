@@ -13,6 +13,7 @@
 #import "SDLogin.h"
 #import "SDCheckUserExist.h"
 #import "SDCreateUser.h"
+#import "SDStories.h"
 
 @interface SDNetworkUtils : NSObject
 
@@ -21,6 +22,8 @@
 +(ASIHTTPRequest*)checkUserExistWithUsername:(NSString*)username completion:(void(^)(SDCheckUserExist* response))completionBlock failed:(void(^)(SDCheckUserExist* response))failedBlock;
 
 +(ASIHTTPRequest*)createUserWithUsername:(NSString*)username password:(NSString*)password completion:(void(^)(SDCreateUser* response))completionBlock failed:(void(^)(SDCreateUser* response))failedBlock;
+
++(ASIHTTPRequest*)storiesWithUsername:(NSString*)username completion:(void(^)(SDStories* response))completionBlock failed:(void(^)(SDStories* response))failedBlock;
 
 @end
 
@@ -34,3 +37,5 @@ extern NSString* SDUrlAttribute_Password;
 extern NSString* SDUrlAttribute_Status;
 extern NSString* SDUrlAttribute_Code;
 extern NSString* SDUrlAttribute_Message;
+
+extern NSString* SDUrlAttribute_Stories;
