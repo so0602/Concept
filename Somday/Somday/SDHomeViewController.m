@@ -171,10 +171,10 @@ static NSString *CellIdentifier = @"CollectionViewCell";
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     BOOL isFirstRow = indexPath.row==0;
-    UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:isFirstRow?HeaderCellIdentifier:CellIdentifier forIndexPath:indexPath];
+    SDBaseGridView *cell = (SDBaseGridView*)[collectionView dequeueReusableCellWithReuseIdentifier:isFirstRow?HeaderCellIdentifier:CellIdentifier forIndexPath:indexPath];
     
     if (!isFirstRow) {
-        cell.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:[_dataSource objectAtIndex:indexPath.row]]];
+        cell.image = [UIImage imageNamed:[_dataSource objectAtIndex:indexPath.row]];
     } else {
         self.headerCollectionViewCell = (SDHomeHeaderCollectionViewCell*)cell;
         [self.headerCollectionViewCell addMotionEffect:[SDUtils sharedMotionEffectGroup]];
@@ -191,6 +191,13 @@ static NSString *CellIdentifier = @"CollectionViewCell";
     else
         return CGSizeMake(WidthForGrid, WidthForGrid); // TODO: Hardcode for now. Should get the height from the collectionViewCell.
 }
+
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    SDBaseGridView *cell = (SDBaseGridView*)[collectionView cellForItemAtIndexPath:indexPath];
+    [cell toggleMenu];
+}
+
 
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
