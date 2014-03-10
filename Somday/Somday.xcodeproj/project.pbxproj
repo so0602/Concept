@@ -840,6 +840,11 @@
 		B65DE27A18C60EB10076408C /* icons-shadow-24px_warning.png in Resources */ = {isa = PBXBuildFile; fileRef = B65DDF5C18C60EB10076408C /* icons-shadow-24px_warning.png */; };
 		B65DE27B18C60EB10076408C /* icons-shadow-24px_warning@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B65DDF5D18C60EB10076408C /* icons-shadow-24px_warning@2x.png */; };
 		B65DE2B218C884D50076408C /* SDTopMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B65DE2B118C884D50076408C /* SDTopMenuViewController.m */; };
+		EF3B650018CDA27700B0CF1C /* SDResponseBase.m in Sources */ = {isa = PBXBuildFile; fileRef = EF3B64FF18CDA27700B0CF1C /* SDResponseBase.m */; };
+		EF3B650318CDA2C200B0CF1C /* SDStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = EF3B650218CDA2C200B0CF1C /* SDStatus.m */; };
+		EF3B650A18CDA8AA00B0CF1C /* SDLogin.m in Sources */ = {isa = PBXBuildFile; fileRef = EF3B650918CDA8AA00B0CF1C /* SDLogin.m */; };
+		EF3B650F18CDAC2500B0CF1C /* SDCheckUserExist.m in Sources */ = {isa = PBXBuildFile; fileRef = EF3B650E18CDAC2500B0CF1C /* SDCheckUserExist.m */; };
+		EF3B651318CDAD0000B0CF1C /* SDCreateUser.m in Sources */ = {isa = PBXBuildFile; fileRef = EF3B651218CDAD0000B0CF1C /* SDCreateUser.m */; };
 		EF658E5E18C461C400FC9E07 /* SDMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EF658E5D18C461C400FC9E07 /* SDMenuViewController.m */; };
 		EF891DD418CD8CD2005DC780 /* libASIHTTPRequest.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EF891DCF18CD8CB5005DC780 /* libASIHTTPRequest.a */; };
 		EF891DD618CD8D6E005DC780 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EF891DD518CD8D6E005DC780 /* CFNetwork.framework */; };
@@ -1805,6 +1810,17 @@
 		B65DDF5D18C60EB10076408C /* icons-shadow-24px_warning@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icons-shadow-24px_warning@2x.png"; sourceTree = "<group>"; };
 		B65DE2B018C884D50076408C /* SDTopMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SDTopMenuViewController.h; path = Classes/SDTopMenuViewController.h; sourceTree = "<group>"; };
 		B65DE2B118C884D50076408C /* SDTopMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SDTopMenuViewController.m; path = Classes/SDTopMenuViewController.m; sourceTree = "<group>"; };
+		EF3B64FE18CDA27700B0CF1C /* SDResponseBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SDResponseBase.h; path = Classes/SDResponseBase.h; sourceTree = "<group>"; };
+		EF3B64FF18CDA27700B0CF1C /* SDResponseBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SDResponseBase.m; path = Classes/SDResponseBase.m; sourceTree = "<group>"; };
+		EF3B650118CDA2C200B0CF1C /* SDStatus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SDStatus.h; path = Classes/SDStatus.h; sourceTree = "<group>"; };
+		EF3B650218CDA2C200B0CF1C /* SDStatus.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SDStatus.m; path = Classes/SDStatus.m; sourceTree = "<group>"; };
+		EF3B650418CDA42500B0CF1C /* SDDataObjectBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SDDataObjectBase.h; path = Classes/SDDataObjectBase.h; sourceTree = "<group>"; };
+		EF3B650818CDA8AA00B0CF1C /* SDLogin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SDLogin.h; path = Classes/SDLogin.h; sourceTree = "<group>"; };
+		EF3B650918CDA8AA00B0CF1C /* SDLogin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SDLogin.m; path = Classes/SDLogin.m; sourceTree = "<group>"; };
+		EF3B650D18CDAC2500B0CF1C /* SDCheckUserExist.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SDCheckUserExist.h; path = Classes/SDCheckUserExist.h; sourceTree = "<group>"; };
+		EF3B650E18CDAC2500B0CF1C /* SDCheckUserExist.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SDCheckUserExist.m; path = Classes/SDCheckUserExist.m; sourceTree = "<group>"; };
+		EF3B651118CDAD0000B0CF1C /* SDCreateUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SDCreateUser.h; path = Classes/SDCreateUser.h; sourceTree = "<group>"; };
+		EF3B651218CDAD0000B0CF1C /* SDCreateUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SDCreateUser.m; path = Classes/SDCreateUser.m; sourceTree = "<group>"; };
 		EF658E5C18C461C400FC9E07 /* SDMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SDMenuViewController.h; path = Classes/SDMenuViewController.h; sourceTree = "<group>"; };
 		EF658E5D18C461C400FC9E07 /* SDMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SDMenuViewController.m; path = Classes/SDMenuViewController.m; sourceTree = "<group>"; };
 		EF891DC918CD8CB5005DC780 /* ASIHTTPRequest.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ASIHTTPRequest.xcodeproj; path = "../Other Sources/ASIHTTPRequest/ASIHTTPRequest/ASIHTTPRequest.xcodeproj"; sourceTree = "<group>"; };
@@ -2845,11 +2861,62 @@
 			name = "Menu - Top";
 			sourceTree = "<group>";
 		};
+		EF3B64F818CDA25A00B0CF1C /* Objects */ = {
+			isa = PBXGroup;
+			children = (
+				EF3B650718CDA87500B0CF1C /* Responses */,
+				EF3B650418CDA42500B0CF1C /* SDDataObjectBase.h */,
+			);
+			name = Objects;
+			sourceTree = "<group>";
+		};
+		EF3B650718CDA87500B0CF1C /* Responses */ = {
+			isa = PBXGroup;
+			children = (
+				EF3B650C18CDAC1000B0CF1C /* Check User Exist */,
+				EF3B651018CDACE400B0CF1C /* Create User */,
+				EF3B650B18CDAC0600B0CF1C /* Login */,
+				EF3B64FE18CDA27700B0CF1C /* SDResponseBase.h */,
+				EF3B64FF18CDA27700B0CF1C /* SDResponseBase.m */,
+				EF3B650118CDA2C200B0CF1C /* SDStatus.h */,
+				EF3B650218CDA2C200B0CF1C /* SDStatus.m */,
+			);
+			name = Responses;
+			sourceTree = "<group>";
+		};
+		EF3B650B18CDAC0600B0CF1C /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				EF3B650818CDA8AA00B0CF1C /* SDLogin.h */,
+				EF3B650918CDA8AA00B0CF1C /* SDLogin.m */,
+			);
+			name = Login;
+			sourceTree = "<group>";
+		};
+		EF3B650C18CDAC1000B0CF1C /* Check User Exist */ = {
+			isa = PBXGroup;
+			children = (
+				EF3B650D18CDAC2500B0CF1C /* SDCheckUserExist.h */,
+				EF3B650E18CDAC2500B0CF1C /* SDCheckUserExist.m */,
+			);
+			name = "Check User Exist";
+			sourceTree = "<group>";
+		};
+		EF3B651018CDACE400B0CF1C /* Create User */ = {
+			isa = PBXGroup;
+			children = (
+				EF3B651118CDAD0000B0CF1C /* SDCreateUser.h */,
+				EF3B651218CDAD0000B0CF1C /* SDCreateUser.m */,
+			);
+			name = "Create User";
+			sourceTree = "<group>";
+		};
 		EF658E4D18C459D000FC9E07 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
 				EF658E5A18C4615C00FC9E07 /* App Delegate */,
 				EF891DDF18CD8E01005DC780 /* Class-Categories */,
+				EF3B64F818CDA25A00B0CF1C /* Objects */,
 				B65DDC0A18C57D050076408C /* Utils */,
 				EF658E5B18C4616D00FC9E07 /* ViewControllers */,
 				2E54CACC18C5D78E00B23A96 /* Views */,
@@ -4002,11 +4069,14 @@
 				2E524E7018C8E204000C0C27 /* THSpringyFlowLayout.m in Sources */,
 				EF658E5E18C461C400FC9E07 /* SDMenuViewController.m in Sources */,
 				EFD0FC1218CD92CF0026F54F /* ASIFormDataRequest+Addition.m in Sources */,
+				EF3B650A18CDA8AA00B0CF1C /* SDLogin.m in Sources */,
 				2ED35BC718C70A3500EDA245 /* UICollectionView+Addition.m in Sources */,
 				2E54CABF18C5D1D900B23A96 /* SDHomeViewController.m in Sources */,
+				EF3B650018CDA27700B0CF1C /* SDResponseBase.m in Sources */,
 				EFA8EBD018BDD87100144B75 /* SDAppDelegate.m in Sources */,
 				B65DDC1818C586760076408C /* SDMenuTableViewCell.m in Sources */,
 				B65DE2B218C884D50076408C /* SDTopMenuViewController.m in Sources */,
+				EF3B650F18CDAC2500B0CF1C /* SDCheckUserExist.m in Sources */,
 				EFA8EBD618BDD87100144B75 /* SDDynamicsDrawerViewController.m in Sources */,
 				2E54CAF218C5DE1A00B23A96 /* UIFont+Addition.m in Sources */,
 				2EC3785818C61B0F00D4161B /* UINavigationItem+Addition.m in Sources */,
@@ -4014,8 +4084,10 @@
 				2EC3785218C6130800D4161B /* UIColor+Extensions.m in Sources */,
 				B65DDC1F18C58EE60076408C /* UIView+Addition.m in Sources */,
 				2E54CACF18C5D7BF00B23A96 /* SDHomeHeaderCollectionViewCell.m in Sources */,
+				EF3B651318CDAD0000B0CF1C /* SDCreateUser.m in Sources */,
 				2E54CAC618C5D2C200B23A96 /* SDCollectionViewFlowLayout.m in Sources */,
 				EF891DE218CD8EA0005DC780 /* SDNetworkUtils.m in Sources */,
+				EF3B650318CDA2C200B0CF1C /* SDStatus.m in Sources */,
 				B65DDC1B18C587130076408C /* UITableViewCell+Addition.m in Sources */,
 				B64444A918CA374800CDD2D4 /* NSNotificationCenter+Name.m in Sources */,
 				B65DDC1218C57FB30076408C /* UIViewController+Addition.m in Sources */,
