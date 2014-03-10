@@ -840,7 +840,22 @@
 		B65DE27A18C60EB10076408C /* icons-shadow-24px_warning.png in Resources */ = {isa = PBXBuildFile; fileRef = B65DDF5C18C60EB10076408C /* icons-shadow-24px_warning.png */; };
 		B65DE27B18C60EB10076408C /* icons-shadow-24px_warning@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B65DDF5D18C60EB10076408C /* icons-shadow-24px_warning@2x.png */; };
 		B65DE2B218C884D50076408C /* SDTopMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B65DE2B118C884D50076408C /* SDTopMenuViewController.m */; };
+		EF3B650018CDA27700B0CF1C /* SDResponseBase.m in Sources */ = {isa = PBXBuildFile; fileRef = EF3B64FF18CDA27700B0CF1C /* SDResponseBase.m */; };
+		EF3B650318CDA2C200B0CF1C /* SDStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = EF3B650218CDA2C200B0CF1C /* SDStatus.m */; };
+		EF3B650A18CDA8AA00B0CF1C /* SDLogin.m in Sources */ = {isa = PBXBuildFile; fileRef = EF3B650918CDA8AA00B0CF1C /* SDLogin.m */; };
+		EF3B650F18CDAC2500B0CF1C /* SDCheckUserExist.m in Sources */ = {isa = PBXBuildFile; fileRef = EF3B650E18CDAC2500B0CF1C /* SDCheckUserExist.m */; };
+		EF3B651318CDAD0000B0CF1C /* SDCreateUser.m in Sources */ = {isa = PBXBuildFile; fileRef = EF3B651218CDAD0000B0CF1C /* SDCreateUser.m */; };
+		EF3B651718CDAE8500B0CF1C /* SDStories.m in Sources */ = {isa = PBXBuildFile; fileRef = EF3B651618CDAE8500B0CF1C /* SDStories.m */; };
+		EF3B651A18CDAE9400B0CF1C /* SDStory.m in Sources */ = {isa = PBXBuildFile; fileRef = EF3B651918CDAE9400B0CF1C /* SDStory.m */; };
+		EF3B651E18CDB6BE00B0CF1C /* SDLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EF3B651D18CDB6BE00B0CF1C /* SDLoginViewController.m */; };
 		EF658E5E18C461C400FC9E07 /* SDMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EF658E5D18C461C400FC9E07 /* SDMenuViewController.m */; };
+		EF891DD418CD8CD2005DC780 /* libASIHTTPRequest.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EF891DCF18CD8CB5005DC780 /* libASIHTTPRequest.a */; };
+		EF891DD618CD8D6E005DC780 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EF891DD518CD8D6E005DC780 /* CFNetwork.framework */; };
+		EF891DD818CD8D77005DC780 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EF891DD718CD8D77005DC780 /* MobileCoreServices.framework */; };
+		EF891DDA18CD8D80005DC780 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EF891DD918CD8D80005DC780 /* SystemConfiguration.framework */; };
+		EF891DDC18CD8D8A005DC780 /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = EF891DDB18CD8D8A005DC780 /* libxml2.dylib */; };
+		EF891DDE18CD8D90005DC780 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = EF891DDD18CD8D90005DC780 /* libz.dylib */; };
+		EF891DE218CD8EA0005DC780 /* SDNetworkUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = EF891DE118CD8EA0005DC780 /* SDNetworkUtils.m */; };
 		EFA8EBC018BDD87100144B75 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EFA8EBBF18BDD87100144B75 /* Foundation.framework */; };
 		EFA8EBC218BDD87100144B75 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EFA8EBC118BDD87100144B75 /* CoreGraphics.framework */; };
 		EFA8EBC418BDD87100144B75 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EFA8EBC318BDD87100144B75 /* UIKit.framework */; };
@@ -855,6 +870,8 @@
 		EFA8EBE918BDD87100144B75 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = EFA8EBE718BDD87100144B75 /* InfoPlist.strings */; };
 		EFA8EBEB18BDD87100144B75 /* SomdayTests.m in Sources */ = {isa = PBXBuildFile; fileRef = EFA8EBEA18BDD87100144B75 /* SomdayTests.m */; };
 		EFA8EC0E18BDDA8F00144B75 /* libMSDynamicsDrawerViewController.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EFA8EC0918BDDA6D00144B75 /* libMSDynamicsDrawerViewController.a */; };
+		EFD0FC1218CD92CF0026F54F /* ASIFormDataRequest+Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = EFD0FC1118CD92CF0026F54F /* ASIFormDataRequest+Addition.m */; };
+		EFD0FC1B18CD952B0026F54F /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = EFD0FC1A18CD952B0026F54F /* JSONKit.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -878,6 +895,27 @@
 			proxyType = 1;
 			remoteGlobalIDString = BCF1A33314DDB1EC00852800;
 			remoteInfo = GPUImage;
+		};
+		EF891DCE18CD8CB5005DC780 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EF891DC918CD8CB5005DC780 /* ASIHTTPRequest.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = EF891D1718CD8B90005DC780;
+			remoteInfo = ASIHTTPRequest;
+		};
+		EF891DD018CD8CB5005DC780 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EF891DC918CD8CB5005DC780 /* ASIHTTPRequest.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = EF891D2718CD8B90005DC780;
+			remoteInfo = ASIHTTPRequestTests;
+		};
+		EF891DD218CD8CC4005DC780 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EF891DC918CD8CB5005DC780 /* ASIHTTPRequest.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = EF891D1618CD8B90005DC780;
+			remoteInfo = ASIHTTPRequest;
 		};
 		EFA8EBE218BDD87100144B75 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -1775,8 +1813,33 @@
 		B65DDF5D18C60EB10076408C /* icons-shadow-24px_warning@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icons-shadow-24px_warning@2x.png"; sourceTree = "<group>"; };
 		B65DE2B018C884D50076408C /* SDTopMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SDTopMenuViewController.h; path = Classes/SDTopMenuViewController.h; sourceTree = "<group>"; };
 		B65DE2B118C884D50076408C /* SDTopMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SDTopMenuViewController.m; path = Classes/SDTopMenuViewController.m; sourceTree = "<group>"; };
+		EF3B64FE18CDA27700B0CF1C /* SDResponseBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SDResponseBase.h; path = Classes/SDResponseBase.h; sourceTree = "<group>"; };
+		EF3B64FF18CDA27700B0CF1C /* SDResponseBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SDResponseBase.m; path = Classes/SDResponseBase.m; sourceTree = "<group>"; };
+		EF3B650118CDA2C200B0CF1C /* SDStatus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SDStatus.h; path = Classes/SDStatus.h; sourceTree = "<group>"; };
+		EF3B650218CDA2C200B0CF1C /* SDStatus.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SDStatus.m; path = Classes/SDStatus.m; sourceTree = "<group>"; };
+		EF3B650418CDA42500B0CF1C /* SDDataObjectBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SDDataObjectBase.h; path = Classes/SDDataObjectBase.h; sourceTree = "<group>"; };
+		EF3B650818CDA8AA00B0CF1C /* SDLogin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SDLogin.h; path = Classes/SDLogin.h; sourceTree = "<group>"; };
+		EF3B650918CDA8AA00B0CF1C /* SDLogin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SDLogin.m; path = Classes/SDLogin.m; sourceTree = "<group>"; };
+		EF3B650D18CDAC2500B0CF1C /* SDCheckUserExist.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SDCheckUserExist.h; path = Classes/SDCheckUserExist.h; sourceTree = "<group>"; };
+		EF3B650E18CDAC2500B0CF1C /* SDCheckUserExist.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SDCheckUserExist.m; path = Classes/SDCheckUserExist.m; sourceTree = "<group>"; };
+		EF3B651118CDAD0000B0CF1C /* SDCreateUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SDCreateUser.h; path = Classes/SDCreateUser.h; sourceTree = "<group>"; };
+		EF3B651218CDAD0000B0CF1C /* SDCreateUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SDCreateUser.m; path = Classes/SDCreateUser.m; sourceTree = "<group>"; };
+		EF3B651518CDAE8500B0CF1C /* SDStories.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SDStories.h; path = Classes/SDStories.h; sourceTree = "<group>"; };
+		EF3B651618CDAE8500B0CF1C /* SDStories.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SDStories.m; path = Classes/SDStories.m; sourceTree = "<group>"; };
+		EF3B651818CDAE9400B0CF1C /* SDStory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SDStory.h; path = Classes/SDStory.h; sourceTree = "<group>"; };
+		EF3B651918CDAE9400B0CF1C /* SDStory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SDStory.m; path = Classes/SDStory.m; sourceTree = "<group>"; };
+		EF3B651C18CDB6BE00B0CF1C /* SDLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SDLoginViewController.h; path = Classes/SDLoginViewController.h; sourceTree = "<group>"; };
+		EF3B651D18CDB6BE00B0CF1C /* SDLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SDLoginViewController.m; path = Classes/SDLoginViewController.m; sourceTree = "<group>"; };
 		EF658E5C18C461C400FC9E07 /* SDMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SDMenuViewController.h; path = Classes/SDMenuViewController.h; sourceTree = "<group>"; };
 		EF658E5D18C461C400FC9E07 /* SDMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SDMenuViewController.m; path = Classes/SDMenuViewController.m; sourceTree = "<group>"; };
+		EF891DC918CD8CB5005DC780 /* ASIHTTPRequest.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ASIHTTPRequest.xcodeproj; path = "../Other Sources/ASIHTTPRequest/ASIHTTPRequest/ASIHTTPRequest.xcodeproj"; sourceTree = "<group>"; };
+		EF891DD518CD8D6E005DC780 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		EF891DD718CD8D77005DC780 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		EF891DD918CD8D80005DC780 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		EF891DDB18CD8D8A005DC780 /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
+		EF891DDD18CD8D90005DC780 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		EF891DE018CD8EA0005DC780 /* SDNetworkUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SDNetworkUtils.h; path = Classes/SDNetworkUtils.h; sourceTree = "<group>"; };
+		EF891DE118CD8EA0005DC780 /* SDNetworkUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SDNetworkUtils.m; path = Classes/SDNetworkUtils.m; sourceTree = "<group>"; };
 		EFA8EBBC18BDD87100144B75 /* Somday.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Somday.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EFA8EBBF18BDD87100144B75 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		EFA8EBC118BDD87100144B75 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -1796,6 +1859,10 @@
 		EFA8EBE818BDD87100144B75 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		EFA8EBEA18BDD87100144B75 /* SomdayTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = SomdayTests.m; path = ../SomdayTests/SomdayTests.m; sourceTree = "<group>"; };
 		EFA8EC0218BDDA6D00144B75 /* MSDynamicsDrawerViewController.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = MSDynamicsDrawerViewController.xcodeproj; path = "../Other Sources/MSDynamicsDrawerViewController/MSDynamicsDrawerViewController.xcodeproj"; sourceTree = "<group>"; };
+		EFD0FC1018CD92CF0026F54F /* ASIFormDataRequest+Addition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "ASIFormDataRequest+Addition.h"; path = "Classes/ASIFormDataRequest+Addition.h"; sourceTree = "<group>"; };
+		EFD0FC1118CD92CF0026F54F /* ASIFormDataRequest+Addition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "ASIFormDataRequest+Addition.m"; path = "Classes/ASIFormDataRequest+Addition.m"; sourceTree = "<group>"; };
+		EFD0FC1918CD952B0026F54F /* JSONKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONKit.h; sourceTree = "<group>"; };
+		EFD0FC1A18CD952B0026F54F /* JSONKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONKit.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1803,6 +1870,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EF891DDE18CD8D90005DC780 /* libz.dylib in Frameworks */,
+				EF891DDC18CD8D8A005DC780 /* libxml2.dylib in Frameworks */,
+				EF891DDA18CD8D80005DC780 /* SystemConfiguration.framework in Frameworks */,
+				EF891DD818CD8D77005DC780 /* MobileCoreServices.framework in Frameworks */,
+				EF891DD618CD8D6E005DC780 /* CFNetwork.framework in Frameworks */,
+				EF891DD418CD8CD2005DC780 /* libASIHTTPRequest.a in Frameworks */,
 				B65DDC3118C5B1590076408C /* libGPUImage.a in Frameworks */,
 				EFA8EC0E18BDDA8F00144B75 /* libMSDynamicsDrawerViewController.a in Frameworks */,
 				EFA8EBC218BDD87100144B75 /* CoreGraphics.framework in Frameworks */,
@@ -1860,28 +1933,12 @@
 		B65DDC0A18C57D050076408C /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				B65DDC0D18C57D1E0076408C /* SDUtils.h */,
-				B65DDC0E18C57D1E0076408C /* SDUtils.m */,
-				B65DDC1918C587130076408C /* UITableViewCell+Addition.h */,
-				B65DDC1A18C587130076408C /* UITableViewCell+Addition.m */,
-				B65DDC1D18C58EE60076408C /* UIView+Addition.h */,
-				B65DDC1E18C58EE60076408C /* UIView+Addition.m */,
-				B65DDC1018C57FB30076408C /* UIViewController+Addition.h */,
-				B65DDC1118C57FB30076408C /* UIViewController+Addition.m */,
 				2E54CAC418C5D2C200B23A96 /* SDCollectionViewFlowLayout.h */,
 				2E54CAC518C5D2C200B23A96 /* SDCollectionViewFlowLayout.m */,
-				2E54CAF018C5DE1A00B23A96 /* UIFont+Addition.h */,
-				2E54CAF118C5DE1A00B23A96 /* UIFont+Addition.m */,
-				2EC3785018C6130800D4161B /* UIColor+Extensions.h */,
-				2EC3785118C6130800D4161B /* UIColor+Extensions.m */,
-				2EC3785618C61B0F00D4161B /* UINavigationItem+Addition.h */,
-				2EC3785718C61B0F00D4161B /* UINavigationItem+Addition.m */,
-				2EC3785918C6266C00D4161B /* UILabel+Addition.h */,
-				2EC3785A18C6266C00D4161B /* UILabel+Addition.m */,
-				2ED35BC518C70A3500EDA245 /* UICollectionView+Addition.h */,
-				2ED35BC618C70A3500EDA245 /* UICollectionView+Addition.m */,
-				B64444A718CA374800CDD2D4 /* NSNotificationCenter+Name.h */,
-				B64444A818CA374800CDD2D4 /* NSNotificationCenter+Name.m */,
+				B65DDC0D18C57D1E0076408C /* SDUtils.h */,
+				B65DDC0E18C57D1E0076408C /* SDUtils.m */,
+				EF891DE018CD8EA0005DC780 /* SDNetworkUtils.h */,
+				EF891DE118CD8EA0005DC780 /* SDNetworkUtils.m */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
@@ -2813,13 +2870,86 @@
 			name = "Menu - Top";
 			sourceTree = "<group>";
 		};
+		EF3B64F818CDA25A00B0CF1C /* Objects */ = {
+			isa = PBXGroup;
+			children = (
+				EF3B650718CDA87500B0CF1C /* Responses */,
+				EF3B650418CDA42500B0CF1C /* SDDataObjectBase.h */,
+			);
+			name = Objects;
+			sourceTree = "<group>";
+		};
+		EF3B650718CDA87500B0CF1C /* Responses */ = {
+			isa = PBXGroup;
+			children = (
+				EF3B651418CDAE6D00B0CF1C /* Get Story List */,
+				EF3B650C18CDAC1000B0CF1C /* Check User Exist */,
+				EF3B651018CDACE400B0CF1C /* Create User */,
+				EF3B650B18CDAC0600B0CF1C /* Login */,
+				EF3B64FE18CDA27700B0CF1C /* SDResponseBase.h */,
+				EF3B64FF18CDA27700B0CF1C /* SDResponseBase.m */,
+				EF3B650118CDA2C200B0CF1C /* SDStatus.h */,
+				EF3B650218CDA2C200B0CF1C /* SDStatus.m */,
+			);
+			name = Responses;
+			sourceTree = "<group>";
+		};
+		EF3B650B18CDAC0600B0CF1C /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				EF3B650818CDA8AA00B0CF1C /* SDLogin.h */,
+				EF3B650918CDA8AA00B0CF1C /* SDLogin.m */,
+			);
+			name = Login;
+			sourceTree = "<group>";
+		};
+		EF3B650C18CDAC1000B0CF1C /* Check User Exist */ = {
+			isa = PBXGroup;
+			children = (
+				EF3B650D18CDAC2500B0CF1C /* SDCheckUserExist.h */,
+				EF3B650E18CDAC2500B0CF1C /* SDCheckUserExist.m */,
+			);
+			name = "Check User Exist";
+			sourceTree = "<group>";
+		};
+		EF3B651018CDACE400B0CF1C /* Create User */ = {
+			isa = PBXGroup;
+			children = (
+				EF3B651118CDAD0000B0CF1C /* SDCreateUser.h */,
+				EF3B651218CDAD0000B0CF1C /* SDCreateUser.m */,
+			);
+			name = "Create User";
+			sourceTree = "<group>";
+		};
+		EF3B651418CDAE6D00B0CF1C /* Get Story List */ = {
+			isa = PBXGroup;
+			children = (
+				EF3B651518CDAE8500B0CF1C /* SDStories.h */,
+				EF3B651618CDAE8500B0CF1C /* SDStories.m */,
+				EF3B651818CDAE9400B0CF1C /* SDStory.h */,
+				EF3B651918CDAE9400B0CF1C /* SDStory.m */,
+			);
+			name = "Get Story List";
+			sourceTree = "<group>";
+		};
+		EF3B651B18CDB6AB00B0CF1C /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				EF3B651C18CDB6BE00B0CF1C /* SDLoginViewController.h */,
+				EF3B651D18CDB6BE00B0CF1C /* SDLoginViewController.m */,
+			);
+			name = Login;
+			sourceTree = "<group>";
+		};
 		EF658E4D18C459D000FC9E07 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
 				EF658E5A18C4615C00FC9E07 /* App Delegate */,
+				EF891DDF18CD8E01005DC780 /* Class-Categories */,
+				EF3B64F818CDA25A00B0CF1C /* Objects */,
 				B65DDC0A18C57D050076408C /* Utils */,
-				2E54CACC18C5D78E00B23A96 /* Views */,
 				EF658E5B18C4616D00FC9E07 /* ViewControllers */,
+				2E54CACC18C5D78E00B23A96 /* Views */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -2836,6 +2966,7 @@
 		EF658E5B18C4616D00FC9E07 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				EF3B651B18CDB6AB00B0CF1C /* Login */,
 				B65DE2AA18C884940076408C /* Home */,
 				B65DDC1418C5865C0076408C /* Main */,
 				B65DDC1318C586520076408C /* Menu - Left */,
@@ -2843,6 +2974,42 @@
 				B65DDC3218C5B2560076408C /* Search */,
 			);
 			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		EF891DCA18CD8CB5005DC780 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				EF891DCF18CD8CB5005DC780 /* libASIHTTPRequest.a */,
+				EF891DD118CD8CB5005DC780 /* ASIHTTPRequestTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		EF891DDF18CD8E01005DC780 /* Class-Categories */ = {
+			isa = PBXGroup;
+			children = (
+				EFD0FC1018CD92CF0026F54F /* ASIFormDataRequest+Addition.h */,
+				EFD0FC1118CD92CF0026F54F /* ASIFormDataRequest+Addition.m */,
+				B64444A718CA374800CDD2D4 /* NSNotificationCenter+Name.h */,
+				B64444A818CA374800CDD2D4 /* NSNotificationCenter+Name.m */,
+				2ED35BC518C70A3500EDA245 /* UICollectionView+Addition.h */,
+				2ED35BC618C70A3500EDA245 /* UICollectionView+Addition.m */,
+				2EC3785018C6130800D4161B /* UIColor+Extensions.h */,
+				2EC3785118C6130800D4161B /* UIColor+Extensions.m */,
+				2E54CAF018C5DE1A00B23A96 /* UIFont+Addition.h */,
+				2E54CAF118C5DE1A00B23A96 /* UIFont+Addition.m */,
+				2EC3785918C6266C00D4161B /* UILabel+Addition.h */,
+				2EC3785A18C6266C00D4161B /* UILabel+Addition.m */,
+				2EC3785618C61B0F00D4161B /* UINavigationItem+Addition.h */,
+				2EC3785718C61B0F00D4161B /* UINavigationItem+Addition.m */,
+				B65DDC1918C587130076408C /* UITableViewCell+Addition.h */,
+				B65DDC1A18C587130076408C /* UITableViewCell+Addition.m */,
+				B65DDC1D18C58EE60076408C /* UIView+Addition.h */,
+				B65DDC1E18C58EE60076408C /* UIView+Addition.m */,
+				B65DDC1018C57FB30076408C /* UIViewController+Addition.h */,
+				B65DDC1118C57FB30076408C /* UIViewController+Addition.m */,
+			);
+			name = "Class-Categories";
 			sourceTree = "<group>";
 		};
 		EFA8EBB318BDD87100144B75 = {
@@ -2868,6 +3035,11 @@
 		EFA8EBBE18BDD87100144B75 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				EF891DDD18CD8D90005DC780 /* libz.dylib */,
+				EF891DDB18CD8D8A005DC780 /* libxml2.dylib */,
+				EF891DD918CD8D80005DC780 /* SystemConfiguration.framework */,
+				EF891DD718CD8D77005DC780 /* MobileCoreServices.framework */,
+				EF891DD518CD8D6E005DC780 /* CFNetwork.framework */,
 				EFA8EBBF18BDD87100144B75 /* Foundation.framework */,
 				EFA8EBC118BDD87100144B75 /* CoreGraphics.framework */,
 				EFA8EBC318BDD87100144B75 /* UIKit.framework */,
@@ -2920,10 +3092,12 @@
 		EFA8EC0118BDDA4A00144B75 /* Other Sources */ = {
 			isa = PBXGroup;
 			children = (
-				2E524E6E18C8E204000C0C27 /* THSpringyFlowLayout.h */,
-				2E524E6F18C8E204000C0C27 /* THSpringyFlowLayout.m */,
+				EFD0FC1818CD952B0026F54F /* JSONKit */,
+				EF891DC918CD8CB5005DC780 /* ASIHTTPRequest.xcodeproj */,
 				B65DDC2518C5B1410076408C /* GPUImage.xcodeproj */,
 				EFA8EC0218BDDA6D00144B75 /* MSDynamicsDrawerViewController.xcodeproj */,
+				2E524E6E18C8E204000C0C27 /* THSpringyFlowLayout.h */,
+				2E524E6F18C8E204000C0C27 /* THSpringyFlowLayout.m */,
 			);
 			name = "Other Sources";
 			sourceTree = "<group>";
@@ -2935,6 +3109,16 @@
 				EFA8EC0B18BDDA6D00144B75 /* MSDynamicsDrawerViewControllerTests.xctest */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		EFD0FC1818CD952B0026F54F /* JSONKit */ = {
+			isa = PBXGroup;
+			children = (
+				EFD0FC1918CD952B0026F54F /* JSONKit.h */,
+				EFD0FC1A18CD952B0026F54F /* JSONKit.m */,
+			);
+			name = JSONKit;
+			path = "../Other Sources/JSONKit";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -2952,6 +3136,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				EF891DD318CD8CC4005DC780 /* PBXTargetDependency */,
 				B65DDC3018C5B1500076408C /* PBXTargetDependency */,
 				EFA8EC0D18BDDA8600144B75 /* PBXTargetDependency */,
 			);
@@ -3006,6 +3191,10 @@
 			projectDirPath = "";
 			projectReferences = (
 				{
+					ProductGroup = EF891DCA18CD8CB5005DC780 /* Products */;
+					ProjectRef = EF891DC918CD8CB5005DC780 /* ASIHTTPRequest.xcodeproj */;
+				},
+				{
 					ProductGroup = B65DDC2618C5B1410076408C /* Products */;
 					ProjectRef = B65DDC2518C5B1410076408C /* GPUImage.xcodeproj */;
 				},
@@ -3035,6 +3224,20 @@
 			fileType = wrapper.cfbundle;
 			path = GPUImageTests.octest;
 			remoteRef = B65DDC2D18C5B1420076408C /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		EF891DCF18CD8CB5005DC780 /* libASIHTTPRequest.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libASIHTTPRequest.a;
+			remoteRef = EF891DCE18CD8CB5005DC780 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		EF891DD118CD8CB5005DC780 /* ASIHTTPRequestTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = ASIHTTPRequestTests.xctest;
+			remoteRef = EF891DD018CD8CB5005DC780 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		EFA8EC0918BDDA6D00144B75 /* libMSDynamicsDrawerViewController.a */ = {
@@ -3896,11 +4099,16 @@
 				2E84744918CD895100D49FBA /* SDBaseGridView.m in Sources */,
 				2E524E7018C8E204000C0C27 /* THSpringyFlowLayout.m in Sources */,
 				EF658E5E18C461C400FC9E07 /* SDMenuViewController.m in Sources */,
+				EFD0FC1218CD92CF0026F54F /* ASIFormDataRequest+Addition.m in Sources */,
+				EF3B650A18CDA8AA00B0CF1C /* SDLogin.m in Sources */,
+				EF3B651718CDAE8500B0CF1C /* SDStories.m in Sources */,
 				2ED35BC718C70A3500EDA245 /* UICollectionView+Addition.m in Sources */,
 				2E54CABF18C5D1D900B23A96 /* SDHomeViewController.m in Sources */,
+				EF3B650018CDA27700B0CF1C /* SDResponseBase.m in Sources */,
 				EFA8EBD018BDD87100144B75 /* SDAppDelegate.m in Sources */,
 				B65DDC1818C586760076408C /* SDMenuTableViewCell.m in Sources */,
 				B65DE2B218C884D50076408C /* SDTopMenuViewController.m in Sources */,
+				EF3B650F18CDAC2500B0CF1C /* SDCheckUserExist.m in Sources */,
 				EFA8EBD618BDD87100144B75 /* SDDynamicsDrawerViewController.m in Sources */,
 				2E54CAF218C5DE1A00B23A96 /* UIFont+Addition.m in Sources */,
 				2EC3785818C61B0F00D4161B /* UINavigationItem+Addition.m in Sources */,
@@ -3908,13 +4116,19 @@
 				2EC3785218C6130800D4161B /* UIColor+Extensions.m in Sources */,
 				B65DDC1F18C58EE60076408C /* UIView+Addition.m in Sources */,
 				2E54CACF18C5D7BF00B23A96 /* SDHomeHeaderCollectionViewCell.m in Sources */,
+				EF3B651318CDAD0000B0CF1C /* SDCreateUser.m in Sources */,
 				2E54CAC618C5D2C200B23A96 /* SDCollectionViewFlowLayout.m in Sources */,
+				EF891DE218CD8EA0005DC780 /* SDNetworkUtils.m in Sources */,
+				EF3B650318CDA2C200B0CF1C /* SDStatus.m in Sources */,
+				EF3B651E18CDB6BE00B0CF1C /* SDLoginViewController.m in Sources */,
 				B65DDC1B18C587130076408C /* UITableViewCell+Addition.m in Sources */,
 				B64444A918CA374800CDD2D4 /* NSNotificationCenter+Name.m in Sources */,
 				B65DDC1218C57FB30076408C /* UIViewController+Addition.m in Sources */,
 				EFA8EBCC18BDD87100144B75 /* main.m in Sources */,
 				B65DDC3518C5B2690076408C /* SDSearchViewController.m in Sources */,
+				EF3B651A18CDAE9400B0CF1C /* SDStory.m in Sources */,
 				2EC3784918C5F0BA00D4161B /* SDHomeNavigationTitleView.m in Sources */,
+				EFD0FC1B18CD952B0026F54F /* JSONKit.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3933,6 +4147,11 @@
 			isa = PBXTargetDependency;
 			name = GPUImage;
 			targetProxy = B65DDC2F18C5B1500076408C /* PBXContainerItemProxy */;
+		};
+		EF891DD318CD8CC4005DC780 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = ASIHTTPRequest;
+			targetProxy = EF891DD218CD8CC4005DC780 /* PBXContainerItemProxy */;
 		};
 		EFA8EBE318BDD87100144B75 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -4054,12 +4273,14 @@
 				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = NO;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Bank of Montreal";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Somday/Somday-Prefix.pch";
 				HEADER_SEARCH_PATHS = (
 					"$(SOURCE_ROOT)/../Other\\ Sources/GPUImage/framework/Source",
 					"$(SOURCE_ROOT)/../Other\\ Sources/GPUImage/framework/Source/iOS",
+					"$(SOURCE_ROOT)/../Other\\ Sources/ASIHTTPRequest/**",
 					"$(SOURCE_ROOT)/../Other\\ Sources/MSDynamicsDrawerViewController/MSDynamicsDrawerViewController",
 					"$(inherited)",
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
@@ -4083,12 +4304,14 @@
 				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = NO;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Bank of Montreal";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Somday/Somday-Prefix.pch";
 				HEADER_SEARCH_PATHS = (
 					"$(SOURCE_ROOT)/../Other\\ Sources/GPUImage/framework/Source",
 					"$(SOURCE_ROOT)/../Other\\ Sources/GPUImage/framework/Source/iOS",
+					"$(SOURCE_ROOT)/../Other\\ Sources/ASIHTTPRequest/**",
 					"$(SOURCE_ROOT)/../Other\\ Sources/MSDynamicsDrawerViewController/MSDynamicsDrawerViewController",
 					"$(inherited)",
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,

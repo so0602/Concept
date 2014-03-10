@@ -490,7 +490,8 @@ void MSDynamicsDrawerDirectionActionForMaskedValues(NSInteger direction, MSDynam
     
     [self.paneBoundaryCollisionBehavior removeAllBoundaries];
     if( (paneState == MSDynamicsDrawerPaneStateMenu && self.paneState == MSDynamicsDrawerPaneStateOpen) ||
-       (paneState == MSDynamicsDrawerPaneStateMenu && self.paneState == MSDynamicsDrawerPaneStateMenu) ){
+       (paneState == MSDynamicsDrawerPaneStateMenu && self.paneState == MSDynamicsDrawerPaneStateMenu) ||
+       (paneState == MSDynamicsDrawerPaneStateMenu && self.paneState == MSDynamicsDrawerPaneStateClosed && CGRectGetMinX(self.paneView.frame) >= MSMenuWidth ) ){
         UIBezierPath* path = [self boundaryPathForState:MSDynamicsDrawerPaneStateClosed direction:self.currentDrawerDirection];
         
         CGRect boundary = CGRectZero;
