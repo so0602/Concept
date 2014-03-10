@@ -22,6 +22,7 @@
 		2E54CAE618C5DB9300B23A96 /* JosefinSans-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2E54CADB18C5DB9300B23A96 /* JosefinSans-Thin.ttf */; };
 		2E54CAE718C5DB9300B23A96 /* JosefinSans-ThinItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2E54CADC18C5DB9300B23A96 /* JosefinSans-ThinItalic.ttf */; };
 		2E54CAF218C5DE1A00B23A96 /* UIFont+Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E54CAF118C5DE1A00B23A96 /* UIFont+Addition.m */; };
+		2E84744918CD895100D49FBA /* SDBaseGridView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E84744818CD895100D49FBA /* SDBaseGridView.m */; };
 		2EC3784918C5F0BA00D4161B /* SDHomeNavigationTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EC3784818C5F0BA00D4161B /* SDHomeNavigationTitleView.m */; };
 		2EC3784F18C5F0D100D4161B /* SDHomeNavigationTitleView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2EC3784E18C5F0D100D4161B /* SDHomeNavigationTitleView.xib */; };
 		2EC3785218C6130800D4161B /* UIColor+Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EC3785118C6130800D4161B /* UIColor+Extensions.m */; };
@@ -972,6 +973,8 @@
 		2E54CADC18C5DB9300B23A96 /* JosefinSans-ThinItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "JosefinSans-ThinItalic.ttf"; sourceTree = "<group>"; };
 		2E54CAF018C5DE1A00B23A96 /* UIFont+Addition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIFont+Addition.h"; path = "Classes/UIFont+Addition.h"; sourceTree = "<group>"; };
 		2E54CAF118C5DE1A00B23A96 /* UIFont+Addition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIFont+Addition.m"; path = "Classes/UIFont+Addition.m"; sourceTree = "<group>"; };
+		2E84744718CD895100D49FBA /* SDBaseGridView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SDBaseGridView.h; path = Classes/SDBaseGridView.h; sourceTree = "<group>"; };
+		2E84744818CD895100D49FBA /* SDBaseGridView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SDBaseGridView.m; path = Classes/SDBaseGridView.m; sourceTree = "<group>"; };
 		2EC3784718C5F0BA00D4161B /* SDHomeNavigationTitleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SDHomeNavigationTitleView.h; path = Classes/SDHomeNavigationTitleView.h; sourceTree = "<group>"; };
 		2EC3784818C5F0BA00D4161B /* SDHomeNavigationTitleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SDHomeNavigationTitleView.m; path = Classes/SDHomeNavigationTitleView.m; sourceTree = "<group>"; };
 		2EC3784E18C5F0D100D4161B /* SDHomeNavigationTitleView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SDHomeNavigationTitleView.xib; path = Classes/SDHomeNavigationTitleView.xib; sourceTree = "<group>"; };
@@ -1877,6 +1880,8 @@
 				2EC3784718C5F0BA00D4161B /* SDHomeNavigationTitleView.h */,
 				2EC3784818C5F0BA00D4161B /* SDHomeNavigationTitleView.m */,
 				2EC3784E18C5F0D100D4161B /* SDHomeNavigationTitleView.xib */,
+				2E84744718CD895100D49FBA /* SDBaseGridView.h */,
+				2E84744818CD895100D49FBA /* SDBaseGridView.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -3993,6 +3998,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B65DDC0F18C57D1E0076408C /* SDUtils.m in Sources */,
+				2E84744918CD895100D49FBA /* SDBaseGridView.m in Sources */,
 				2E524E7018C8E204000C0C27 /* THSpringyFlowLayout.m in Sources */,
 				EF658E5E18C461C400FC9E07 /* SDMenuViewController.m in Sources */,
 				EFD0FC1218CD92CF0026F54F /* ASIFormDataRequest+Addition.m in Sources */,
