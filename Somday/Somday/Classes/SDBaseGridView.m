@@ -121,13 +121,7 @@ typedef NSUInteger SDGridMenuState;
     self.layer.shadowPath =  [UIBezierPath bezierPathWithRoundedRect:self.bounds cornerRadius:self.layer.cornerRadius].CGPath;
     
     self.backgroundImageView.layer.masksToBounds = YES;
-    self.backgroundImageView.layer.cornerRadius = 8.0f;
-    
-//    self.backgroundImageView.layer.shadowColor = [UIColor blackColor].CGColor;
-//    self.backgroundImageView.layer.shadowOffset = CGSizeMake(3.0, 3.0);
-//    self.backgroundImageView.layer.shadowOpacity = 0.7f;
-//    self.backgroundImageView.layer.shadowPath =  [UIBezierPath bezierPathWithRoundedRect:self.backgroundImageView.bounds cornerRadius:self.backgroundImageView.layer.cornerRadius].CGPath;
-    
+    self.backgroundImageView.layer.cornerRadius = 8.0f;    
     
     // Add Gesture recognizer
     UISwipeGestureRecognizer *recognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(rightSwipeHandle:)];
@@ -336,6 +330,10 @@ typedef NSUInteger SDGridMenuState;
     origamiLayer.frame = view.bounds;
     origamiLayer.backgroundColor = [UIColor clearColor].CGColor;
     origamiLayer.sublayerTransform = transform;
+    origamiLayer.shadowColor = [UIColor blackColor].CGColor;
+    origamiLayer.shadowOffset = CGSizeMake(3.0, 3.0);
+    origamiLayer.shadowOpacity = 0.7f;
+    
     [view.layer addSublayer:origamiLayer];
     
     //setup rotation angle
@@ -465,6 +463,11 @@ typedef NSUInteger SDGridMenuState;
     origamiLayer.frame = view.bounds;
     origamiLayer.backgroundColor = [UIColor clearColor].CGColor;
     origamiLayer.sublayerTransform = transform;
+    
+    origamiLayer.shadowColor = [UIColor blackColor].CGColor;
+    origamiLayer.shadowOffset = CGSizeMake(3.0, 3.0);
+    origamiLayer.shadowOpacity = 0.7f;
+    
     [view.layer addSublayer:origamiLayer];
     
     //setup rotation angle
