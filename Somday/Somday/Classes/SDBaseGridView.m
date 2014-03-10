@@ -69,6 +69,10 @@ typedef NSUInteger SDGridMenuState;
 
 @synthesize origamiLayer, viewSnapShot;
 
++ (CGFloat)heightForCell
+{
+    return 304.0f;
+}
 
 - (id)initWithFrame:(CGRect)frame
 {

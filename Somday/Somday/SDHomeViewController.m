@@ -14,6 +14,7 @@
 #import "UINavigationItem+Addition.h"
 #import "UILabel+Addition.h"
 #import "UICollectionView+Addition.h"
+#import "NSNotificationCenter+Name.h"
 #import <objc/message.h>
 
 #define WidthForGrid [UIScreen mainScreen].bounds.size.width - 16 // padding = 8
@@ -77,6 +78,7 @@ static NSString *CellIdentifier = @"CollectionViewCell";
     [picture1 addTarget:_bgImageFilter2];
     [picture1 processImage];
     
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(topMenuWillClose) name:TopMenuWillClose object:nil];
     
     {
         // Debug
@@ -99,6 +101,11 @@ static NSString *CellIdentifier = @"CollectionViewCell";
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 #pragma mark -
@@ -189,13 +196,16 @@ static NSString *CellIdentifier = @"CollectionViewCell";
     if (indexPath.row == 0)
         return CGSizeMake(WidthForGrid, [SDHomeHeaderCollectionViewCell heightForCell]);
     else
-        return CGSizeMake(WidthForGrid, WidthForGrid); // TODO: Hardcode for now. Should get the height from the collectionViewCell.
+        return CGSizeMake(WidthForGrid, [SDBaseGridView heightForCell]); // TODO: Hardcode for now. Should get the height from the collectionViewCell.
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    SDBaseGridView *cell = (SDBaseGridView*)[collectionView cellForItemAtIndexPath:indexPath];
-    [cell toggleMenu];
+    
+    if (indexPath.row > 0) {
+        SDBaseGridView *cell = (SDBaseGridView*)[collectionView cellForItemAtIndexPath:indexPath];
+        [cell toggleMenu];
+    }
 }
 
 
@@ -263,6 +273,11 @@ static NSString *CellIdentifier = @"CollectionViewCell";
 {
     [self updateBackgroundImageToCurrentIndex:NO];
 
+}
+
+- (void)topMenuWillClose
+{
+    [SDUtils rotateBackView:_buttons[1]];
 }
 
 @end

@@ -8,6 +8,10 @@
 
 #import "SDHomeHeaderCollectionViewCell.h"
 
+@interface SDHomeHeaderCollectionViewCell()
+@property (nonatomic) NSDateFormatter *dateformatter;
+@end
+
 @implementation SDHomeHeaderCollectionViewCell
 
 + (CGFloat)heightForCell
@@ -30,13 +34,37 @@
     self = [super initWithFrame:frame];
     if (self) {
         // Initialization code
+        [self initHeaderCollectionViewCell];
     }
     return self;
+}
+
+- (id)initWithCoder:(NSCoder *)aDecoder
+{
+    self = [super initWithCoder:aDecoder];
+    if (self) {
+        // Initialization code
+        [self initHeaderCollectionViewCell];
+    }
+    return self;
+}
+
+- (void)initHeaderCollectionViewCell
+{
+    self.dateformatter = [[NSDateFormatter alloc] init];
+    [_dateformatter setLocale:[NSLocale currentLocale]];
+    [_dateformatter setDateFormat:SDDateFormat_dd_MMM_yyyy];
 }
 
 - (void)layoutSubviews
 {
     [super layoutSubviews];
+    
+    ((UILabel *)_labels[1]).text = [[_dateformatter stringFromDate:[NSDate date]] capitalizedString];
+    _dateformatter.dateFormat=@"EEEE";
+    ((UILabel *)_labels[2]).text = [[_dateformatter stringFromDate:[NSDate date]] capitalizedString];
+
+    
     // Check user langauge and adjust label size
     ((UILabel *)_labels[0]).font = [[self class] fontForDayLabel];
     ((UILabel *)_labels[1]).font = [[self class] fontForDateLabel];
