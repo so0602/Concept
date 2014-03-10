@@ -118,6 +118,7 @@ const CGFloat SDTimeOutSeconds = 60.0f;
         if( response.isSuccess && completionBlock ){
             completionBlock(response);
         }else if( !response.isSuccess && failedBlock ){
+            response.request = request;
             failedBlock(response);
         }
     }];
