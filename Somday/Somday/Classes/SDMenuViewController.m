@@ -15,6 +15,7 @@
 #import "SDUtils.h"
 
 #import "UIViewController+Addition.h"
+#import "NSNotificationCenter+Name.h"
 
 @interface SDMenuViewController ()<SDSearchViewControllerDelegate>
 
@@ -30,11 +31,15 @@
 
 @property (nonatomic) BOOL changingTab;
 
+@property (nonatomic, strong) UIImage* backgroundImage;
+
 -(void)initialize;
 
 -(void)showSearchView;
 -(void)hideSearchView;
 -(void)addSearchView:(BOOL)screenCapture;
+
+-(void)homeBackgroundImageDidChange:(NSNotification*)notification;
 
 @end
 
@@ -58,6 +63,8 @@
 
 -(void)viewDidLoad{
     [super viewDidLoad];
+    
+    self.backgroundImageView.image = self.backgroundImage;
 }
 
 #pragma mark - SDMenuViewController
@@ -99,6 +106,9 @@
                                      @(SDPaneViewControllerType_Chats) : @"icons-shadow-24px_chats",
                                      @(SDPaneViewControllerType_Settings) : @"icons-shadow-24px_setting"
                                      };
+    
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:HomeBackgroundImageChangedNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(homeBackgroundImageDidChange:) name:HomeBackgroundImageChangedNotification object:nil];
 }
 
 -(void)showSearchView{
@@ -153,6 +163,11 @@
     if( !viewController.view.superview ){
         [self.view addSubview:viewController.view];
     }
+}
+
+-(void)homeBackgroundImageDidChange:(NSNotification*)notification{
+    self.backgroundImage = notification.object;
+    self.backgroundImageView.image = self.backgroundImage;
 }
 
 -(SDPaneViewControllerType)paneViewControllerTypeForIndexPath:(NSIndexPath*)indexPath{
