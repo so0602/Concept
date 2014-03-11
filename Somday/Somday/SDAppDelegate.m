@@ -10,12 +10,23 @@
 
 #import "MSDynamicsDrawerViewController.h"
 
+#import "SDUtils.h"
+
+#import "UIViewController+Addition.h"
+
 @implementation SDAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    if( [self.window.rootViewController isKindOfClass:[SDDynamicsDrawerViewController class]] ){
-        self.mainViewController = (id)self.window.rootViewController;
+    self.navigationController = (id)self.window.rootViewController;
+    
+    self.mainViewController = [SDDynamicsDrawerViewController viewControllerFromStoryboardWithIdentifier:@"Main"];
+    self.loginViewController = [SDLoginViewController viewControllerFromStoryboardWithIdentifier:@"Login"];
+    
+    if( ![SDUtils username] ){
+        [self.navigationController pushViewController:self.loginViewController animated:FALSE];
+    }else{
+        [self.navigationController pushViewController:self.mainViewController animated:FALSE];
     }
     
     return YES;

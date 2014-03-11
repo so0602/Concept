@@ -840,7 +840,6 @@
 		B65DE27B18C60EB10076408C /* icons-shadow-24px_warning@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B65DDF5D18C60EB10076408C /* icons-shadow-24px_warning@2x.png */; };
 		B65DE2B218C884D50076408C /* SDTopMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B65DE2B118C884D50076408C /* SDTopMenuViewController.m */; };
 		B6BE49B818CEEDEE00DA7313 /* iphone4-login-1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = B6BE49B718CEEDEE00DA7313 /* iphone4-login-1.jpg */; };
-		B6BE49C018CEF24900DA7313 /* SDLoginMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6BE49BF18CEF24900DA7313 /* SDLoginMainViewController.m */; };
 		EF3B650018CDA27700B0CF1C /* SDResponseBase.m in Sources */ = {isa = PBXBuildFile; fileRef = EF3B64FF18CDA27700B0CF1C /* SDResponseBase.m */; };
 		EF3B650318CDA2C200B0CF1C /* SDStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = EF3B650218CDA2C200B0CF1C /* SDStatus.m */; };
 		EF3B650A18CDA8AA00B0CF1C /* SDLogin.m in Sources */ = {isa = PBXBuildFile; fileRef = EF3B650918CDA8AA00B0CF1C /* SDLogin.m */; };
@@ -1813,8 +1812,6 @@
 		B65DE2B018C884D50076408C /* SDTopMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SDTopMenuViewController.h; path = Classes/SDTopMenuViewController.h; sourceTree = "<group>"; };
 		B65DE2B118C884D50076408C /* SDTopMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SDTopMenuViewController.m; path = Classes/SDTopMenuViewController.m; sourceTree = "<group>"; };
 		B6BE49B718CEEDEE00DA7313 /* iphone4-login-1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "iphone4-login-1.jpg"; path = "../../../../../Desktop/Somday/Login/iphone4-login-1.jpg"; sourceTree = "<group>"; };
-		B6BE49BE18CEF24900DA7313 /* SDLoginMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SDLoginMainViewController.h; path = Classes/SDLoginMainViewController.h; sourceTree = "<group>"; };
-		B6BE49BF18CEF24900DA7313 /* SDLoginMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SDLoginMainViewController.m; path = Classes/SDLoginMainViewController.m; sourceTree = "<group>"; };
 		EF3B64FE18CDA27700B0CF1C /* SDResponseBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SDResponseBase.h; path = Classes/SDResponseBase.h; sourceTree = "<group>"; };
 		EF3B64FF18CDA27700B0CF1C /* SDResponseBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SDResponseBase.m; path = Classes/SDResponseBase.m; sourceTree = "<group>"; };
 		EF3B650118CDA2C200B0CF1C /* SDStatus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SDStatus.h; path = Classes/SDStatus.h; sourceTree = "<group>"; };
@@ -2939,8 +2936,6 @@
 			children = (
 				EF3B651C18CDB6BE00B0CF1C /* SDLoginViewController.h */,
 				EF3B651D18CDB6BE00B0CF1C /* SDLoginViewController.m */,
-				B6BE49BE18CEF24900DA7313 /* SDLoginMainViewController.h */,
-				B6BE49BF18CEF24900DA7313 /* SDLoginMainViewController.m */,
 			);
 			name = Login;
 			sourceTree = "<group>";
@@ -4119,7 +4114,6 @@
 				2EC3785218C6130800D4161B /* UIColor+Extensions.m in Sources */,
 				B65DDC1F18C58EE60076408C /* UIView+Addition.m in Sources */,
 				2E54CACF18C5D7BF00B23A96 /* SDHomeHeaderCollectionViewCell.m in Sources */,
-				B6BE49C018CEF24900DA7313 /* SDLoginMainViewController.m in Sources */,
 				EF3B651318CDAD0000B0CF1C /* SDCreateUser.m in Sources */,
 				2E54CAC618C5D2C200B23A96 /* SDCollectionViewFlowLayout.m in Sources */,
 				EF891DE218CD8EA0005DC780 /* SDNetworkUtils.m in Sources */,

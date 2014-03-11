@@ -16,6 +16,8 @@
 #define SDDateFormat_dd_MMM_yyyy @"dd MMM yyyy"
 #define SDDateFormat_dd_MMMM @"dd MMMM"
 
+#import "SDLogin.h"
+
 @interface SDUtils : NSObject
 
 +(UIStoryboard*)mainStoryboard;
@@ -23,5 +25,9 @@
 
 +(void)rotateView:(UIView*)view;
 +(void)rotateBackView:(UIView*)view;
+
++(NSString*)username;
++(NSString*)password;
++(void)setUsername:(NSString*)username password:(NSString*)password;
 
 @end

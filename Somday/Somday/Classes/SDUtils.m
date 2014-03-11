@@ -53,5 +53,21 @@
     }];
 }
 
++(NSString*)username{
+    NSUserDefaults* userDefault = [NSUserDefaults standardUserDefaults];
+    return [userDefault objectForKey:@"USERNAME"];
+}
+
++(NSString*)password{
+    NSUserDefaults* userDefault = [NSUserDefaults standardUserDefaults];
+    return [userDefault objectForKey:@"PASSWORD"];
+}
+
++(void)setUsername:(NSString*)username password:(NSString*)password{
+    NSUserDefaults* userDefault = [NSUserDefaults standardUserDefaults];
+    [userDefault setObject:username forKey:@"USERNAME"];
+    [userDefault setObject:password forKey:@"PASSWORD"];
+    [userDefault synchronize];
+}
 
 @end

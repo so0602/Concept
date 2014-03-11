@@ -9,11 +9,14 @@
 #import <UIKit/UIKit.h>
 
 #import "SDDynamicsDrawerViewController.h"
+#import "SDLoginViewController.h"
 
 @interface SDAppDelegate : UIResponder <UIApplicationDelegate>
 
-@property (strong, nonatomic) UIWindow *window;
+@property (nonatomic, strong) UIWindow *window;
 
-@property (strong, nonatomic) SDDynamicsDrawerViewController* mainViewController;
+@property (nonatomic, strong) UINavigationController* navigationController;
+@property (nonatomic, strong) SDLoginViewController* loginViewController;
+@property (nonatomic, strong) SDDynamicsDrawerViewController* mainViewController;
 
 @end
