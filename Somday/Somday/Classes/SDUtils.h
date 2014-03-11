@@ -29,5 +29,6 @@
 +(NSString*)username;
 +(NSString*)password;
 +(void)setUsername:(NSString*)username password:(NSString*)password;
++(void)logout;
 
 @end

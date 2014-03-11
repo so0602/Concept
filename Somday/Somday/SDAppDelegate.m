@@ -21,13 +21,11 @@
     self.navigationController = (id)self.window.rootViewController;
     
     self.mainViewController = [SDDynamicsDrawerViewController viewControllerFromStoryboardWithIdentifier:@"Main"];
+    self.mainViewController.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
+    
     self.loginViewController = [SDLoginViewController viewControllerFromStoryboardWithIdentifier:@"Login"];
     
-    if( ![SDUtils username] ){
-        [self.navigationController pushViewController:self.loginViewController animated:FALSE];
-    }else{
-        [self.navigationController pushViewController:self.mainViewController animated:FALSE];
-    }
+    [self.navigationController pushViewController:self.loginViewController animated:FALSE];
     
     return YES;
 }

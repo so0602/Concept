@@ -70,4 +70,11 @@
     [userDefault synchronize];
 }
 
++(void)logout{
+    NSUserDefaults* userDefault = [NSUserDefaults standardUserDefaults];
+    [userDefault removeObjectForKey:@"USERNAME"];
+    [userDefault removeObjectForKey:@"PASSWORD"];
+    [userDefault synchronize];
+}
+
 @end

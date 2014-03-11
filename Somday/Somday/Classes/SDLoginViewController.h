@@ -10,4 +10,6 @@
 
 @interface SDLoginViewController : UIViewController
 
+-(void)autoLogin;
+
 @end

@@ -8,11 +8,13 @@
 
 #import "SDLoginViewController.h"
 
-#import "UIViewController+Addition.h"
-
 #import "SDNetworkUtils.h"
 
 #import "SDAppDelegate.h"
+
+#import "SDForgotPasswordViewController.h"
+
+#import "UIViewController+Addition.h"
 
 @interface SDLoginViewController ()
 
@@ -21,10 +23,17 @@
 @property (nonatomic, strong) IBOutlet UITextField* usernameTextField;
 @property (nonatomic, strong) IBOutlet UITextField* passwordTextField;
 @property (nonatomic, strong) IBOutlet UIButton* loginButton;
+@property (nonatomic, strong) IBOutlet UIButton* forgotButton;
 
 @end
 
 @implementation SDLoginViewController
+
+-(void)autoLogin{
+    [self touchUpInside:self.loginButton];
+}
+
+#pragma mark - View Lifecycle
 
 -(void)viewDidLoad{
     [super viewDidLoad];
@@ -34,6 +43,10 @@
     
     self.usernameTextField.text = @"test9@test.com";
     self.passwordTextField.text = @"test";
+    
+    if( [SDUtils username] ){
+        [self autoLogin];
+    }
 }
 
 #pragma mark - UIViewController Additions
@@ -47,7 +60,9 @@
             
             SDAppDelegate* delegate = [UIApplication sharedApplication].delegate;
             if( [delegate.loginViewController isEqual:self] ){
-                [self.navigationController pushViewController:delegate.mainViewController animated:TRUE];
+                [self presentViewController:delegate.mainViewController animated:TRUE completion:^{
+                    
+                }];
             }else{
                 [self dismissViewControllerAnimated:TRUE completion:^{
                     
@@ -55,6 +70,12 @@
             }
         } failed:^(SDLogin *response) {
             SDLog(@"%@, %@", response.status.message, response.request.responseString);
+        }];
+    }else if( [self.forgotButton isEqual:sender] ){
+        SDForgotPasswordViewController* viewController = [SDForgotPasswordViewController viewControllerFromStoryboardWithIdentifier:@"ForgotPassword"];
+        viewController.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
+        [self presentViewController:viewController animated:TRUE completion:^{
+            
         }];
     }
 }

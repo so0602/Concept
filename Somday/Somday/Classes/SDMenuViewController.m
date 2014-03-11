@@ -8,6 +8,8 @@
 
 #import "SDMenuViewController.h"
 
+#import "SDAppDelegate.h"
+
 #import "SDSearchViewController.h"
 
 #import "SDMenuTableViewCell.h"
@@ -185,6 +187,14 @@
         case SDPaneViewControllerType_Search:
         {
             [self showSearchView];
+        }
+            break;
+        case SDPaneViewControllerType_User:
+        {
+            [SDUtils logout];
+            [self dismissViewControllerAnimated:TRUE completion:^{
+                
+            }];
         }
             break;
         default:
