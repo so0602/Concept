@@ -844,6 +844,10 @@
 		B6BE49D418CF464600DA7313 /* iphone4-login-1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = B6BE49D218CF464600DA7313 /* iphone4-login-1.jpg */; };
 		B6BE49D818CF4F0900DA7313 /* SDSignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6BE49D718CF4F0900DA7313 /* SDSignUpViewController.m */; };
 		B6BE49DA18CF4FFA00DA7313 /* iphone4-signup-1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = B6BE49D918CF4FFA00DA7313 /* iphone4-signup-1.jpg */; };
+		B6BE49DD18CF699F00DA7313 /* SDEmailTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = B6BE49DC18CF699F00DA7313 /* SDEmailTextField.m */; };
+		B6BE49E418CF707200DA7313 /* UITextField+Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = B6BE49E318CF707200DA7313 /* UITextField+Addition.m */; };
+		B6BE49E818CF72F400DA7313 /* SDTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = B6BE49E718CF72F400DA7313 /* SDTextField.m */; };
+		B6BE49EB18CF739700DA7313 /* SDPasswordTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = B6BE49EA18CF739700DA7313 /* SDPasswordTextField.m */; };
 		EF3B650018CDA27700B0CF1C /* SDResponseBase.m in Sources */ = {isa = PBXBuildFile; fileRef = EF3B64FF18CDA27700B0CF1C /* SDResponseBase.m */; };
 		EF3B650318CDA2C200B0CF1C /* SDStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = EF3B650218CDA2C200B0CF1C /* SDStatus.m */; };
 		EF3B650A18CDA8AA00B0CF1C /* SDLogin.m in Sources */ = {isa = PBXBuildFile; fileRef = EF3B650918CDA8AA00B0CF1C /* SDLogin.m */; };
@@ -1822,6 +1826,14 @@
 		B6BE49D618CF4F0900DA7313 /* SDSignUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SDSignUpViewController.h; path = Classes/SDSignUpViewController.h; sourceTree = "<group>"; };
 		B6BE49D718CF4F0900DA7313 /* SDSignUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SDSignUpViewController.m; path = Classes/SDSignUpViewController.m; sourceTree = "<group>"; };
 		B6BE49D918CF4FFA00DA7313 /* iphone4-signup-1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "iphone4-signup-1.jpg"; sourceTree = "<group>"; };
+		B6BE49DB18CF699F00DA7313 /* SDEmailTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SDEmailTextField.h; path = Classes/SDEmailTextField.h; sourceTree = "<group>"; };
+		B6BE49DC18CF699F00DA7313 /* SDEmailTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SDEmailTextField.m; path = Classes/SDEmailTextField.m; sourceTree = "<group>"; };
+		B6BE49E218CF707200DA7313 /* UITextField+Addition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UITextField+Addition.h"; path = "Classes/UITextField+Addition.h"; sourceTree = "<group>"; };
+		B6BE49E318CF707200DA7313 /* UITextField+Addition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UITextField+Addition.m"; path = "Classes/UITextField+Addition.m"; sourceTree = "<group>"; };
+		B6BE49E618CF72F400DA7313 /* SDTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SDTextField.h; path = Classes/SDTextField.h; sourceTree = "<group>"; };
+		B6BE49E718CF72F400DA7313 /* SDTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SDTextField.m; path = Classes/SDTextField.m; sourceTree = "<group>"; };
+		B6BE49E918CF739700DA7313 /* SDPasswordTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SDPasswordTextField.h; path = Classes/SDPasswordTextField.h; sourceTree = "<group>"; };
+		B6BE49EA18CF739700DA7313 /* SDPasswordTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SDPasswordTextField.m; path = Classes/SDPasswordTextField.m; sourceTree = "<group>"; };
 		EF3B64FE18CDA27700B0CF1C /* SDResponseBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SDResponseBase.h; path = Classes/SDResponseBase.h; sourceTree = "<group>"; };
 		EF3B64FF18CDA27700B0CF1C /* SDResponseBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SDResponseBase.m; path = Classes/SDResponseBase.m; sourceTree = "<group>"; };
 		EF3B650118CDA2C200B0CF1C /* SDStatus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SDStatus.h; path = Classes/SDStatus.h; sourceTree = "<group>"; };
@@ -1909,6 +1921,7 @@
 		2E54CACC18C5D78E00B23A96 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				B6BE49DE18CF69A100DA7313 /* TextField */,
 				2E54CACD18C5D7BF00B23A96 /* SDHomeHeaderCollectionViewCell.h */,
 				2E54CACE18C5D7BF00B23A96 /* SDHomeHeaderCollectionViewCell.m */,
 				2EC3784718C5F0BA00D4161B /* SDHomeNavigationTitleView.h */,
@@ -2903,6 +2916,19 @@
 			name = "Sign Up";
 			sourceTree = "<group>";
 		};
+		B6BE49DE18CF69A100DA7313 /* TextField */ = {
+			isa = PBXGroup;
+			children = (
+				B6BE49DB18CF699F00DA7313 /* SDEmailTextField.h */,
+				B6BE49DC18CF699F00DA7313 /* SDEmailTextField.m */,
+				B6BE49E918CF739700DA7313 /* SDPasswordTextField.h */,
+				B6BE49EA18CF739700DA7313 /* SDPasswordTextField.m */,
+				B6BE49E618CF72F400DA7313 /* SDTextField.h */,
+				B6BE49E718CF72F400DA7313 /* SDTextField.m */,
+			);
+			name = TextField;
+			sourceTree = "<group>";
+		};
 		EF3B64F818CDA25A00B0CF1C /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -3040,6 +3066,8 @@
 				B65DDC1E18C58EE60076408C /* UIView+Addition.m */,
 				B65DDC1018C57FB30076408C /* UIViewController+Addition.h */,
 				B65DDC1118C57FB30076408C /* UIViewController+Addition.m */,
+				B6BE49E218CF707200DA7313 /* UITextField+Addition.h */,
+				B6BE49E318CF707200DA7313 /* UITextField+Addition.m */,
 			);
 			name = Categories;
 			sourceTree = "<group>";
@@ -4143,6 +4171,7 @@
 				B65DE2B218C884D50076408C /* SDTopMenuViewController.m in Sources */,
 				EF3B650F18CDAC2500B0CF1C /* SDCheckUserExist.m in Sources */,
 				EFA8EBD618BDD87100144B75 /* SDDynamicsDrawerViewController.m in Sources */,
+				B6BE49EB18CF739700DA7313 /* SDPasswordTextField.m in Sources */,
 				2E54CAF218C5DE1A00B23A96 /* UIFont+Addition.m in Sources */,
 				2EC3785818C61B0F00D4161B /* UINavigationItem+Addition.m in Sources */,
 				2EC3785B18C6266C00D4161B /* UILabel+Addition.m in Sources */,
@@ -4157,11 +4186,14 @@
 				B6BE49D818CF4F0900DA7313 /* SDSignUpViewController.m in Sources */,
 				B65DDC1B18C587130076408C /* UITableViewCell+Addition.m in Sources */,
 				B64444A918CA374800CDD2D4 /* NSNotificationCenter+Name.m in Sources */,
+				B6BE49DD18CF699F00DA7313 /* SDEmailTextField.m in Sources */,
+				B6BE49E418CF707200DA7313 /* UITextField+Addition.m in Sources */,
 				B65DDC1218C57FB30076408C /* UIViewController+Addition.m in Sources */,
 				EFA8EBCC18BDD87100144B75 /* main.m in Sources */,
 				B65DDC3518C5B2690076408C /* SDSearchViewController.m in Sources */,
 				EF3B651A18CDAE9400B0CF1C /* SDStory.m in Sources */,
 				2EC3784918C5F0BA00D4161B /* SDHomeNavigationTitleView.m in Sources */,
+				B6BE49E818CF72F400DA7313 /* SDTextField.m in Sources */,
 				EFD0FC1B18CD952B0026F54F /* JSONKit.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
