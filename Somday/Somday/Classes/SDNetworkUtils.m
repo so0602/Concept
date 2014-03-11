@@ -23,11 +23,11 @@ const CGFloat SDTimeOutSeconds = 60.0f;
 
 @interface SDNetworkUtils ()
 
-+(NSDictionary*)basePostValues;
++(NSMutableDictionary*)baseRawData;
 
-+(ASIFormDataRequest*)baseHttpRequest;
++(ASIHTTPRequest*)baseHttpRequest;
 
-+(ASIFormDataRequest*)requestWithUrl:(NSString*)url attributes:(NSDictionary*)attributes completion:(void(^)(id<SDResponseBase> response))completionBlock failed:(void(^)(id<SDResponseBase> response))failedBlock returnClass:(Class)class;
++(ASIHTTPRequest*)requestWithUrl:(NSString*)url attributes:(NSDictionary*)attributes completion:(void(^)(id<SDResponseBase> response))completionBlock failed:(void(^)(id<SDResponseBase> response))failedBlock returnClass:(Class)class;
 
 @end
 
@@ -90,29 +90,42 @@ const CGFloat SDTimeOutSeconds = 60.0f;
 
 #pragma mark - Private Functions
 
-+(NSDictionary*)basePostValues{
-    NSMutableDictionary* basePostValues = [NSMutableDictionary dictionary];
-    [basePostValues setObject:[NSDictionary dictionaryWithObject:@"TBC"/*TODO*/ forKey:SDUrlAttribute_SecurityToken] forKey:SDUrlAttribute_Header];
-    [basePostValues setObject:@"TBC"/*TODO*/ forKey:SDUrlAttribute_RequestId];
-    return basePostValues;
++(NSMutableDictionary*)baseRawData{
+    NSMutableDictionary* baseRawData = [NSMutableDictionary dictionary];
+    [baseRawData setObject:[NSDictionary dictionaryWithObject:@"TBC"/*TODO*/ forKey:SDUrlAttribute_SecurityToken] forKey:SDUrlAttribute_Header];
+    [baseRawData setObject:@"TBC"/*TODO*/ forKey:SDUrlAttribute_RequestId];
+    return baseRawData;
 }
 
-+(ASIFormDataRequest*)baseHttpRequest{
-    ASIFormDataRequest* request = [ASIFormDataRequest requestWithURL:nil];
++(ASIHTTPRequest*)baseHttpRequest{
+    ASIHTTPRequest* request = [ASIHTTPRequest requestWithURL:nil];
     request.timeOutSeconds = SDTimeOutSeconds;
     request.requestMethod = @"POST";
     
-    [request addPostValues:[SDNetworkUtils basePostValues]];
+    [request addRequestHeader:@"Content-Type" value:@"application/json; encoding=utf-8"];
+    [request addRequestHeader:@"Accept" value:@"application/json"];
     
     return request;
 }
 
-+(ASIFormDataRequest*)requestWithUrl:(NSString*)url attributes:(NSDictionary*)attributes completion:(void(^)(id<SDResponseBase> response))completionBlock failed:(void(^)(id<SDResponseBase> response))failedBlock returnClass:(Class)class{
-    __weak ASIFormDataRequest* request = [SDNetworkUtils baseHttpRequest];
-    request.url = [NSURL URLWithString:url];
++(ASIHTTPRequest*)requestWithUrl:(NSString*)url attributes:(NSDictionary*)attributes completion:(void(^)(id<SDResponseBase> response))completionBlock failed:(void(^)(id<SDResponseBase> response))failedBlock returnClass:(Class)class{
+    __weak ASIHTTPRequest* request = [ASIHTTPRequest requestWithURL:[NSURL URLWithString:url]];
     
-    [request addPostValues:attributes];
+    request.timeOutSeconds = SDTimeOutSeconds;
+    request.requestMethod = @"POST";
+    [request addRequestHeader:@"Content-Type" value:@"application/json; encoding=utf-8"];
+    [request addRequestHeader:@"Accept" value:@"application/json"];
     
+//    request.shouldCompressRequestBody = FALSE;
+//    request.allowCompressedResponse = FALSE;
+    
+    NSMutableDictionary* rawData = [SDNetworkUtils baseRawData];
+    [rawData addEntriesFromDictionary:attributes];
+    
+    NSString* jsonString = rawData.JSONString;
+    
+    [request appendPostData:[jsonString dataUsingEncoding:NSUTF8StringEncoding]];
+
     [request setCompletionBlock:^{
         SDResponseBase* response = [[class alloc] initWithDictionary:request.responseString.objectFromJSONString];
         if( response.isSuccess && completionBlock ){

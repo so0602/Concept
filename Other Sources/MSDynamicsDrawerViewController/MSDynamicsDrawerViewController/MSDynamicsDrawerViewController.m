@@ -173,6 +173,8 @@ void MSDynamicsDrawerDirectionActionForMaskedValues(NSInteger direction, MSDynam
 {
     [super viewDidLoad];
     
+    self.shouldAlignStatusBarToPaneView = FALSE;
+    
     self.drawerView.frame = self.view.bounds;
     self.paneView.frame = self.view.bounds;
     [self.view addSubview:self.drawerView];

@@ -11,7 +11,7 @@
 #import "SDMenuViewController.h"
 #import "SDTopMenuViewController.h"
 
-#import "SDLoginViewController.h"
+#import "SDLoginMainViewController.h"
 
 #import "SDUtils.h"
 
@@ -60,12 +60,13 @@ const CGFloat SDPaneViewVelocityMultiplier = 5.0;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
 }
 
 -(void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
     
-//    SDLoginViewController* viewController = [SDLoginViewController viewControllerFromStoryboardWithIdentifier:@"Login"];
+//    SDLoginMainViewController* viewController = [SDLoginMainViewController viewControllerFromStoryboardWithIdentifier:@"LoginMain"];
 //    [self presentViewController:viewController animated:TRUE completion:^{
 //        
 //    }];
