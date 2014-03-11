@@ -34,4 +34,8 @@
     return self.request ? TRUE : self.status.isSuccess;
 }
 
+-(NSString*)failMessage{
+    return self.status.message;
+}
+
 @end

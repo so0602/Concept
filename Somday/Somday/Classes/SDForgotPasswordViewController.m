@@ -12,6 +12,8 @@
 
 @interface SDForgotPasswordViewController ()
 
+@property (nonatomic, strong) IBOutlet UIImageView* backgroundImageView;
+
 @property (nonatomic, strong) IBOutlet UIButton* backButton;
 @property (nonatomic, strong) IBOutlet UIButton* submitButton;
 
@@ -26,6 +28,15 @@
 @end
 
 @implementation SDForgotPasswordViewController
+
+#pragma mark - View Lifecycle
+
+-(void)viewDidLoad{
+    [super viewDidLoad];
+    
+    self.titleLabel.font = [UIFont josefinSansFontOfSize:self.titleLabel.font.pointSize];
+    self.subtitleLabel.font = [UIFont josefinSansSemiBoldFontOfSize:self.subtitleLabel.font.pointSize];
+}
 
 #pragma mark - UIViewController Additions
 

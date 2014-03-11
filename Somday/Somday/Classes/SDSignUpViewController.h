@@ -1,5 +1,5 @@
 //
-//  SDCreateAccountViewController.h
+//  SDSignUpViewController.h
 //  Somday
 //
 //  Created by Freddy on 11/3/14.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SDCreateAccountViewController : UIViewController
+@interface SDSignUpViewController : UIViewController
 
 @end

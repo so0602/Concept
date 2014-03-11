@@ -17,7 +17,9 @@
 
 @property (nonatomic, strong, readonly) SDStatus* status;
 @property (nonatomic, strong) ASIHTTPRequest* request;
+
 @property (nonatomic, readonly, getter=isSuccess) BOOL success;
+@property (nonatomic, readonly) NSString* failMessage;
 
 @end
 

@@ -13,6 +13,7 @@
 #import "SDAppDelegate.h"
 
 #import "SDForgotPasswordViewController.h"
+#import "SDSignUpViewController.h"
 
 #import "UIViewController+Addition.h"
 
@@ -24,6 +25,7 @@
 @property (nonatomic, strong) IBOutlet UITextField* passwordTextField;
 @property (nonatomic, strong) IBOutlet UIButton* loginButton;
 @property (nonatomic, strong) IBOutlet UIButton* forgotButton;
+@property (nonatomic, strong) IBOutlet UIButton* signUpButton;
 
 @end
 
@@ -73,6 +75,12 @@
         }];
     }else if( [self.forgotButton isEqual:sender] ){
         SDForgotPasswordViewController* viewController = [SDForgotPasswordViewController viewControllerFromStoryboardWithIdentifier:@"ForgotPassword"];
+        viewController.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
+        [self presentViewController:viewController animated:TRUE completion:^{
+            
+        }];
+    }else if( [self.signUpButton isEqual:sender] ){
+        SDSignUpViewController* viewController = [SDSignUpViewController viewControllerFromStoryboardWithIdentifier:@"SignUp"];
         viewController.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
         [self presentViewController:viewController animated:TRUE completion:^{
             

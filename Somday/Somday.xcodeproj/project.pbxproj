@@ -842,7 +842,8 @@
 		B6BE49D018CF457500DA7313 /* SDForgotPasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6BE49CF18CF457500DA7313 /* SDForgotPasswordViewController.m */; };
 		B6BE49D318CF464600DA7313 /* iphone4-fpw-1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = B6BE49D118CF464600DA7313 /* iphone4-fpw-1.jpg */; };
 		B6BE49D418CF464600DA7313 /* iphone4-login-1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = B6BE49D218CF464600DA7313 /* iphone4-login-1.jpg */; };
-		B6BE49D818CF4F0900DA7313 /* SDCreateAccountViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6BE49D718CF4F0900DA7313 /* SDCreateAccountViewController.m */; };
+		B6BE49D818CF4F0900DA7313 /* SDSignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6BE49D718CF4F0900DA7313 /* SDSignUpViewController.m */; };
+		B6BE49DA18CF4FFA00DA7313 /* iphone4-signup-1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = B6BE49D918CF4FFA00DA7313 /* iphone4-signup-1.jpg */; };
 		EF3B650018CDA27700B0CF1C /* SDResponseBase.m in Sources */ = {isa = PBXBuildFile; fileRef = EF3B64FF18CDA27700B0CF1C /* SDResponseBase.m */; };
 		EF3B650318CDA2C200B0CF1C /* SDStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = EF3B650218CDA2C200B0CF1C /* SDStatus.m */; };
 		EF3B650A18CDA8AA00B0CF1C /* SDLogin.m in Sources */ = {isa = PBXBuildFile; fileRef = EF3B650918CDA8AA00B0CF1C /* SDLogin.m */; };
@@ -1818,8 +1819,9 @@
 		B6BE49CF18CF457500DA7313 /* SDForgotPasswordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SDForgotPasswordViewController.m; path = Classes/SDForgotPasswordViewController.m; sourceTree = "<group>"; };
 		B6BE49D118CF464600DA7313 /* iphone4-fpw-1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "iphone4-fpw-1.jpg"; sourceTree = "<group>"; };
 		B6BE49D218CF464600DA7313 /* iphone4-login-1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "iphone4-login-1.jpg"; sourceTree = "<group>"; };
-		B6BE49D618CF4F0900DA7313 /* SDCreateAccountViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SDCreateAccountViewController.h; path = Classes/SDCreateAccountViewController.h; sourceTree = "<group>"; };
-		B6BE49D718CF4F0900DA7313 /* SDCreateAccountViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SDCreateAccountViewController.m; path = Classes/SDCreateAccountViewController.m; sourceTree = "<group>"; };
+		B6BE49D618CF4F0900DA7313 /* SDSignUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SDSignUpViewController.h; path = Classes/SDSignUpViewController.h; sourceTree = "<group>"; };
+		B6BE49D718CF4F0900DA7313 /* SDSignUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SDSignUpViewController.m; path = Classes/SDSignUpViewController.m; sourceTree = "<group>"; };
+		B6BE49D918CF4FFA00DA7313 /* iphone4-signup-1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "iphone4-signup-1.jpg"; sourceTree = "<group>"; };
 		EF3B64FE18CDA27700B0CF1C /* SDResponseBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SDResponseBase.h; path = Classes/SDResponseBase.h; sourceTree = "<group>"; };
 		EF3B64FF18CDA27700B0CF1C /* SDResponseBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SDResponseBase.m; path = Classes/SDResponseBase.m; sourceTree = "<group>"; };
 		EF3B650118CDA2C200B0CF1C /* SDStatus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SDStatus.h; path = Classes/SDStatus.h; sourceTree = "<group>"; };
@@ -2002,6 +2004,7 @@
 		B65DDC3618C5C05E0076408C /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				B6BE49D918CF4FFA00DA7313 /* iphone4-signup-1.jpg */,
 				B6BE49D118CF464600DA7313 /* iphone4-fpw-1.jpg */,
 				B6BE49D218CF464600DA7313 /* iphone4-login-1.jpg */,
 				2E54CAD218C5DB8800B23A96 /* Font */,
@@ -2891,13 +2894,13 @@
 			name = "Forgot Password";
 			sourceTree = "<group>";
 		};
-		B6BE49D518CF4EDF00DA7313 /* Create Account */ = {
+		B6BE49D518CF4EDF00DA7313 /* Sign Up */ = {
 			isa = PBXGroup;
 			children = (
-				B6BE49D618CF4F0900DA7313 /* SDCreateAccountViewController.h */,
-				B6BE49D718CF4F0900DA7313 /* SDCreateAccountViewController.m */,
+				B6BE49D618CF4F0900DA7313 /* SDSignUpViewController.h */,
+				B6BE49D718CF4F0900DA7313 /* SDSignUpViewController.m */,
 			);
-			name = "Create Account";
+			name = "Sign Up";
 			sourceTree = "<group>";
 		};
 		EF3B64F818CDA25A00B0CF1C /* Models */ = {
@@ -2965,7 +2968,7 @@
 		EF3B651B18CDB6AB00B0CF1C /* Login */ = {
 			isa = PBXGroup;
 			children = (
-				B6BE49D518CF4EDF00DA7313 /* Create Account */,
+				B6BE49D518CF4EDF00DA7313 /* Sign Up */,
 				B6BE49CD18CF455000DA7313 /* Forgot Password */,
 				EF3B651C18CDB6BE00B0CF1C /* SDLoginViewController.h */,
 				EF3B651D18CDB6BE00B0CF1C /* SDLoginViewController.m */,
@@ -3790,6 +3793,7 @@
 				B65DE0A418C60EB10076408C /* icons-24px_socialFriends.png in Resources */,
 				B65DE03C18C60EB10076408C /* icons-16px_supported.png in Resources */,
 				B65DE04B18C60EB10076408C /* icons-24px_arrowRight@2x.png in Resources */,
+				B6BE49DA18CF4FFA00DA7313 /* iphone4-signup-1.jpg in Resources */,
 				B65DE20B18C60EB10076408C /* icons-shadow-24px_add@2x.png in Resources */,
 				B65DE18718C60EB10076408C /* icons-shadow-12px_share@2x.png in Resources */,
 				B65DE18A18C60EB10076408C /* icons-shadow-12px_speaker.png in Resources */,
@@ -4150,7 +4154,7 @@
 				EF891DE218CD8EA0005DC780 /* SDNetworkUtils.m in Sources */,
 				EF3B650318CDA2C200B0CF1C /* SDStatus.m in Sources */,
 				EF3B651E18CDB6BE00B0CF1C /* SDLoginViewController.m in Sources */,
-				B6BE49D818CF4F0900DA7313 /* SDCreateAccountViewController.m in Sources */,
+				B6BE49D818CF4F0900DA7313 /* SDSignUpViewController.m in Sources */,
 				B65DDC1B18C587130076408C /* UITableViewCell+Addition.m in Sources */,
 				B64444A918CA374800CDD2D4 /* NSNotificationCenter+Name.m in Sources */,
 				B65DDC1218C57FB30076408C /* UIViewController+Addition.m in Sources */,
