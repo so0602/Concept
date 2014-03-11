@@ -130,6 +130,8 @@ static NSString *CellIdentifier = @"CollectionViewCell";
         [picture addTarget:_bgImageFilter2];
         [picture processImage];
         
+        [[NSNotificationCenter defaultCenter] postNotificationName:HomeBackgroundImageChangedNotification object:[UIImage imageNamed:[_dataSource objectAtIndex:index.row]]];
+        
         [UIView animateWithDuration:0.4 animations:^{
             _bgImageView2.alpha = 1.0f;
         } completion:^(BOOL finished) {

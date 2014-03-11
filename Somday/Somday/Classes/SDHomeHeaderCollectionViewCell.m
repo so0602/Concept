@@ -53,15 +53,16 @@
 {
     self.dateformatter = [[NSDateFormatter alloc] init];
     [_dateformatter setLocale:[NSLocale currentLocale]];
-    [_dateformatter setDateFormat:SDDateFormat_dd_MMM_yyyy];
+
 }
 
 - (void)layoutSubviews
 {
     [super layoutSubviews];
-    
-    ((UILabel *)_labels[1]).text = [[_dateformatter stringFromDate:[NSDate date]] capitalizedString];
-    _dateformatter.dateFormat=@"EEEE";
+
+    [_dateformatter setDateFormat:SDDateFormat_dd_MMMM];
+    ((UILabel *)_labels[1]).text = [[_dateformatter stringFromDate:[NSDate date]] uppercaseString];
+    [_dateformatter setDateFormat:@"EEEE"];
     ((UILabel *)_labels[2]).text = [[_dateformatter stringFromDate:[NSDate date]] capitalizedString];
 
     
