@@ -2872,13 +2872,13 @@
 			name = "Menu - Top";
 			sourceTree = "<group>";
 		};
-		EF3B64F818CDA25A00B0CF1C /* Objects */ = {
+		EF3B64F818CDA25A00B0CF1C /* Models */ = {
 			isa = PBXGroup;
 			children = (
 				EF3B650718CDA87500B0CF1C /* Responses */,
 				EF3B650418CDA42500B0CF1C /* SDDataObjectBase.h */,
 			);
-			name = Objects;
+			name = Models;
 			sourceTree = "<group>";
 		};
 		EF3B650718CDA87500B0CF1C /* Responses */ = {
@@ -2949,8 +2949,8 @@
 			isa = PBXGroup;
 			children = (
 				EF658E5A18C4615C00FC9E07 /* App Delegate */,
-				EF891DDF18CD8E01005DC780 /* Class-Categories */,
-				EF3B64F818CDA25A00B0CF1C /* Objects */,
+				EF891DDF18CD8E01005DC780 /* Categories */,
+				EF3B64F818CDA25A00B0CF1C /* Models */,
 				B65DDC0A18C57D050076408C /* Utils */,
 				EF658E5B18C4616D00FC9E07 /* ViewControllers */,
 				2E54CACC18C5D78E00B23A96 /* Views */,
@@ -2989,7 +2989,7 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		EF891DDF18CD8E01005DC780 /* Class-Categories */ = {
+		EF891DDF18CD8E01005DC780 /* Categories */ = {
 			isa = PBXGroup;
 			children = (
 				EFD0FC1018CD92CF0026F54F /* ASIFormDataRequest+Addition.h */,
@@ -3013,7 +3013,7 @@
 				B65DDC1018C57FB30076408C /* UIViewController+Addition.h */,
 				B65DDC1118C57FB30076408C /* UIViewController+Addition.m */,
 			);
-			name = "Class-Categories";
+			name = Categories;
 			sourceTree = "<group>";
 		};
 		EFA8EBB318BDD87100144B75 = {

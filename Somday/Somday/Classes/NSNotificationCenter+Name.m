@@ -10,6 +10,7 @@
 
 NSString* TopMenuWillClose = @"TopMenuWillClose";
 NSString* TopMenuDidClosed = @"TopMenuDidClosed";
+NSString* HomeBackgroundImageChangedNotification = @"HomeBackgroundImageChangedNotification";
 
 @implementation NSNotificationCenter (Name)
 

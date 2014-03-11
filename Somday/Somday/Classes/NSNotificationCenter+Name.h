@@ -10,6 +10,7 @@
 
 extern NSString* TopMenuWillClose;
 extern NSString* TopMenuDidClosed;
+extern NSString* HomeBackgroundImageChangedNotification;
 
 @interface NSNotificationCenter (Name)
 
