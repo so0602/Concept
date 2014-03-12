@@ -41,6 +41,19 @@
     return _sharedInstance;
 }
 
++(KeychainItemWrapper *)sharedKeychainItemWrapper
+{
+    static KeychainItemWrapper *_sharedInstance = nil;
+    static dispatch_once_t oncePredicate;
+    
+    dispatch_once(&oncePredicate, ^{
+        _sharedInstance = [[KeychainItemWrapper alloc] initWithIdentifier:[[NSBundle mainBundle] bundleIdentifier] accessGroup:nil];
+        
+    });
+    
+    return _sharedInstance;
+}
+
 +(void)rotateView:(UIView*)view{
     [UIView animateWithDuration:0.3 animations:^{
         view.transform = CGAffineTransformMakeRotation(M_PI - M_PI_4);
