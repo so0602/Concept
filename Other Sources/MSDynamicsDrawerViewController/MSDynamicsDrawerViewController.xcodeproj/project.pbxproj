@@ -70,6 +70,7 @@
 		3AAD49261830929B003FAFA8 /* MSDynamicsDrawerViewControllerTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "MSDynamicsDrawerViewControllerTests-Info.plist"; sourceTree = "<group>"; };
 		3AAD49281830929B003FAFA8 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		3AAD492A1830929B003FAFA8 /* MSDynamicsDrawerViewControllerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MSDynamicsDrawerViewControllerTests.m; sourceTree = "<group>"; };
+		EF3B653118D0546300B0CF1C /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -215,6 +216,7 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				"zh-Hant",
 			);
 			mainGroup = 3AAD49021830929B003FAFA8;
 			productRefGroup = 3AAD490C1830929B003FAFA8 /* Products */;
@@ -289,6 +291,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				3AAD49281830929B003FAFA8 /* en */,
+				EF3B653118D0546300B0CF1C /* zh-Hant */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";

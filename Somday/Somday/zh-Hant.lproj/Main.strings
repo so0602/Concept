@@ -1,0 +1,81 @@
+
+/* Class = "IBUIButton"; normalTitle = "Back to Login"; ObjectID = "2PW-Ua-nKf"; */
+"2PW-Ua-nKf.normalTitle" = "Back to Login";
+
+/* Class = "IBUIButton"; normalTitle = "Back to Login"; ObjectID = "5kt-ve-CoE"; */
+"5kt-ve-CoE.normalTitle" = "Back to Login";
+
+/* Class = "IBUITextField"; placeholder = "Password"; ObjectID = "7Kp-U4-EuU"; */
+"7Kp-U4-EuU.placeholder" = "Password";
+
+/* Class = "IBUIButton"; normalTitle = "Create an new account"; ObjectID = "8bk-Zg-FsP"; */
+"8bk-Zg-FsP.normalTitle" = "Create an new account";
+
+/* Class = "IBUIButton"; normalTitle = "Login"; ObjectID = "Cwf-Z7-H4T"; */
+"Cwf-Z7-H4T.normalTitle" = "Login";
+
+/* Class = "IBUILabel"; text = "A confirmation email will be sent to your mailbox, please click the link in the email to retrieve the password"; ObjectID = "DnY-kW-1xg"; */
+"DnY-kW-1xg.text" = "A confirmation email will be sent to your mailbox, please click the link in the email to retrieve the password";
+
+/* Class = "IBUILabel"; text = "21 FEBRUARY"; ObjectID = "Fdd-Gp-AlT"; */
+"Fdd-Gp-AlT.text" = "21 FEBRUARY";
+
+/* Class = "IBUILabel"; text = "SOMDAY"; ObjectID = "MKI-Fx-5DF"; */
+"MKI-Fx-5DF.text" = "SOMDAY";
+
+/* Class = "IBUITextField"; placeholder = "Email"; ObjectID = "NRz-AO-Rnw"; */
+"NRz-AO-Rnw.placeholder" = "Email";
+
+/* Class = "IBUILabel"; text = "Forgot your password"; ObjectID = "OKc-4H-Ug9"; */
+"OKc-4H-Ug9.text" = "Forgot your password";
+
+/* Class = "IBUILabel"; text = "story of my day"; ObjectID = "QSd-9k-5YO"; */
+"QSd-9k-5YO.text" = "story of my day";
+
+/* Class = "IBUILabel"; text = "story of my day"; ObjectID = "RAU-gh-b6m"; */
+"RAU-gh-b6m.text" = "story of my day";
+
+/* Class = "IBUILabel"; text = "SOMDAY"; ObjectID = "SWD-Id-Kai"; */
+"SWD-Id-Kai.text" = "SOMDAY";
+
+/* Class = "IBUIButton"; normalTitle = "New Story"; ObjectID = "UUw-tZ-Pw7"; */
+"UUw-tZ-Pw7.normalTitle" = "New Story";
+
+/* Class = "IBUITextField"; placeholder = "Password"; ObjectID = "W2i-xP-Zff"; */
+"W2i-xP-Zff.placeholder" = "Password";
+
+/* Class = "IBUIButton"; normalTitle = " Check-in"; ObjectID = "XCm-EO-pNL"; */
+"XCm-EO-pNL.normalTitle" = " Check-in";
+
+/* Class = "IBUITextField"; placeholder = "Confirm password"; ObjectID = "Xe4-Qp-1Wg"; */
+"Xe4-Qp-1Wg.placeholder" = "Confirm password";
+
+/* Class = "IBUIButton"; normalTitle = "Forgot your password?"; ObjectID = "Ysc-c7-fRX"; */
+"Ysc-c7-fRX.normalTitle" = "Forgot your password?";
+
+/* Class = "IBUIButton"; normalTitle = "Sign Up"; ObjectID = "bPE-Nr-rTh"; */
+"bPE-Nr-rTh.normalTitle" = "Sign Up";
+
+/* Class = "IBUITextField"; placeholder = "Email"; ObjectID = "bXo-P1-F3e"; */
+"bXo-P1-F3e.placeholder" = "Email";
+
+/* Class = "IBUILabel"; text = "Friday"; ObjectID = "dVk-7i-CcX"; */
+"dVk-7i-CcX.text" = "Friday";
+
+/* Class = "IBUILabel"; text = "TODAY"; ObjectID = "eSA-sH-YQp"; */
+"eSA-sH-YQp.text" = "TODAY";
+
+/* Class = "IBUIButton"; normalTitle = "Submit"; ObjectID = "gaf-BU-O9I"; */
+"gaf-BU-O9I.normalTitle" = "Submit";
+
+/* Class = "IBUILabel"; text = "story of my day"; ObjectID = "lsi-WH-gbW"; */
+"lsi-WH-gbW.text" = "story of my day";
+
+/* Class = "IBUITextField"; placeholder = "Email"; ObjectID = "nQp-Ll-bl5"; */
+"nQp-Ll-bl5.placeholder" = "Email";
+
+/* Class = "IBUIButton"; normalTitle = "New Event"; ObjectID = "zHt-Gd-zcP"; */
+"zHt-Gd-zcP.normalTitle" = "New Event";
+
+/* Class = "IBUILabel"; text = "SOMDAY"; ObjectID = "zxB-tQ-vvz"; */
+"zxB-tQ-vvz.text" = "SOMDAY";
