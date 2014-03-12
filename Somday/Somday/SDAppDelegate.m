@@ -20,12 +20,12 @@
 {
     self.navigationController = (id)self.window.rootViewController;
     
-    self.mainViewController = [SDDynamicsDrawerViewController viewControllerFromStoryboardWithIdentifier:@"Main"];
-    self.mainViewController.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
+//    self.mainViewController = [SDDynamicsDrawerViewController viewControllerFromStoryboardWithIdentifier:@"Main"];
+    self.mainViewController = self.navigationController.viewControllers.firstObject;
+//    self.mainViewController.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
     
     self.loginViewController = [SDLoginViewController viewControllerFromStoryboardWithIdentifier:@"Login"];
-    
-    [self.navigationController pushViewController:self.loginViewController animated:FALSE];
+    self.loginViewController.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
     
     return YES;
 }
@@ -49,6 +49,11 @@
 
 - (void)applicationDidBecomeActive:(UIApplication *)application
 {
+    if( ![SDUtils username] ){
+        [self.mainViewController presentViewController:self.loginViewController animated:FALSE completion:^{
+            
+        }];
+    }
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
 }
 

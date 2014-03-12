@@ -192,7 +192,8 @@
         case SDPaneViewControllerType_User:
         {
             [SDUtils logout];
-            [self dismissViewControllerAnimated:TRUE completion:^{
+            SDAppDelegate* delegate = [UIApplication sharedApplication].delegate;
+            [delegate.mainViewController presentViewController:delegate.loginViewController animated:TRUE completion:^{
                 
             }];
         }
