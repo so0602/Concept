@@ -29,6 +29,9 @@
 #import <QuartzCore/QuartzCore.h>
 #import "MSDynamicsDrawerViewController.h"
 
+#define HeightForStatusBar 20
+#define BoundaryOriginY -1 + HeightForStatusBar
+
 //#define DEBUG_LAYOUT
 
 const CGFloat MSDynamicsDrawerDefaultOpenStateRevealWidthHorizontal = 267.0;
@@ -37,6 +40,7 @@ const CGFloat MSPaneViewVelocityThreshold = 5.0;
 const CGFloat MSPaneViewVelocityMultiplier = 5.0;
 const CGFloat MSPaneViewScreenEdgeThreshold = 24.0; // After testing Apple's `UIScreenEdgePanGestureRecognizer` this seems to be the closest value to create an equivalent effect.
 const CGFloat MSMenuWidth = 60.0;
+const CGFloat MSTopMenuHeight = 60.0 + HeightForStatusBar;
 
 NSString * const MSDynamicsDrawerBoundaryIdentifier = @"MSDynamicsDrawerBoundaryIdentifier";
 
@@ -177,6 +181,7 @@ void MSDynamicsDrawerDirectionActionForMaskedValues(NSInteger direction, MSDynam
     
     self.drawerView.frame = self.view.bounds;
     self.paneView.frame = self.view.bounds;
+    self.drawerView.backgroundColor = [UIColor blackColor];
     [self.view addSubview:self.drawerView];
     [self.view addSubview:self.paneView];
     
@@ -497,7 +502,7 @@ void MSDynamicsDrawerDirectionActionForMaskedValues(NSInteger direction, MSDynam
         UIBezierPath* path = [self boundaryPathForState:MSDynamicsDrawerPaneStateClosed direction:self.currentDrawerDirection];
         
         CGRect boundary = CGRectZero;
-        boundary.origin = (CGPoint){-1.0, -1.0};
+        boundary.origin = (CGPoint){-1.0, BoundaryOriginY};
         if (self.possibleDrawerDirection & MSDynamicsDrawerDirectionHorizontal) {
             boundary.size.height = (CGRectGetHeight(self.paneView.frame) + 1.0);
             boundary.size.width = ((CGRectGetWidth(self.paneView.frame) * 2.0) + self.paneStateOpenWideEdgeOffset + 2.0);
@@ -553,7 +558,7 @@ void MSDynamicsDrawerDirectionActionForMaskedValues(NSInteger direction, MSDynam
 {
     NSAssert(MSDynamicsDrawerDirectionIsCardinal(direction), @"Boundary is undefined for a non-cardinal reveal direction");
     CGRect boundary = CGRectZero;
-    boundary.origin = (CGPoint){-1.0, -1.0};
+    boundary.origin = (CGPoint){-1.0, BoundaryOriginY};
     if (self.possibleDrawerDirection & MSDynamicsDrawerDirectionHorizontal) {
         boundary.size.height = (CGRectGetHeight(self.paneView.frame) + 1.0);
         switch (state) {
@@ -757,7 +762,9 @@ void MSDynamicsDrawerDirectionActionForMaskedValues(NSInteger direction, MSDynam
     }
     
     CGPoint openWidePoint = [self paneViewOriginForPaneState:MSDynamicsDrawerPaneStateOpenWide];
+    
     CGRect paneFrame = self.paneView.frame;
+    
     CGFloat *openWideLocation = NULL;
     CGFloat *paneLocation = NULL;
     if (self.currentDrawerDirection & MSDynamicsDrawerDirectionHorizontal) {
@@ -858,17 +865,18 @@ void MSDynamicsDrawerDirectionActionForMaskedValues(NSInteger direction, MSDynam
 - (CGPoint)paneViewOriginForPaneState:(MSDynamicsDrawerPaneState)paneState
 {
     CGPoint paneViewOrigin = CGPointZero;
+    paneViewOrigin.y = HeightForStatusBar;
     switch (paneState) {
         case MSDynamicsDrawerPaneStateMenu:
             switch (self.currentDrawerDirection) {
                 case MSDynamicsDrawerDirectionTop:
-                    paneViewOrigin.y = MSMenuWidth;
+                    paneViewOrigin.y = MSTopMenuHeight;
                     break;
                 case MSDynamicsDrawerDirectionLeft:
                     paneViewOrigin.x = MSMenuWidth;
                     break;
                 case MSDynamicsDrawerDirectionBottom:
-                    paneViewOrigin.y = -MSMenuWidth;
+                    paneViewOrigin.y = -MSTopMenuHeight;
                     break;
                 case MSDynamicsDrawerDirectionRight:
                     paneViewOrigin.x = -MSMenuWidth;
@@ -916,6 +924,7 @@ void MSDynamicsDrawerDirectionActionForMaskedValues(NSInteger direction, MSDynam
         default:
             break;
     }
+    
     return paneViewOrigin;
 }
 

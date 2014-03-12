@@ -60,6 +60,10 @@ const CGFloat SDPaneViewVelocityMultiplier = 5.0;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+
+    [self.paneView setY:20];
+    [self.paneView setHeight:self.paneView.height - 20];
+
 }
 
 -(void)viewDidAppear:(BOOL)animated{
@@ -384,5 +388,12 @@ const CGFloat SDPaneViewVelocityMultiplier = 5.0;
         if (completion) completion();
     }
 }
+
+//- (void)didUpdateDynamicAnimatorAction
+//{
+//    [self.paneView setY:20];
+//    [super performSelector:@selector(paneViewDidUpdateFrame) withObject:nil];
+//}
+
 
 @end
