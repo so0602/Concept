@@ -1373,6 +1373,11 @@ void MSDynamicsDrawerDirectionActionForMaskedValues(NSInteger direction, MSDynam
 - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch
 {
     if (gestureRecognizer == self.panePanGestureRecognizer) {
+
+        CGPoint point = [touch locationInView:self.paneView];
+        if (point.x > 20 && point.y > 44)
+            return NO;
+        
         __block BOOL shouldReceiveTouch = YES;
         // Enumerate the view's superviews, checking for a touch-forwarding class
         [touch.view superviewHierarchyAction:^(UIView *view) {

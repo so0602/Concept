@@ -124,7 +124,12 @@ typedef NSUInteger SDGridMenuState;
     self.backgroundImageView.layer.cornerRadius = 8.0f;    
     
     // Add Gesture recognizer
-    UISwipeGestureRecognizer *recognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(rightSwipeHandle:)];
+    UISwipeGestureRecognizer *recognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipeGesture:)];
+    [recognizer setNumberOfTouchesRequired:1];
+    [self addGestureRecognizer:recognizer];
+    
+    recognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipeGesture:)];
+    recognizer.direction =  UISwipeGestureRecognizerDirectionLeft;
     [recognizer setNumberOfTouchesRequired:1];
     [self addGestureRecognizer:recognizer];
 }
@@ -143,10 +148,27 @@ typedef NSUInteger SDGridMenuState;
     self.backgroundImageView.image = image;
 }
 
-- (void)rightSwipeHandle:(UISwipeGestureRecognizer*)gestureRecognizer
+- (void)handleSwipeGesture:(UISwipeGestureRecognizer*)gestureRecognizer
 {
-    NSLog(@"right swipe");
-    
+    UISwipeGestureRecognizer *recognizer = gestureRecognizer;
+    switch (recognizer.direction) {
+        case UISwipeGestureRecognizerDirectionRight: {
+            [self showTransitionWithImageView: self.backgroundImageView NumberOfFolds:3 Duration:0.4f Direction:SDMenuDirectionFromRight completion:^(BOOL finished) {
+                
+            }];
+        }
+            break;
+        case UISwipeGestureRecognizerDirectionLeft:
+        {
+            [self hideTransitionWithImageView:self.backgroundImageView NumberOfFolds:3 Duration:0.4f Direction:SDMenuDirectionFromRight completion:^(BOOL finished) {
+                self.backgroundImageView.image = _image;
+                self.layer.shadowOpacity = 0.7f;
+            }];
+        }
+            break;
+        default:
+            break;
+    }
 }
 
 - (void)toggleMenu
