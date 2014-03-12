@@ -14,4 +14,13 @@
 
 -(IBAction)touchUpInside:(id)sender;
 
+- (CGFloat)width;
+- (void)setWidth:(CGFloat)width;
+- (CGFloat)height;
+- (void)setHeight:(CGFloat)height;
+- (void)setX:(CGFloat)x;
+- (void)setY:(CGFloat)y;
+- (void)setSize:(CGSize)size;
+- (void)setOrigin:(CGPoint)origin;
+
 @end

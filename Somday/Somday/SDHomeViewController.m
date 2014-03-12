@@ -78,6 +78,8 @@ static NSString *CellIdentifier = @"CollectionViewCell";
     [picture1 addTarget:_bgImageFilter2];
     [picture1 processImage];
     
+    [[NSNotificationCenter defaultCenter] postNotificationName:HomeBackgroundImageChangedNotification object:[UIImage imageNamed:@"Debug_Story_1"]];
+    
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(topMenuWillClose) name:TopMenuWillClose object:nil];
     
     {

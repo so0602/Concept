@@ -60,6 +60,10 @@ const CGFloat SDPaneViewVelocityMultiplier = 5.0;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+
+    [self.paneView setY:20];
+    [self.paneView setHeight:self.paneView.height - 20];
+
 }
 
 -(void)viewDidAppear:(BOOL)animated{
@@ -167,7 +171,7 @@ const CGFloat SDPaneViewVelocityMultiplier = 5.0;
     dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
     dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
         [self setRevealWidth:CGRectGetWidth(self.view.frame) forDirection:MSDynamicsDrawerDirectionLeft];
-        [self setRevealWidth:60 forDirection:MSDynamicsDrawerDirectionTop];
+        [self setRevealWidth:80 forDirection:MSDynamicsDrawerDirectionTop];
     });
     
     self.paneViewSlideOffAnimationEnabled = FALSE;
@@ -384,5 +388,12 @@ const CGFloat SDPaneViewVelocityMultiplier = 5.0;
         if (completion) completion();
     }
 }
+
+//- (void)didUpdateDynamicAnimatorAction
+//{
+//    [self.paneView setY:20];
+//    [super performSelector:@selector(paneViewDidUpdateFrame) withObject:nil];
+//}
+
 
 @end
