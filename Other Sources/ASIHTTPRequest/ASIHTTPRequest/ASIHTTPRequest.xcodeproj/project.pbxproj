@@ -69,6 +69,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		EF3B652F18D0546300B0CF1C /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		EF891D1718CD8B90005DC780 /* libASIHTTPRequest.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libASIHTTPRequest.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		EF891D1A18CD8B90005DC780 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		EF891D1E18CD8B90005DC780 /* ASIHTTPRequest-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ASIHTTPRequest-Prefix.pch"; sourceTree = "<group>"; };
@@ -378,6 +379,7 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				"zh-Hant",
 			);
 			mainGroup = EF891D0E18CD8B90005DC780;
 			productRefGroup = EF891D1818CD8B90005DC780 /* Products */;
@@ -455,6 +457,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				EF891D3418CD8B90005DC780 /* en */,
+				EF3B652F18D0546300B0CF1C /* zh-Hant */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -617,6 +620,7 @@
 				EF891D3C18CD8B90005DC780 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		EF891D3D18CD8B90005DC780 /* Build configuration list for PBXNativeTarget "ASIHTTPRequestTests" */ = {
 			isa = XCConfigurationList;
@@ -625,6 +629,7 @@
 				EF891D3F18CD8B90005DC780 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

@@ -857,6 +857,8 @@
 		EF3B651718CDAE8500B0CF1C /* SDStories.m in Sources */ = {isa = PBXBuildFile; fileRef = EF3B651618CDAE8500B0CF1C /* SDStories.m */; };
 		EF3B651A18CDAE9400B0CF1C /* SDStory.m in Sources */ = {isa = PBXBuildFile; fileRef = EF3B651918CDAE9400B0CF1C /* SDStory.m */; };
 		EF3B651E18CDB6BE00B0CF1C /* SDLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EF3B651D18CDB6BE00B0CF1C /* SDLoginViewController.m */; };
+		EF3B652418D042C600B0CF1C /* NSString+Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = EF3B652318D042C600B0CF1C /* NSString+Addition.m */; };
+		EF3B653218D0548F00B0CF1C /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = EF3B653418D0548F00B0CF1C /* Localizable.strings */; };
 		EF658E5E18C461C400FC9E07 /* SDMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EF658E5D18C461C400FC9E07 /* SDMenuViewController.m */; };
 		EF891DD418CD8CD2005DC780 /* libASIHTTPRequest.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EF891DCF18CD8CB5005DC780 /* libASIHTTPRequest.a */; };
 		EF891DD618CD8D6E005DC780 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EF891DD518CD8D6E005DC780 /* CFNetwork.framework */; };
@@ -1854,6 +1856,14 @@
 		EF3B651918CDAE9400B0CF1C /* SDStory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SDStory.m; path = Classes/SDStory.m; sourceTree = "<group>"; };
 		EF3B651C18CDB6BE00B0CF1C /* SDLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SDLoginViewController.h; path = Classes/SDLoginViewController.h; sourceTree = "<group>"; };
 		EF3B651D18CDB6BE00B0CF1C /* SDLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SDLoginViewController.m; path = Classes/SDLoginViewController.m; sourceTree = "<group>"; };
+		EF3B652218D042C600B0CF1C /* NSString+Addition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSString+Addition.h"; path = "Classes/NSString+Addition.h"; sourceTree = "<group>"; };
+		EF3B652318D042C600B0CF1C /* NSString+Addition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSString+Addition.m"; path = "Classes/NSString+Addition.m"; sourceTree = "<group>"; };
+		EF3B652C18D0546200B0CF1C /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Main.strings"; sourceTree = "<group>"; };
+		EF3B652D18D0546300B0CF1C /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
+		EF3B652E18D0546300B0CF1C /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
+		EF3B653318D0548F00B0CF1C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
+		EF3B653518D0549400B0CF1C /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = file; name = "zh-Hant"; path = "zh-Hant.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		EF3B653618D0549600B0CF1C /* en */ = {isa = PBXFileReference; lastKnownFileType = file; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		EF658E5C18C461C400FC9E07 /* SDMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SDMenuViewController.h; path = Classes/SDMenuViewController.h; sourceTree = "<group>"; };
 		EF658E5D18C461C400FC9E07 /* SDMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SDMenuViewController.m; path = Classes/SDMenuViewController.m; sourceTree = "<group>"; };
 		EF891DC918CD8CB5005DC780 /* ASIHTTPRequest.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ASIHTTPRequest.xcodeproj; path = "../Other Sources/ASIHTTPRequest/ASIHTTPRequest/ASIHTTPRequest.xcodeproj"; sourceTree = "<group>"; };
@@ -3073,6 +3083,8 @@
 				B65DDC1118C57FB30076408C /* UIViewController+Addition.m */,
 				B6BE49E218CF707200DA7313 /* UITextField+Addition.h */,
 				B6BE49E318CF707200DA7313 /* UITextField+Addition.m */,
+				EF3B652218D042C600B0CF1C /* NSString+Addition.h */,
+				EF3B652318D042C600B0CF1C /* NSString+Addition.m */,
 			);
 			name = Categories;
 			sourceTree = "<group>";
@@ -3132,6 +3144,7 @@
 				EFA8EBCB18BDD87100144B75 /* main.m */,
 				EFA8EBCD18BDD87100144B75 /* Somday-Prefix.pch */,
 				2ED27A6118C6CA2700DB4EC9 /* Images.xcassets */,
+				EF3B653418D0548F00B0CF1C /* Localizable.strings */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -3248,6 +3261,7 @@
 			knownRegions = (
 				en,
 				Base,
+				"zh-Hant",
 			);
 			mainGroup = EFA8EBB318BDD87100144B75;
 			productRefGroup = EFA8EBBD18BDD87100144B75 /* Products */;
@@ -3889,6 +3903,7 @@
 				B65DE22618C60EB10076408C /* icons-shadow-24px_contrast-lo.png in Resources */,
 				B65DDFAA18C60EB10076408C /* icons-12px_newStory.png in Resources */,
 				B65DE1AE18C60EB10076408C /* icons-shadow-16px_closeFriends.png in Resources */,
+				EF3B653218D0548F00B0CF1C /* Localizable.strings in Resources */,
 				B65DE18F18C60EB10076408C /* icons-shadow-12px_stop@2x.png in Resources */,
 				B65DE0DD18C60EB10076408C /* icons-color-12px_home@2x.png in Resources */,
 				B65DE1B218C60EB10076408C /* icons-shadow-16px_contrast-hi.png in Resources */,
@@ -4191,6 +4206,7 @@
 				B6BE49D818CF4F0900DA7313 /* SDSignUpViewController.m in Sources */,
 				2E2CC5C218D03D7600FFEBBB /* KeychainItemWrapper.m in Sources */,
 				B65DDC1B18C587130076408C /* UITableViewCell+Addition.m in Sources */,
+				EF3B652418D042C600B0CF1C /* NSString+Addition.m in Sources */,
 				B64444A918CA374800CDD2D4 /* NSNotificationCenter+Name.m in Sources */,
 				B6BE49DD18CF699F00DA7313 /* SDEmailTextField.m in Sources */,
 				B6BE49E418CF707200DA7313 /* UITextField+Addition.m in Sources */,
@@ -4238,10 +4254,21 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		EF3B653418D0548F00B0CF1C /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				EF3B653318D0548F00B0CF1C /* Base */,
+				EF3B653518D0549400B0CF1C /* zh-Hant */,
+				EF3B653618D0549600B0CF1C /* en */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
 		EFA8EBC818BDD87100144B75 /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
 				EFA8EBC918BDD87100144B75 /* en */,
+				EF3B652D18D0546300B0CF1C /* zh-Hant */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -4250,6 +4277,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				EFA8EBD218BDD87100144B75 /* Base */,
+				EF3B652C18D0546200B0CF1C /* zh-Hant */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -4258,6 +4286,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				EFA8EBE818BDD87100144B75 /* en */,
+				EF3B652E18D0546300B0CF1C /* zh-Hant */,
 			);
 			name = InfoPlist.strings;
 			path = ../SomdayTests;

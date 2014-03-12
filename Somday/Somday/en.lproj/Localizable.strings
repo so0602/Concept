@@ -1,0 +1,10 @@
+/* 
+  Localizable.strings
+  Somday
+
+  Created by Freddy So on 3/12/14.
+  Copyright (c) 2014 Freddy So. All rights reserved.
+*/
+
+"ErrorMessage_EmailFormat" = "● Invaild Email Format";
+"ErrorMessage_PasswordFormat" = "● Must be at least 8 characters";

@@ -8,6 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
+typedef NS_ENUM(NSInteger, SDTextFieldState) {
+    SDTextFieldStateNormal,
+    SDTextFieldStateError,
+    SDTextFieldStateCorrect,
+};
+
 @interface SDTextField : UITextField
+
+@property (nonatomic, assign) SDTextFieldState state;
 
 @end
