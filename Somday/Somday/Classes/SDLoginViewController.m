@@ -59,17 +59,9 @@
             SDLog(@"%@", response.status.message);
             
             [SDUtils setUsername:self.usernameTextField.text password:self.passwordTextField.text];
-            
-            SDAppDelegate* delegate = [UIApplication sharedApplication].delegate;
-            if( [delegate.loginViewController isEqual:self] ){
-                [self presentViewController:delegate.mainViewController animated:TRUE completion:^{
-                    
-                }];
-            }else{
-                [self dismissViewControllerAnimated:TRUE completion:^{
-                    
-                }];
-            }
+            [self dismissViewControllerAnimated:TRUE completion:^{
+                
+            }];
         } failed:^(SDLogin *response) {
             SDLog(@"%@, %@", response.status.message, response.request.responseString);
         }];
