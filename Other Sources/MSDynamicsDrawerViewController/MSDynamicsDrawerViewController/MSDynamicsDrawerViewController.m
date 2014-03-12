@@ -510,7 +510,7 @@ void MSDynamicsDrawerDirectionActionForMaskedValues(NSInteger direction, MSDynam
         } else if (self.possibleDrawerDirection & MSDynamicsDrawerDirectionVertical) {
             boundary.size.width = (CGRectGetWidth(self.paneView.frame) + 1.0);
             boundary.size.height = ((CGRectGetHeight(self.paneView.frame) * 2.0) + self.paneStateOpenWideEdgeOffset + 2.0);
-            boundary.origin.y += MSMenuWidth;
+            boundary.origin.y += MSTopMenuHeight;
         }
         path = [UIBezierPath bezierPathWithRect:boundary];
         
@@ -1116,6 +1116,7 @@ void MSDynamicsDrawerDirectionActionForMaskedValues(NSInteger direction, MSDynam
 - (CGRect)paneViewFrameForPanWithStartLocation:(CGPoint)startLocation currentLocation:(CGPoint)currentLocation bounded:(inout BOOL *)bounded
 {
     CGFloat panDelta = [self deltaForPanWithStartLocation:startLocation currentLocation:currentLocation];
+
     // Track the pane frame to the pan gesture
     CGRect paneFrame = self.paneView.frame;
     if (self.possibleDrawerDirection & MSDynamicsDrawerDirectionHorizontal) {
@@ -1123,6 +1124,7 @@ void MSDynamicsDrawerDirectionActionForMaskedValues(NSInteger direction, MSDynam
     } else if (self.possibleDrawerDirection & MSDynamicsDrawerDirectionVertical) {
         paneFrame.origin.y += panDelta;
     }
+
     // Pane view edge bounding
     CGFloat paneBoundOpenLocation = 0.0;
     CGFloat paneBoundClosedLocation = 0.0;
@@ -1147,6 +1149,7 @@ void MSDynamicsDrawerDirectionActionForMaskedValues(NSInteger direction, MSDynam
         default:
             break;
     }
+
     // Bounded open
     if (paneLocation && (*paneLocation <= paneBoundClosedLocation)) {
         *paneLocation = paneBoundClosedLocation;
