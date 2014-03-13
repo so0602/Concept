@@ -8,9 +8,15 @@
 
 #import "SDForgotPasswordViewController.h"
 
-#import "UIViewController+Addition.h"
+#import "SDTextField.h"
 
-@interface SDForgotPasswordViewController ()
+#import "KBPopupBubbleView.h"
+
+#import "UIViewController+Addition.h"
+#import "UIFont+Addition.h"
+#import "NSString+Addition.h"
+
+@interface SDForgotPasswordViewController ()<UITextFieldDelegate>
 
 @property (nonatomic, strong) IBOutlet UIImageView* backgroundImageView;
 
@@ -23,7 +29,13 @@
 
 @property (nonatomic, strong) IBOutlet UILabel* descriptionLabel;
 
-@property (nonatomic, strong) IBOutlet UITextField* usernameTextField;
+@property (nonatomic, strong) IBOutlet SDTextField* usernameTextField;
+
+@property (nonatomic, strong) KBPopupBubbleView* bubbleView;
+
+@property (nonatomic, strong, readonly) NSString* errorMessage;
+
+-(void)checkEmail;
 
 @end
 
@@ -47,6 +59,60 @@
         [self dismissViewControllerAnimated:TRUE completion:^{ 
         }];
     }
+}
+
+-(NSString*)emailErrorMessage{
+    NSMutableArray* strings = [NSMutableArray array];
+    if( !self.usernameTextField.text.isEmailFormat ){
+        NSString* string = NSLocalizedString(@"ErrorMessage_EmailFormat", nil);
+        [strings addObject:string];
+    }
+    
+    if( strings.count ){
+        return [strings componentsJoinedByString:@"\n"];
+    }
+    return nil;
+}
+
+-(KBPopupBubbleView*)bubbleView{
+    if( !_bubbleView ){
+        CGRect frame = self.usernameTextField.frame;
+        frame.origin.y -= 50;
+        frame.size.height = 50;
+        frame = [self.usernameTextField.superview convertRect:frame toView:self.view];
+        _bubbleView = [[KBPopupBubbleView alloc] initWithFrame:frame];
+        _bubbleView.position = kKBPopupPointerPositionLeft;
+        _bubbleView.side = kKBPopupPointerSideBottom;
+        _bubbleView.cornerRadius = 8;
+        _bubbleView.useBorders = FALSE;
+        _bubbleView.drawableColor = [UIColor whiteColor];
+        _bubbleView.label.font = [UIFont josefinSansSemiBoldFontOfSize:14];
+    }
+    return _bubbleView;
+}
+
+-(void)checkEmail{
+    if( self.usernameTextField.text.isEmailFormat ){
+        self.usernameTextField.state = SDTextFieldStateCorrect;
+        [self.bubbleView hide:TRUE];
+        [self touchUpInside:self.submitButton];
+    }else{
+        self.usernameTextField.state = SDTextFieldStateError;
+        
+        self.bubbleView.label.text = self.emailErrorMessage;
+        if( !self.bubbleView.superview ){
+            [self.bubbleView showInView:self.view animated:TRUE];
+        }
+    }
+}
+
+#pragma mark - UITextFieldDelegate
+
+-(BOOL)textFieldShouldReturn:(UITextField *)textField{
+    if( [textField isEqual:self.usernameTextField] ){
+        [self checkEmail];
+    }
+    return TRUE;
 }
 
 @end

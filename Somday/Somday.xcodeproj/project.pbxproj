@@ -849,6 +849,7 @@
 		B6BE49E418CF707200DA7313 /* UITextField+Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = B6BE49E318CF707200DA7313 /* UITextField+Addition.m */; };
 		B6BE49E818CF72F400DA7313 /* SDTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = B6BE49E718CF72F400DA7313 /* SDTextField.m */; };
 		B6BE49EB18CF739700DA7313 /* SDPasswordTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = B6BE49EA18CF739700DA7313 /* SDPasswordTextField.m */; };
+		B6BE4A6218D1625500DA7313 /* libKBPopupBubble.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B6BE4A5B18D1619400DA7313 /* libKBPopupBubble.a */; };
 		EF3B650018CDA27700B0CF1C /* SDResponseBase.m in Sources */ = {isa = PBXBuildFile; fileRef = EF3B64FF18CDA27700B0CF1C /* SDResponseBase.m */; };
 		EF3B650318CDA2C200B0CF1C /* SDStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = EF3B650218CDA2C200B0CF1C /* SDStatus.m */; };
 		EF3B650A18CDA8AA00B0CF1C /* SDLogin.m in Sources */ = {isa = PBXBuildFile; fileRef = EF3B650918CDA8AA00B0CF1C /* SDLogin.m */; };
@@ -906,6 +907,34 @@
 			proxyType = 1;
 			remoteGlobalIDString = BCF1A33314DDB1EC00852800;
 			remoteInfo = GPUImage;
+		};
+		B6BE49F618D1597200DA7313 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B6BE49EF18D1597200DA7313 /* KBPopupBubble.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 86ED2F0E17109B9B0097EC66;
+			remoteInfo = KBPopupBubble;
+		};
+		B6BE4A5A18D1619400DA7313 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B6BE49EF18D1597200DA7313 /* KBPopupBubble.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = B6BE4A2418D15A9400DA7313;
+			remoteInfo = KBPopupBubble;
+		};
+		B6BE4A5C18D1619400DA7313 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B6BE49EF18D1597200DA7313 /* KBPopupBubble.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = B6BE4A3118D15A9400DA7313;
+			remoteInfo = KBPopupBubbleTests;
+		};
+		B6BE4A6018D1624C00DA7313 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B6BE49EF18D1597200DA7313 /* KBPopupBubble.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = B6BE4A2318D15A9400DA7313;
+			remoteInfo = KBPopupBubble;
 		};
 		EF891DCE18CD8CB5005DC780 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -1839,6 +1868,7 @@
 		B6BE49E718CF72F400DA7313 /* SDTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SDTextField.m; path = Classes/SDTextField.m; sourceTree = "<group>"; };
 		B6BE49E918CF739700DA7313 /* SDPasswordTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SDPasswordTextField.h; path = Classes/SDPasswordTextField.h; sourceTree = "<group>"; };
 		B6BE49EA18CF739700DA7313 /* SDPasswordTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SDPasswordTextField.m; path = Classes/SDPasswordTextField.m; sourceTree = "<group>"; };
+		B6BE49EF18D1597200DA7313 /* KBPopupBubble.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = KBPopupBubble.xcodeproj; path = "../Other Sources/KBPopupBubble/KBPopupBubble.xcodeproj"; sourceTree = "<group>"; };
 		EF3B64FE18CDA27700B0CF1C /* SDResponseBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SDResponseBase.h; path = Classes/SDResponseBase.h; sourceTree = "<group>"; };
 		EF3B64FF18CDA27700B0CF1C /* SDResponseBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SDResponseBase.m; path = Classes/SDResponseBase.m; sourceTree = "<group>"; };
 		EF3B650118CDA2C200B0CF1C /* SDStatus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SDStatus.h; path = Classes/SDStatus.h; sourceTree = "<group>"; };
@@ -1861,9 +1891,9 @@
 		EF3B652C18D0546200B0CF1C /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Main.strings"; sourceTree = "<group>"; };
 		EF3B652D18D0546300B0CF1C /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		EF3B652E18D0546300B0CF1C /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
-		EF3B653318D0548F00B0CF1C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
-		EF3B653518D0549400B0CF1C /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = file; name = "zh-Hant"; path = "zh-Hant.lproj/Localizable.strings"; sourceTree = "<group>"; };
-		EF3B653618D0549600B0CF1C /* en */ = {isa = PBXFileReference; lastKnownFileType = file; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		EF3B653318D0548F00B0CF1C /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
+		EF3B653518D0549400B0CF1C /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		EF3B653618D0549600B0CF1C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		EF658E5C18C461C400FC9E07 /* SDMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SDMenuViewController.h; path = Classes/SDMenuViewController.h; sourceTree = "<group>"; };
 		EF658E5D18C461C400FC9E07 /* SDMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SDMenuViewController.m; path = Classes/SDMenuViewController.m; sourceTree = "<group>"; };
 		EF891DC918CD8CB5005DC780 /* ASIHTTPRequest.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ASIHTTPRequest.xcodeproj; path = "../Other Sources/ASIHTTPRequest/ASIHTTPRequest/ASIHTTPRequest.xcodeproj"; sourceTree = "<group>"; };
@@ -1904,6 +1934,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B6BE4A6218D1625500DA7313 /* libKBPopupBubble.a in Frameworks */,
 				EF891DDE18CD8D90005DC780 /* libz.dylib in Frameworks */,
 				EF891DDC18CD8D8A005DC780 /* libxml2.dylib in Frameworks */,
 				EF891DDA18CD8D80005DC780 /* SystemConfiguration.framework in Frameworks */,
@@ -2944,6 +2975,16 @@
 			name = TextField;
 			sourceTree = "<group>";
 		};
+		B6BE49F018D1597200DA7313 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				B6BE49F718D1597200DA7313 /* KBPopupBubble.app */,
+				B6BE4A5B18D1619400DA7313 /* libKBPopupBubble.a */,
+				B6BE4A5D18D1619400DA7313 /* KBPopupBubbleTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		EF3B64F818CDA25A00B0CF1C /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -3170,6 +3211,7 @@
 		EFA8EC0118BDDA4A00144B75 /* Other Sources */ = {
 			isa = PBXGroup;
 			children = (
+				B6BE49EF18D1597200DA7313 /* KBPopupBubble.xcodeproj */,
 				EFD0FC1818CD952B0026F54F /* JSONKit */,
 				EF891DC918CD8CB5005DC780 /* ASIHTTPRequest.xcodeproj */,
 				B65DDC2518C5B1410076408C /* GPUImage.xcodeproj */,
@@ -3212,6 +3254,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				B6BE4A6118D1624C00DA7313 /* PBXTargetDependency */,
 				EF891DD318CD8CC4005DC780 /* PBXTargetDependency */,
 				B65DDC3018C5B1500076408C /* PBXTargetDependency */,
 				EFA8EC0D18BDDA8600144B75 /* PBXTargetDependency */,
@@ -3276,6 +3319,10 @@
 					ProjectRef = B65DDC2518C5B1410076408C /* GPUImage.xcodeproj */;
 				},
 				{
+					ProductGroup = B6BE49F018D1597200DA7313 /* Products */;
+					ProjectRef = B6BE49EF18D1597200DA7313 /* KBPopupBubble.xcodeproj */;
+				},
+				{
 					ProductGroup = EFA8EC0318BDDA6D00144B75 /* Products */;
 					ProjectRef = EFA8EC0218BDDA6D00144B75 /* MSDynamicsDrawerViewController.xcodeproj */;
 				},
@@ -3301,6 +3348,28 @@
 			fileType = wrapper.cfbundle;
 			path = GPUImageTests.octest;
 			remoteRef = B65DDC2D18C5B1420076408C /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		B6BE49F718D1597200DA7313 /* KBPopupBubble.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			name = KBPopupBubble.app;
+			path = KBPopupBubbleTest.app;
+			remoteRef = B6BE49F618D1597200DA7313 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		B6BE4A5B18D1619400DA7313 /* libKBPopupBubble.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libKBPopupBubble.a;
+			remoteRef = B6BE4A5A18D1619400DA7313 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		B6BE4A5D18D1619400DA7313 /* KBPopupBubbleTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = KBPopupBubbleTests.xctest;
+			remoteRef = B6BE4A5C18D1619400DA7313 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		EF891DCF18CD8CB5005DC780 /* libASIHTTPRequest.a */ = {
@@ -4236,6 +4305,11 @@
 			name = GPUImage;
 			targetProxy = B65DDC2F18C5B1500076408C /* PBXContainerItemProxy */;
 		};
+		B6BE4A6118D1624C00DA7313 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = KBPopupBubble;
+			targetProxy = B6BE4A6018D1624C00DA7313 /* PBXContainerItemProxy */;
+		};
 		EF891DD318CD8CC4005DC780 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = ASIHTTPRequest;
@@ -4382,6 +4456,7 @@
 					"$(SOURCE_ROOT)/../Other\\ Sources/GPUImage/framework/Source",
 					"$(SOURCE_ROOT)/../Other\\ Sources/GPUImage/framework/Source/iOS",
 					"$(SOURCE_ROOT)/../Other\\ Sources/ASIHTTPRequest/**",
+					"$(SOURCE_ROOT)/../Other\\ Sources/KBPopupBubble/KBPopupBubble/KBPopupBubble",
 					"$(SOURCE_ROOT)/../Other\\ Sources/MSDynamicsDrawerViewController/MSDynamicsDrawerViewController",
 					"$(inherited)",
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
@@ -4413,6 +4488,7 @@
 					"$(SOURCE_ROOT)/../Other\\ Sources/GPUImage/framework/Source",
 					"$(SOURCE_ROOT)/../Other\\ Sources/GPUImage/framework/Source/iOS",
 					"$(SOURCE_ROOT)/../Other\\ Sources/ASIHTTPRequest/**",
+					"$(SOURCE_ROOT)/../Other\\ Sources/KBPopupBubble/KBPopupBubble/KBPopupBubble",
 					"$(SOURCE_ROOT)/../Other\\ Sources/MSDynamicsDrawerViewController/MSDynamicsDrawerViewController",
 					"$(inherited)",
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
@@ -4433,7 +4509,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Concept.app/Concept";
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Somday.app/Somday";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -4456,7 +4532,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Concept.app/Concept";
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Somday.app/Somday";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",

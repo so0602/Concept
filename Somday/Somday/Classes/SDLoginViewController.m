@@ -9,6 +9,7 @@
 #import "SDLoginViewController.h"
 
 #import "SDNetworkUtils.h"
+#import "SDUtils.h"
 
 #import "SDAppDelegate.h"
 
@@ -17,8 +18,11 @@
 
 #import "SDTextField.h"
 
+#import "KBPopupBubbleView.h"
+
 #import "NSString+Addition.h"
 #import "UIViewController+Addition.h"
+#import "UIFont+Addition.h"
 
 @interface SDLoginViewController ()<UITextFieldDelegate>
 
@@ -31,8 +35,13 @@
 @property (nonatomic, strong) IBOutlet UIButton* signUpButton;
 
 @property (nonatomic, strong) UITextField* targetTextField;
+@property (nonatomic, strong) KBPopupBubbleView* bubbleView;
 
 @property (nonatomic, strong, readonly) NSString* errorMessage;
+@property (nonatomic, strong, readonly) NSString* emailErrorMessage;
+
+-(void)checkEmail;
+-(void)checkPassword;
 
 @end
 
@@ -49,19 +58,13 @@
     
     self.titleLabel.font = [UIFont josefinSansFontOfSize:self.titleLabel.font.pointSize];
     self.subtitleLabel.font = [UIFont josefinSansSemiBoldFontOfSize:self.subtitleLabel.font.pointSize];
-    
-//    self.usernameTextField.text = @"test9@test.com";
-//    self.passwordTextField.text = @"test";
-    
-    if( [SDUtils username] ){
-        [self autoLogin];
-    }
 }
 
 #pragma mark - UIViewController Additions
 
 -(void)touchUpInside:(id)sender{
     if( [self.loginButton isEqual:sender] ){
+        [self.usernameTextField resignFirstResponder];
         [self.passwordTextField resignFirstResponder];
         self.targetTextField = nil;
         
@@ -115,39 +118,77 @@
     return nil;
 }
 
-#pragma mark - UITextFieldDelegate
-
--(BOOL)textFieldShouldBeginEditing:(UITextField *)textField{
-    if( ![self.targetTextField isEqual:textField] ){
-        if( [self.targetTextField isEqual:self.usernameTextField] && [textField isEqual:self.passwordTextField] ){
-            self.usernameTextField.state = self.usernameTextField.text.isEmailFormat ? SDTextFieldStateCorrect : SDTextFieldStateError;
-        }else if( [self.targetTextField isEqual:self.passwordTextField] && [textField isEqual:self.usernameTextField] ){
-            self.passwordTextField.state = self.passwordTextField.text.isPasswordFormat ? SDTextFieldStateCorrect : SDTextFieldStateError;
-        }
-        self.targetTextField = textField;
+-(NSString*)emailErrorMessage{
+    NSMutableArray* strings = [NSMutableArray array];
+    if( !self.usernameTextField.text.isEmailFormat ){
+        NSString* string = NSLocalizedString(@"ErrorMessage_EmailFormat", nil);
+        [strings addObject:string];
     }
     
-    return TRUE;
+    if( strings.count ){
+        return [strings componentsJoinedByString:@"\n"];
+    }
+    return nil;
 }
 
--(void)textFieldDidBeginEditing:(UITextField *)textField{
-    
+-(KBPopupBubbleView*)bubbleView{
+    if( !_bubbleView ){
+        CGRect frame = self.usernameTextField.frame;
+        frame.origin.y -= 50;
+        frame.size.height = 50;
+        frame = [self.usernameTextField.superview convertRect:frame toView:self.view];
+        _bubbleView = [[KBPopupBubbleView alloc] initWithFrame:frame];
+        _bubbleView.position = kKBPopupPointerPositionLeft;
+        _bubbleView.side = kKBPopupPointerSideBottom;
+        _bubbleView.cornerRadius = 8;
+        _bubbleView.useBorders = FALSE;
+        _bubbleView.drawableColor = [UIColor whiteColor];
+        _bubbleView.label.font = [UIFont josefinSansSemiBoldFontOfSize:14];
+    }
+    return _bubbleView;
 }
-//-(BOOL)textFieldShouldEndEditing:(UITextField *)textField;          // return YES to allow editing to stop and to resign first responder status. NO to disallow the editing session to end
-//-(void)textFieldDidEndEditing:(UITextField *)textField;             // may be called if forced even if shouldEndEditing returns NO (e.g. view removed from window) or endEditing:YES called
-//
-//-(BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string;   // return NO to not change text
-//
-//-(BOOL)textFieldShouldClear:(UITextField *)textField;               // called when clear button pressed. return NO to ignore (no notifications)
+
+-(void)checkEmail{
+    if( self.usernameTextField.text.isEmailFormat ){
+        self.usernameTextField.state = SDTextFieldStateCorrect;
+        [self.bubbleView hide:TRUE];
+    }else{
+        self.usernameTextField.state = SDTextFieldStateError;
+        
+        self.bubbleView.label.text = self.emailErrorMessage;
+        if( !self.bubbleView.superview ){
+            [self.bubbleView showInView:self.view animated:TRUE];
+        }
+    }
+}
+
+-(void)checkPassword{
+    self.passwordTextField.state = self.passwordTextField.text.isPasswordFormat ? SDTextFieldStateCorrect : SDTextFieldStateError;
+}
+
+#pragma mark - UITextFieldDelegate
+
+-(void)textFieldDidBeginEditing:(UITextField *)textField{
+    if( ![self.targetTextField isEqual:textField] ){
+        if( [self.targetTextField isEqual:self.usernameTextField] && [textField isEqual:self.passwordTextField] ){
+            [self checkEmail];
+            self.targetTextField = textField;
+        }else if( [self.targetTextField isEqual:self.passwordTextField] && [textField isEqual:self.usernameTextField] ){
+            [self checkPassword];
+            self.targetTextField = nil;
+        }
+        
+    }
+}
 
 -(BOOL)textFieldShouldReturn:(UITextField *)textField{
     if( [textField isEqual:self.usernameTextField] ){
         [self.passwordTextField becomeFirstResponder];
-        self.usernameTextField.state = self.usernameTextField.text.isEmailFormat ? SDTextFieldStateCorrect : SDTextFieldStateError;
+        [self checkEmail];
+        self.targetTextField = textField;
     }else if( [textField isEqual:self.passwordTextField] ){
-        self.passwordTextField.state = self.passwordTextField.text.isPasswordFormat ? SDTextFieldStateCorrect : SDTextFieldStateError;
+        [self checkPassword];
         [self touchUpInside:self.loginButton];
-        [self.passwordTextField resignFirstResponder];
         self.targetTextField = nil;
     }
     return TRUE;
