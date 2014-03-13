@@ -63,6 +63,12 @@
             }
         }
             break;
+        case SDTextFieldStateLoading:
+        {
+            UIActivityIndicatorView* view = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+            [view startAnimating];
+            self.rightView = view;
+        }
     }
 }
 
@@ -72,12 +78,12 @@
 }
 
 -(UIImageView*)rightImageView{
-    if( !self.rightView || [self.rightView isKindOfClass:[UIImageView class]] ){
+    if( !self.rightView || ![self.rightView isKindOfClass:[UIImageView class]] ){
         if( !_rightImageView ){
             _rightImageView = [[UIImageView alloc] initWithImage:nil];
-            self.rightView = _rightImageView;
-            self.rightViewMode = UITextFieldViewModeAlways;
         }
+        self.rightView = _rightImageView;
+        self.rightViewMode = UITextFieldViewModeAlways;
     }else{
         _rightImageView = (id)self.rightView;
     }

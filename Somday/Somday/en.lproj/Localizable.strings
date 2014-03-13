@@ -8,3 +8,4 @@
 
 "ErrorMessage_EmailFormat" = "● Invaild Email Format";
 "ErrorMessage_PasswordFormat" = "● Must be at least 8 characters";
+"ErrorMessage_ConfirmPasswordFormat" = "● Confirm Password is not match";
