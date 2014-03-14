@@ -285,6 +285,9 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="20"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20" id="Zme-AI-cWr"/>
+                                </constraints>
                             </view>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="prelogin-logo.png" translatesAutoresizingMaskIntoConstraints="NO" id="j7X-bz-rKc">
                                 <rect key="frame" x="74" y="70" width="171" height="54"/>
@@ -421,7 +424,6 @@
                             <constraint firstItem="8bk-Zg-FsP" firstAttribute="leading" secondItem="mfA-0c-Ifq" secondAttribute="leading" id="VxM-co-95O"/>
                             <constraint firstItem="QHY-14-SuA" firstAttribute="centerX" secondItem="Cwf-Z7-H4T" secondAttribute="centerX" id="ZFR-Oa-z3Z"/>
                             <constraint firstItem="QHY-14-SuA" firstAttribute="top" secondItem="j7X-bz-rKc" secondAttribute="bottom" constant="28" id="ata-By-oZe"/>
-                            <constraint firstItem="N2F-rv-mAr" firstAttribute="top" secondItem="dMy-f4-MUK" secondAttribute="bottom" id="cKN-ig-XPu"/>
                             <constraint firstItem="mfA-0c-Ifq" firstAttribute="top" secondItem="6P9-Ou-mR5" secondAttribute="bottom" id="ead-ob-KEN"/>
                             <constraint firstItem="6P9-Ou-mR5" firstAttribute="trailing" secondItem="dMy-f4-MUK" secondAttribute="trailing" id="f4a-L5-CAy"/>
                             <constraint firstItem="6P9-Ou-mR5" firstAttribute="trailing" secondItem="mfA-0c-Ifq" secondAttribute="trailing" id="i1e-8I-vtV"/>
