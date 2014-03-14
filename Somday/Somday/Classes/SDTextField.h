@@ -12,6 +12,7 @@ typedef NS_ENUM(NSInteger, SDTextFieldState) {
     SDTextFieldStateNormal,
     SDTextFieldStateError,
     SDTextFieldStateCorrect,
+    SDTextFieldStateLoading,
 };
 
 @interface SDTextField : UITextField

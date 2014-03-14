@@ -84,7 +84,7 @@ const CGFloat SDPaneViewVelocityMultiplier = 5.0;
     self.delegate = self.menuViewController;
     self.customDelegate = self.menuViewController;
     
-    [self setPaneState:MSDynamicsDrawerPaneStateMenu inDirection:MSDynamicsDrawerDirectionLeft animated:TRUE allowUserInterruption:TRUE completion:nil];
+    [self setPaneState:MSDynamicsDrawerPaneStateMenu inDirection:MSDynamicsDrawerDirectionLeft animated:TRUE allowUserInterruption:FALSE completion:nil];
 }
 
 -(void)showTopMenu{
@@ -100,7 +100,7 @@ const CGFloat SDPaneViewVelocityMultiplier = 5.0;
     self.delegate = self.topMenuViewController;
     self.customDelegate = self.topMenuViewController;
     
-    [self setPaneState:MSDynamicsDrawerPaneStateMenu inDirection:MSDynamicsDrawerDirectionTop animated:TRUE allowUserInterruption:TRUE completion:nil];
+    [self setPaneState:MSDynamicsDrawerPaneStateMenu inDirection:MSDynamicsDrawerDirectionTop animated:TRUE allowUserInterruption:FALSE completion:nil];
 }
 
 -(void)topMenuWillClose{
@@ -332,7 +332,7 @@ const CGFloat SDPaneViewVelocityMultiplier = 5.0;
             dispatch_async(dispatch_get_main_queue(), ^{
                 __weak typeof(self) weakSelf = self;
                 self.paneViewController = paneViewController;
-                [self setPaneState:MSDynamicsDrawerPaneStateClosed animated:animated allowUserInterruption:YES completion:^{
+                [self setPaneState:MSDynamicsDrawerPaneStateClosed animated:animated allowUserInterruption:FALSE completion:^{
                     [paneViewController didMoveToParentViewController:weakSelf];
                     [paneViewController endAppearanceTransition];
                     if (completion) completion();
@@ -347,7 +347,7 @@ const CGFloat SDPaneViewVelocityMultiplier = 5.0;
     }
     // If trying to set to the currently visible pane view controller, just close
     else {
-        [self setPaneState:MSDynamicsDrawerPaneStateClosed animated:animated allowUserInterruption:YES completion:^{
+        [self setPaneState:MSDynamicsDrawerPaneStateClosed animated:animated allowUserInterruption:FALSE completion:^{
             if (completion) completion();
         }];
     }

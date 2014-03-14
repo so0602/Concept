@@ -25,6 +25,5 @@ typedef double (^KeyframeParametricBlock)(double);
 @property (nonatomic) UIImageView *backgroundImageView;
 
 + (CGFloat)heightForCell;
-- (void)toggleMenu;
 
 @end

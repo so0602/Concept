@@ -181,7 +181,7 @@ void MSDynamicsDrawerDirectionActionForMaskedValues(NSInteger direction, MSDynam
     
     self.drawerView.frame = self.view.bounds;
     self.paneView.frame = self.view.bounds;
-    self.drawerView.backgroundColor = [UIColor blackColor];
+    self.drawerView.backgroundColor = [UIColor colorWithRed:242/255.0 green:242/255.0 blue:244/255.0 alpha:1];
     [self.view addSubview:self.drawerView];
     [self.view addSubview:self.paneView];
     
@@ -1373,6 +1373,11 @@ void MSDynamicsDrawerDirectionActionForMaskedValues(NSInteger direction, MSDynam
 - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch
 {
     if (gestureRecognizer == self.panePanGestureRecognizer) {
+
+        CGPoint point = [touch locationInView:self.paneView];
+        if (point.x > 20 && point.y > 44)
+            return NO;
+        
         __block BOOL shouldReceiveTouch = YES;
         // Enumerate the view's superviews, checking for a touch-forwarding class
         [touch.view superviewHierarchyAction:^(UIView *view) {

@@ -205,14 +205,8 @@ static NSString *CellIdentifier = @"CollectionViewCell";
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    
-    if (indexPath.row > 0) {
-        SDBaseGridView *cell = (SDBaseGridView*)[collectionView cellForItemAtIndexPath:indexPath];
-        [cell toggleMenu];
-    }
+
 }
-
-
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
