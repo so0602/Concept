@@ -18,6 +18,8 @@
 
 #import "SDTextField.h"
 
+#import "GPUImage.h"
+
 #import "KBPopupBubbleView.h"
 
 #import "NSString+Addition.h"
@@ -26,8 +28,11 @@
 
 @interface SDLoginViewController ()<UITextFieldDelegate>
 
-@property (nonatomic, strong) IBOutlet UILabel* titleLabel;
-@property (nonatomic, strong) IBOutlet UILabel* subtitleLabel;
+@property (nonatomic, strong) IBOutlet GPUImageView* backgroundImageView;
+@property (nonatomic, strong) GPUImageiOSBlurFilter* blurFilter;
+@property (nonatomic, strong) GPUImagePicture* backgroundPicture;
+
+@property (nonatomic, strong) IBOutlet UIImageView* textFieldBackgroundImageView;
 @property (nonatomic, strong) IBOutlet SDTextField* usernameTextField;
 @property (nonatomic, strong) IBOutlet SDTextField* passwordTextField;
 @property (nonatomic, strong) IBOutlet UIButton* loginButton;
@@ -47,17 +52,37 @@
 
 @implementation SDLoginViewController
 
--(void)autoLogin{
-    [self touchUpInside:self.loginButton];
-}
-
 #pragma mark - View Lifecycle
 
 -(void)viewDidLoad{
     [super viewDidLoad];
     
-    self.titleLabel.font = [UIFont josefinSansFontOfSize:self.titleLabel.font.pointSize];
-    self.subtitleLabel.font = [UIFont josefinSansSemiBoldFontOfSize:self.subtitleLabel.font.pointSize];
+    UIImage* image = self.textFieldBackgroundImageView.image;
+    image = [image stretchableImageWithLeftCapWidth:image.size.width / 2 topCapHeight:image.size.height / 2];
+    self.textFieldBackgroundImageView.image = image;
+    
+    image = [self.loginButton backgroundImageForState:UIControlStateNormal];
+    image = [image stretchableImageWithLeftCapWidth:image.size.width / 2 topCapHeight:image.size.height / 2];
+    [self.loginButton setBackgroundImage:image forState:UIControlStateNormal];
+    
+    self.backgroundImage = [UIImage imageNamed:@"dump_00.jpg"];
+    
+    self.backgroundImageView.clipsToBounds = TRUE;
+    self.backgroundImageView.layer.contentsGravity = kCAGravityTop;
+    self.backgroundImageView.fillMode = kGPUImageFillModePreserveAspectRatioAndFill;
+    
+    if( !self.blurFilter ){
+        self.blurFilter = [[GPUImageiOSBlurFilter alloc] init];
+        self.blurFilter.blurRadiusInPixels = 1.0f;
+    }
+    
+    if( !self.backgroundPicture ){
+        self.backgroundPicture = [[GPUImagePicture alloc] initWithImage:self.backgroundImage];
+        [self.backgroundPicture addTarget:self.blurFilter];
+        [self.blurFilter addTarget:self.backgroundImageView];
+    }
+    
+    [self.backgroundPicture processImage];
 }
 
 #pragma mark - UIViewController Additions

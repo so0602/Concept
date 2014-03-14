@@ -10,6 +10,6 @@
 
 @interface SDLoginViewController : UIViewController
 
--(void)autoLogin;
+@property (nonatomic, strong) UIImage* backgroundImage;
 
 @end
