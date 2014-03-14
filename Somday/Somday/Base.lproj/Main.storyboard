@@ -698,7 +698,6 @@
     </scenes>
     <resources>
         <image name="icons-12px_arrowLeft.png" width="14" height="14"/>
-        <image name="icons-12px_arrowLeft.png" width="14" height="14"/>
         <image name="icons-24px_add.png" width="26" height="26"/>
         <image name="icons-24px_menu.png" width="26" height="26"/>
         <image name="icons-shadow-24px_arrowLeft.png" width="26" height="26"/>
