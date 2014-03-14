@@ -479,6 +479,7 @@ void MSDynamicsDrawerDirectionActionForMaskedValues(NSInteger direction, MSDynam
 
 - (void)didUpdateDynamicAnimatorAction
 {
+    [UIApplication sharedApplication].keyWindow.userInteractionEnabled = NO;
     [self paneViewDidUpdateFrame];
 }
 
@@ -817,6 +818,7 @@ void MSDynamicsDrawerDirectionActionForMaskedValues(NSInteger direction, MSDynam
 - (void)setPaneState:(MSDynamicsDrawerPaneState)paneState inDirection:(MSDynamicsDrawerDirection)direction animated:(BOOL)animated allowUserInterruption:(BOOL)allowUserInterruption completion:(void (^)(void))completion
 {
     NSAssert(((self.possibleDrawerDirection & direction) == direction), @"Unable to bounce open with impossible or multiple directions");
+    
     if ((paneState != MSDynamicsDrawerPaneStateClosed)) {
         self.currentDrawerDirection = direction;
     }
@@ -924,7 +926,7 @@ void MSDynamicsDrawerDirectionActionForMaskedValues(NSInteger direction, MSDynam
         default:
             break;
     }
-    
+    NSLog(@"paneViewOrigin: %@", NSStringFromCGPoint(paneViewOrigin));
     return paneViewOrigin;
 }
 
@@ -1449,6 +1451,8 @@ void MSDynamicsDrawerDirectionActionForMaskedValues(NSInteger direction, MSDynam
         self.dynamicAnimatorCompletion();
         self.dynamicAnimatorCompletion = nil;
     }
+    
+    [UIApplication sharedApplication].keyWindow.userInteractionEnabled = YES;
 }
 
 @end

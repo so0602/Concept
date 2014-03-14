@@ -84,7 +84,7 @@
 		864B8F7B1716366F0054B9AB /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
 		869B87521713EA0900BE3016 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/ViewController_iPhone5.xib; sourceTree = "<group>"; };
 		869B87541713EADD00BE3016 /* PanelViewController_iPhone5.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PanelViewController_iPhone5.xib; sourceTree = "<group>"; };
-		86ED2F0E17109B9B0097EC66 /* KBPopupBubble.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = KBPopupBubble.app; path = KBPopupBubbleTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		86ED2F0E17109B9B0097EC66 /* KBPopupBubbleTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KBPopupBubbleTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		86ED2F1117109B9B0097EC66 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		86ED2F1317109B9B0097EC66 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		86ED2F1517109B9B0097EC66 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -201,7 +201,7 @@
 		86ED2F0F17109B9B0097EC66 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				86ED2F0E17109B9B0097EC66 /* KBPopupBubble.app */,
+				86ED2F0E17109B9B0097EC66 /* KBPopupBubbleTest.app */,
 				B6BE4A2418D15A9400DA7313 /* libKBPopupBubble.a */,
 				B6BE4A3118D15A9400DA7313 /* KBPopupBubbleTests.xctest */,
 			);
@@ -332,7 +332,7 @@
 			);
 			name = KBPopupBubbleTest;
 			productName = KBPopupBubble;
-			productReference = 86ED2F0E17109B9B0097EC66 /* KBPopupBubble.app */;
+			productReference = 86ED2F0E17109B9B0097EC66 /* KBPopupBubbleTest.app */;
 			productType = "com.apple.product-type.application";
 		};
 		B6BE4A2318D15A9400DA7313 /* KBPopupBubble */ = {

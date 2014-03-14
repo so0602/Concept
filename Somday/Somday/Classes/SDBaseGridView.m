@@ -7,7 +7,7 @@
 //
 
 #import "SDBaseGridView.h"
-
+#import "CAKeyframeAnimation+Addition.h"
 
 KeyframeParametricBlock openFunction = ^double(double time) {
     return sin(time*M_PI_2);
@@ -32,31 +32,6 @@ enum {
 typedef NSUInteger SDGridMenuState;
 
 
-@implementation CAKeyframeAnimation (SomDay)
-
-+ (id)animationWithKeyPath:(NSString *)path function:(KeyframeParametricBlock)block fromValue:(double)fromValue toValue:(double)toValue
-{
-    // get a keyframe animation to set up
-    CAKeyframeAnimation *animation = [CAKeyframeAnimation animationWithKeyPath:path];
-    // break the time into steps (the more steps, the smoother the animation)
-    NSUInteger steps = 100;
-    NSMutableArray *values = [NSMutableArray arrayWithCapacity:steps];
-    double time = 0.0;
-    double timeStep = 1.0 / (double)(steps - 1);
-    for(NSUInteger i = 0; i < steps; i++) {
-        double value = fromValue + (block(time) * (toValue - fromValue));
-        [values addObject:[NSNumber numberWithDouble:value]];
-        time += timeStep;
-    }
-    // we want linear animation between keyframes, with equal time steps
-    animation.calculationMode = kCAAnimationLinear;
-    // set keyframes and we're done
-    [animation setValues:values];
-    return(animation);
-}
-
-@end
-
 @interface SDBaseGridView ()
 @property (nonatomic) SDGridMenuState menuState;
 @property (nonatomic) CALayer *origamiLayer;
@@ -67,7 +42,7 @@ typedef NSUInteger SDGridMenuState;
 
 @implementation SDBaseGridView
 
-@synthesize origamiLayer, viewSnapShot;
+@synthesize origamiLayer, viewSnapShot, shareButton, moreButton, commentButton, likeButton;
 
 + (CGFloat)heightForCell
 {
@@ -94,17 +69,9 @@ typedef NSUInteger SDGridMenuState;
     return self;
 }
 
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect
-{
-    // Drawing code
-}
-*/
-
 - (void)initBaseGridView
 {
+    // BackgroundColor
     self.backgroundColor = [UIColor clearColor];
     self.backgroundImageView = [[UIImageView alloc] initWithFrame:self.bounds];
     self.backgroundImageView.backgroundColor = [UIColor clearColor];
@@ -121,7 +88,23 @@ typedef NSUInteger SDGridMenuState;
     self.layer.shadowPath =  [UIBezierPath bezierPathWithRoundedRect:self.bounds cornerRadius:self.layer.cornerRadius].CGPath;
     
     self.backgroundImageView.layer.masksToBounds = YES;
-    self.backgroundImageView.layer.cornerRadius = 8.0f;    
+    self.backgroundImageView.layer.cornerRadius = 8.0f;
+    
+    // Add common button
+    self.shareButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    UIImage *image = [UIImage imageNamed:@"icons-24px_share"];
+    [shareButton setBackgroundImage:image forState:UIControlStateNormal];
+    shareButton.frame = CGRectMake(10, 136, image.size.width, image.size.height);
+    [shareButton setTitle:NSLocalizedString(@"Share", nil) forState:UIControlStateNormal];
+    [shareButton setTitleEdgeInsets:UIEdgeInsetsMake(36, 0, 0, 0)];
+    shareButton.titleLabel.font = [UIFont systemFontOfSize:9];
+    [self insertSubview:shareButton belowSubview:_backgroundImageView];
+    
+    self.moreButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    image = [UIImage imageNamed:@"icons-24px_more"];
+    [moreButton setImage:image forState:UIControlStateNormal];
+    moreButton.frame = CGRectMake(10, 260, image.size.width, image.size.height);
+    [self insertSubview:moreButton belowSubview:_backgroundImageView];    
     
     // Add Gesture recognizer
     UISwipeGestureRecognizer *recognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipeGesture:)];
@@ -569,6 +552,13 @@ typedef NSUInteger SDGridMenuState;
     openAnimation.fillMode = kCAFillModeForwards;
     [self.layer addAnimation:openAnimation forKey:@"position"];
     [CATransaction commit];
+}
+
+#pragma mark - Action
+
+- (void)actionForItem:(id)sender
+{
+
 }
 
 

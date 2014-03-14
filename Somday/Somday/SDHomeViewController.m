@@ -160,7 +160,7 @@ static NSString *CellIdentifier = @"CollectionViewCell";
         }
             break;
         case 1:{
-            // add button
+            // add button            
             SEL selector = self.navigationItem.rightBarButtonItem.action;
             UIViewController *_target = self.navigationItem.rightBarButtonItem.target;
             objc_msgSend(_target, selector, self.navigationItem.rightBarButtonItem);
