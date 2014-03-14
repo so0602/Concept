@@ -15,11 +15,11 @@
 @interface SDSearchViewController ()
 
 @property (nonatomic, strong) IBOutlet GPUImageView* backgroundImageView;
-@property (nonatomic, strong) IBOutlet UIButton* backButton;
-@property (nonatomic, strong) IBOutlet UITextField* searchTextField;
-
 @property (nonatomic, strong) GPUImageiOSBlurFilter* blurFilter;
 @property (nonatomic, strong) GPUImagePicture* backgroundPicture;
+
+@property (nonatomic, strong) IBOutlet UIButton* backButton;
+@property (nonatomic, strong) IBOutlet UITextField* searchTextField;
 
 @end
 

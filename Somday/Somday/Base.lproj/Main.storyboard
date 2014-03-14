@@ -276,10 +276,16 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="iphone4-login-1.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="cmT-lx-wfV">
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="evp-8K-vX0" customClass="GPUImageView">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                            </view>
+                            <view alpha="0.94999999999999996" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dMy-f4-MUK">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="20"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                            </view>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="prelogin-logo.png" translatesAutoresizingMaskIntoConstraints="NO" id="j7X-bz-rKc">
                                 <rect key="frame" x="73.5" y="70" width="171" height="54"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -288,6 +294,10 @@
                                 <rect key="frame" x="20" y="152" width="280" height="104"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="prelogin-textField-2.png" translatesAutoresizingMaskIntoConstraints="NO" id="NGe-80-R04">
+                                        <rect key="frame" x="0.0" y="0.0" width="280" height="104"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NRz-AO-Rnw" customClass="SDEmailTextField">
                                         <rect key="frame" x="24" y="16" width="240" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -314,7 +324,7 @@
                                 <rect key="frame" x="28" y="303" width="264" height="48"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                                <state key="normal" title="Login">
+                                <state key="normal" title="Login" backgroundImage="btn-form-green.png">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -335,9 +345,25 @@
                                     <action selector="touchUpInside:" destination="B78-S3-Y5e" eventType="touchUpInside" id="45K-Bs-tu5"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8bk-Zg-FsP">
-                                <rect key="frame" x="0.0" y="437" width="320" height="48"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6P9-Ou-mR5">
+                                <rect key="frame" x="0.0" y="471" width="320" height="48"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="0.75" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="13"/>
+                                <inset key="titleEdgeInsets" minX="10" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="5" maxY="0.0"/>
+                                <state key="normal" title="Login with Facebook" image="icon-24px-social-fb.png">
+                                    <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="touchUpInside:" destination="B78-S3-Y5e" eventType="touchUpInside" id="UQk-wT-9Ez"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8bk-Zg-FsP">
+                                <rect key="frame" x="0.0" y="520" width="320" height="48"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="0.75" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="13"/>
                                 <state key="normal" title="Create an new account">
                                     <color key="titleColor" red="0.21568627450980393" green="0.53333333333333333" blue="0.396078431372549" alpha="1" colorSpace="calibratedRGB"/>
@@ -347,14 +373,20 @@
                                     <action selector="touchUpInside:" destination="B78-S3-Y5e" eventType="touchUpInside" id="f8Z-tD-OHa"/>
                                 </connections>
                             </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="separator-1.png" translatesAutoresizingMaskIntoConstraints="NO" id="mfA-0c-Ifq">
+                                <rect key="frame" x="0.0" y="519" width="320" height="1"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <connections>
+                        <outlet property="backgroundImageView" destination="evp-8K-vX0" id="7Zv-9Q-cQy"/>
                         <outlet property="forgotButton" destination="Ysc-c7-fRX" id="sTP-fe-Xwf"/>
                         <outlet property="loginButton" destination="Cwf-Z7-H4T" id="XUo-Fv-Gk0"/>
                         <outlet property="passwordTextField" destination="7Kp-U4-EuU" id="6nS-vP-MTP"/>
                         <outlet property="signUpButton" destination="8bk-Zg-FsP" id="2Ol-TS-Yk0"/>
+                        <outlet property="textFieldBackgroundImageView" destination="NGe-80-R04" id="z1B-kY-TU5"/>
                         <outlet property="usernameTextField" destination="NRz-AO-Rnw" id="Hhs-Hu-obg"/>
                     </connections>
                 </viewController>
@@ -706,6 +738,8 @@
         </scene>
     </scenes>
     <resources>
+        <image name="btn-form-green.png" width="24" height="48"/>
+        <image name="icon-24px-social-fb.png" width="24" height="24"/>
         <image name="icons-12px_arrowLeft.png" width="14" height="14"/>
         <image name="icons-24px_add.png" width="26" height="26"/>
         <image name="icons-24px_menu.png" width="26" height="26"/>
@@ -715,9 +749,10 @@
         <image name="icons-shadow-24px_location-bold.png" width="26" height="26"/>
         <image name="icons-shadow-24px_newStory.png" width="26" height="26"/>
         <image name="iphone4-fpw-1.jpg" width="640" height="1136"/>
-        <image name="iphone4-login-1.jpg" width="640" height="1136"/>
         <image name="iphone4-signup-1.jpg" width="640" height="1136"/>
         <image name="prelogin-logo.png" width="171" height="54"/>
+        <image name="prelogin-textField-2.png" width="48" height="104"/>
+        <image name="separator-1.png" width="320" height="1"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
