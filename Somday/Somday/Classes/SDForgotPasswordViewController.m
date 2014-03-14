@@ -10,25 +10,29 @@
 
 #import "SDTextField.h"
 
+#import "GPUImage.h"
+
 #import "KBPopupBubbleView.h"
 
 #import "UIViewController+Addition.h"
 #import "UIFont+Addition.h"
 #import "NSString+Addition.h"
+#import "UIImageView+LBBlurredImage.h"
 
 @interface SDForgotPasswordViewController ()<UITextFieldDelegate>
 
 @property (nonatomic, strong) IBOutlet UIImageView* backgroundImageView;
+@property (nonatomic, strong) GPUImageiOSBlurFilter* blurFilter;
+@property (nonatomic, strong) GPUImagePicture* backgroundPicture;
 
 @property (nonatomic, strong) IBOutlet UIButton* backButton;
 @property (nonatomic, strong) IBOutlet UIButton* submitButton;
 
-@property (nonatomic, strong) IBOutlet UILabel* titleLabel;
-@property (nonatomic, strong) IBOutlet UILabel* subtitleLabel;
 @property (nonatomic, strong) IBOutlet UILabel* mainTitleLabel;
 
 @property (nonatomic, strong) IBOutlet UILabel* descriptionLabel;
 
+@property (nonatomic, strong) IBOutlet UIImageView* textFieldBackgroundImageView;
 @property (nonatomic, strong) IBOutlet SDTextField* usernameTextField;
 
 @property (nonatomic, strong) KBPopupBubbleView* bubbleView;
@@ -46,8 +50,15 @@
 -(void)viewDidLoad{
     [super viewDidLoad];
     
-    self.titleLabel.font = [UIFont josefinSansFontOfSize:self.titleLabel.font.pointSize];
-    self.subtitleLabel.font = [UIFont josefinSansSemiBoldFontOfSize:self.subtitleLabel.font.pointSize];
+    UIImage* image = self.textFieldBackgroundImageView.image;
+    image = [image stretchableImageWithLeftCapWidth:image.size.width / 2 topCapHeight:image.size.height / 2];
+    self.textFieldBackgroundImageView.image = image;
+    
+    image = [self.submitButton backgroundImageForState:UIControlStateNormal];
+    image = [image stretchableImageWithLeftCapWidth:image.size.width / 2 topCapHeight:image.size.height / 2];
+    [self.submitButton setBackgroundImage:image forState:UIControlStateNormal];
+    
+    self.backgroundImageView.image = self.backgroundImage;
 }
 
 #pragma mark - UIViewController Additions

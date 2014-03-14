@@ -65,7 +65,7 @@
     image = [image stretchableImageWithLeftCapWidth:image.size.width / 2 topCapHeight:image.size.height / 2];
     [self.loginButton setBackgroundImage:image forState:UIControlStateNormal];
     
-    self.backgroundImage = [UIImage imageNamed:@"dump_00.jpg"];
+    self.backgroundImage = [UIImage imageNamed:@"Debug_Story_1"];
     
     self.backgroundImageView.clipsToBounds = TRUE;
     self.backgroundImageView.layer.contentsGravity = kCAGravityTop;
@@ -107,11 +107,14 @@
                 }];
             } failed:^(SDLogin *response) {
                 SDLog(@"%@, %@", response.status.message, response.request.responseString);
+                UIAlertView* alertView = [[UIAlertView alloc] initWithTitle:nil message:response.failMessage delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+                [alertView show];
             }];
         }
     }else if( [self.forgotButton isEqual:sender] ){
         SDForgotPasswordViewController* viewController = [SDForgotPasswordViewController viewControllerFromStoryboardWithIdentifier:@"ForgotPassword"];
         viewController.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
+        viewController.backgroundImage = self.blurFilter.imageFromCurrentlyProcessedOutput;
         [self presentViewController:viewController animated:TRUE completion:^{
             
         }];

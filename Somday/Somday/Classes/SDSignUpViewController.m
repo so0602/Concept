@@ -24,9 +24,7 @@
 @property (nonatomic, strong) IBOutlet UIButton* backButton;
 @property (nonatomic, strong) IBOutlet UIButton* signUpButton;
 
-@property (nonatomic, strong) IBOutlet UILabel* titleLabel;
-@property (nonatomic, strong) IBOutlet UILabel* subtitleLabel;
-
+@property (nonatomic, strong) IBOutlet UIImageView* textFieldBackgroundImageView;
 @property (nonatomic, strong) IBOutlet SDTextField* usernameTextField;
 @property (nonatomic, strong) IBOutlet SDTextField* passwordTextField;
 @property (nonatomic, strong) IBOutlet SDTextField* confirmPasswordTextField;
@@ -50,15 +48,33 @@
 -(void)viewDidLoad{
     [super viewDidLoad];
     
-    self.titleLabel.font = [UIFont josefinSansFontOfSize:self.titleLabel.font.pointSize];
-    self.subtitleLabel.font = [UIFont josefinSansSemiBoldFontOfSize:self.subtitleLabel.font.pointSize];
-    
     UILabel* label = [[UILabel alloc] initWithFrame:CGRectZero];
     label.backgroundColor = [UIColor clearColor];
     label.text = @"as your login";
+    label.font = [UIFont josefinSansFontOfSize:14];
+    label.textColor = [UIColor colorWithWhite:0.5 alpha:0.8];
     [label sizeToFit];
     self.usernameTextField.rightView = label;
     self.usernameTextField.rightViewMode = UITextFieldViewModeUnlessEditing;
+    
+    label = [[UILabel alloc] initWithFrame:CGRectZero];
+    label.backgroundColor = [UIColor clearColor];
+    label.text = @"at least 8 characters";
+    label.font = [UIFont josefinSansFontOfSize:14];
+    label.textColor = [UIColor colorWithWhite:0.5 alpha:0.8];
+    [label sizeToFit];
+    self.passwordTextField.rightView = label;
+    self.passwordTextField.rightViewMode = UITextFieldViewModeUnlessEditing;
+    
+    UIImage* image = self.textFieldBackgroundImageView.image;
+    image = [image stretchableImageWithLeftCapWidth:image.size.width / 2 topCapHeight:image.size.height / 2];
+    self.textFieldBackgroundImageView.image = image;
+    
+    image = [self.signUpButton backgroundImageForState:UIControlStateNormal];
+    image = [image stretchableImageWithLeftCapWidth:image.size.width / 2 topCapHeight:image.size.height / 2];
+    [self.signUpButton setBackgroundImage:image forState:UIControlStateNormal];
+    
+    self.backgroundImageView.image = self.backgroundImage;
 }
 
 #pragma mark - UIViewController Additions

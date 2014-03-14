@@ -21,7 +21,7 @@
 #pragma mark - SDTextField Private Functions
 
 -(void)initialize{
-    self.rightImage = [UIImage imageNamed:@"icons-shadow-16px_mail"];
+    self.rightImage = [UIImage imageNamed:@"icons-grey-ccc-12px_mail"];
 }
 
 @end
