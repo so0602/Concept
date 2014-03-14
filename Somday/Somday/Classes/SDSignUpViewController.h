@@ -10,4 +10,6 @@
 
 @interface SDSignUpViewController : UIViewController
 
+@property (nonatomic, strong) UIImage* backgroundImage;
+
 @end

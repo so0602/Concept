@@ -878,6 +878,16 @@
 		EF3B659E18D2F51A00B0CF1C /* icon-24px-social-fb@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EF3B659C18D2F51A00B0CF1C /* icon-24px-social-fb@2x.png */; };
 		EF3B65A118D2F5DB00B0CF1C /* separator-1.png in Resources */ = {isa = PBXBuildFile; fileRef = EF3B659F18D2F5DB00B0CF1C /* separator-1.png */; };
 		EF3B65A218D2F5DB00B0CF1C /* separator-1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EF3B65A018D2F5DB00B0CF1C /* separator-1@2x.png */; };
+		EF3B65AB18D2F97200B0CF1C /* icons-color-12px_tick.png in Resources */ = {isa = PBXBuildFile; fileRef = EF3B65A318D2F97200B0CF1C /* icons-color-12px_tick.png */; };
+		EF3B65AC18D2F97200B0CF1C /* icons-color-12px_tick@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EF3B65A418D2F97200B0CF1C /* icons-color-12px_tick@2x.png */; };
+		EF3B65AD18D2F97200B0CF1C /* icons-color-12px_warning.png in Resources */ = {isa = PBXBuildFile; fileRef = EF3B65A518D2F97200B0CF1C /* icons-color-12px_warning.png */; };
+		EF3B65AE18D2F97200B0CF1C /* icons-color-12px_warning@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EF3B65A618D2F97200B0CF1C /* icons-color-12px_warning@2x.png */; };
+		EF3B65AF18D2F97200B0CF1C /* icons-grey-ccc-12px_lock.png in Resources */ = {isa = PBXBuildFile; fileRef = EF3B65A718D2F97200B0CF1C /* icons-grey-ccc-12px_lock.png */; };
+		EF3B65B018D2F97200B0CF1C /* icons-grey-ccc-12px_lock@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EF3B65A818D2F97200B0CF1C /* icons-grey-ccc-12px_lock@2x.png */; };
+		EF3B65B118D2F97200B0CF1C /* icons-grey-ccc-12px_mail.png in Resources */ = {isa = PBXBuildFile; fileRef = EF3B65A918D2F97200B0CF1C /* icons-grey-ccc-12px_mail.png */; };
+		EF3B65B218D2F97200B0CF1C /* icons-grey-ccc-12px_mail@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EF3B65AA18D2F97200B0CF1C /* icons-grey-ccc-12px_mail@2x.png */; };
+		EF3B65B818D3008C00B0CF1C /* UIImage+ImageEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = EF3B65B518D3008C00B0CF1C /* UIImage+ImageEffects.m */; };
+		EF3B65B918D3008C00B0CF1C /* UIImageView+LBBlurredImage.m in Sources */ = {isa = PBXBuildFile; fileRef = EF3B65B718D3008C00B0CF1C /* UIImageView+LBBlurredImage.m */; };
 		EF658E5E18C461C400FC9E07 /* SDMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EF658E5D18C461C400FC9E07 /* SDMenuViewController.m */; };
 		EF891DD418CD8CD2005DC780 /* libASIHTTPRequest.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EF891DCF18CD8CB5005DC780 /* libASIHTTPRequest.a */; };
 		EF891DD618CD8D6E005DC780 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EF891DD518CD8D6E005DC780 /* CFNetwork.framework */; };
@@ -1965,6 +1975,18 @@
 		EF3B659C18D2F51A00B0CF1C /* icon-24px-social-fb@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-24px-social-fb@2x.png"; sourceTree = "<group>"; };
 		EF3B659F18D2F5DB00B0CF1C /* separator-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "separator-1.png"; sourceTree = "<group>"; };
 		EF3B65A018D2F5DB00B0CF1C /* separator-1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "separator-1@2x.png"; sourceTree = "<group>"; };
+		EF3B65A318D2F97200B0CF1C /* icons-color-12px_tick.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icons-color-12px_tick.png"; sourceTree = "<group>"; };
+		EF3B65A418D2F97200B0CF1C /* icons-color-12px_tick@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icons-color-12px_tick@2x.png"; sourceTree = "<group>"; };
+		EF3B65A518D2F97200B0CF1C /* icons-color-12px_warning.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icons-color-12px_warning.png"; sourceTree = "<group>"; };
+		EF3B65A618D2F97200B0CF1C /* icons-color-12px_warning@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icons-color-12px_warning@2x.png"; sourceTree = "<group>"; };
+		EF3B65A718D2F97200B0CF1C /* icons-grey-ccc-12px_lock.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icons-grey-ccc-12px_lock.png"; sourceTree = "<group>"; };
+		EF3B65A818D2F97200B0CF1C /* icons-grey-ccc-12px_lock@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icons-grey-ccc-12px_lock@2x.png"; sourceTree = "<group>"; };
+		EF3B65A918D2F97200B0CF1C /* icons-grey-ccc-12px_mail.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icons-grey-ccc-12px_mail.png"; sourceTree = "<group>"; };
+		EF3B65AA18D2F97200B0CF1C /* icons-grey-ccc-12px_mail@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icons-grey-ccc-12px_mail@2x.png"; sourceTree = "<group>"; };
+		EF3B65B418D3008C00B0CF1C /* UIImage+ImageEffects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIImage+ImageEffects.h"; path = "../Other Sources/LBBlurredImage/LBBlurredImage/UIImage+ImageEffects.h"; sourceTree = "<group>"; };
+		EF3B65B518D3008C00B0CF1C /* UIImage+ImageEffects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImage+ImageEffects.m"; path = "../Other Sources/LBBlurredImage/LBBlurredImage/UIImage+ImageEffects.m"; sourceTree = "<group>"; };
+		EF3B65B618D3008C00B0CF1C /* UIImageView+LBBlurredImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIImageView+LBBlurredImage.h"; path = "../Other Sources/LBBlurredImage/LBBlurredImage/UIImageView+LBBlurredImage.h"; sourceTree = "<group>"; };
+		EF3B65B718D3008C00B0CF1C /* UIImageView+LBBlurredImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImageView+LBBlurredImage.m"; path = "../Other Sources/LBBlurredImage/LBBlurredImage/UIImageView+LBBlurredImage.m"; sourceTree = "<group>"; };
 		EF658E5C18C461C400FC9E07 /* SDMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SDMenuViewController.h; path = Classes/SDMenuViewController.h; sourceTree = "<group>"; };
 		EF658E5D18C461C400FC9E07 /* SDMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SDMenuViewController.m; path = Classes/SDMenuViewController.m; sourceTree = "<group>"; };
 		EF891DC918CD8CB5005DC780 /* ASIHTTPRequest.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ASIHTTPRequest.xcodeproj; path = "../Other Sources/ASIHTTPRequest/ASIHTTPRequest/ASIHTTPRequest.xcodeproj"; sourceTree = "<group>"; };
@@ -3213,12 +3235,31 @@
 		EF3B659A18D2F51A00B0CF1C /* icons */ = {
 			isa = PBXGroup;
 			children = (
+				EF3B65A318D2F97200B0CF1C /* icons-color-12px_tick.png */,
+				EF3B65A418D2F97200B0CF1C /* icons-color-12px_tick@2x.png */,
+				EF3B65A518D2F97200B0CF1C /* icons-color-12px_warning.png */,
+				EF3B65A618D2F97200B0CF1C /* icons-color-12px_warning@2x.png */,
+				EF3B65A718D2F97200B0CF1C /* icons-grey-ccc-12px_lock.png */,
+				EF3B65A818D2F97200B0CF1C /* icons-grey-ccc-12px_lock@2x.png */,
+				EF3B65A918D2F97200B0CF1C /* icons-grey-ccc-12px_mail.png */,
+				EF3B65AA18D2F97200B0CF1C /* icons-grey-ccc-12px_mail@2x.png */,
 				EF3B659F18D2F5DB00B0CF1C /* separator-1.png */,
 				EF3B65A018D2F5DB00B0CF1C /* separator-1@2x.png */,
 				EF3B659B18D2F51A00B0CF1C /* icon-24px-social-fb.png */,
 				EF3B659C18D2F51A00B0CF1C /* icon-24px-social-fb@2x.png */,
 			);
 			path = icons;
+			sourceTree = "<group>";
+		};
+		EF3B65B318D3007800B0CF1C /* LBBlurredImage */ = {
+			isa = PBXGroup;
+			children = (
+				EF3B65B418D3008C00B0CF1C /* UIImage+ImageEffects.h */,
+				EF3B65B518D3008C00B0CF1C /* UIImage+ImageEffects.m */,
+				EF3B65B618D3008C00B0CF1C /* UIImageView+LBBlurredImage.h */,
+				EF3B65B718D3008C00B0CF1C /* UIImageView+LBBlurredImage.m */,
+			);
+			name = LBBlurredImage;
 			sourceTree = "<group>";
 		};
 		EF658E4D18C459D000FC9E07 /* Classes */ = {
@@ -3376,10 +3417,11 @@
 		EFA8EC0118BDDA4A00144B75 /* Other Sources */ = {
 			isa = PBXGroup;
 			children = (
-				B6BE49EF18D1597200DA7313 /* KBPopupBubble.xcodeproj */,
-				EFD0FC1818CD952B0026F54F /* JSONKit */,
 				EF891DC918CD8CB5005DC780 /* ASIHTTPRequest.xcodeproj */,
 				B65DDC2518C5B1410076408C /* GPUImage.xcodeproj */,
+				EFD0FC1818CD952B0026F54F /* JSONKit */,
+				B6BE49EF18D1597200DA7313 /* KBPopupBubble.xcodeproj */,
+				EF3B65B318D3007800B0CF1C /* LBBlurredImage */,
 				EFA8EC0218BDDA6D00144B75 /* MSDynamicsDrawerViewController.xcodeproj */,
 			);
 			name = "Other Sources";
@@ -3579,6 +3621,7 @@
 				2E54CAE318C5DB9300B23A96 /* JosefinSans-Regular.ttf in Resources */,
 				2E54CADF18C5DB9300B23A96 /* JosefinSans-BoldItalic.ttf in Resources */,
 				B65DE17618C60EB10076408C /* icons-shadow-12px_play.png in Resources */,
+				EF3B65AB18D2F97200B0CF1C /* icons-color-12px_tick.png in Resources */,
 				B65DDF9518C60EB10076408C /* icons-12px_liked@2x.png in Resources */,
 				B65DE1C418C60EB10076408C /* icons-shadow-16px_important2.png in Resources */,
 				B65DE26618C60EB10076408C /* icons-shadow-24px_search.png in Resources */,
@@ -3897,6 +3940,7 @@
 				B65DE0D118C60EB10076408C /* icons-color-12px_contrast-lo@2x.png in Resources */,
 				B65DE0BF18C60EB10076408C /* icons-color-12px_arrowUp@2x.png in Resources */,
 				B65DE15918C60EB10076408C /* icons-shadow-12px_joinedEvent@2x.png in Resources */,
+				EF3B65AE18D2F97200B0CF1C /* icons-color-12px_warning@2x.png in Resources */,
 				B65DDF7318C60EB10076408C /* icons-12px_chats@2x.png in Resources */,
 				B65DDF6F18C60EB10076408C /* icons-12px_calendar@2x.png in Resources */,
 				B65DE20318C60EB10076408C /* icons-shadow-16px_support@2x.png in Resources */,
@@ -3950,6 +3994,7 @@
 				B65DE19118C60EB10076408C /* icons-shadow-12px_support@2x.png in Resources */,
 				B65DE0A118C60EB10076408C /* icons-24px_setting@2x.png in Resources */,
 				EF3B659E18D2F51A00B0CF1C /* icon-24px-social-fb@2x.png in Resources */,
+				EF3B65B018D2F97200B0CF1C /* icons-grey-ccc-12px_lock@2x.png in Resources */,
 				B65DDF8F18C60EB10076408C /* icons-12px_joinedEvent-bold@2x.png in Resources */,
 				B65DDFAE18C60EB10076408C /* icons-12px_play.png in Resources */,
 				B65DE0D418C60EB10076408C /* icons-color-12px_dateAndTime.png in Resources */,
@@ -4210,6 +4255,7 @@
 				B65DE26D18C60EB10076408C /* icons-shadow-24px_socialFriends@2x.png in Resources */,
 				B65DE09618C60EB10076408C /* icons-24px_quoteLeft.png in Resources */,
 				B65DE15418C60EB10076408C /* icons-shadow-12px_important3.png in Resources */,
+				EF3B65AC18D2F97200B0CF1C /* icons-color-12px_tick@2x.png in Resources */,
 				B65DE1A518C60EB10076408C /* icons-shadow-16px_bell@2x.png in Resources */,
 				B65DE0AC18C60EB10076408C /* icons-24px_support.png in Resources */,
 				B65DDF6A18C60EB10076408C /* icons-12px_bell.png in Resources */,
@@ -4309,6 +4355,7 @@
 				B65DE1F818C60EB10076408C /* icons-shadow-16px_share.png in Resources */,
 				B65DE20518C60EB10076408C /* icons-shadow-16px_supported@2x.png in Resources */,
 				B65DE14918C60EB10076408C /* icons-shadow-12px_dislike@2x.png in Resources */,
+				EF3B65AD18D2F97200B0CF1C /* icons-color-12px_warning.png in Resources */,
 				B65DDFC818C60EB10076408C /* icons-12px_support.png in Resources */,
 				B65DE04F18C60EB10076408C /* icons-24px_bell@2x.png in Resources */,
 				B65DDFC418C60EB10076408C /* icons-12px_stop-bold.png in Resources */,
@@ -4316,6 +4363,7 @@
 				B65DE1F718C60EB10076408C /* icons-shadow-16px_setting@2x.png in Resources */,
 				B65DE27118C60EB10076408C /* icons-shadow-24px_stop-bold@2x.png in Resources */,
 				B65DDF8518C60EB10076408C /* icons-12px_friends@2x.png in Resources */,
+				EF3B65B218D2F97200B0CF1C /* icons-grey-ccc-12px_mail@2x.png in Resources */,
 				B65DE19418C60EB10076408C /* icons-shadow-12px_tick.png in Resources */,
 				B65DE07A18C60EB10076408C /* icons-24px_location-bold.png in Resources */,
 				B65DE1E218C60EB10076408C /* icons-shadow-16px_newEvent.png in Resources */,
@@ -4337,6 +4385,7 @@
 				B65DE10318C60EB10076408C /* icons-color-12px_play-bold@2x.png in Resources */,
 				B65DDFDB18C60EB10076408C /* icons-16px_arrowUp@2x.png in Resources */,
 				B65DE1EA18C60EB10076408C /* icons-shadow-16px_public.png in Resources */,
+				EF3B65B118D2F97200B0CF1C /* icons-grey-ccc-12px_mail.png in Resources */,
 				B65DE21218C60EB10076408C /* icons-shadow-24px_arrowRight.png in Resources */,
 				B65DE15A18C60EB10076408C /* icons-shadow-12px_like.png in Resources */,
 				B65DE0A518C60EB10076408C /* icons-24px_socialFriends@2x.png in Resources */,
@@ -4352,6 +4401,7 @@
 				B65DE01318C60EB10076408C /* icons-16px_menu@2x.png in Resources */,
 				B65DE06E18C60EB10076408C /* icons-24px_important2.png in Resources */,
 				B65DE09A18C60EB10076408C /* icons-24px_refresh.png in Resources */,
+				EF3B65AF18D2F97200B0CF1C /* icons-grey-ccc-12px_lock.png in Resources */,
 				B65DDF6C18C60EB10076408C /* icons-12px_calendar-border.png in Resources */,
 				B65DE01F18C60EB10076408C /* icons-16px_play-bold@2x.png in Resources */,
 				B65DE15C18C60EB10076408C /* icons-shadow-12px_liked.png in Resources */,
@@ -4428,6 +4478,7 @@
 			files = (
 				B65DDC0F18C57D1E0076408C /* SDUtils.m in Sources */,
 				2E84744918CD895100D49FBA /* SDBaseGridView.m in Sources */,
+				EF3B65B818D3008C00B0CF1C /* UIImage+ImageEffects.m in Sources */,
 				EF658E5E18C461C400FC9E07 /* SDMenuViewController.m in Sources */,
 				EFD0FC1218CD92CF0026F54F /* ASIFormDataRequest+Addition.m in Sources */,
 				2EFB3D1118D2E7F600110DC6 /* CAKeyframeAnimation+Addition.m in Sources */,
@@ -4463,6 +4514,7 @@
 				B6BE49E418CF707200DA7313 /* UITextField+Addition.m in Sources */,
 				B65DDC1218C57FB30076408C /* UIViewController+Addition.m in Sources */,
 				EFA8EBCC18BDD87100144B75 /* main.m in Sources */,
+				EF3B65B918D3008C00B0CF1C /* UIImageView+LBBlurredImage.m in Sources */,
 				B65DDC3518C5B2690076408C /* SDSearchViewController.m in Sources */,
 				EF3B651A18CDAE9400B0CF1C /* SDStory.m in Sources */,
 				2EC3784918C5F0BA00D4161B /* SDHomeNavigationTitleView.m in Sources */,

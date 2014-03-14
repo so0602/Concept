@@ -48,7 +48,7 @@
         case SDTextFieldStateError:
         {
             UIImageView* rightImageView = self.rightImageView;
-            rightImageView.image = [UIImage imageNamed:@"icons-shadow-16px_warning"];
+            rightImageView.image = [UIImage imageNamed:@"icons-color-12px_warning"];
             if( !CGSizeEqualToSize(rightImageView.frame.size, rightImageView.image.size) ){
                 [rightImageView sizeToFit];
             }
@@ -57,7 +57,7 @@
         case SDTextFieldStateCorrect:
         {
             UIImageView* rightImageView = self.rightImageView;
-            rightImageView.image = [UIImage imageNamed:@"icons-shadow-16px_tick"];
+            rightImageView.image = [UIImage imageNamed:@"icons-color-12px_tick"];
             if( !CGSizeEqualToSize(rightImageView.frame.size, rightImageView.image.size) ){
                 [rightImageView sizeToFit];
             }

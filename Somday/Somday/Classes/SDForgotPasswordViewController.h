@@ -10,4 +10,6 @@
 
 @interface SDForgotPasswordViewController : UIViewController
 
+@property (nonatomic, strong) UIImage* backgroundImage;
+
 @end
