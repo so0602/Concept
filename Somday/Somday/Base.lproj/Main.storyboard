@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5053" systemVersion="13A603" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="GfC-Yl-lCZ">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4510" systemVersion="12F45" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="GfC-Yl-lCZ">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3742"/>
     </dependencies>
     <scenes>
         <!--Navigation Controller-->
@@ -470,6 +470,9 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="20"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20" id="InZ-NK-2e8"/>
+                                </constraints>
                             </view>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="prelogin-logo.png" translatesAutoresizingMaskIntoConstraints="NO" id="vo8-cn-P2a">
                                 <rect key="frame" x="74" y="70" width="171" height="54"/>
@@ -604,7 +607,6 @@
                             <constraint firstItem="LEy-Dc-BEH" firstAttribute="leading" secondItem="dYV-mP-xuZ" secondAttribute="leading" id="acv-6Z-ySE"/>
                             <constraint firstItem="LEy-Dc-BEH" firstAttribute="leading" secondItem="cZE-dE-yR1" secondAttribute="leading" id="d14-ik-LUK"/>
                             <constraint firstItem="vo8-cn-P2a" firstAttribute="top" secondItem="2PW-Ua-nKf" secondAttribute="bottom" constant="23" id="fBq-v7-7wV"/>
-                            <constraint firstItem="WMB-P5-ibS" firstAttribute="top" secondItem="UVL-wi-cwn" secondAttribute="bottom" id="j1W-MT-lky"/>
                             <constraint firstItem="dYV-mP-xuZ" firstAttribute="bottom" secondItem="LEy-Dc-BEH" secondAttribute="bottom" id="j5H-Dg-c61"/>
                             <constraint firstItem="UVL-wi-cwn" firstAttribute="leading" secondItem="LEy-Dc-BEH" secondAttribute="leading" id="qRa-df-oRK"/>
                             <constraint firstItem="dYV-mP-xuZ" firstAttribute="top" secondItem="cZE-dE-yR1" secondAttribute="top" id="tW4-xp-RoS"/>
@@ -646,6 +648,9 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="20"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20" id="lKB-OR-cIj"/>
+                                </constraints>
                             </view>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="prelogin-logo.png" translatesAutoresizingMaskIntoConstraints="NO" id="6dc-wE-UhZ">
                                 <rect key="frame" x="74" y="70" width="171" height="54"/>
@@ -747,7 +752,6 @@
                             <constraint firstItem="i6e-EJ-EmG" firstAttribute="leading" secondItem="2Qe-WT-4O5" secondAttribute="leading" constant="20" symbolic="YES" id="RgR-7e-fWe"/>
                             <constraint firstItem="6dc-wE-UhZ" firstAttribute="top" secondItem="5kt-ve-CoE" secondAttribute="bottom" constant="23" id="Tw4-fj-N1A"/>
                             <constraint firstItem="5kt-ve-CoE" firstAttribute="leading" secondItem="2Qe-WT-4O5" secondAttribute="leading" constant="5" id="XUz-mo-BJQ"/>
-                            <constraint firstItem="iGn-hD-2yD" firstAttribute="top" secondItem="5yl-XM-hKR" secondAttribute="bottom" id="Zb4-IA-6yP"/>
                             <constraint firstItem="gaf-BU-O9I" firstAttribute="top" secondItem="i6e-EJ-EmG" secondAttribute="bottom" constant="14" id="ahP-oc-mW8"/>
                             <constraint firstItem="ZXi-wN-CNt" firstAttribute="top" secondItem="5yl-XM-hKR" secondAttribute="top" id="brU-ya-GZJ"/>
                             <constraint firstItem="ZXi-wN-CNt" firstAttribute="trailing" secondItem="OKc-4H-Ug9" secondAttribute="trailing" id="hJJ-8u-usB"/>

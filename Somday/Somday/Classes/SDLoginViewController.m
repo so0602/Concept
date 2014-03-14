@@ -121,6 +121,7 @@
     }else if( [self.signUpButton isEqual:sender] ){
         SDSignUpViewController* viewController = [SDSignUpViewController viewControllerFromStoryboardWithIdentifier:@"SignUp"];
         viewController.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
+        viewController.backgroundImage = self.blurFilter.imageFromCurrentlyProcessedOutput;
         [self presentViewController:viewController animated:TRUE completion:^{
             
         }];

@@ -58,7 +58,8 @@
     image = [image stretchableImageWithLeftCapWidth:image.size.width / 2 topCapHeight:image.size.height / 2];
     [self.submitButton setBackgroundImage:image forState:UIControlStateNormal];
     
-    self.backgroundImageView.image = self.backgroundImage;
+    UIImage* flippedImage = [UIImage imageWithCGImage:self.backgroundImage.CGImage scale:self.backgroundImage.scale orientation: UIImageOrientationUpMirrored];
+    self.backgroundImageView.image = flippedImage;
 }
 
 #pragma mark - UIViewController Additions
