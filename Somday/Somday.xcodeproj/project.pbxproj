@@ -841,10 +841,7 @@
 		B65DE27B18C60EB10076408C /* icons-shadow-24px_warning@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B65DDF5D18C60EB10076408C /* icons-shadow-24px_warning@2x.png */; };
 		B65DE2B218C884D50076408C /* SDTopMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B65DE2B118C884D50076408C /* SDTopMenuViewController.m */; };
 		B6BE49D018CF457500DA7313 /* SDForgotPasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6BE49CF18CF457500DA7313 /* SDForgotPasswordViewController.m */; };
-		B6BE49D318CF464600DA7313 /* iphone4-fpw-1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = B6BE49D118CF464600DA7313 /* iphone4-fpw-1.jpg */; };
-		B6BE49D418CF464600DA7313 /* iphone4-login-1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = B6BE49D218CF464600DA7313 /* iphone4-login-1.jpg */; };
 		B6BE49D818CF4F0900DA7313 /* SDSignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6BE49D718CF4F0900DA7313 /* SDSignUpViewController.m */; };
-		B6BE49DA18CF4FFA00DA7313 /* iphone4-signup-1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = B6BE49D918CF4FFA00DA7313 /* iphone4-signup-1.jpg */; };
 		B6BE49DD18CF699F00DA7313 /* SDEmailTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = B6BE49DC18CF699F00DA7313 /* SDEmailTextField.m */; };
 		B6BE49E418CF707200DA7313 /* UITextField+Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = B6BE49E318CF707200DA7313 /* UITextField+Addition.m */; };
 		B6BE49E818CF72F400DA7313 /* SDTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = B6BE49E718CF72F400DA7313 /* SDTextField.m */; };
@@ -860,6 +857,9 @@
 		EF3B651E18CDB6BE00B0CF1C /* SDLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EF3B651D18CDB6BE00B0CF1C /* SDLoginViewController.m */; };
 		EF3B652418D042C600B0CF1C /* NSString+Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = EF3B652318D042C600B0CF1C /* NSString+Addition.m */; };
 		EF3B653218D0548F00B0CF1C /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = EF3B653418D0548F00B0CF1C /* Localizable.strings */; };
+		EF3B654E18D2E54700B0CF1C /* iphone4-fpw-1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = EF3B654B18D2E54700B0CF1C /* iphone4-fpw-1.jpg */; };
+		EF3B654F18D2E54700B0CF1C /* iphone4-login-1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = EF3B654C18D2E54700B0CF1C /* iphone4-login-1.jpg */; };
+		EF3B655018D2E54700B0CF1C /* iphone4-signup-1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = EF3B654D18D2E54700B0CF1C /* iphone4-signup-1.jpg */; };
 		EF658E5E18C461C400FC9E07 /* SDMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EF658E5D18C461C400FC9E07 /* SDMenuViewController.m */; };
 		EF891DD418CD8CD2005DC780 /* libASIHTTPRequest.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EF891DCF18CD8CB5005DC780 /* libASIHTTPRequest.a */; };
 		EF891DD618CD8D6E005DC780 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EF891DD518CD8D6E005DC780 /* CFNetwork.framework */; };
@@ -1855,11 +1855,8 @@
 		B65DE2B118C884D50076408C /* SDTopMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SDTopMenuViewController.m; path = Classes/SDTopMenuViewController.m; sourceTree = "<group>"; };
 		B6BE49CE18CF457500DA7313 /* SDForgotPasswordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SDForgotPasswordViewController.h; path = Classes/SDForgotPasswordViewController.h; sourceTree = "<group>"; };
 		B6BE49CF18CF457500DA7313 /* SDForgotPasswordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SDForgotPasswordViewController.m; path = Classes/SDForgotPasswordViewController.m; sourceTree = "<group>"; };
-		B6BE49D118CF464600DA7313 /* iphone4-fpw-1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "iphone4-fpw-1.jpg"; sourceTree = "<group>"; };
-		B6BE49D218CF464600DA7313 /* iphone4-login-1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "iphone4-login-1.jpg"; sourceTree = "<group>"; };
 		B6BE49D618CF4F0900DA7313 /* SDSignUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SDSignUpViewController.h; path = Classes/SDSignUpViewController.h; sourceTree = "<group>"; };
 		B6BE49D718CF4F0900DA7313 /* SDSignUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SDSignUpViewController.m; path = Classes/SDSignUpViewController.m; sourceTree = "<group>"; };
-		B6BE49D918CF4FFA00DA7313 /* iphone4-signup-1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "iphone4-signup-1.jpg"; sourceTree = "<group>"; };
 		B6BE49DB18CF699F00DA7313 /* SDEmailTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SDEmailTextField.h; path = Classes/SDEmailTextField.h; sourceTree = "<group>"; };
 		B6BE49DC18CF699F00DA7313 /* SDEmailTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SDEmailTextField.m; path = Classes/SDEmailTextField.m; sourceTree = "<group>"; };
 		B6BE49E218CF707200DA7313 /* UITextField+Addition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UITextField+Addition.h"; path = "Classes/UITextField+Addition.h"; sourceTree = "<group>"; };
@@ -1894,6 +1891,9 @@
 		EF3B653318D0548F00B0CF1C /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		EF3B653518D0549400B0CF1C /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		EF3B653618D0549600B0CF1C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		EF3B654B18D2E54700B0CF1C /* iphone4-fpw-1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "iphone4-fpw-1.jpg"; path = "../../../References/Screens (Mobile)/20140310/iphone4-fpw-1.jpg"; sourceTree = "<group>"; };
+		EF3B654C18D2E54700B0CF1C /* iphone4-login-1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "iphone4-login-1.jpg"; path = "../../../References/Screens (Mobile)/20140310/iphone4-login-1.jpg"; sourceTree = "<group>"; };
+		EF3B654D18D2E54700B0CF1C /* iphone4-signup-1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "iphone4-signup-1.jpg"; path = "../../../References/Screens (Mobile)/20140310/iphone4-signup-1.jpg"; sourceTree = "<group>"; };
 		EF658E5C18C461C400FC9E07 /* SDMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SDMenuViewController.h; path = Classes/SDMenuViewController.h; sourceTree = "<group>"; };
 		EF658E5D18C461C400FC9E07 /* SDMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SDMenuViewController.m; path = Classes/SDMenuViewController.m; sourceTree = "<group>"; };
 		EF891DC918CD8CB5005DC780 /* ASIHTTPRequest.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ASIHTTPRequest.xcodeproj; path = "../Other Sources/ASIHTTPRequest/ASIHTTPRequest/ASIHTTPRequest.xcodeproj"; sourceTree = "<group>"; };
@@ -2063,9 +2063,9 @@
 		B65DDC3618C5C05E0076408C /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				B6BE49D918CF4FFA00DA7313 /* iphone4-signup-1.jpg */,
-				B6BE49D118CF464600DA7313 /* iphone4-fpw-1.jpg */,
-				B6BE49D218CF464600DA7313 /* iphone4-login-1.jpg */,
+				EF3B654B18D2E54700B0CF1C /* iphone4-fpw-1.jpg */,
+				EF3B654C18D2E54700B0CF1C /* iphone4-login-1.jpg */,
+				EF3B654D18D2E54700B0CF1C /* iphone4-signup-1.jpg */,
 				2E54CAD218C5DB8800B23A96 /* Font */,
 				B65DDC3918C60EB00076408C /* icons-12px */,
 				B65DDCAC18C60EB00076408C /* icons-16px */,
@@ -3519,7 +3519,6 @@
 				B65DE08218C60EB10076408C /* icons-24px_mail.png in Resources */,
 				B65DE17E18C60EB10076408C /* icons-shadow-12px_refresh.png in Resources */,
 				B65DE0B718C60EB10076408C /* icons-color-12px_addFriend@2x.png in Resources */,
-				B6BE49D318CF464600DA7313 /* iphone4-fpw-1.jpg in Resources */,
 				B65DE0AF18C60EB10076408C /* icons-24px_supported@2x.png in Resources */,
 				B65DE1A018C60EB10076408C /* icons-shadow-16px_arrowRight.png in Resources */,
 				B65DE1BF18C60EB10076408C /* icons-shadow-16px_friends@2x.png in Resources */,
@@ -3587,6 +3586,7 @@
 				B65DDFA418C60EB10076408C /* icons-12px_more.png in Resources */,
 				B65DE13418C60EB10076408C /* icons-shadow-12px_calendar-border.png in Resources */,
 				B65DE24518C60EB10076408C /* icons-shadow-24px_location2.png in Resources */,
+				EF3B654F18D2E54700B0CF1C /* iphone4-login-1.jpg in Resources */,
 				B65DDF7D18C60EB10076408C /* icons-12px_cross@2x.png in Resources */,
 				B65DE02718C60EB10076408C /* icons-16px_quoteRight@2x.png in Resources */,
 				B65DE1E818C60EB10076408C /* icons-shadow-16px_play.png in Resources */,
@@ -3625,6 +3625,7 @@
 				B65DDFF318C60EB10076408C /* icons-16px_dislike@2x.png in Resources */,
 				B65DE1C018C60EB10076408C /* icons-shadow-16px_home.png in Resources */,
 				B65DDFDC18C60EB10076408C /* icons-16px_bell.png in Resources */,
+				EF3B654E18D2E54700B0CF1C /* iphone4-fpw-1.jpg in Resources */,
 				B65DE22A18C60EB10076408C /* icons-shadow-24px_dateAndTime.png in Resources */,
 				B65DE18018C60EB10076408C /* icons-shadow-12px_repeat.png in Resources */,
 				B65DE01118C60EB10076408C /* icons-16px_mail@2x.png in Resources */,
@@ -3909,7 +3910,6 @@
 				B65DE0A418C60EB10076408C /* icons-24px_socialFriends.png in Resources */,
 				B65DE03C18C60EB10076408C /* icons-16px_supported.png in Resources */,
 				B65DE04B18C60EB10076408C /* icons-24px_arrowRight@2x.png in Resources */,
-				B6BE49DA18CF4FFA00DA7313 /* iphone4-signup-1.jpg in Resources */,
 				B65DE20B18C60EB10076408C /* icons-shadow-24px_add@2x.png in Resources */,
 				B65DE18718C60EB10076408C /* icons-shadow-12px_share@2x.png in Resources */,
 				B65DE18A18C60EB10076408C /* icons-shadow-12px_speaker.png in Resources */,
@@ -3942,12 +3942,12 @@
 				B65DE16518C60EB10076408C /* icons-shadow-12px_lock@2x.png in Resources */,
 				B65DE24F18C60EB10076408C /* icons-shadow-24px_mic@2x.png in Resources */,
 				B65DE0E018C60EB10076408C /* icons-color-12px_important2.png in Resources */,
+				EF3B655018D2E54700B0CF1C /* iphone4-signup-1.jpg in Resources */,
 				B65DDF9A18C60EB10076408C /* icons-12px_location2@2x.png in Resources */,
 				B65DE0CC18C60EB10076408C /* icons-color-12px_comment.png in Resources */,
 				B65DE0A718C60EB10076408C /* icons-24px_speaker@2x.png in Resources */,
 				B65DE21718C60EB10076408C /* icons-shadow-24px_bell@2x.png in Resources */,
 				B65DDFEF18C60EB10076408C /* icons-16px_cross@2x.png in Resources */,
-				B6BE49D418CF464600DA7313 /* iphone4-login-1.jpg in Resources */,
 				B65DE13B18C60EB10076408C /* icons-shadow-12px_chats@2x.png in Resources */,
 				B65DE16418C60EB10076408C /* icons-shadow-12px_lock.png in Resources */,
 				B65DE0E418C60EB10076408C /* icons-color-12px_joinedEvent-bold.png in Resources */,
