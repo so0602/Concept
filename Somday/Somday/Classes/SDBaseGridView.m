@@ -42,7 +42,7 @@ typedef NSUInteger SDGridMenuState;
 
 @implementation SDBaseGridView
 
-@synthesize origamiLayer, viewSnapShot;
+@synthesize origamiLayer, viewSnapShot, shareButton, moreButton, commentButton, likeButton;
 
 + (CGFloat)heightForCell
 {
@@ -69,15 +69,6 @@ typedef NSUInteger SDGridMenuState;
     return self;
 }
 
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect
-{
-    // Drawing code
-}
-*/
-
 - (void)initBaseGridView
 {
     // BackgroundColor
@@ -99,7 +90,21 @@ typedef NSUInteger SDGridMenuState;
     self.backgroundImageView.layer.masksToBounds = YES;
     self.backgroundImageView.layer.cornerRadius = 8.0f;
     
-//    UIButton *shareButton =
+    // Add common button
+    self.shareButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    UIImage *image = [UIImage imageNamed:@"icons-24px_share"];
+    [shareButton setBackgroundImage:image forState:UIControlStateNormal];
+    shareButton.frame = CGRectMake(10, 136, image.size.width, image.size.height);
+    [shareButton setTitle:NSLocalizedString(@"Share", nil) forState:UIControlStateNormal];
+    [shareButton setTitleEdgeInsets:UIEdgeInsetsMake(36, 0, 0, 0)];
+    shareButton.titleLabel.font = [UIFont systemFontOfSize:9];
+    [self insertSubview:shareButton belowSubview:_backgroundImageView];
+    
+    self.moreButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    image = [UIImage imageNamed:@"icons-24px_more"];
+    [moreButton setImage:image forState:UIControlStateNormal];
+    moreButton.frame = CGRectMake(10, 260, image.size.width, image.size.height);
+    [self insertSubview:moreButton belowSubview:_backgroundImageView];    
     
     // Add Gesture recognizer
     UISwipeGestureRecognizer *recognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipeGesture:)];
@@ -547,6 +552,13 @@ typedef NSUInteger SDGridMenuState;
     openAnimation.fillMode = kCAFillModeForwards;
     [self.layer addAnimation:openAnimation forKey:@"position"];
     [CATransaction commit];
+}
+
+#pragma mark - Action
+
+- (void)actionForItem:(id)sender
+{
+
 }
 
 

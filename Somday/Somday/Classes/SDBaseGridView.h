@@ -13,6 +13,10 @@
 
 @property (nonatomic) UIImage *image;
 @property (nonatomic) UIImageView *backgroundImageView;
+@property (nonatomic) UIButton *shareButton;
+@property (nonatomic) UIButton *moreButton;
+@property (nonatomic) UIButton *likeButton;
+@property (nonatomic) UIButton *commentButton;
 
 + (CGFloat)heightForCell;
 

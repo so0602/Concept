@@ -79,7 +79,8 @@ const CGFloat SDPaneViewVelocityMultiplier = 5.0;
 -(void)showLeftMenu{
     if( [self drawerViewControllerForDirection:MSDynamicsDrawerDirectionTop] ){
         [self setDrawerViewController:nil forDirection:MSDynamicsDrawerDirectionTop];
-    }
+    }    
+    
     [self setDrawerViewController:self.menuViewController forDirection:MSDynamicsDrawerDirectionLeft];
     self.delegate = self.menuViewController;
     self.customDelegate = self.menuViewController;
