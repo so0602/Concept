@@ -76,6 +76,7 @@ typedef NSUInteger SDGridMenuState;
     self.backgroundImageView = [[UIImageView alloc] initWithFrame:self.bounds];
     self.backgroundImageView.backgroundColor = [UIColor clearColor];
     self.backgroundImageView.contentMode = UIViewContentModeScaleAspectFill;
+    self.backgroundImageView.userInteractionEnabled = NO;
     self.backgroundImageView.clipsToBounds = YES;
     [self addSubview:_backgroundImageView];
     
@@ -104,7 +105,7 @@ typedef NSUInteger SDGridMenuState;
     image = [UIImage imageNamed:@"icons-24px_more"];
     [moreButton setImage:image forState:UIControlStateNormal];
     moreButton.frame = CGRectMake(10, 260, image.size.width, image.size.height);
-    [self insertSubview:moreButton belowSubview:_backgroundImageView];    
+    [self insertSubview:moreButton belowSubview:_backgroundImageView];
     
     // Add Gesture recognizer
     UISwipeGestureRecognizer *recognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipeGesture:)];

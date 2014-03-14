@@ -1377,7 +1377,7 @@ void MSDynamicsDrawerDirectionActionForMaskedValues(NSInteger direction, MSDynam
     if (gestureRecognizer == self.panePanGestureRecognizer) {
 
         CGPoint point = [touch locationInView:self.paneView];
-        if (point.x > 20 && point.y > 44)
+        if (point.x > 20 && point.y > 44 && (self.paneState == MSDynamicsDrawerPaneStateClosed))
             return NO;
         
         __block BOOL shouldReceiveTouch = YES;
