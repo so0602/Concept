@@ -3058,7 +3058,7 @@
 		B6BE49F018D1597200DA7313 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				B6BE49F718D1597200DA7313 /* KBPopupBubble.app */,
+				B6BE49F718D1597200DA7313 /* KBPopupBubbleTest.app */,
 				B6BE4A5B18D1619400DA7313 /* libKBPopupBubble.a */,
 				B6BE4A5D18D1619400DA7313 /* KBPopupBubbleTests.xctest */,
 			);
@@ -3515,7 +3515,7 @@
 			remoteRef = B65DDC2D18C5B1420076408C /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		B6BE49F718D1597200DA7313 /* KBPopupBubble.app */ = {
+		B6BE49F718D1597200DA7313 /* KBPopupBubbleTest.app */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.application;
 			path = KBPopupBubbleTest.app;
