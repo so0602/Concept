@@ -7,7 +7,7 @@
 //
 
 #import "SDBaseGridView.h"
-
+#import "CAKeyframeAnimation+Addition.h"
 
 KeyframeParametricBlock openFunction = ^double(double time) {
     return sin(time*M_PI_2);
@@ -31,31 +31,6 @@ enum {
 };
 typedef NSUInteger SDGridMenuState;
 
-
-@implementation CAKeyframeAnimation (SomDay)
-
-+ (id)animationWithKeyPath:(NSString *)path function:(KeyframeParametricBlock)block fromValue:(double)fromValue toValue:(double)toValue
-{
-    // get a keyframe animation to set up
-    CAKeyframeAnimation *animation = [CAKeyframeAnimation animationWithKeyPath:path];
-    // break the time into steps (the more steps, the smoother the animation)
-    NSUInteger steps = 100;
-    NSMutableArray *values = [NSMutableArray arrayWithCapacity:steps];
-    double time = 0.0;
-    double timeStep = 1.0 / (double)(steps - 1);
-    for(NSUInteger i = 0; i < steps; i++) {
-        double value = fromValue + (block(time) * (toValue - fromValue));
-        [values addObject:[NSNumber numberWithDouble:value]];
-        time += timeStep;
-    }
-    // we want linear animation between keyframes, with equal time steps
-    animation.calculationMode = kCAAnimationLinear;
-    // set keyframes and we're done
-    [animation setValues:values];
-    return(animation);
-}
-
-@end
 
 @interface SDBaseGridView ()
 @property (nonatomic) SDGridMenuState menuState;
@@ -105,6 +80,7 @@ typedef NSUInteger SDGridMenuState;
 
 - (void)initBaseGridView
 {
+    // BackgroundColor
     self.backgroundColor = [UIColor clearColor];
     self.backgroundImageView = [[UIImageView alloc] initWithFrame:self.bounds];
     self.backgroundImageView.backgroundColor = [UIColor clearColor];
@@ -121,7 +97,9 @@ typedef NSUInteger SDGridMenuState;
     self.layer.shadowPath =  [UIBezierPath bezierPathWithRoundedRect:self.bounds cornerRadius:self.layer.cornerRadius].CGPath;
     
     self.backgroundImageView.layer.masksToBounds = YES;
-    self.backgroundImageView.layer.cornerRadius = 8.0f;    
+    self.backgroundImageView.layer.cornerRadius = 8.0f;
+    
+//    UIButton *shareButton =
     
     // Add Gesture recognizer
     UISwipeGestureRecognizer *recognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipeGesture:)];
