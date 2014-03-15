@@ -50,9 +50,11 @@
 - (void)applicationDidBecomeActive:(UIApplication *)application
 {
     if( ![SDUtils username] ){
-        [self.mainViewController presentViewController:self.loginViewController animated:FALSE completion:^{
-            
-        }];
+        if( ![self.mainViewController.presentedViewController isEqual:self.loginViewController] ){
+            [self.mainViewController presentViewController:self.loginViewController animated:FALSE completion:^{
+                
+            }];
+        }
     }
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
 }
