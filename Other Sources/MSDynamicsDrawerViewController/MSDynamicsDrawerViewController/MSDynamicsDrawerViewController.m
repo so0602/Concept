@@ -278,7 +278,7 @@ void MSDynamicsDrawerDirectionActionForMaskedValues(NSInteger direction, MSDynam
     [self.paneView addGestureRecognizer:self.paneTapGestureRecognizer];
     
     self.gravityMagnitude = 2.0;
-    self.elasticity = 0.0;
+    self.elasticity = 0.3;
     self.bounceElasticity = 0.5;
     self.bounceMagnitude = 60.0;
     self.paneStateOpenWideEdgeOffset = 20.0;
@@ -511,7 +511,7 @@ void MSDynamicsDrawerDirectionActionForMaskedValues(NSInteger direction, MSDynam
         } else if (self.possibleDrawerDirection & MSDynamicsDrawerDirectionVertical) {
             boundary.size.width = (CGRectGetWidth(self.paneView.frame) + 1.0);
             boundary.size.height = ((CGRectGetHeight(self.paneView.frame) * 2.0) + self.paneStateOpenWideEdgeOffset + 2.0);
-            boundary.origin.y += MSTopMenuHeight;
+            boundary.origin.y = MIN(MSTopMenuHeight - 1, boundary.origin.y+MSTopMenuHeight);
         }
         path = [UIBezierPath bezierPathWithRect:boundary];
         
@@ -606,7 +606,7 @@ void MSDynamicsDrawerDirectionActionForMaskedValues(NSInteger direction, MSDynam
         default:
             break;
     }
-    NSLog(@"state: %ld, boundary: %@", state, NSStringFromCGRect(boundary));
+    
     return [UIBezierPath bezierPathWithRect:boundary];
 }
 
@@ -857,6 +857,7 @@ void MSDynamicsDrawerDirectionActionForMaskedValues(NSInteger direction, MSDynam
     
     // Update pane frame regardless of if it's changed
     self.paneView.frame = (CGRect){[self paneViewOriginForPaneState:paneState], self.paneView.frame.size};
+
     
     // Update `currentDirection` to `MSDynamicsDrawerDirectionNone` if the `paneState` is `MSDynamicsDrawerPaneStateClosed`
     if (paneState == MSDynamicsDrawerPaneStateClosed) {
@@ -1165,6 +1166,7 @@ void MSDynamicsDrawerDirectionActionForMaskedValues(NSInteger direction, MSDynam
     else {
         *bounded = NO;
     }
+    
     return paneFrame;
 }
 

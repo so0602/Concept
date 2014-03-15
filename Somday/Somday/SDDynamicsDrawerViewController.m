@@ -281,6 +281,7 @@ const CGFloat SDPaneViewVelocityMultiplier = 5.0;
         default:
             break;
     }
+    
 }
 
 - (void)setPaneViewController:(UIViewController *)paneViewController animated:(BOOL)animated completion:(void (^)(void))completion
@@ -389,12 +390,5 @@ const CGFloat SDPaneViewVelocityMultiplier = 5.0;
         if (completion) completion();
     }
 }
-
-//- (void)didUpdateDynamicAnimatorAction
-//{
-//    [self.paneView setY:20];
-//    [super performSelector:@selector(paneViewDidUpdateFrame) withObject:nil];
-//}
-
 
 @end

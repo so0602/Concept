@@ -138,8 +138,9 @@
     
     SDSearchViewController* viewController = self.searchViewController;
     
-    [UIView animateWithDuration:1.0 delay:0.0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+    [UIView animateWithDuration:0.7 delay:0.0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
         viewController.view.alpha = 0.0;
+        self.tableView.alpha = 1.0;
     } completion:^(BOOL finished) {
         [viewController.view removeFromSuperview];
     }];
