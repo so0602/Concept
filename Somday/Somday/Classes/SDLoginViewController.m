@@ -173,6 +173,7 @@
         _bubbleView.useBorders = FALSE;
         _bubbleView.drawableColor = [UIColor whiteColor];
         _bubbleView.label.font = [UIFont josefinSansSemiBoldFontOfSize:14];
+        _bubbleView.draggable = FALSE;
     }
     return _bubbleView;
 }
