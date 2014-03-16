@@ -1229,6 +1229,7 @@ void MSDynamicsDrawerDirectionActionForMaskedValues(NSInteger direction, MSDynam
 - (void)setPaneViewControllerViewUserInteractionEnabled:(BOOL)enabled
 {
     self.paneViewController.view.userInteractionEnabled = enabled;
+    
     if (!enabled)
         [self updatePeneViewCornerRadius:8.0f];
     else
@@ -1457,6 +1458,9 @@ void MSDynamicsDrawerDirectionActionForMaskedValues(NSInteger direction, MSDynam
     
     // Update pane user interaction appropriately
     [self setPaneViewControllerViewUserInteractionEnabled:(self.paneState == MSDynamicsDrawerPaneStateClosed)];
+    
+    if (self.paneView.frame.origin.x==[UIScreen mainScreen].bounds.size.width)
+        [self updatePeneViewCornerRadius:0.0];
     
     // Since rotation is disabled while the dynamic animator is running, we invoke this method to cause rotation to happen (if device rotation has occured during state transition)
     [UIViewController attemptRotationToDeviceOrientation];

@@ -127,7 +127,7 @@
     [UIView animateWithDuration:1.0 delay:0.0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
         viewController.view.alpha = 1.0;
     } completion:^(BOOL finished) {
-        
+
     }];
 }
 
