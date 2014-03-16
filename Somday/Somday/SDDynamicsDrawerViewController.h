@@ -34,6 +34,7 @@ static const CGFloat SDDynamicsDrawerViewController_MenuWidth = 60.0;
 @property (nonatomic, strong) UIBarButtonItem* menuBarButtonItem;
 @property (nonatomic, strong) UIBarButtonItem* addBarButtonItem;
 
+-(void)updatePeneViewCornerRadius:(CGFloat)radius;
 -(void)showLeftMenu;
 -(void)showTopMenu;
 

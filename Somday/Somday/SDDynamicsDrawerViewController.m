@@ -18,8 +18,13 @@
 #import "UIViewController+Addition.h"
 #import "NSNotificationCenter+Name.h"
 
+#import "UIView+AUISelectiveBorder.h"
+
 const CGFloat SDPaneViewVelocityThreshold = 5.0;
 const CGFloat SDPaneViewVelocityMultiplier = 5.0;
+const CGFloat SDPaneViewCornerRadius = 8.0;
+const CGFloat SDPaneViewFilterViewTag = 7777;
+
 
 @interface MSDynamicsDrawerViewController ()
 
@@ -86,6 +91,8 @@ const CGFloat SDPaneViewVelocityMultiplier = 5.0;
     self.customDelegate = self.menuViewController;
     
     [self setPaneState:MSDynamicsDrawerPaneStateMenu inDirection:MSDynamicsDrawerDirectionLeft animated:TRUE allowUserInterruption:FALSE completion:nil];
+    
+    [self updatePeneViewCornerRadius:SDPaneViewCornerRadius];
 }
 
 -(void)showTopMenu{
@@ -102,6 +109,8 @@ const CGFloat SDPaneViewVelocityMultiplier = 5.0;
     self.customDelegate = self.topMenuViewController;
     
     [self setPaneState:MSDynamicsDrawerPaneStateMenu inDirection:MSDynamicsDrawerDirectionTop animated:TRUE allowUserInterruption:FALSE completion:nil];
+    
+    [self updatePeneViewCornerRadius:SDPaneViewCornerRadius];
 }
 
 -(void)topMenuWillClose{
@@ -113,11 +122,12 @@ const CGFloat SDPaneViewVelocityMultiplier = 5.0;
 -(void)topMenuDidClosed{
     self.delegate = self.menuViewController;
     self.customDelegate = self.menuViewController;
-    
+    [self updatePeneViewCornerRadius:0.0];
     if( [self drawerViewControllerForDirection:MSDynamicsDrawerDirectionTop] ){
         [self setDrawerViewController:nil forDirection:MSDynamicsDrawerDirectionTop];
     }
     [self setDrawerViewController:self.menuViewController forDirection:MSDynamicsDrawerDirectionLeft];
+    
 }
 
 -(UIBarButtonItem*)menuBarButtonItem{
@@ -183,6 +193,50 @@ const CGFloat SDPaneViewVelocityMultiplier = 5.0;
 }
 
 #pragma mark - MSDynamicsDrawerViewController Override
+
+-(void)updatePeneViewCornerRadius:(CGFloat)radius
+{
+    UIView *filterView = [self.paneView viewWithTag:SDPaneViewFilterViewTag];
+    if (!filterView) {
+        filterView = [[UIView alloc] initWithFrame:self.paneView.bounds];
+        filterView.backgroundColor = [UIColor whiteColor];
+        filterView.alpha = 0.0f;
+        filterView.userInteractionEnabled = NO;
+        filterView.layer.masksToBounds = YES;
+        filterView.layer.cornerRadius = radius;
+        filterView.tag = SDPaneViewFilterViewTag;
+    }
+    if (radius>0) {
+        [self.paneView addSubview:filterView];
+        [UIView animateWithDuration:0.2 animations:^{
+            filterView.alpha = 0.2f;
+        }];
+    } else {
+        [UIView animateWithDuration:0.2 animations:^{
+            filterView.alpha = 0.0f;
+        }];
+    }
+    
+    //    self.paneView.layer.masksToBounds = NO;
+    //    self.paneView.layer.cornerRadius = radius;
+    self.paneView.layer.shadowColor = [UIColor blackColor].CGColor;
+    self.paneView.layer.shadowOffset = CGSizeMake(-3.0, 5.0);
+    self.paneView.layer.shadowOpacity = 0.7f;
+    self.paneView.layer.shadowPath = [UIBezierPath bezierPathWithRoundedRect:radius==0?CGRectZero:self.paneView.bounds cornerRadius:self.paneView.layer.cornerRadius].CGPath;
+    
+    UIView *contentView = ((UIView *)self.paneView.subviews[0]);
+    contentView.layer.masksToBounds = YES;
+    contentView.layer.cornerRadius = radius;
+    
+}
+
+- (void)paneTapped:(UIPanGestureRecognizer *)gestureRecognizer
+{
+    if ([self paneTapToCloseEnabledForDirection:self.currentDrawerDirection]) {
+        [self updatePeneViewCornerRadius:0.0f];
+        [self addDynamicsBehaviorsToCreatePaneState:MSDynamicsDrawerPaneStateClosed];
+    }
+}
 
 - (void)panePanned:(UIPanGestureRecognizer *)gestureRecognizer
 {
@@ -251,6 +305,7 @@ const CGFloat SDPaneViewVelocityMultiplier = 5.0;
             if (!paneViewFrameBounded && (currentPaneVelocity != 0.0)) {
                 paneVelocity = currentPaneVelocity;
             }
+            [self updatePeneViewCornerRadius:SDPaneViewCornerRadius];
             
             if( self.customDelegate && [(NSObject*)self.customDelegate respondsToSelector:@selector(dynamicsDrawerViewController:paneViewPositionDidChanged:)]){
                 [self.customDelegate dynamicsDrawerViewController:self paneViewPositionDidChanged:self.paneView.frame.origin];
@@ -274,7 +329,11 @@ const CGFloat SDPaneViewVelocityMultiplier = 5.0;
                 // If not released with a velocity over the threhold, update to nearest `paneState`
                 else {
                     [self addDynamicsBehaviorsToCreatePaneState:[self nearestPaneState]];
+                    if ([self nearestPaneState] == MSDynamicsDrawerPaneStateClosed)
+                        [self updatePeneViewCornerRadius:0.0f];
                 }
+            } else {
+                [self updatePeneViewCornerRadius:0.0f];
             }
             break;
         }

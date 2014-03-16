@@ -28,11 +28,9 @@
     self = [super initWithCoder:aDecoder];
     if (self) {
         // Initialization code
-        _dayLabel.font = [UIFont josefinSansFontOfSize:20];
-        _dateLabel.font = [UIFont josefinSansFontOfSize:13];
         _dateformatter = [[NSDateFormatter alloc] init];
         [_dateformatter setLocale:[NSLocale currentLocale]];
-        [_dateformatter setDateFormat:SDDateFormat_dd_MMM_yyyy];
+        [_dateformatter setDateFormat:SDDateFormat_dd_MMMM_yyyy];
     }
     return self;
 }
@@ -40,6 +38,8 @@
 - (void)layoutSubviews
 {
     [super layoutSubviews];
+    _dayLabel.font = [UIFont josefinSansSemiBoldFontOfSize:18];
+    _dateLabel.font = [UIFont josefinSansFontOfSize:11];
     _dateLabel.text = [_dateformatter stringFromDate:[NSDate date]];
     
 }

@@ -220,10 +220,10 @@ static NSString *CellIdentifier = @"CollectionViewCell";
     CGFloat alphaFactor = (1/(HeightForFullyDisplayNavigationBar-HeightForTriggerNavigationBarAnimation));
 //    CGFloat dayFontFactor = ([SDHomeHeaderCollectionViewCell fontForDayLabel].pointSize -navigationTitleDayLabel.font.pointSize)/(HeightForFullyDisplayNavigationBar-HeightForTriggerNavigationBarAnimation);
 //    CGFloat dateFontFactor = ([SDHomeHeaderCollectionViewCell fontForDateLabel].pointSize -navigationTitleDateLabel.font.pointSize)/(HeightForFullyDisplayNavigationBar-HeightForTriggerNavigationBarAnimation);
-    CGFloat dayFontFactor = ([SDHomeHeaderCollectionViewCell fontForDayLabel].pointSize -navigationTitleDayLabel.font.pointSize)/(HeightForFullyDisplayNavigationBar);
-    CGFloat dateFontFactor = ([SDHomeHeaderCollectionViewCell fontForDateLabel].pointSize -navigationTitleDateLabel.font.pointSize)/(HeightForFullyDisplayNavigationBar);
+    CGFloat dayFontFactor = ([SDHomeHeaderCollectionViewCell fontForDayLabel].pointSize -navigationTitleDayLabel.font.pointSize)/(HeightForFullyDisplayNavigationBar-HeightForTriggerNavigationBarAnimation);
+    CGFloat dateFontFactor = ([SDHomeHeaderCollectionViewCell fontForDateLabel].pointSize -navigationTitleDateLabel.font.pointSize)/(HeightForFullyDisplayNavigationBar-HeightForTriggerNavigationBarAnimation);
     CGFloat netOffset = scrollView.contentOffset.y-HeightForTriggerNavigationBarAnimation;
-    
+
     // Alpha Animation
     if (scrollView.contentOffset.y <= HeightForTriggerNavigationBarAnimation) {
         self.navigationController.navigationBarHidden = YES;
@@ -236,17 +236,20 @@ static NSString *CellIdentifier = @"CollectionViewCell";
     } else {
         self.navigationController.navigationBarHidden = NO;
         self.navigationController.navigationBar.alpha = MIN(0.8f,alphaFactor*netOffset);
-        headerDayLabel.alpha = headerDateLabel.alpha = MAX(0.8f, 1-(alphaFactor*netOffset));
-        headerWeekDayLabel.alpha = ((UIButton*)_buttons[0]).alpha = ((UIButton*)_buttons[1]).alpha = 1-(alphaFactor*netOffset);
+//        headerDayLabel.alpha = headerDateLabel.alpha = MAX(0.8f, 1-(alphaFactor*netOffset));
+//        headerWeekDayLabel.alpha = ((UIButton*)_buttons[0]).alpha = ((UIButton*)_buttons[1]).alpha = 1-(alphaFactor*netOffset);
+        headerDayLabel.alpha = MAX(0.8f, 1-(alphaFactor*netOffset));
+        headerDateLabel.alpha = headerWeekDayLabel.alpha = ((UIButton*)_buttons[0]).alpha = ((UIButton*)_buttons[1]).alpha = 1-(alphaFactor*netOffset);
     }
     
     // Font Animation
-    if (scrollView.contentOffset.y > 0 && scrollView.contentOffset.y <= HeightForFullyDisplayNavigationBar) {
-        [headerDayLabel setFontSize:[SDHomeHeaderCollectionViewCell fontForDayLabel].pointSize-(dayFontFactor*scrollView.contentOffset.y)];
-        [headerDateLabel setFontSize:[SDHomeHeaderCollectionViewCell fontForDateLabel].pointSize-(dateFontFactor*scrollView.contentOffset.y)];
+    if (scrollView.contentOffset.y >= HeightForTriggerNavigationBarAnimation && scrollView.contentOffset.y <= HeightForFullyDisplayNavigationBar) {
+        CGFloat netOffset = scrollView.contentOffset.y - HeightForTriggerNavigationBarAnimation;
+        [headerDayLabel setFontSize:[SDHomeHeaderCollectionViewCell fontForDayLabel].pointSize-(dayFontFactor*netOffset)];
+        //[headerDateLabel setFontSize:[SDHomeHeaderCollectionViewCell fontForDateLabel].pointSize-(dateFontFactor*netOffset)];
     } else {
         [headerDayLabel setFontSize:[SDHomeHeaderCollectionViewCell fontForDayLabel].pointSize];
-        [headerDateLabel setFontSize:[SDHomeHeaderCollectionViewCell fontForDateLabel].pointSize];
+        //[headerDateLabel setFontSize:[SDHomeHeaderCollectionViewCell fontForDateLabel].pointSize];
     }
     
 }

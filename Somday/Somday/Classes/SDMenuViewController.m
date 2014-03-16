@@ -119,6 +119,8 @@
     SDSearchViewController* viewController = self.searchViewController;
     [self addSearchView:TRUE];
     
+    [self.dynamicsDrawerViewController updatePeneViewCornerRadius:0.0f];
+    
     if( viewController.view.alpha == 1.0 ){
         viewController.view.alpha = 0.0;
     }
@@ -131,10 +133,12 @@
 
 -(void)hideSearchView{
 //    [self.dynamicsDrawerViewController setPaneState:(MSDynamicsDrawerPaneState)SDDynamicsDrawerPaneStateMenu animated:TRUE allowUserInterruption:TRUE completion:nil];
-        [self.dynamicsDrawerViewController setPaneState:MSDynamicsDrawerPaneStateMenu animated:TRUE allowUserInterruption:TRUE completion:nil];
+    [self.dynamicsDrawerViewController setPaneState:MSDynamicsDrawerPaneStateMenu animated:TRUE allowUserInterruption:TRUE completion:nil];
 //    [self.dynamicsDrawerViewController setPaneState:(MSDynamicsDrawerPaneState)SDDynamicsDrawerPaneStateClosed animated:TRUE allowUserInterruption:FALSE completion:^{
 //        [self.dynamicsDrawerViewController setPaneState:(MSDynamicsDrawerPaneState)SDDynamicsDrawerPaneStateMenu animated:TRUE allowUserInterruption:FALSE completion:nil];
 //    }];
+    
+    [self.dynamicsDrawerViewController updatePeneViewCornerRadius:8.0f];
     
     SDSearchViewController* viewController = self.searchViewController;
     
@@ -265,6 +269,7 @@
         if( paneState == MSDynamicsDrawerPaneStateOpen || paneState == MSDynamicsDrawerPaneStateOpenWide ){
             self.searchViewController.view.alpha = 1.0;
             self.tableView.alpha = 0.0;
+            [self.dynamicsDrawerViewController updatePeneViewCornerRadius:0.0f];
         }else{
             self.searchViewController.view.alpha = 0.0;
             self.tableView.alpha = 1.0;

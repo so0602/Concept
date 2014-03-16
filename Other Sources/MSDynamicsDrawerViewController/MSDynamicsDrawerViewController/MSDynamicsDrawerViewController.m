@@ -927,7 +927,6 @@ void MSDynamicsDrawerDirectionActionForMaskedValues(NSInteger direction, MSDynam
         default:
             break;
     }
-    NSLog(@"paneViewOrigin: %@", NSStringFromCGPoint(paneViewOrigin));
     return paneViewOrigin;
 }
 
@@ -1230,6 +1229,11 @@ void MSDynamicsDrawerDirectionActionForMaskedValues(NSInteger direction, MSDynam
 - (void)setPaneViewControllerViewUserInteractionEnabled:(BOOL)enabled
 {
     self.paneViewController.view.userInteractionEnabled = enabled;
+    if (!enabled)
+        [self updatePeneViewCornerRadius:8.0f];
+    else
+        [self updatePeneViewCornerRadius:0.0f];
+        
 }
 
 #pragma mark UIGestureRecognizer Callbacks
@@ -1430,6 +1434,11 @@ void MSDynamicsDrawerDirectionActionForMaskedValues(NSInteger direction, MSDynam
     return NO;
 }
 
+-(void)updatePeneViewCornerRadius:(CGFloat)radius
+{
+
+}
+
 #pragma mark - UIDynamicAnimatorDelegate
 
 - (void)dynamicAnimatorDidPause:(UIDynamicAnimator *)animator
@@ -1442,6 +1451,9 @@ void MSDynamicsDrawerDirectionActionForMaskedValues(NSInteger direction, MSDynam
     
     // Update the pane state to the nearest pane state
     [self _setPaneState:[self nearestPaneState]];
+    
+    if ([self nearestPaneState] == MSDynamicsDrawerPaneStateClosed)
+        [self updatePeneViewCornerRadius:0.0f];
     
     // Update pane user interaction appropriately
     [self setPaneViewControllerViewUserInteractionEnabled:(self.paneState == MSDynamicsDrawerPaneStateClosed)];

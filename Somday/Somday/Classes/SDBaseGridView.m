@@ -8,6 +8,7 @@
 
 #import "SDBaseGridView.h"
 #import "CAKeyframeAnimation+Addition.h"
+#import "GHContextMenuView.h"
 
 KeyframeParametricBlock openFunction = ^double(double time) {
     return sin(time*M_PI_2);
@@ -32,17 +33,18 @@ enum {
 typedef NSUInteger SDGridMenuState;
 
 
-@interface SDBaseGridView ()
+@interface SDBaseGridView () <GHContextOverlayViewDataSource, GHContextOverlayViewDelegate>
 @property (nonatomic) SDGridMenuState menuState;
 @property (nonatomic) CALayer *origamiLayer;
 @property (nonatomic) CGFloat start;
 @property (nonatomic) CGFloat end;
 @property (nonatomic) UIImage *viewSnapShot;
+@property (nonatomic) GHContextMenuView* menuOverlay;
 @end
 
 @implementation SDBaseGridView
 
-@synthesize origamiLayer, viewSnapShot, shareButton, moreButton, commentButton, likeButton;
+@synthesize origamiLayer, viewSnapShot, shareButton, moreButton, commentButton, likeButton, menuOverlay;
 
 + (CGFloat)heightForCell
 {
@@ -76,7 +78,7 @@ typedef NSUInteger SDGridMenuState;
     self.backgroundImageView = [[UIImageView alloc] initWithFrame:self.bounds];
     self.backgroundImageView.backgroundColor = [UIColor clearColor];
     self.backgroundImageView.contentMode = UIViewContentModeScaleAspectFill;
-    self.backgroundImageView.userInteractionEnabled = NO;
+    self.backgroundImageView.userInteractionEnabled = YES;
     self.backgroundImageView.clipsToBounds = YES;
     [self addSubview:_backgroundImageView];
     
@@ -107,6 +109,19 @@ typedef NSUInteger SDGridMenuState;
     moreButton.frame = CGRectMake(10, 260, image.size.width, image.size.height);
     [self insertSubview:moreButton belowSubview:_backgroundImageView];
     
+    self.likeButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    image = [UIImage imageNamed:@"icons-24px_like"];
+    [likeButton setImage:image forState:UIControlStateNormal];
+    likeButton.frame = CGRectMake(200, 260, image.size.width, image.size.height);
+    [likeButton addTarget:self action:@selector(actionForItem:) forControlEvents:UIControlEventTouchUpInside];
+    [_backgroundImageView addSubview:likeButton];
+    
+    // Add like menu
+    self.menuOverlay = [[GHContextMenuView alloc] init];
+    menuOverlay.dataSource = self;
+    menuOverlay.delegate = self;
+    
+    
     // Add Gesture recognizer
     UISwipeGestureRecognizer *recognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipeGesture:)];
     [recognizer setNumberOfTouchesRequired:1];
@@ -124,6 +139,13 @@ typedef NSUInteger SDGridMenuState;
     
 }
 
+- (void)prepareForReuse
+{
+    _menuState = SDGridMenuStateIdle;
+    [origamiLayer removeFromSuperlayer];
+    self.origamiLayer = nil;
+}
+
 #pragma mark -
 
 - (void)setImage:(UIImage *)image
@@ -138,7 +160,7 @@ typedef NSUInteger SDGridMenuState;
     switch (recognizer.direction) {
         case UISwipeGestureRecognizerDirectionRight: {
             [self showTransitionWithImageView: self.backgroundImageView NumberOfFolds:3 Duration:0.4f Direction:SDMenuDirectionFromRight completion:^(BOOL finished) {
-                
+                    self.backgroundImageView.userInteractionEnabled = NO;
             }];
         }
             break;
@@ -147,6 +169,7 @@ typedef NSUInteger SDGridMenuState;
             [self hideTransitionWithImageView:self.backgroundImageView NumberOfFolds:3 Duration:0.4f Direction:SDMenuDirectionFromRight completion:^(BOOL finished) {
                 self.backgroundImageView.image = _image;
                 self.layer.shadowOpacity = 0.7f;
+                self.backgroundImageView.userInteractionEnabled = YES;
             }];
         }
             break;
@@ -559,7 +582,66 @@ typedef NSUInteger SDGridMenuState;
 
 - (void)actionForItem:(id)sender
 {
+    [menuOverlay showMenu];
+}
 
+#pragma mark - GHMenu methods
+
+- (NSInteger) numberOfMenuItems
+{
+    return 3;
+}
+
+-(UIImage*) imageForItemAtIndex:(NSInteger)index
+{
+    NSString* imageName = nil;
+    switch (index) {
+        case 0:
+            imageName = @"icons-24px_home";
+            break;
+        case 1:
+            imageName = @"icons-24px_home";
+            break;
+        case 2:
+            imageName = @"icons-24px_home";
+            break;
+        default:
+            break;
+    }
+    return [UIImage imageNamed:imageName];
+}
+
+- (void) didSelectItemAtIndex:(NSInteger)selectedIndex forMenuAtPoint:(CGPoint)point
+{
+//    NSIndexPath* indexPath = [self.collectionView indexPathForItemAtPoint:point];
+//    
+//    NSString* msg = nil;
+//    switch (selectedIndex) {
+//        case 0:
+//            msg = @"Facebook Selected";
+//            break;
+//        case 1:
+//            msg = @"Twitter Selected";
+//            break;
+//        case 2:
+//            msg = @"Google Plus Selected";
+//            break;
+//        case 3:
+//            msg = @"Linkedin Selected";
+//            break;
+//        case 4:
+//            msg = @"Pinterest Selected";
+//            break;
+//            
+//        default:
+//            break;
+//    }
+//    
+//    msg = [msg stringByAppendingFormat:@" for cell %ld", (long)indexPath.row +1];
+//    
+//    UIAlertView* alertView = [[UIAlertView alloc] initWithTitle:nil message:msg delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+//    [alertView show];
+    
 }
 
 
