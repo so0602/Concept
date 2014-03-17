@@ -12,7 +12,7 @@
 
 #import "UIViewController+Addition.h"
 
-@interface SDSearchViewController ()
+@interface SDSearchViewController ()<UITextFieldDelegate>
 
 @property (nonatomic, strong) IBOutlet GPUImageView* backgroundImageView;
 @property (nonatomic, strong) GPUImageiOSBlurFilter* blurFilter;
@@ -47,6 +47,10 @@
 
 -(void)viewDidLoad{
     [super viewDidLoad];
+    
+//    UIImage* image = [UIImage imageNamed:@"textfield-1-default"];
+//    image = [image stretchableImageWithLeftCapWidth:image.size.width / 2 topCapHeight:image.size.height / 2];
+//    self.searchTextField.background = image;
 }
 
 #pragma mark - UIViewController Additions
