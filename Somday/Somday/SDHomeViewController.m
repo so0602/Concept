@@ -7,14 +7,19 @@
 //
 
 #import "SDHomeViewController.h"
+
 #import "SDHomeHeaderCollectionViewCell.h"
 #import "SDHomeNavigationTitleView.h"
 #import "SDBaseGridView.h"
+#import "SDUtils.h"
+
 #import "GPUImage.h"
+
 #import "UINavigationItem+Addition.h"
 #import "UILabel+Addition.h"
 #import "UICollectionView+Addition.h"
 #import "NSNotificationCenter+Name.h"
+
 #import <objc/message.h>
 
 #define WidthForGrid [UIScreen mainScreen].bounds.size.width - 16 // padding = 8
