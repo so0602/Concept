@@ -90,4 +90,16 @@
     [userDefault synchronize];
 }
 
++(UIImage*)captureScreenForView:(UIView *)view
+{
+    UIGraphicsBeginImageContext(view.frame.size);
+	[view.layer renderInContext:UIGraphicsGetCurrentContext()];
+	UIImage *viewImage = UIGraphicsGetImageFromCurrentImageContext();
+	UIGraphicsEndImageContext();
+    
+    return viewImage;
+}
+
+
+
 @end

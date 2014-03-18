@@ -19,14 +19,14 @@
 #import "UILabel+Addition.h"
 #import "UICollectionView+Addition.h"
 #import "NSNotificationCenter+Name.h"
-
+#import "SDStoryBookGridView.h"
 #import <objc/message.h>
 
 #define WidthForGrid [UIScreen mainScreen].bounds.size.width - 16 // padding = 8
 #define HeightForFullyDisplayNavigationBar 57.0f
 #define HeightForTriggerNavigationBarAnimation 23.0f
 
-#define Debug_count 500
+#define Debug_count 30
 
 @interface SDHomeViewController ()
 @property (nonatomic) NSMutableArray *dataSource;
@@ -43,8 +43,6 @@
 @implementation SDHomeViewController
 
 static NSString *HeaderCellIdentifier = @"HeaderCollectionViewCell";
-static NSString *CellIdentifier = @"CollectionViewCell";
-static NSString *TextCellIdentifier = @"TextCollectionViewCell";
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -93,9 +91,11 @@ static NSString *TextCellIdentifier = @"TextCollectionViewCell";
         self.dataSource = [NSMutableArray new];
         BOOL toggle = TRUE;
         BOOL toggle2 = TRUE;
+        int min = 0;
+        int max = 5;
         for( int i = 0; i <= Debug_count; i++ ){
             SDStory* story = [SDStory new];
-            story.type = [NSNumber numberWithInt:rand() % 3];
+            story.type = [NSNumber numberWithInt:min + rand() % (max-min)];
             switch( story.type.intValue ){
                 case SDStoryType_Photo:
                     story.imageName = toggle ? @"dump_03.jpg" : @"dump_02.jpg";
@@ -106,6 +106,7 @@ static NSString *TextCellIdentifier = @"TextCollectionViewCell";
                     toggle2 = !toggle2;
                     break;
             }
+            NSLog(@"story: %@",story.type);
             story.userIconName = @"dump_user";
             story.userName = @"Thom.Y";
             story.date = [NSDate date];
@@ -213,8 +214,7 @@ static NSString *TextCellIdentifier = @"TextCollectionViewCell";
 {
     SDBaseGridView *cell = nil;
     if( indexPath.row ){
-        SDStory* story = [self.dataSource objectAtIndex:indexPath.row];
-        
+        SDStory* story = [self.dataSource objectAtIndex:indexPath.row];        
         cell = [SDBaseGridView gridViewWithStory:story collectionView:collectionView forIndexPath:indexPath];
         cell.story = story;
     }else{ // isFirstRow
@@ -245,7 +245,7 @@ static NSString *TextCellIdentifier = @"TextCollectionViewCell";
 {
 
     UILabel *navigationTitleDayLabel = ((SDHomeNavigationTitleView *)self.navigationItem.titleView).dayLabel;
-    UILabel *navigationTitleDateLabel = ((SDHomeNavigationTitleView *)self.navigationItem.titleView).dateLabel;
+//    UILabel *navigationTitleDateLabel = ((SDHomeNavigationTitleView *)self.navigationItem.titleView).dateLabel;
     UILabel *headerDayLabel = self.headerCollectionViewCell.labels[0];
     UILabel *headerDateLabel = self.headerCollectionViewCell.labels[1];
     UILabel *headerWeekDayLabel = self.headerCollectionViewCell.labels[2];
@@ -254,7 +254,7 @@ static NSString *TextCellIdentifier = @"TextCollectionViewCell";
 //    CGFloat dayFontFactor = ([SDHomeHeaderCollectionViewCell fontForDayLabel].pointSize -navigationTitleDayLabel.font.pointSize)/(HeightForFullyDisplayNavigationBar-HeightForTriggerNavigationBarAnimation);
 //    CGFloat dateFontFactor = ([SDHomeHeaderCollectionViewCell fontForDateLabel].pointSize -navigationTitleDateLabel.font.pointSize)/(HeightForFullyDisplayNavigationBar-HeightForTriggerNavigationBarAnimation);
     CGFloat dayFontFactor = ([SDHomeHeaderCollectionViewCell fontForDayLabel].pointSize -navigationTitleDayLabel.font.pointSize)/(HeightForFullyDisplayNavigationBar-HeightForTriggerNavigationBarAnimation);
-    CGFloat dateFontFactor = ([SDHomeHeaderCollectionViewCell fontForDateLabel].pointSize -navigationTitleDateLabel.font.pointSize)/(HeightForFullyDisplayNavigationBar-HeightForTriggerNavigationBarAnimation);
+//    CGFloat dateFontFactor = ([SDHomeHeaderCollectionViewCell fontForDateLabel].pointSize -navigationTitleDateLabel.font.pointSize)/(HeightForFullyDisplayNavigationBar-HeightForTriggerNavigationBarAnimation);
     CGFloat netOffset = scrollView.contentOffset.y-HeightForTriggerNavigationBarAnimation;
 
     // Alpha Animation

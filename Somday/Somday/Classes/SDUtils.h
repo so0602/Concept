@@ -38,4 +38,6 @@
 +(void)setUsername:(NSString*)username password:(NSString*)password;
 +(void)logout;
 
++(UIImage*)captureScreenForView:(UIView *)view;
+
 @end

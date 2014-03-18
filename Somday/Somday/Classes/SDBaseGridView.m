@@ -13,11 +13,13 @@
 #import "SDTextGridView.h"
 #import "SDPhotoGridView.h"
 #import "SDVoiceGridView.h"
+#import "SDStoryBookGridView.h"
 
 static NSString *BaseCellIdentifier = @"CollectionViewCell";
 static NSString *TextCellIdentifier = @"TextCollectionViewCell";
 static NSString *PhotoCellIdentifier = @"PhotoCollectionViewCell";
 static NSString *VoiceCellIdentifier = @"VoiceCollectionViewCell";
+static NSString *StoryBookCellIdentifier = @"StoryBookCollectionViewCell";
 
 KeyframeParametricBlock openFunction = ^double(double time) {
     return sin(time*M_PI_2);
@@ -75,10 +77,13 @@ typedef NSUInteger SDGridMenuState;
             reuseIdentifier = VoiceCellIdentifier;
             break;
         case SDStoryType_Event:
+            reuseIdentifier = TextCellIdentifier;
             break;
         case SDStoryType_Storybook:
+            reuseIdentifier = StoryBookCellIdentifier;
             break;
         case SDStoryType_Link:
+            reuseIdentifier = TextCellIdentifier;
             break;
     }
     return [collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
@@ -97,10 +102,13 @@ typedef NSUInteger SDGridMenuState;
             class = [SDVoiceGridView class];
             break;
         case SDStoryType_Event:
+            class = [SDTextGridView class];
             break;
         case SDStoryType_Storybook:
+            class = [SDStoryBookGridView class];
             break;
         case SDStoryType_Link:
+            class = [SDTextGridView class];
             break;
     }
     
@@ -211,12 +219,6 @@ typedef NSUInteger SDGridMenuState;
 }
 
 #pragma mark -
-
-//- (void)setImage:(UIImage *)image
-//{
-//    _image = image;
-//    self.backgroundImageView.image = image;
-//}
 
 - (void)handleSwipeGesture:(UISwipeGestureRecognizer*)gestureRecognizer
 {
@@ -714,6 +716,13 @@ typedef NSUInteger SDGridMenuState;
     _story = story;
     
     [self setNeedsLayout];
+}
+
+#pragma mark - UIGestureRecognizerDelegate
+
+- (BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer
+{
+    return !_disableSwipeGesture;
 }
 
 @end
