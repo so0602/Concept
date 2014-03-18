@@ -144,8 +144,47 @@
                                             <outletCollection property="labels" destination="dVk-7i-CcX" id="Ltk-8D-KJS"/>
                                         </connections>
                                     </collectionViewCell>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" contentMode="center" reuseIdentifier="TextCollectionViewCell" id="tub-Xj-JVf" customClass="SDTextGridView">
+                                        <rect key="frame" x="8" y="196" width="304" height="152"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="304" height="152"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dLW-D3-pda">
+                                                    <rect key="frame" x="0.0" y="0.0" width="304" height="82"/>
+                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                    <subviews>
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="icons-16px_quoteLeft.png" translatesAutoresizingMaskIntoConstraints="NO" id="xpR-pa-3PI">
+                                                            <rect key="frame" x="5" y="5" width="18" height="18"/>
+                                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                        </imageView>
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="icons-16px_quoteRight.png" translatesAutoresizingMaskIntoConstraints="NO" id="UF0-EX-JXC">
+                                                            <rect key="frame" x="281" y="59" width="18" height="18"/>
+                                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                        </imageView>
+                                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label Label Label Label Label Label Label Label Label Label Label Label Label Label Label Label Label Label Label Label Label" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="240" translatesAutoresizingMaskIntoConstraints="NO" id="ghe-dB-K3K">
+                                                            <rect key="frame" x="32" y="14.5" width="240" height="52"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <fontDescription key="fontDescription" type="italicSystem" pointSize="14"/>
+                                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                    <color key="backgroundColor" red="0.27058823529411763" green="0.56470588235294117" blue="0.51764705882352935" alpha="1" colorSpace="calibratedRGB"/>
+                                                </view>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="storyQuote-text.png" translatesAutoresizingMaskIntoConstraints="NO" id="c57-bI-pc7">
+                                                    <rect key="frame" x="0.0" y="74" width="304" height="16"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                </imageView>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <size key="customSize" width="304" height="152"/>
+                                    </collectionViewCell>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" contentMode="center" reuseIdentifier="CollectionViewCell" id="1Bx-Xz-QOA" customClass="SDBaseGridView">
-                                        <rect key="frame" x="8" y="196" width="304" height="304"/>
+                                        <rect key="frame" x="8" y="358" width="304" height="304"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="304" height="304"/>
@@ -415,7 +454,7 @@
                                     <action selector="touchUpInside:" destination="B78-S3-Y5e" eventType="touchUpInside" id="f8Z-tD-OHa"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="separator-1.png" translatesAutoresizingMaskIntoConstraints="NO" id="mfA-0c-Ifq">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="separator-2.png" translatesAutoresizingMaskIntoConstraints="NO" id="mfA-0c-Ifq">
                                 <rect key="frame" x="0.0" y="519" width="320" height="1"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
@@ -923,6 +962,8 @@
         <image name="btn-form-green.png" width="24" height="48"/>
         <image name="icon-24px-social-fb.png" width="24" height="24"/>
         <image name="icons-12px_arrowLeft.png" width="14" height="14"/>
+        <image name="icons-16px_quoteLeft.png" width="18" height="18"/>
+        <image name="icons-16px_quoteRight.png" width="18" height="18"/>
         <image name="icons-24px_add.png" width="26" height="26"/>
         <image name="icons-24px_menu.png" width="26" height="26"/>
         <image name="icons-shadow-24px_arrowLeft.png" width="26" height="26"/>
@@ -934,7 +975,8 @@
         <image name="prelogin-textField-1.png" width="48" height="60"/>
         <image name="prelogin-textField-2.png" width="48" height="104"/>
         <image name="prelogin-textField-3.png" width="48" height="148"/>
-        <image name="separator-1.png" width="320" height="1"/>
+        <image name="separator-2.png" width="320" height="1"/>
+        <image name="storyQuote-text.png" width="304" height="16"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>

@@ -40,6 +40,14 @@ typedef NSUInteger SDGridMenuState;
 @property (nonatomic) CGFloat end;
 @property (nonatomic) UIImage *viewSnapShot;
 @property (nonatomic) GHContextMenuView* menuOverlay;
+
+-(void)initBackgroundImageView;
+-(void)initShareButton;
+-(void)initMoreButton;
+-(void)initLikeButton;
+
+-(IBAction)actionForItem:(id)sender;
+
 @end
 
 @implementation SDBaseGridView
@@ -75,12 +83,8 @@ typedef NSUInteger SDGridMenuState;
 {
     // BackgroundColor
     self.backgroundColor = [UIColor clearColor];
-    self.backgroundImageView = [[UIImageView alloc] initWithFrame:self.bounds];
-    self.backgroundImageView.backgroundColor = [UIColor clearColor];
-    self.backgroundImageView.contentMode = UIViewContentModeScaleAspectFill;
-    self.backgroundImageView.userInteractionEnabled = YES;
-    self.backgroundImageView.clipsToBounds = YES;
-    [self addSubview:_backgroundImageView];
+    
+    [self initBackgroundImageView];
     
     // Shadow and round corner Effect
     self.layer.masksToBounds = NO;
@@ -90,37 +94,15 @@ typedef NSUInteger SDGridMenuState;
     self.layer.shadowOpacity = 0.7f;
     self.layer.shadowPath =  [UIBezierPath bezierPathWithRoundedRect:self.bounds cornerRadius:self.layer.cornerRadius].CGPath;
     
-    self.backgroundImageView.layer.masksToBounds = YES;
-    self.backgroundImageView.layer.cornerRadius = 8.0f;
-    
     // Add common button
-    self.shareButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    UIImage *image = [UIImage imageNamed:@"icons-24px_share"];
-    [shareButton setBackgroundImage:image forState:UIControlStateNormal];
-    shareButton.frame = CGRectMake(10, 136, image.size.width, image.size.height);
-    [shareButton setTitle:NSLocalizedString(@"Share", nil) forState:UIControlStateNormal];
-    [shareButton setTitleEdgeInsets:UIEdgeInsetsMake(36, 0, 0, 0)];
-    shareButton.titleLabel.font = [UIFont systemFontOfSize:9];
-    [self insertSubview:shareButton belowSubview:_backgroundImageView];
-    
-    self.moreButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    image = [UIImage imageNamed:@"icons-24px_more"];
-    [moreButton setImage:image forState:UIControlStateNormal];
-    moreButton.frame = CGRectMake(10, 260, image.size.width, image.size.height);
-    [self insertSubview:moreButton belowSubview:_backgroundImageView];
-    
-    self.likeButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    image = [UIImage imageNamed:@"icons-24px_like"];
-    [likeButton setImage:image forState:UIControlStateNormal];
-    likeButton.frame = CGRectMake(200, 260, image.size.width, image.size.height);
-    [likeButton addTarget:self action:@selector(actionForItem:) forControlEvents:UIControlEventTouchUpInside];
-    [_backgroundImageView addSubview:likeButton];
+    [self initShareButton];
+    [self initMoreButton];
+    [self initLikeButton];
     
     // Add like menu
     self.menuOverlay = [[GHContextMenuView alloc] init];
     menuOverlay.dataSource = self;
     menuOverlay.delegate = self;
-    
     
     // Add Gesture recognizer
     UISwipeGestureRecognizer *recognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipeGesture:)];
@@ -131,6 +113,57 @@ typedef NSUInteger SDGridMenuState;
     recognizer.direction =  UISwipeGestureRecognizerDirectionLeft;
     [recognizer setNumberOfTouchesRequired:1];
     [self addGestureRecognizer:recognizer];
+}
+
+-(void)initBackgroundImageView{
+    if( !self.backgroundImageView ){
+        self.backgroundImageView = [[UIImageView alloc] initWithFrame:self.bounds];
+        [self addSubview:_backgroundImageView];
+    }
+    self.backgroundImageView.backgroundColor = [UIColor clearColor];
+    self.backgroundImageView.contentMode = UIViewContentModeScaleAspectFill;
+    self.backgroundImageView.userInteractionEnabled = YES;
+    self.backgroundImageView.clipsToBounds = YES;
+    
+    self.backgroundImageView.layer.masksToBounds = YES;
+    self.backgroundImageView.layer.cornerRadius = 8.0f;
+}
+
+-(void)initShareButton{
+    if( !self.shareButton ){
+        self.shareButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        [self insertSubview:shareButton belowSubview:_backgroundImageView];
+    }
+    UIImage *image = [UIImage imageNamed:@"icons-24px_share"];
+    [shareButton setBackgroundImage:image forState:UIControlStateNormal];
+    shareButton.frame = CGRectMake(10, 136, image.size.width, image.size.height);
+    [shareButton setTitle:NSLocalizedString(@"Share", nil) forState:UIControlStateNormal];
+    [shareButton setTitleEdgeInsets:UIEdgeInsetsMake(36, 0, 0, 0)];
+    shareButton.titleLabel.font = [UIFont systemFontOfSize:9];
+}
+
+-(void)initMoreButton{
+    if( !self.moreButton ){
+        self.moreButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        [self insertSubview:moreButton belowSubview:_backgroundImageView];
+    }
+    
+    UIImage* image = [UIImage imageNamed:@"icons-24px_more"];
+    [moreButton setImage:image forState:UIControlStateNormal];
+    moreButton.frame = CGRectMake(10, 260, image.size.width, image.size.height);
+}
+
+-(void)initLikeButton{
+    if( !self.likeButton ){
+        self.likeButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        [_backgroundImageView addSubview:likeButton];
+    }
+    UIImage* image = [UIImage imageNamed:@"icons-24px_like"];
+    [likeButton setImage:image forState:UIControlStateNormal];
+    likeButton.frame = CGRectMake(200, 260, image.size.width, image.size.height);
+    if( ![likeButton targetForAction:@selector(actionForItem:) withSender:self] ){
+        [likeButton addTarget:self action:@selector(actionForItem:) forControlEvents:UIControlEventTouchUpInside];
+    }
 }
 
 - (void)layoutSubviews
