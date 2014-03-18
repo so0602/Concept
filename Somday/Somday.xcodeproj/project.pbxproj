@@ -843,6 +843,9 @@
 		B65DE27A18C60EB10076408C /* icons-shadow-24px_warning.png in Resources */ = {isa = PBXBuildFile; fileRef = B65DDF5C18C60EB10076408C /* icons-shadow-24px_warning.png */; };
 		B65DE27B18C60EB10076408C /* icons-shadow-24px_warning@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B65DDF5D18C60EB10076408C /* icons-shadow-24px_warning@2x.png */; };
 		B65DE2B218C884D50076408C /* SDTopMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B65DE2B118C884D50076408C /* SDTopMenuViewController.m */; };
+		B66E1BEF18D83B7500C292FA /* SDPhotoGridView.m in Sources */ = {isa = PBXBuildFile; fileRef = B66E1BEE18D83B7500C292FA /* SDPhotoGridView.m */; };
+		B66E1BF218D8585C00C292FA /* dump_user.png in Resources */ = {isa = PBXBuildFile; fileRef = B66E1BF018D8585C00C292FA /* dump_user.png */; };
+		B66E1BF318D8585C00C292FA /* dump_user@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B66E1BF118D8585C00C292FA /* dump_user@2x.png */; };
 		B6BE49D018CF457500DA7313 /* SDForgotPasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6BE49CF18CF457500DA7313 /* SDForgotPasswordViewController.m */; };
 		B6BE49D818CF4F0900DA7313 /* SDSignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6BE49D718CF4F0900DA7313 /* SDSignUpViewController.m */; };
 		B6BE49DD18CF699F00DA7313 /* SDEmailTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = B6BE49DC18CF699F00DA7313 /* SDEmailTextField.m */; };
@@ -1909,6 +1912,10 @@
 		B65DDF5D18C60EB10076408C /* icons-shadow-24px_warning@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icons-shadow-24px_warning@2x.png"; sourceTree = "<group>"; };
 		B65DE2B018C884D50076408C /* SDTopMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SDTopMenuViewController.h; path = Classes/SDTopMenuViewController.h; sourceTree = "<group>"; };
 		B65DE2B118C884D50076408C /* SDTopMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SDTopMenuViewController.m; path = Classes/SDTopMenuViewController.m; sourceTree = "<group>"; };
+		B66E1BED18D83B7500C292FA /* SDPhotoGridView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SDPhotoGridView.h; path = Classes/SDPhotoGridView.h; sourceTree = "<group>"; };
+		B66E1BEE18D83B7500C292FA /* SDPhotoGridView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SDPhotoGridView.m; path = Classes/SDPhotoGridView.m; sourceTree = "<group>"; };
+		B66E1BF018D8585C00C292FA /* dump_user.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dump_user.png; sourceTree = "<group>"; };
+		B66E1BF118D8585C00C292FA /* dump_user@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "dump_user@2x.png"; sourceTree = "<group>"; };
 		B6BE49CE18CF457500DA7313 /* SDForgotPasswordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SDForgotPasswordViewController.h; path = Classes/SDForgotPasswordViewController.h; sourceTree = "<group>"; };
 		B6BE49CF18CF457500DA7313 /* SDForgotPasswordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SDForgotPasswordViewController.m; path = Classes/SDForgotPasswordViewController.m; sourceTree = "<group>"; };
 		B6BE49D618CF4F0900DA7313 /* SDSignUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SDSignUpViewController.h; path = Classes/SDSignUpViewController.h; sourceTree = "<group>"; };
@@ -1961,7 +1968,6 @@
 		EF3B651D18CDB6BE00B0CF1C /* SDLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SDLoginViewController.m; path = Classes/SDLoginViewController.m; sourceTree = "<group>"; };
 		EF3B652218D042C600B0CF1C /* NSString+Addition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSString+Addition.h"; path = "Classes/NSString+Addition.h"; sourceTree = "<group>"; };
 		EF3B652318D042C600B0CF1C /* NSString+Addition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSString+Addition.m"; path = "Classes/NSString+Addition.m"; sourceTree = "<group>"; };
-		EF3B652C18D0546200B0CF1C /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Main.strings"; sourceTree = "<group>"; };
 		EF3B652D18D0546300B0CF1C /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		EF3B652E18D0546300B0CF1C /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		EF3B653318D0548F00B0CF1C /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -3172,6 +3178,8 @@
 				2E84744818CD895100D49FBA /* SDBaseGridView.m */,
 				B6BE4ABB18D8167C00DA7313 /* SDTextGridView.h */,
 				B6BE4ABC18D8167C00DA7313 /* SDTextGridView.m */,
+				B66E1BED18D83B7500C292FA /* SDPhotoGridView.h */,
+				B66E1BEE18D83B7500C292FA /* SDPhotoGridView.m */,
 			);
 			name = GridView;
 			sourceTree = "<group>";
@@ -3252,6 +3260,8 @@
 		EF3B655618D2E8AF00B0CF1C /* Dump */ = {
 			isa = PBXGroup;
 			children = (
+				B66E1BF018D8585C00C292FA /* dump_user.png */,
+				B66E1BF118D8585C00C292FA /* dump_user@2x.png */,
 				EF3B655718D2E8AF00B0CF1C /* dump_00.jpg */,
 				EF3B655818D2E8AF00B0CF1C /* dump_01.jpg */,
 				EF3B655918D2E8AF00B0CF1C /* dump_02.jpg */,
@@ -3514,9 +3524,9 @@
 		EFA8EC0118BDDA4A00144B75 /* Other Sources */ = {
 			isa = PBXGroup;
 			children = (
+				EF891DC918CD8CB5005DC780 /* ASIHTTPRequest.xcodeproj */,
 				2E39E90918D4DF8700A7F917 /* AUISelectiveBordersView */,
 				2ED7A89218D43D9C00F76E17 /* GHContextMenu */,
-				EF891DC918CD8CB5005DC780 /* ASIHTTPRequest.xcodeproj */,
 				B65DDC2518C5B1410076408C /* GPUImage.xcodeproj */,
 				EFD0FC1818CD952B0026F54F /* JSONKit */,
 				B6BE49EF18D1597200DA7313 /* KBPopupBubble.xcodeproj */,
@@ -4200,6 +4210,7 @@
 				B65DE15218C60EB10076408C /* icons-shadow-12px_important2.png in Resources */,
 				B65DE04518C60EB10076408C /* icons-24px_addFriend@2x.png in Resources */,
 				B65DE0FA18C60EB10076408C /* icons-color-12px_more.png in Resources */,
+				B66E1BF218D8585C00C292FA /* dump_user.png in Resources */,
 				B65DE1AA18C60EB10076408C /* icons-shadow-16px_camera.png in Resources */,
 				B65DDFAD18C60EB10076408C /* icons-12px_play-bold@2x.png in Resources */,
 				B65DDF7E18C60EB10076408C /* icons-12px_dateAndTime.png in Resources */,
@@ -4348,6 +4359,7 @@
 				B65DDFE718C60EB10076408C /* icons-16px_closeFriends@2x.png in Resources */,
 				B65DE17C18C60EB10076408C /* icons-shadow-12px_quoteRight.png in Resources */,
 				B65DE05618C60EB10076408C /* icons-24px_chats.png in Resources */,
+				B66E1BF318D8585C00C292FA /* dump_user@2x.png in Resources */,
 				B65DE17518C60EB10076408C /* icons-shadow-12px_play-bold@2x.png in Resources */,
 				B65DDFC318C60EB10076408C /* icons-12px_speaker@2x.png in Resources */,
 				B65DDFB818C60EB10076408C /* icons-12px_repeat.png in Resources */,
@@ -4623,6 +4635,7 @@
 				2E54CAC618C5D2C200B23A96 /* SDCollectionViewFlowLayout.m in Sources */,
 				EF891DE218CD8EA0005DC780 /* SDNetworkUtils.m in Sources */,
 				EF3B650318CDA2C200B0CF1C /* SDStatus.m in Sources */,
+				B66E1BEF18D83B7500C292FA /* SDPhotoGridView.m in Sources */,
 				EF3B651E18CDB6BE00B0CF1C /* SDLoginViewController.m in Sources */,
 				B6BE49D818CF4F0900DA7313 /* SDSignUpViewController.m in Sources */,
 				2E2CC5C218D03D7600FFEBBB /* KeychainItemWrapper.m in Sources */,
@@ -4705,7 +4718,6 @@
 			isa = PBXVariantGroup;
 			children = (
 				EFA8EBD218BDD87100144B75 /* Base */,
-				EF3B652C18D0546200B0CF1C /* zh-Hant */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";

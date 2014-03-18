@@ -13,12 +13,13 @@
 
 @interface SDBaseGridView : UICollectionViewCell
 
-@property (nonatomic) UIImage *image;
-@property (nonatomic) IBOutlet UIImageView *backgroundImageView;
-@property (nonatomic) IBOutlet UIButton *shareButton;
-@property (nonatomic) IBOutlet UIButton *moreButton;
-@property (nonatomic) IBOutlet UIButton *likeButton;
-@property (nonatomic) IBOutlet UIButton *commentButton;
+@property (nonatomic, strong) IBOutlet UIView* mainContentView;
+@property (nonatomic, strong) IBOutlet UIImageView *backgroundImageView;
+@property (nonatomic, strong) IBOutlet UIButton *shareButton;
+@property (nonatomic, strong) IBOutlet UIButton *moreButton;
+@property (nonatomic, strong) IBOutlet UIButton *likeButton;
+@property (nonatomic, strong) IBOutlet UIButton *commentButton;
+@property (nonatomic, strong) IBOutlet UIButton *userButton;
 
 + (CGFloat)heightForCell;
 

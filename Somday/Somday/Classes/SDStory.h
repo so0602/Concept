@@ -35,6 +35,8 @@ typedef NS_ENUM(NSUInteger, SDStoryType){
 // Temp Data
 @property (nonatomic, strong) NSNumber* type;
 @property (nonatomic, strong) NSString* imageName;
+@property (nonatomic, strong) NSNumber* likeCount;
+@property (nonatomic, strong) NSNumber* commentCount;
 
 @end
 

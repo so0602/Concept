@@ -29,6 +29,8 @@
 
 @synthesize type;
 @synthesize imageName;
+@synthesize likeCount;
+@synthesize commentCount;
 
 -(id)initWithDictionary:(id)dictionary{
     if( self = [super init] ){
