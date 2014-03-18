@@ -27,6 +27,9 @@
 
 @implementation SDStory
 
+@synthesize type;
+@synthesize imageName;
+
 -(id)initWithDictionary:(id)dictionary{
     if( self = [super init] ){
         self.ID = [dictionary objectForKey:SDStory_ID];

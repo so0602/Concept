@@ -151,6 +151,11 @@
                                             <rect key="frame" x="0.0" y="0.0" width="304" height="152"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
+                                                <imageView tag="999" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0jU-up-7Eq">
+                                                    <rect key="frame" x="0.0" y="0.0" width="304" height="152"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <color key="backgroundColor" white="0.24646441605839417" alpha="0.59999999999999998" colorSpace="calibratedWhite"/>
+                                                </imageView>
                                                 <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dLW-D3-pda">
                                                     <rect key="frame" x="0.0" y="0.0" width="304" height="82"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -182,6 +187,11 @@
                                         </view>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <size key="customSize" width="304" height="152"/>
+                                        <connections>
+                                            <outlet property="arrowImageView" destination="c57-bI-pc7" id="Jai-nx-eAn"/>
+                                            <outlet property="backgroundImageView" destination="0jU-up-7Eq" id="nmq-4a-CiT"/>
+                                            <outlet property="textBackgroudView" destination="dLW-D3-pda" id="8hT-ha-7GN"/>
+                                        </connections>
                                     </collectionViewCell>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" contentMode="center" reuseIdentifier="CollectionViewCell" id="1Bx-Xz-QOA" customClass="SDBaseGridView">
                                         <rect key="frame" x="8" y="358" width="304" height="304"/>

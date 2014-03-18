@@ -10,6 +10,11 @@
 #import "CAKeyframeAnimation+Addition.h"
 #import "GHContextMenuView.h"
 
+#import "SDTextGridView.h"
+
+static NSString *BaseCellIdentifier = @"CollectionViewCell";
+static NSString *TextCellIdentifier = @"TextCollectionViewCell";
+
 KeyframeParametricBlock openFunction = ^double(double time) {
     return sin(time*M_PI_2);
 };
@@ -59,12 +64,53 @@ typedef NSUInteger SDGridMenuState;
     return 304.0f;
 }
 
++(instancetype)gridViewWithStory:(SDStory*)story collectionView:(UICollectionView*)collectionView forIndexPath:(NSIndexPath*)indexPath{
+    NSString* reuseIdentifier = BaseCellIdentifier;
+    switch( story.type.intValue ){
+        case SDStoryType_Text:
+            reuseIdentifier = TextCellIdentifier;
+            break;
+        case SDStoryType_Photo:
+            break;
+        case SDStoryType_Event:
+            break;
+        case SDStoryType_Storybook:
+            break;
+        case SDStoryType_Link:
+            break;
+        case SDStoryType_Voice:
+            break;
+    }
+    return [collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
+}
+
++(Class)classWithStory:(SDStory*)story{
+    Class class = [SDBaseGridView class];
+    switch( story.type.intValue ){
+        case SDStoryType_Text:
+            class = [SDTextGridView class];
+            break;
+        case SDStoryType_Photo:
+            break;
+        case SDStoryType_Event:
+            break;
+        case SDStoryType_Storybook:
+            break;
+        case SDStoryType_Link:
+            break;
+        case SDStoryType_Voice:
+            break;
+    }
+    
+    return class;
+}
+
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
     if (self) {
         // Initialization code
-        [self initBaseGridView];
+//        [self initBaseGridView];
     }
     return self;
 }
@@ -74,7 +120,8 @@ typedef NSUInteger SDGridMenuState;
     self = [super initWithCoder:aDecoder];
     if (self) {
         // Initialization code
-        [self initBaseGridView];
+//        [self initBaseGridView];
+        
     }
     return self;
 }
@@ -116,11 +163,13 @@ typedef NSUInteger SDGridMenuState;
 }
 
 -(void)initBackgroundImageView{
+    
     if( !self.backgroundImageView ){
         self.backgroundImageView = [[UIImageView alloc] initWithFrame:self.bounds];
+        self.backgroundImageView.backgroundColor = [UIColor clearColor];
         [self addSubview:_backgroundImageView];
     }
-    self.backgroundImageView.backgroundColor = [UIColor clearColor];
+    
     self.backgroundImageView.contentMode = UIViewContentModeScaleAspectFill;
     self.backgroundImageView.userInteractionEnabled = YES;
     self.backgroundImageView.clipsToBounds = YES;
@@ -170,6 +219,8 @@ typedef NSUInteger SDGridMenuState;
 {
     [super layoutSubviews];
     
+    self.backgroundImageView.image = self.image;
+    
 }
 
 - (void)prepareForReuse
@@ -179,13 +230,19 @@ typedef NSUInteger SDGridMenuState;
     self.origamiLayer = nil;
 }
 
+-(void)didMoveToSuperview{
+    [super didMoveToSuperview];
+    
+    [self initBaseGridView];
+}
+
 #pragma mark -
 
-- (void)setImage:(UIImage *)image
-{
-    _image = image;
-    self.backgroundImageView.image = image;
-}
+//- (void)setImage:(UIImage *)image
+//{
+//    _image = image;
+//    self.backgroundImageView.image = image;
+//}
 
 - (void)handleSwipeGesture:(UISwipeGestureRecognizer*)gestureRecognizer
 {
@@ -677,6 +734,12 @@ typedef NSUInteger SDGridMenuState;
     
 }
 
-
+-(void)setStory:(SDStory *)story{
+    _story = story;
+    
+    if( _story.imageName ){
+        self.image = [UIImage imageNamed:_story.imageName];
+    }
+}
 
 @end

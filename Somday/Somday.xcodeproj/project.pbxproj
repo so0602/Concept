@@ -867,6 +867,7 @@
 		B6BE4AB618D7FB8600DA7313 /* storyQuote-story@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B6BE4AB418D7FB8600DA7313 /* storyQuote-story@2x.png */; };
 		B6BE4AB918D7FBE500DA7313 /* separator-2.png in Resources */ = {isa = PBXBuildFile; fileRef = B6BE4AB718D7FBE500DA7313 /* separator-2.png */; };
 		B6BE4ABA18D7FBE500DA7313 /* separator-2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B6BE4AB818D7FBE500DA7313 /* separator-2@2x.png */; };
+		B6BE4ABD18D8167C00DA7313 /* SDTextGridView.m in Sources */ = {isa = PBXBuildFile; fileRef = B6BE4ABC18D8167C00DA7313 /* SDTextGridView.m */; };
 		EF3B650018CDA27700B0CF1C /* SDResponseBase.m in Sources */ = {isa = PBXBuildFile; fileRef = EF3B64FF18CDA27700B0CF1C /* SDResponseBase.m */; };
 		EF3B650318CDA2C200B0CF1C /* SDStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = EF3B650218CDA2C200B0CF1C /* SDStatus.m */; };
 		EF3B650A18CDA8AA00B0CF1C /* SDLogin.m in Sources */ = {isa = PBXBuildFile; fileRef = EF3B650918CDA8AA00B0CF1C /* SDLogin.m */; };
@@ -1939,6 +1940,8 @@
 		B6BE4AB418D7FB8600DA7313 /* storyQuote-story@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "storyQuote-story@2x.png"; sourceTree = "<group>"; };
 		B6BE4AB718D7FBE500DA7313 /* separator-2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "separator-2.png"; sourceTree = "<group>"; };
 		B6BE4AB818D7FBE500DA7313 /* separator-2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "separator-2@2x.png"; sourceTree = "<group>"; };
+		B6BE4ABB18D8167C00DA7313 /* SDTextGridView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SDTextGridView.h; path = Classes/SDTextGridView.h; sourceTree = "<group>"; };
+		B6BE4ABC18D8167C00DA7313 /* SDTextGridView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SDTextGridView.m; path = Classes/SDTextGridView.m; sourceTree = "<group>"; };
 		EF3B64FE18CDA27700B0CF1C /* SDResponseBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SDResponseBase.h; path = Classes/SDResponseBase.h; sourceTree = "<group>"; };
 		EF3B64FF18CDA27700B0CF1C /* SDResponseBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SDResponseBase.m; path = Classes/SDResponseBase.m; sourceTree = "<group>"; };
 		EF3B650118CDA2C200B0CF1C /* SDStatus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SDStatus.h; path = Classes/SDStatus.h; sourceTree = "<group>"; };
@@ -2114,14 +2117,13 @@
 		2E54CACC18C5D78E00B23A96 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				B6BE49DE18CF69A100DA7313 /* TextField */,
+				B6BE4ABE18D8168000DA7313 /* GridView */,
 				2E54CACD18C5D7BF00B23A96 /* SDHomeHeaderCollectionViewCell.h */,
 				2E54CACE18C5D7BF00B23A96 /* SDHomeHeaderCollectionViewCell.m */,
 				2EC3784718C5F0BA00D4161B /* SDHomeNavigationTitleView.h */,
 				2EC3784818C5F0BA00D4161B /* SDHomeNavigationTitleView.m */,
 				2EC3784E18C5F0D100D4161B /* SDHomeNavigationTitleView.xib */,
-				2E84744718CD895100D49FBA /* SDBaseGridView.h */,
-				2E84744818CD895100D49FBA /* SDBaseGridView.m */,
+				B6BE49DE18CF69A100DA7313 /* TextField */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -3161,6 +3163,17 @@
 				B6BE4A5D18D1619400DA7313 /* KBPopupBubbleTests.xctest */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		B6BE4ABE18D8168000DA7313 /* GridView */ = {
+			isa = PBXGroup;
+			children = (
+				2E84744718CD895100D49FBA /* SDBaseGridView.h */,
+				2E84744818CD895100D49FBA /* SDBaseGridView.m */,
+				B6BE4ABB18D8167C00DA7313 /* SDTextGridView.h */,
+				B6BE4ABC18D8167C00DA7313 /* SDTextGridView.m */,
+			);
+			name = GridView;
 			sourceTree = "<group>";
 		};
 		EF3B64F818CDA25A00B0CF1C /* Models */ = {
@@ -4595,6 +4608,7 @@
 				B65DDC1818C586760076408C /* SDMenuTableViewCell.m in Sources */,
 				B65DE2B218C884D50076408C /* SDTopMenuViewController.m in Sources */,
 				EF3B650F18CDAC2500B0CF1C /* SDCheckUserExist.m in Sources */,
+				B6BE4ABD18D8167C00DA7313 /* SDTextGridView.m in Sources */,
 				2E39E90F18D4DF8700A7F917 /* UIView+AUISelectiveBorder.m in Sources */,
 				EFA8EBD618BDD87100144B75 /* SDDynamicsDrawerViewController.m in Sources */,
 				B6BE49EB18CF739700DA7313 /* SDPasswordTextField.m in Sources */,

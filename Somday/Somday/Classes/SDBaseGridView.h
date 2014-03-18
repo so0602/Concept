@@ -9,6 +9,8 @@
 #import <UIKit/UIKit.h>
 #import <QuartzCore/QuartzCore.h>
 
+#import "SDStory.h"
+
 @interface SDBaseGridView : UICollectionViewCell
 
 @property (nonatomic) UIImage *image;
@@ -19,5 +21,10 @@
 @property (nonatomic) IBOutlet UIButton *commentButton;
 
 + (CGFloat)heightForCell;
+
++(instancetype)gridViewWithStory:(SDStory*)story collectionView:(UICollectionView*)collectionView forIndexPath:(NSIndexPath*)indexPath;
++(Class)classWithStory:(SDStory*)story;
+
+@property (nonatomic, strong) SDStory* story;
 
 @end

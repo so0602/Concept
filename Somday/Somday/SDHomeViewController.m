@@ -44,6 +44,7 @@
 
 static NSString *HeaderCellIdentifier = @"HeaderCollectionViewCell";
 static NSString *CellIdentifier = @"CollectionViewCell";
+static NSString *TextCellIdentifier = @"TextCollectionViewCell";
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -89,11 +90,16 @@ static NSString *CellIdentifier = @"CollectionViewCell";
     
     {
         // Debug
-        BOOL toggle = YES;
         self.dataSource = [NSMutableArray new];
-        for (int i = 0; i <= Debug_count; i++) {
-            [_dataSource addObject:toggle?@"Debug_Grid_Event":@"Debug_Grid"];
-            toggle = !toggle;
+        BOOL toggle = TRUE;
+        for( int i = 0; i <= Debug_count; i++ ){
+            SDStory* story = [SDStory new];
+            story.type = [NSNumber numberWithInt:rand() % 2];
+            if( story.type.intValue == SDStoryType_Photo ){
+                story.imageName = toggle ? @"Debug_Grid_Event" : @"Debug_Grid";
+                toggle = !toggle;
+            }
+            [_dataSource addObject:story];
         }
     }
 }
@@ -125,29 +131,34 @@ static NSString *CellIdentifier = @"CollectionViewCell";
     NSArray *visibleItems = [_collectionView indexPathsForSortedVisibleItems];
     if (visibleItems.count > 2 || !toCurrentIndex) {
         _isbgImageAnimating = YES;
-        NSIndexPath *index;
+        NSIndexPath *indexPath;
 
         if (!toCurrentIndex)
-            index = [NSIndexPath indexPathForRow:0 inSection:0];
+            indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
         else
-            index = visibleItems[visibleItems.count-2];
+            indexPath = visibleItems[visibleItems.count-2];
         
-        _bgImageView2.alpha = 0.0f;
-        GPUImagePicture* picture = [[GPUImagePicture alloc] initWithImage:[UIImage imageNamed:[_dataSource objectAtIndex:index.row]]];
-        [picture addTarget:_bgImageFilter2];
-        [picture processImage];
-        
-        [[NSNotificationCenter defaultCenter] postNotificationName:HomeBackgroundImageChangedNotification object:[UIImage imageNamed:[_dataSource objectAtIndex:index.row]]];
-        
-        [UIView animateWithDuration:0.4 animations:^{
-            _bgImageView2.alpha = 1.0f;
-        } completion:^(BOOL finished) {
-            _isbgImageAnimating = NO;
-            GPUImagePicture* picture = [[GPUImagePicture alloc] initWithImage:[UIImage imageNamed:[_dataSource objectAtIndex:index.row]]];
-            [picture addTarget:_bgImageFilter1];
+        SDStory* story = [self.dataSource objectAtIndex:indexPath.row];
+        if( story.imageName ){
+            UIImage* image = [UIImage imageNamed:story.imageName];
+            
+            _bgImageView2.alpha = 0.0f;
+            GPUImagePicture* picture = [[GPUImagePicture alloc] initWithImage:image];
+            [picture addTarget:_bgImageFilter2];
             [picture processImage];
             
-        }];
+            [[NSNotificationCenter defaultCenter] postNotificationName:HomeBackgroundImageChangedNotification object:image];
+            
+            [UIView animateWithDuration:0.4 animations:^{
+                _bgImageView2.alpha = 1.0f;
+            } completion:^(BOOL finished) {
+                _isbgImageAnimating = NO;
+                GPUImagePicture* picture = [[GPUImagePicture alloc] initWithImage:image];
+                [picture addTarget:_bgImageFilter1];
+                [picture processImage];
+                
+            }];
+        }
     }
 }
 
@@ -186,16 +197,17 @@ static NSString *CellIdentifier = @"CollectionViewCell";
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    BOOL isFirstRow = indexPath.row==0;
-    SDBaseGridView *cell = (SDBaseGridView*)[collectionView dequeueReusableCellWithReuseIdentifier:isFirstRow?HeaderCellIdentifier:CellIdentifier forIndexPath:indexPath];
-    
-    if (!isFirstRow) {
-        cell.image = [UIImage imageNamed:[_dataSource objectAtIndex:indexPath.row]];
-    } else {
-        self.headerCollectionViewCell = (SDHomeHeaderCollectionViewCell*)cell;
+    SDBaseGridView *cell = nil;
+    if( indexPath.row ){
+        SDStory* story = [self.dataSource objectAtIndex:indexPath.row];
+        
+        cell = [SDBaseGridView gridViewWithStory:story collectionView:collectionView forIndexPath:indexPath];
+        cell.story = story;
+    }else{ // isFirstRow
+        cell = [collectionView dequeueReusableCellWithReuseIdentifier:HeaderCellIdentifier forIndexPath:indexPath];
+        self.headerCollectionViewCell = (id)cell;
         [self.headerCollectionViewCell addMotionEffect:[SDUtils sharedMotionEffectGroup]];
     }
-    
     
     return cell;
 }
@@ -204,8 +216,10 @@ static NSString *CellIdentifier = @"CollectionViewCell";
 {
     if (indexPath.row == 0)
         return CGSizeMake(WidthForGrid, [SDHomeHeaderCollectionViewCell heightForCell]);
-    else
-        return CGSizeMake(WidthForGrid, [SDBaseGridView heightForCell]); // TODO: Hardcode for now. Should get the height from the collectionViewCell.
+    else{
+        SDStory* story = [self.dataSource objectAtIndex:indexPath.row];
+        return CGSizeMake(WidthForGrid, [[SDBaseGridView classWithStory:story] heightForCell]);
+    }
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath

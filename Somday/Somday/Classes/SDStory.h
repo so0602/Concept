@@ -8,6 +8,15 @@
 
 #import "SDDataObjectBase.h"
 
+typedef NS_ENUM(NSUInteger, SDStoryType){
+    SDStoryType_Text,
+    SDStoryType_Photo,
+    SDStoryType_Event,
+    SDStoryType_Storybook,
+    SDStoryType_Link,
+    SDStoryType_Voice,
+};
+
 @interface SDStory : NSObject<SDDataObjectBase>
 
 @property (nonatomic, strong, readonly) NSNumber* ID;
@@ -22,6 +31,10 @@
 @property (nonatomic, strong, readonly) NSNumber* createBy;
 @property (nonatomic, strong, readonly) NSNumber* modifiedBy;
 @property (nonatomic, strong, readonly) NSArray* images;
+
+// Temp Data
+@property (nonatomic, strong) NSNumber* type;
+@property (nonatomic, strong) NSString* imageName;
 
 @end
 
