@@ -96,9 +96,13 @@ static NSString *TextCellIdentifier = @"TextCollectionViewCell";
             SDStory* story = [SDStory new];
             story.type = [NSNumber numberWithInt:rand() % 2];
             if( story.type.intValue == SDStoryType_Photo ){
-                story.imageName = toggle ? @"Debug_Grid_Event" : @"Debug_Grid";
+                story.imageName = toggle ? @"dump_03.jpg" : @"dump_02.jpg";
                 toggle = !toggle;
             }
+            story.userIconName = @"dump_user";
+            story.userName = @"Thom.Y";
+            story.date = [NSDate date];
+            story.address = @"AsiaWorld Expo";
             [_dataSource addObject:story];
         }
     }

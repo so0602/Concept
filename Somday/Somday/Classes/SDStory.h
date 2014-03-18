@@ -37,6 +37,10 @@ typedef NS_ENUM(NSUInteger, SDStoryType){
 @property (nonatomic, strong) NSString* imageName;
 @property (nonatomic, strong) NSNumber* likeCount;
 @property (nonatomic, strong) NSNumber* commentCount;
+@property (nonatomic, strong) NSString* userIconName;
+@property (nonatomic, strong) NSString* userName;
+@property (nonatomic, strong) NSDate* date;
+@property (nonatomic, strong) NSString* address;
 
 @end
 

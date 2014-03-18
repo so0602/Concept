@@ -174,6 +174,13 @@ typedef NSUInteger SDGridMenuState;
     self.userButton.layer.shadowPath =  [UIBezierPath bezierPathWithRoundedRect:self.userButton.bounds cornerRadius:self.userButton.layer.cornerRadius].CGPath;
     self.userButton.layer.borderWidth = 2;
     self.userButton.layer.borderColor = [UIColor whiteColor].CGColor;
+    [self.userButton setImage:[UIImage imageNamed:self.story.userIconName] forState:UIControlStateNormal];
+    
+    self.userNameLabel.text = self.story.userName;
+    
+    NSDateFormatter* dateFormatter = [[NSDateFormatter alloc] init];
+    dateFormatter.dateFormat = @"h:mm a";
+    self.infoLabel.text = [NSString stringWithFormat:@"%@ at %@", [dateFormatter stringFromDate:self.story.date], self.story.address];
 }
 
 - (void)prepareForReuse

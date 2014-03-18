@@ -31,6 +31,10 @@
 @synthesize imageName;
 @synthesize likeCount;
 @synthesize commentCount;
+@synthesize userIconName;
+@synthesize userName;
+@synthesize date;
+@synthesize address;
 
 -(id)initWithDictionary:(id)dictionary{
     if( self = [super init] ){

@@ -235,6 +235,20 @@
                                                                 <action selector="touchUpInside:" destination="VRR-8c-yCX" eventType="touchUpInside" id="Qcw-vW-ZxK"/>
                                                             </connections>
                                                         </button>
+                                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Thom.Y" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J1A-wr-Rtx">
+                                                            <rect key="frame" x="59" y="255" width="133" height="21"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="13"/>
+                                                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="8:00pm at AsiaWorld Expo" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JAP-ZG-wVw">
+                                                            <rect key="frame" x="59" y="265" width="133" height="21"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="10"/>
+                                                            <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
                                                     </subviews>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 </view>
@@ -246,11 +260,13 @@
                                         <connections>
                                             <outlet property="backgroundImageView" destination="1hx-cw-2vj" id="yGi-UM-Cve"/>
                                             <outlet property="commentButton" destination="hny-oZ-fiL" id="EaY-GU-ekh"/>
+                                            <outlet property="infoLabel" destination="JAP-ZG-wVw" id="5bJ-xJ-LJ9"/>
                                             <outlet property="likeButton" destination="4XG-Ml-mnY" id="VdB-lF-dgV"/>
                                             <outlet property="mainContentView" destination="Gqx-Et-6UG" id="hTN-Y1-MEe"/>
                                             <outlet property="moreButton" destination="Ddp-hU-wnU" id="GF0-co-yAb"/>
                                             <outlet property="shareButton" destination="Caz-Ys-BrU" id="CBH-Io-MUx"/>
                                             <outlet property="userButton" destination="xvb-ed-lwS" id="wOn-tQ-9EQ"/>
+                                            <outlet property="userNameLabel" destination="J1A-wr-Rtx" id="Lvs-g7-0mw"/>
                                         </connections>
                                     </collectionViewCell>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" contentMode="center" reuseIdentifier="TextCollectionViewCell" id="tub-Xj-JVf" customClass="SDTextGridView">
