@@ -181,6 +181,15 @@ typedef NSUInteger SDGridMenuState;
     NSDateFormatter* dateFormatter = [[NSDateFormatter alloc] init];
     dateFormatter.dateFormat = @"h:mm a";
     self.infoLabel.text = [NSString stringWithFormat:@"%@ at %@", [dateFormatter stringFromDate:self.story.date], self.story.address];
+    
+    NSInteger count = self.story.likeCount.intValue;
+    NSString* string = count >= 1000 ? [NSString stringWithFormat:@"%ldk", count / 1000] : [NSString stringWithFormat:@"%ld", count];
+    [self.likeButton setTitle:string forState:UIControlStateNormal];
+    
+    count = self.story.commentCount.intValue;
+    string = count >= 1000 ? [NSString stringWithFormat:@"%ldk", count / 1000] : [NSString stringWithFormat:@"%ld", count];
+    [self.commentButton setTitle:string forState:UIControlStateNormal];
+    
 }
 
 - (void)prepareForReuse

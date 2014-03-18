@@ -103,6 +103,8 @@ static NSString *TextCellIdentifier = @"TextCollectionViewCell";
             story.userName = @"Thom.Y";
             story.date = [NSDate date];
             story.address = @"AsiaWorld Expo";
+            story.likeCount = [NSNumber numberWithInt:rand() % 10000];
+            story.commentCount = [NSNumber numberWithInt:rand() % 10000];
             [_dataSource addObject:story];
         }
     }

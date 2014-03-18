@@ -368,6 +368,20 @@
                                                                 <action selector="touchUpInside:" destination="tub-Xj-JVf" eventType="touchUpInside" id="gTd-Fv-5Pe"/>
                                                             </connections>
                                                         </button>
+                                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Thom.Y" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A68-v7-I1l">
+                                                            <rect key="frame" x="59" y="102" width="133" height="21"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="13"/>
+                                                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="8:00pm at AsiaWorld Expo" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mdf-wz-mhp">
+                                                            <rect key="frame" x="59" y="113" width="133" height="21"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="10"/>
+                                                            <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
                                                     </subviews>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 </view>
@@ -380,12 +394,14 @@
                                             <outlet property="arrowImageView" destination="c57-bI-pc7" id="Jai-nx-eAn"/>
                                             <outlet property="backgroundImageView" destination="0jU-up-7Eq" id="nmq-4a-CiT"/>
                                             <outlet property="commentButton" destination="Y8u-Tk-zVW" id="NUY-nb-1Zv"/>
+                                            <outlet property="infoLabel" destination="Mdf-wz-mhp" id="h0n-Cd-Zjm"/>
                                             <outlet property="likeButton" destination="PEI-gr-BVD" id="nuX-0s-BXb"/>
                                             <outlet property="mainContentView" destination="Uat-gM-wdO" id="jTK-3L-ZIy"/>
                                             <outlet property="moreButton" destination="zIc-OL-oqu" id="RYn-am-mF6"/>
                                             <outlet property="shareButton" destination="78J-IV-sAG" id="zwb-ZX-VeV"/>
                                             <outlet property="textBackgroudView" destination="dLW-D3-pda" id="8hT-ha-7GN"/>
                                             <outlet property="userButton" destination="J1m-li-mIh" id="tPs-xs-CIt"/>
+                                            <outlet property="userNameLabel" destination="A68-v7-I1l" id="CLu-Oo-X5f"/>
                                         </connections>
                                     </collectionViewCell>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" contentMode="center" reuseIdentifier="CollectionViewCell" id="1Bx-Xz-QOA" customClass="SDBaseGridView">
