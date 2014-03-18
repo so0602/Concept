@@ -9,7 +9,6 @@
 #import "SDStoryBookGridView.h"
 
 #import "SDStoryBookLayoutView.h"
-#import "FlipView.h"
 #import "UIViewExtention.h"
 #import "AFKPageFlipper.h"
 #import "LayoutViewExtention.h"
@@ -17,17 +16,14 @@
 #define itemsForPage 4
 
 @interface SDStoryBookGridView () <AFKPageFlipperDataSource, UIGestureRecognizerDelegate>
-@property (nonatomic) IBOutletCollection(UIView) NSArray *flipContentView;
-@property (nonatomic) AnimationDelegate *animationDelegate;
 @property (nonatomic) UIPanGestureRecognizer *panGestureRecognizer;
-//@property (nonatomic) FlipView *flipView;
 @property (nonatomic) AFKPageFlipper *flipView;
 - (void)panned:(UIPanGestureRecognizer *)recognizer;
 @end
 
 @implementation SDStoryBookGridView
 
-@synthesize animationDelegate, panGestureRecognizer, flipView, viewStack, dataSource;
+@synthesize panGestureRecognizer, flipView, viewStack, dataSource;
 
 - (id)initWithFrame:(CGRect)frame
 {
@@ -52,7 +48,6 @@
 - (void)layoutSubviews
 {
     [super layoutSubviews];
-    [self loadData];
 }
 
 #pragma mark - Private Functions
@@ -60,78 +55,11 @@
 - (void)initStoryBookGridView
 {
     // Debug
-    self.dataSource = @[@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@""];
+    self.dataSource = @[@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@""];
     
     self.disableSwipeGesture = YES;
     [self addSubview:self.flipView];
-//    [self addGestureRecognizer:self.panGestureRecognizer];
-    
 
-}
-
-- (void)loadData
-{
-//    if (!self.animationDelegate.transformView) {
-//        animationDelegate.transformView = flipView;
-//        
-//        [flipView printText:@"" usingImage:[SDUtils captureScreenForView:_imageViews[0]] backgroundColor:nil textColor:[UIColor redColor]];
-//        [flipView printText:@"" usingImage:[SDUtils captureScreenForView:_imageViews[1]] backgroundColor:nil textColor:[UIColor redColor]];
-//        
-//        for (UIView *view in _imageViews) {
-//            view.hidden = YES;
-//        }
-//        
-//    }
-    
-}
-
-- (void)panned:(UIPanGestureRecognizer *)recognizer
-{
-//    switch (recognizer.state) {
-//        case UIGestureRecognizerStatePossible:
-//            break;
-//        case UIGestureRecognizerStateFailed: // cannot recognize for multi touch sequence
-//            break;
-//        case UIGestureRecognizerStateBegan: {
-//            if (animationDelegate.animationState == 0) {
-//                [NSObject cancelPreviousPerformRequestsWithTarget:self];
-//                animationDelegate.sequenceType = kSequenceControlled;
-//                animationDelegate.animationLock = YES;
-//            }
-//        }
-//            break;
-//        case UIGestureRecognizerStateChanged: {
-//            if (animationDelegate.animationLock) {
-//                switch (flipView.animationType) {
-//                    case kAnimationFlipVertical:
-//                    {
-//                        float value = [recognizer translationInView:self].y;
-//                        [animationDelegate setTransformValue:value delegating:NO];
-//                    }
-//                        break;
-//                    case kAnimationFlipHorizontal: {
-//                        float value = [recognizer translationInView:self].x;
-//                        [animationDelegate setTransformValue:value delegating:NO];
-//                    }
-//                        break;
-//                    default:break;
-//                }
-//            }
-//        }
-//            break;
-//        case UIGestureRecognizerStateCancelled: // cancellation touch
-//            break;
-//        case UIGestureRecognizerStateEnded: {
-//            if (animationDelegate.animationLock) {
-//                // provide inertia to panning gesture
-//                float value = sqrtf(fabsf([recognizer velocityInView:self].x))/10.0f;
-//                [animationDelegate endStateWithSpeed:value];
-//            }
-//        }
-//            break;
-//        default:
-//            break;
-//    }
 }
 
 - (NSInteger)numberOfPages
@@ -140,53 +68,13 @@
 	return (self.dataSource.count%itemsForPage)==0?count:count+1;
 }
 
-//#pragma mark - UIGestureRecognizerDelegate
-//
-//- (BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer
-//{
-//    if (gestureRecognizer == self.panGestureRecognizer) {
-//        
-//        UIPanGestureRecognizer *panRecognizer = (UIPanGestureRecognizer *)gestureRecognizer;
-//        CGPoint velocity = [panRecognizer velocityInView:self];
-//        
-//        return ABS(velocity.x) > ABS(velocity.y);
-//    }
-//    return NO;
-//}
-
 #pragma mark - Setter
-
-- (AnimationDelegate *)animationDelegate
-{
-    if (!animationDelegate) {
-        animationDelegate = [[AnimationDelegate alloc] initWithSequenceType:kSequenceControlled
-                                                                   directionType:kDirectionForward];
-        animationDelegate.controller = self;
-        animationDelegate.perspectiveDepth = 2000;
-    }
-    return animationDelegate;
-}
-
-//- (FlipView *)flipView
-//{
-//    if (!flipView) {
-//        flipView = [[FlipView alloc] initWithAnimationType:kAnimationFlipHorizontal
-//                                                          frame:self.bounds];
-//        flipView.backgroundColor = [UIColor clearColor];
-//        flipView.layer.masksToBounds = YES;
-//        flipView.layer.cornerRadius = 8.0f;
-//    }
-//    return flipView;
-//}
 
 - (AFKPageFlipper *)flipView
 {
     if (!flipView) {
         flipView = [[AFKPageFlipper alloc] initWithFrame:self.bounds];
-        flipView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
         flipView.dataSource = self;
-        flipView.layer.masksToBounds = YES;
-        flipView.layer.cornerRadius = 8.0f;
     }
     return flipView;
 }
@@ -194,12 +82,13 @@
 #pragma mark -
 #pragma mark Data source implementation
 
-- (NSInteger) numberOfPagesForPageFlipper:(AFKPageFlipper *)pageFlipper {
+- (NSInteger) numberOfPagesForPageFlipper:(AFKPageFlipper *)pageFlipper
+{
 	return [self numberOfPages];
 }
 
-- (UIView *) viewForPage:(NSInteger) page inFlipper:(AFKPageFlipper *) pageFlipper {
-    
+- (UIView *) viewForPage:(NSInteger) page inFlipper:(AFKPageFlipper *) pageFlipper
+{
   	SDStoryBookLayoutView* layoutToReturn = [[NSBundle mainBundle] loadNibNamed:@"SDStoryBookLayoutView" owner:self options:nil][0];
     layoutToReturn.layer.masksToBounds = YES;
     layoutToReturn.layer.cornerRadius = 8.0f;

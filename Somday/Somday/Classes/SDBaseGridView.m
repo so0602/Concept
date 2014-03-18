@@ -143,10 +143,12 @@ typedef NSUInteger SDGridMenuState;
     
     // Add Gesture recognizer
     UISwipeGestureRecognizer *recognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipeGesture:)];
+    recognizer.delegate = self;
     [recognizer setNumberOfTouchesRequired:1];
     [self addGestureRecognizer:recognizer];
     
     recognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipeGesture:)];
+    recognizer.delegate = self;
     recognizer.direction =  UISwipeGestureRecognizerDirectionLeft;
     [recognizer setNumberOfTouchesRequired:1];
     [self addGestureRecognizer:recognizer];
@@ -170,7 +172,8 @@ typedef NSUInteger SDGridMenuState;
     self.mainContentView.layer.masksToBounds = TRUE;
     self.mainContentView.layer.cornerRadius = 8.0f;
     
-    self.backgroundImageView.image = [UIImage imageNamed:self.story.imageName];
+    if (self.story.type.intValue == SDStoryType_Photo)
+        self.backgroundImageView.image = [UIImage imageNamed:self.story.imageName];
     
     [self.shareButton setTitle:NSLocalizedString(@"Share", nil) forState:UIControlStateNormal];
     self.shareButton.titleLabel.font = [UIFont systemFontOfSize:9];
@@ -219,6 +222,7 @@ typedef NSUInteger SDGridMenuState;
 
 - (void)handleSwipeGesture:(UISwipeGestureRecognizer*)gestureRecognizer
 {
+    
     UISwipeGestureRecognizer *recognizer = gestureRecognizer;
     switch (recognizer.direction) {
         case UISwipeGestureRecognizerDirectionRight: {

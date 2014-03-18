@@ -253,6 +253,8 @@
 	rightLayerShadow.backgroundColor = [UIColor blackColor].CGColor;
 	[rightLayer addSublayer:rightLayerShadow];
 	// shadows
+    
+
 
 	
 	UIInterfaceOrientation orient = [UIApplication sharedApplication].statusBarOrientation;
@@ -380,7 +382,6 @@
 			frontLayer.contents = (id) [blankImgFRight2 CGImage];
 			blankFrontLayerForLayerRight2.contentsGravity = kCAGravityRight;
 			
-			
 			CATransform3D transformblank2 = CATransform3DMakeRotation(0.0, 0.0, 1.0, 0.0);
 			transformblank2.m34 = 1.0f / 2500.0f;
 			
@@ -407,6 +408,7 @@
 		
 		flipAnimationLayer.transform = transform;
 		transform.m34 = -1.0f / 1500.0f;
+        
 		
 		if (pageDifference > 1) {
 			//start forlayer left
@@ -660,6 +662,17 @@
 		duration = 0.35;
 	}
 	
+//    flipAnimationLayer.masksToBounds = YES;
+//    flipAnimationLayer.cornerRadius = 0.8;
+//    frontLayerShadow.masksToBounds = YES;
+//    frontLayerShadow.cornerRadius = 0.8;
+//    backLayerShadow.masksToBounds = YES;
+//    backLayerShadow.cornerRadius = 0.8;
+//    leftLayerShadow.masksToBounds = YES;
+//    leftLayerShadow.cornerRadius = 0.8;
+//    rightLayerShadow.masksToBounds = YES;
+//    rightLayerShadow.cornerRadius = 0.8;
+//    
 	[UIView beginAnimations:@"FLIP1" context:nil];
 	[UIView setAnimationDuration:duration];
 	flipAnimationLayer.transform =  endTransform;
@@ -945,6 +958,8 @@
 			}
 			
 			break;
+        default:
+            break;
 	}
 }
 
