@@ -92,12 +92,19 @@ static NSString *TextCellIdentifier = @"TextCollectionViewCell";
         // Debug
         self.dataSource = [NSMutableArray new];
         BOOL toggle = TRUE;
+        BOOL toggle2 = TRUE;
         for( int i = 0; i <= Debug_count; i++ ){
             SDStory* story = [SDStory new];
-            story.type = [NSNumber numberWithInt:rand() % 2];
-            if( story.type.intValue == SDStoryType_Photo ){
-                story.imageName = toggle ? @"dump_03.jpg" : @"dump_02.jpg";
-                toggle = !toggle;
+            story.type = [NSNumber numberWithInt:rand() % 3];
+            switch( story.type.intValue ){
+                case SDStoryType_Photo:
+                    story.imageName = toggle ? @"dump_03.jpg" : @"dump_02.jpg";
+                    toggle = !toggle;
+                    break;
+                case SDStoryType_Voice:
+                    story.audioName = toggle2 ? @"1kHz_44100Hz_16bit_05sec.mp3" : @"440Hz_44100Hz_16bit_05sec.mp3";
+                    toggle2 = !toggle2;
+                    break;
             }
             story.userIconName = @"dump_user";
             story.userName = @"Thom.Y";
@@ -131,6 +138,7 @@ static NSString *TextCellIdentifier = @"TextCollectionViewCell";
 
 - (void)updateBackgroundImageToCurrentIndex:(BOOL)toCurrentIndex
 {
+    
     if (_isbgImageAnimating)
         return;
     

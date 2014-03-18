@@ -35,6 +35,7 @@
 @synthesize userName;
 @synthesize date;
 @synthesize address;
+@synthesize audioName;
 
 -(id)initWithDictionary:(id)dictionary{
     if( self = [super init] ){

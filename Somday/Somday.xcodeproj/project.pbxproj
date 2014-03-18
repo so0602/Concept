@@ -846,6 +846,9 @@
 		B66E1BEF18D83B7500C292FA /* SDPhotoGridView.m in Sources */ = {isa = PBXBuildFile; fileRef = B66E1BEE18D83B7500C292FA /* SDPhotoGridView.m */; };
 		B66E1BF218D8585C00C292FA /* dump_user.png in Resources */ = {isa = PBXBuildFile; fileRef = B66E1BF018D8585C00C292FA /* dump_user.png */; };
 		B66E1BF318D8585C00C292FA /* dump_user@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B66E1BF118D8585C00C292FA /* dump_user@2x.png */; };
+		B66E1BF618D86B2B00C292FA /* SDVoiceGridView.m in Sources */ = {isa = PBXBuildFile; fileRef = B66E1BF518D86B2B00C292FA /* SDVoiceGridView.m */; };
+		B66E1BFD18D8A75D00C292FA /* 1kHz_44100Hz_16bit_05sec.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = B66E1BFB18D8A75D00C292FA /* 1kHz_44100Hz_16bit_05sec.mp3 */; };
+		B66E1BFE18D8A75D00C292FA /* 440Hz_44100Hz_16bit_05sec.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = B66E1BFC18D8A75D00C292FA /* 440Hz_44100Hz_16bit_05sec.mp3 */; };
 		B6BE49D018CF457500DA7313 /* SDForgotPasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6BE49CF18CF457500DA7313 /* SDForgotPasswordViewController.m */; };
 		B6BE49D818CF4F0900DA7313 /* SDSignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6BE49D718CF4F0900DA7313 /* SDSignUpViewController.m */; };
 		B6BE49DD18CF699F00DA7313 /* SDEmailTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = B6BE49DC18CF699F00DA7313 /* SDEmailTextField.m */; };
@@ -1916,6 +1919,10 @@
 		B66E1BEE18D83B7500C292FA /* SDPhotoGridView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SDPhotoGridView.m; path = Classes/SDPhotoGridView.m; sourceTree = "<group>"; };
 		B66E1BF018D8585C00C292FA /* dump_user.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dump_user.png; sourceTree = "<group>"; };
 		B66E1BF118D8585C00C292FA /* dump_user@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "dump_user@2x.png"; sourceTree = "<group>"; };
+		B66E1BF418D86B2B00C292FA /* SDVoiceGridView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SDVoiceGridView.h; path = Classes/SDVoiceGridView.h; sourceTree = "<group>"; };
+		B66E1BF518D86B2B00C292FA /* SDVoiceGridView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SDVoiceGridView.m; path = Classes/SDVoiceGridView.m; sourceTree = "<group>"; };
+		B66E1BFB18D8A75D00C292FA /* 1kHz_44100Hz_16bit_05sec.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = 1kHz_44100Hz_16bit_05sec.mp3; sourceTree = "<group>"; };
+		B66E1BFC18D8A75D00C292FA /* 440Hz_44100Hz_16bit_05sec.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = 440Hz_44100Hz_16bit_05sec.mp3; sourceTree = "<group>"; };
 		B6BE49CE18CF457500DA7313 /* SDForgotPasswordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SDForgotPasswordViewController.h; path = Classes/SDForgotPasswordViewController.h; sourceTree = "<group>"; };
 		B6BE49CF18CF457500DA7313 /* SDForgotPasswordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SDForgotPasswordViewController.m; path = Classes/SDForgotPasswordViewController.m; sourceTree = "<group>"; };
 		B6BE49D618CF4F0900DA7313 /* SDSignUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SDSignUpViewController.h; path = Classes/SDSignUpViewController.h; sourceTree = "<group>"; };
@@ -3176,10 +3183,12 @@
 			children = (
 				2E84744718CD895100D49FBA /* SDBaseGridView.h */,
 				2E84744818CD895100D49FBA /* SDBaseGridView.m */,
-				B6BE4ABB18D8167C00DA7313 /* SDTextGridView.h */,
-				B6BE4ABC18D8167C00DA7313 /* SDTextGridView.m */,
 				B66E1BED18D83B7500C292FA /* SDPhotoGridView.h */,
 				B66E1BEE18D83B7500C292FA /* SDPhotoGridView.m */,
+				B6BE4ABB18D8167C00DA7313 /* SDTextGridView.h */,
+				B6BE4ABC18D8167C00DA7313 /* SDTextGridView.m */,
+				B66E1BF418D86B2B00C292FA /* SDVoiceGridView.h */,
+				B66E1BF518D86B2B00C292FA /* SDVoiceGridView.m */,
 			);
 			name = GridView;
 			sourceTree = "<group>";
@@ -3260,6 +3269,8 @@
 		EF3B655618D2E8AF00B0CF1C /* Dump */ = {
 			isa = PBXGroup;
 			children = (
+				B66E1BFB18D8A75D00C292FA /* 1kHz_44100Hz_16bit_05sec.mp3 */,
+				B66E1BFC18D8A75D00C292FA /* 440Hz_44100Hz_16bit_05sec.mp3 */,
 				B66E1BF018D8585C00C292FA /* dump_user.png */,
 				B66E1BF118D8585C00C292FA /* dump_user@2x.png */,
 				EF3B655718D2E8AF00B0CF1C /* dump_00.jpg */,
@@ -3939,6 +3950,7 @@
 				B65DE0AA18C60EB10076408C /* icons-24px_stop.png in Resources */,
 				B65DE16818C60EB10076408C /* icons-shadow-12px_menu.png in Resources */,
 				B65DE1CB18C60EB10076408C /* icons-shadow-16px_joinedEvent@2x.png in Resources */,
+				B66E1BFE18D8A75D00C292FA /* 440Hz_44100Hz_16bit_05sec.mp3 in Resources */,
 				B65DE0B518C60EB10076408C /* icons-color-12px_add@2x.png in Resources */,
 				B65DDF7C18C60EB10076408C /* icons-12px_cross.png in Resources */,
 				B65DE0A818C60EB10076408C /* icons-24px_stop-bold.png in Resources */,
@@ -4480,6 +4492,7 @@
 				B65DE02118C60EB10076408C /* icons-16px_play@2x.png in Resources */,
 				B65DE1F818C60EB10076408C /* icons-shadow-16px_share.png in Resources */,
 				B65DE20518C60EB10076408C /* icons-shadow-16px_supported@2x.png in Resources */,
+				B66E1BFD18D8A75D00C292FA /* 1kHz_44100Hz_16bit_05sec.mp3 in Resources */,
 				B65DE14918C60EB10076408C /* icons-shadow-12px_dislike@2x.png in Resources */,
 				EF3B65AD18D2F97200B0CF1C /* icons-color-12px_warning.png in Resources */,
 				B65DDFC818C60EB10076408C /* icons-12px_support.png in Resources */,
@@ -4630,6 +4643,7 @@
 				2EC3785B18C6266C00D4161B /* UILabel+Addition.m in Sources */,
 				2EC3785218C6130800D4161B /* UIColor+Extensions.m in Sources */,
 				B65DDC1F18C58EE60076408C /* UIView+Addition.m in Sources */,
+				B66E1BF618D86B2B00C292FA /* SDVoiceGridView.m in Sources */,
 				2E54CACF18C5D7BF00B23A96 /* SDHomeHeaderCollectionViewCell.m in Sources */,
 				EF3B651318CDAD0000B0CF1C /* SDCreateUser.m in Sources */,
 				2E54CAC618C5D2C200B23A96 /* SDCollectionViewFlowLayout.m in Sources */,
@@ -4815,7 +4829,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = NO;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Bank of Montreal";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Jeremy Chan (39G976S5HX)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Somday/Somday-Prefix.pch";
 				HEADER_SEARCH_PATHS = (
@@ -4833,7 +4847,7 @@
 					"-all_load",
 				);
 				PRODUCT_NAME = Somday;
-				PROVISIONING_PROFILE = "BC42C522-1308-4FD9-A581-DF448997D270";
+				PROVISIONING_PROFILE = "5C587514-A640-482C-B07B-CD282AAFCD3B";
 				USER_HEADER_SEARCH_PATHS = "";
 				WRAPPER_EXTENSION = app;
 			};
@@ -4847,7 +4861,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = NO;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Bank of Montreal";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Jeremy Chan (39G976S5HX)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Somday/Somday-Prefix.pch";
 				HEADER_SEARCH_PATHS = (
@@ -4865,7 +4879,7 @@
 					"-all_load",
 				);
 				PRODUCT_NAME = Somday;
-				PROVISIONING_PROFILE = "BC42C522-1308-4FD9-A581-DF448997D270";
+				PROVISIONING_PROFILE = "5C587514-A640-482C-B07B-CD282AAFCD3B";
 				USER_HEADER_SEARCH_PATHS = "";
 				WRAPPER_EXTENSION = app;
 			};

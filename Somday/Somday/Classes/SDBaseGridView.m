@@ -12,10 +12,12 @@
 
 #import "SDTextGridView.h"
 #import "SDPhotoGridView.h"
+#import "SDVoiceGridView.h"
 
 static NSString *BaseCellIdentifier = @"CollectionViewCell";
 static NSString *TextCellIdentifier = @"TextCollectionViewCell";
 static NSString *PhotoCellIdentifier = @"PhotoCollectionViewCell";
+static NSString *VoiceCellIdentifier = @"VoiceCollectionViewCell";
 
 KeyframeParametricBlock openFunction = ^double(double time) {
     return sin(time*M_PI_2);
@@ -69,13 +71,14 @@ typedef NSUInteger SDGridMenuState;
         case SDStoryType_Photo:
             reuseIdentifier = PhotoCellIdentifier;
             break;
+        case SDStoryType_Voice:
+            reuseIdentifier = VoiceCellIdentifier;
+            break;
         case SDStoryType_Event:
             break;
         case SDStoryType_Storybook:
             break;
         case SDStoryType_Link:
-            break;
-        case SDStoryType_Voice:
             break;
     }
     return [collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
@@ -90,13 +93,14 @@ typedef NSUInteger SDGridMenuState;
         case SDStoryType_Photo:
             class = [SDPhotoGridView class];
             break;
+        case SDStoryType_Voice:
+            class = [SDVoiceGridView class];
+            break;
         case SDStoryType_Event:
             break;
         case SDStoryType_Storybook:
             break;
         case SDStoryType_Link:
-            break;
-        case SDStoryType_Voice:
             break;
     }
     
@@ -160,7 +164,7 @@ typedef NSUInteger SDGridMenuState;
     self.mainContentView.layer.masksToBounds = TRUE;
     self.mainContentView.layer.cornerRadius = 8.0f;
     
-    self.backgroundImageView.image = [UIImage imageNamed:self.story.imageName];
+    self.backgroundImageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@", self.story.imageName]];
     
     [self.shareButton setTitle:NSLocalizedString(@"Share", nil) forState:UIControlStateNormal];
     self.shareButton.titleLabel.font = [UIFont systemFontOfSize:9];
@@ -197,6 +201,7 @@ typedef NSUInteger SDGridMenuState;
     _menuState = SDGridMenuStateIdle;
     [self.origamiLayer removeFromSuperlayer];
     self.origamiLayer = nil;
+    self.mainContentView.hidden = FALSE;
 }
 
 -(void)didMoveToSuperview{

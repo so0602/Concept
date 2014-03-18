@@ -11,10 +11,10 @@
 typedef NS_ENUM(NSUInteger, SDStoryType){
     SDStoryType_Text,
     SDStoryType_Photo,
+    SDStoryType_Voice,
     SDStoryType_Event,
     SDStoryType_Storybook,
     SDStoryType_Link,
-    SDStoryType_Voice,
 };
 
 @interface SDStory : NSObject<SDDataObjectBase>
@@ -41,6 +41,7 @@ typedef NS_ENUM(NSUInteger, SDStoryType){
 @property (nonatomic, strong) NSString* userName;
 @property (nonatomic, strong) NSDate* date;
 @property (nonatomic, strong) NSString* address;
+@property (nonatomic, strong) NSString* audioName;
 
 @end
 
