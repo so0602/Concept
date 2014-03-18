@@ -11,7 +11,7 @@
 
 #import "SDStory.h"
 
-@interface SDBaseGridView : UICollectionViewCell
+@interface SDBaseGridView : UICollectionViewCell <UIGestureRecognizerDelegate>
 
 @property (nonatomic, strong) IBOutlet UIView* mainContentView;
 @property (nonatomic, strong) IBOutlet UIImageView *backgroundImageView;
@@ -22,6 +22,7 @@
 @property (nonatomic, strong) IBOutlet UIButton *userButton;
 @property (nonatomic, strong) IBOutlet UILabel* userNameLabel;
 @property (nonatomic, strong) IBOutlet UILabel* infoLabel;
+@property (nonatomic) BOOL disableSwipeGesture;
 
 + (CGFloat)heightForCell;
 

@@ -847,6 +847,17 @@
 	}
 }
 
+#pragma mark - UIGestureRecognizerDelegate
+
+- (BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer
+{
+    UIPanGestureRecognizer *panRecognizer = (UIPanGestureRecognizer *)gestureRecognizer;
+    CGPoint velocity = [panRecognizer velocityInView:self];
+
+    return ABS(velocity.x) > ABS(velocity.y);
+}
+
+
 #pragma mark -
 #pragma mark Touch management
 
@@ -966,6 +977,7 @@
 - (id)initWithFrame:(CGRect)frame {
     if ((self = [super initWithFrame:frame])) {
 		UIPanGestureRecognizer *panRecognizer = [[[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(panned:)] autorelease];
+        panRecognizer.delegate = self;
 		[panRecognizer setMaximumNumberOfTouches:1];
 		[self addGestureRecognizer:panRecognizer];
 		

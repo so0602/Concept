@@ -16,7 +16,7 @@
 
 #define itemsForPage 4
 
-@interface SDStoryBookGridView () <AFKPageFlipperDataSource>
+@interface SDStoryBookGridView () <AFKPageFlipperDataSource, UIGestureRecognizerDelegate>
 @property (nonatomic) IBOutletCollection(UIView) NSArray *flipContentView;
 @property (nonatomic) AnimationDelegate *animationDelegate;
 @property (nonatomic) UIPanGestureRecognizer *panGestureRecognizer;
@@ -62,6 +62,7 @@
     // Debug
     self.dataSource = @[@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@""];
     
+    self.disableSwipeGesture = YES;
     [self addSubview:self.flipView];
 //    [self addGestureRecognizer:self.panGestureRecognizer];
     
@@ -135,36 +136,25 @@
 
 - (NSInteger)numberOfPages
 {
-    int count = self.dataSource.count/itemsForPage;
+    int count = (int)self.dataSource.count/itemsForPage;
 	return (self.dataSource.count%itemsForPage)==0?count:count+1;
 }
 
-#pragma mark - UIGestureRecognizerDelegate
-
-- (BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer
-{
-    if (gestureRecognizer == self.panGestureRecognizer) {
-        
-        UIPanGestureRecognizer *panRecognizer = (UIPanGestureRecognizer *)gestureRecognizer;
-        CGPoint velocity = [panRecognizer velocityInView:self];
-        
-        return ABS(velocity.x) > ABS(velocity.y);
-    }
-    return NO;
-}
+//#pragma mark - UIGestureRecognizerDelegate
+//
+//- (BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer
+//{
+//    if (gestureRecognizer == self.panGestureRecognizer) {
+//        
+//        UIPanGestureRecognizer *panRecognizer = (UIPanGestureRecognizer *)gestureRecognizer;
+//        CGPoint velocity = [panRecognizer velocityInView:self];
+//        
+//        return ABS(velocity.x) > ABS(velocity.y);
+//    }
+//    return NO;
+//}
 
 #pragma mark - Setter
-
-- (UIPanGestureRecognizer *)panGestureRecognizer
-{
-    if (!panGestureRecognizer) {
-        panGestureRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(panned:)];
-        panGestureRecognizer.delegate = self;
-        panGestureRecognizer.maximumNumberOfTouches = 1;
-        panGestureRecognizer.minimumNumberOfTouches = 1;
-    }
-    return panGestureRecognizer;
-}
 
 - (AnimationDelegate *)animationDelegate
 {
@@ -205,7 +195,6 @@
 #pragma mark Data source implementation
 
 - (NSInteger) numberOfPagesForPageFlipper:(AFKPageFlipper *)pageFlipper {
-    NSLog(@"pages: %i", [self numberOfPages]);
 	return [self numberOfPages];
 }
 
@@ -216,19 +205,19 @@
     layoutToReturn.layer.cornerRadius = 8.0f;
 	
 	int remainingMessageCount = 0;
-	int totalMessageCount = [dataSource count];
-	remainingMessageCount = totalMessageCount - (itemsForPage * page);
+	int totalMessageCount = (int)[dataSource count];
+	remainingMessageCount = totalMessageCount - (int)(itemsForPage * page);
 	
 	int rangeFrom = 0;
 	int rangeTo = 0;
 	BOOL shouldContinue = FALSE;
 	
 	if (page < [self numberOfPages]) {
-		rangeFrom = (page * itemsForPage);
+		rangeFrom = (int)(page * itemsForPage);
 		rangeTo = itemsForPage-1;
 		shouldContinue = TRUE;
 	}else if (remainingMessageCount > 0) {
-		rangeFrom = [dataSource count]-remainingMessageCount-1;
+		rangeFrom = (int)[dataSource count]-remainingMessageCount-1;
 		rangeTo = remainingMessageCount-1;
 		shouldContinue = TRUE;
 	}

@@ -30,7 +30,7 @@ typedef enum {
 
 
 
-@interface AFKPageFlipper : UIView {
+@interface AFKPageFlipper : UIView <UIGestureRecognizerDelegate>{
 	NSObject <AFKPageFlipperDataSource> *dataSource;
 	NSInteger currentPage;
 	NSInteger numberOfPages;

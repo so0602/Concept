@@ -43,9 +43,6 @@
 @implementation SDHomeViewController
 
 static NSString *HeaderCellIdentifier = @"HeaderCollectionViewCell";
-static NSString *CellIdentifier = @"CollectionViewCell";
-static NSString *StoryBookCellIdentifier = @"StoryBookCollectionViewCell";
-static NSString *TextCellIdentifier = @"TextCollectionViewCell";
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -93,9 +90,13 @@ static NSString *TextCellIdentifier = @"TextCollectionViewCell";
         // Debug
         self.dataSource = [NSMutableArray new];
         BOOL toggle = TRUE;
+        int min = 0;
+        int max = 5;
         for( int i = 0; i <= Debug_count; i++ ){
             SDStory* story = [SDStory new];
-            story.type = [NSNumber numberWithInt:rand() % 2];
+            
+            story.type = [NSNumber numberWithInt:min + rand() % (max-min)];
+            
             if( story.type.intValue == SDStoryType_Photo ){
                 story.imageName = toggle ? @"dump_03.jpg" : @"dump_02.jpg";
                 toggle = !toggle;

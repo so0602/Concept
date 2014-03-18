@@ -9,7 +9,7 @@
 #import "SDBaseGridView.h"
 
 
-@interface SDStoryBookGridView : SDBaseGridView <UIGestureRecognizerDelegate> 
+@interface SDStoryBookGridView : SDBaseGridView 
 
 @property (nonatomic) IBOutletCollection(UIImageView) NSArray *imageViews;
 @property (nonatomic) NSArray *viewStack;
