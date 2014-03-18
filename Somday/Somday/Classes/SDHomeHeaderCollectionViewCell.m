@@ -8,6 +8,10 @@
 
 #import "SDHomeHeaderCollectionViewCell.h"
 
+#import "SDUtils.h"
+
+#import "UIFont+Addition.h"
+
 @interface SDHomeHeaderCollectionViewCell()
 @property (nonatomic) NSDateFormatter *dateformatter;
 @end

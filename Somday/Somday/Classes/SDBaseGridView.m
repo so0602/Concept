@@ -10,6 +10,13 @@
 #import "CAKeyframeAnimation+Addition.h"
 #import "GHContextMenuView.h"
 
+#import "SDTextGridView.h"
+#import "SDPhotoGridView.h"
+
+static NSString *BaseCellIdentifier = @"CollectionViewCell";
+static NSString *TextCellIdentifier = @"TextCollectionViewCell";
+static NSString *PhotoCellIdentifier = @"PhotoCollectionViewCell";
+
 KeyframeParametricBlock openFunction = ^double(double time) {
     return sin(time*M_PI_2);
 };
@@ -34,21 +41,66 @@ typedef NSUInteger SDGridMenuState;
 
 
 @interface SDBaseGridView () <GHContextOverlayViewDataSource, GHContextOverlayViewDelegate>
+
 @property (nonatomic) SDGridMenuState menuState;
-@property (nonatomic) CALayer *origamiLayer;
+@property (nonatomic, strong) CALayer *origamiLayer;
 @property (nonatomic) CGFloat start;
 @property (nonatomic) CGFloat end;
-@property (nonatomic) UIImage *viewSnapShot;
-@property (nonatomic) GHContextMenuView* menuOverlay;
+@property (nonatomic, strong) UIImage *viewSnapShot;
+@property (nonatomic, strong) GHContextMenuView* menuOverlay;
+
+-(IBAction)actionForItem:(id)sender;
+
 @end
 
 @implementation SDBaseGridView
 
-@synthesize origamiLayer, viewSnapShot, shareButton, moreButton, commentButton, likeButton, menuOverlay;
-
 + (CGFloat)heightForCell
 {
     return 304.0f;
+}
+
++(instancetype)gridViewWithStory:(SDStory*)story collectionView:(UICollectionView*)collectionView forIndexPath:(NSIndexPath*)indexPath{
+    NSString* reuseIdentifier = BaseCellIdentifier;
+    switch( story.type.intValue ){
+        case SDStoryType_Text:
+            reuseIdentifier = TextCellIdentifier;
+            break;
+        case SDStoryType_Photo:
+            reuseIdentifier = PhotoCellIdentifier;
+            break;
+        case SDStoryType_Event:
+            break;
+        case SDStoryType_Storybook:
+            break;
+        case SDStoryType_Link:
+            break;
+        case SDStoryType_Voice:
+            break;
+    }
+    return [collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
+}
+
++(Class)classWithStory:(SDStory*)story{
+    Class class = [SDBaseGridView class];
+    switch( story.type.intValue ){
+        case SDStoryType_Text:
+            class = [SDTextGridView class];
+            break;
+        case SDStoryType_Photo:
+            class = [SDPhotoGridView class];
+            break;
+        case SDStoryType_Event:
+            break;
+        case SDStoryType_Storybook:
+            break;
+        case SDStoryType_Link:
+            break;
+        case SDStoryType_Voice:
+            break;
+    }
+    
+    return class;
 }
 
 - (id)initWithFrame:(CGRect)frame
@@ -56,7 +108,7 @@ typedef NSUInteger SDGridMenuState;
     self = [super initWithFrame:frame];
     if (self) {
         // Initialization code
-        [self initBaseGridView];
+//        [self initBaseGridView];
     }
     return self;
 }
@@ -67,60 +119,17 @@ typedef NSUInteger SDGridMenuState;
     if (self) {
         // Initialization code
         [self initBaseGridView];
+        
     }
     return self;
 }
 
 - (void)initBaseGridView
 {
-    // BackgroundColor
-    self.backgroundColor = [UIColor clearColor];
-    self.backgroundImageView = [[UIImageView alloc] initWithFrame:self.bounds];
-    self.backgroundImageView.backgroundColor = [UIColor clearColor];
-    self.backgroundImageView.contentMode = UIViewContentModeScaleAspectFill;
-    self.backgroundImageView.userInteractionEnabled = YES;
-    self.backgroundImageView.clipsToBounds = YES;
-    [self addSubview:_backgroundImageView];
-    
-    // Shadow and round corner Effect
-    self.layer.masksToBounds = NO;
-    self.layer.cornerRadius = 8.0f;
-    self.layer.shadowColor = [UIColor blackColor].CGColor;
-    self.layer.shadowOffset = CGSizeMake(3.0, 3.0);
-    self.layer.shadowOpacity = 0.7f;
-    self.layer.shadowPath =  [UIBezierPath bezierPathWithRoundedRect:self.bounds cornerRadius:self.layer.cornerRadius].CGPath;
-    
-    self.backgroundImageView.layer.masksToBounds = YES;
-    self.backgroundImageView.layer.cornerRadius = 8.0f;
-    
-    // Add common button
-    self.shareButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    UIImage *image = [UIImage imageNamed:@"icons-24px_share"];
-    [shareButton setBackgroundImage:image forState:UIControlStateNormal];
-    shareButton.frame = CGRectMake(10, 136, image.size.width, image.size.height);
-    [shareButton setTitle:NSLocalizedString(@"Share", nil) forState:UIControlStateNormal];
-    [shareButton setTitleEdgeInsets:UIEdgeInsetsMake(36, 0, 0, 0)];
-    shareButton.titleLabel.font = [UIFont systemFontOfSize:9];
-    [self insertSubview:shareButton belowSubview:_backgroundImageView];
-    
-    self.moreButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    image = [UIImage imageNamed:@"icons-24px_more"];
-    [moreButton setImage:image forState:UIControlStateNormal];
-    moreButton.frame = CGRectMake(10, 260, image.size.width, image.size.height);
-    [self insertSubview:moreButton belowSubview:_backgroundImageView];
-    
-    self.likeButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    image = [UIImage imageNamed:@"icons-24px_like"];
-    [likeButton setImage:image forState:UIControlStateNormal];
-    likeButton.frame = CGRectMake(200, 260, image.size.width, image.size.height);
-    [likeButton addTarget:self action:@selector(actionForItem:) forControlEvents:UIControlEventTouchUpInside];
-//    [_backgroundImageView addSubview:likeButton];
-    
     // Add like menu
     self.menuOverlay = [[GHContextMenuView alloc] init];
-    menuOverlay.dataSource = self;
-    menuOverlay.delegate = self;
-    
+    self.menuOverlay.dataSource = self;
+    self.menuOverlay.delegate = self;
     
     // Add Gesture recognizer
     UISwipeGestureRecognizer *recognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipeGesture:)];
@@ -137,39 +146,90 @@ typedef NSUInteger SDGridMenuState;
 {
     [super layoutSubviews];
     
+    // BackgroundColor
+    self.backgroundColor = [UIColor clearColor];
+    
+    // Shadow and round corner Effect
+    self.layer.masksToBounds = NO;
+    self.layer.cornerRadius = 8.0f;
+    self.layer.shadowColor = [UIColor blackColor].CGColor;
+    self.layer.shadowOffset = CGSizeMake(3.0, 3.0);
+    self.layer.shadowOpacity = 0.7f;
+    self.layer.shadowPath =  [UIBezierPath bezierPathWithRoundedRect:self.bounds cornerRadius:self.layer.cornerRadius].CGPath;
+    
+    self.mainContentView.layer.masksToBounds = TRUE;
+    self.mainContentView.layer.cornerRadius = 8.0f;
+    
+    self.backgroundImageView.image = [UIImage imageNamed:self.story.imageName];
+    
+    [self.shareButton setTitle:NSLocalizedString(@"Share", nil) forState:UIControlStateNormal];
+    self.shareButton.titleLabel.font = [UIFont systemFontOfSize:9];
+    
+    self.userButton.clipsToBounds = TRUE;
+    self.userButton.layer.masksToBounds = TRUE;
+    self.userButton.layer.cornerRadius = CGRectGetWidth(self.userButton.bounds) / 2;
+    self.userButton.layer.shadowColor = [UIColor blackColor].CGColor;
+    self.userButton.layer.shadowOffset = CGSizeMake(3.0, 3.0);
+    self.userButton.layer.shadowOpacity = 0.7f;
+    self.userButton.layer.shadowPath =  [UIBezierPath bezierPathWithRoundedRect:self.userButton.bounds cornerRadius:self.userButton.layer.cornerRadius].CGPath;
+    self.userButton.layer.borderWidth = 2;
+    self.userButton.layer.borderColor = [UIColor whiteColor].CGColor;
+    [self.userButton setImage:[UIImage imageNamed:self.story.userIconName] forState:UIControlStateNormal];
+    
+    self.userNameLabel.text = self.story.userName;
+    
+    NSDateFormatter* dateFormatter = [[NSDateFormatter alloc] init];
+    dateFormatter.dateFormat = @"h:mm a";
+    self.infoLabel.text = [NSString stringWithFormat:@"%@ at %@", [dateFormatter stringFromDate:self.story.date], self.story.address];
+    
+    NSInteger count = self.story.likeCount.intValue;
+    NSString* string = count >= 1000 ? [NSString stringWithFormat:@"%ldk", count / 1000] : [NSString stringWithFormat:@"%ld", count];
+    [self.likeButton setTitle:string forState:UIControlStateNormal];
+    
+    count = self.story.commentCount.intValue;
+    string = count >= 1000 ? [NSString stringWithFormat:@"%ldk", count / 1000] : [NSString stringWithFormat:@"%ld", count];
+    [self.commentButton setTitle:string forState:UIControlStateNormal];
+    
 }
 
 - (void)prepareForReuse
 {
     _menuState = SDGridMenuStateIdle;
-    [origamiLayer removeFromSuperlayer];
+    [self.origamiLayer removeFromSuperlayer];
     self.origamiLayer = nil;
+}
+
+-(void)didMoveToSuperview{
+    [super didMoveToSuperview];
+    
+    [self initBaseGridView];
 }
 
 #pragma mark -
 
-- (void)setImage:(UIImage *)image
-{
-    _image = image;
-    self.backgroundImageView.image = image;
-}
+//- (void)setImage:(UIImage *)image
+//{
+//    _image = image;
+//    self.backgroundImageView.image = image;
+//}
 
 - (void)handleSwipeGesture:(UISwipeGestureRecognizer*)gestureRecognizer
 {
     UISwipeGestureRecognizer *recognizer = gestureRecognizer;
     switch (recognizer.direction) {
         case UISwipeGestureRecognizerDirectionRight: {
-            [self showTransitionWithImageView: self.backgroundImageView NumberOfFolds:3 Duration:0.4f Direction:SDMenuDirectionFromRight completion:^(BOOL finished) {
+            [self showTransitionWithImageView: self.mainContentView NumberOfFolds:3 Duration:0.4f Direction:SDMenuDirectionFromRight completion:^(BOOL finished) {
                     self.backgroundImageView.userInteractionEnabled = NO;
             }];
         }
             break;
         case UISwipeGestureRecognizerDirectionLeft:
         {
-            [self hideTransitionWithImageView:self.backgroundImageView NumberOfFolds:3 Duration:0.4f Direction:SDMenuDirectionFromRight completion:^(BOOL finished) {
-                self.backgroundImageView.image = _image;
+            [self hideTransitionWithImageView:self.mainContentView NumberOfFolds:3 Duration:0.4f Direction:SDMenuDirectionFromRight completion:^(BOOL finished) {
+                self.backgroundImageView.image = [UIImage imageNamed:self.story.imageName];
                 self.layer.shadowOpacity = 0.7f;
                 self.backgroundImageView.userInteractionEnabled = YES;
+                self.mainContentView.hidden = FALSE;
             }];
         }
             break;
@@ -182,7 +242,7 @@ typedef NSUInteger SDGridMenuState;
 {
     if (_menuState == SDGridMenuStateShow)
         [self hideTransitionWithImageView:self.backgroundImageView NumberOfFolds:3 Duration:0.4f Direction:SDMenuDirectionFromRight completion:^(BOOL finished) {
-            self.backgroundImageView.image = _image;
+            self.backgroundImageView.image = [UIImage imageNamed:self.story.imageName];;
             self.layer.shadowOpacity = 0.7f;
         }];
     else if (_menuState == SDGridMenuStateIdle) {
@@ -315,7 +375,7 @@ typedef NSUInteger SDGridMenuState;
     return jointLayer;
 }
 
-- (void)hideTransitionWithImageView:(UIImageView*)imageView
+- (void)hideTransitionWithImageView:(UIView*)_view
                       NumberOfFolds:(NSInteger)folds
                            Duration:(CGFloat)duration
                           Direction:(SDMenuDirection)direction
@@ -327,7 +387,7 @@ typedef NSUInteger SDGridMenuState;
     }
     _menuState = SDGridMenuStateUpdate;
     
-    [origamiLayer removeFromSuperlayer];
+    [self.origamiLayer removeFromSuperlayer];
     self.origamiLayer = nil;
     
     //set frame
@@ -356,21 +416,21 @@ typedef NSUInteger SDGridMenuState;
     CATransform3D transform = CATransform3DIdentity;
     transform.m34 = -1.0/800.0;
     self.origamiLayer = [CALayer layer];
-    origamiLayer.frame = view.bounds;
-    origamiLayer.backgroundColor = [UIColor clearColor].CGColor;
-    origamiLayer.sublayerTransform = transform;
-    origamiLayer.shadowColor = [UIColor blackColor].CGColor;
-    origamiLayer.shadowOffset = CGSizeMake(3.0, 3.0);
-    origamiLayer.shadowOpacity = 0.7f;
+    self.origamiLayer.frame = view.bounds;
+    self.origamiLayer.backgroundColor = [UIColor clearColor].CGColor;
+    self.origamiLayer.sublayerTransform = transform;
+    self.origamiLayer.shadowColor = [UIColor blackColor].CGColor;
+    self.origamiLayer.shadowOffset = CGSizeMake(3.0, 3.0);
+    self.origamiLayer.shadowOpacity = 0.7f;
     
-    [view.layer addSublayer:origamiLayer];
+    [view.layer addSublayer:self.origamiLayer];
     
     //setup rotation angle
     double startAngle;
     CGFloat frameWidth = view.bounds.size.width;
     CGFloat frameHeight = view.bounds.size.height;
     CGFloat foldWidth = (direction < 2)?frameWidth/folds:frameHeight/folds;
-    CALayer *prevLayer = origamiLayer;
+    CALayer *prevLayer = self.origamiLayer;
     for (int b=0; b < folds; b++) {
         CGRect imageFrame;
         if (direction == SDMenuDirectionFromRight) {
@@ -417,7 +477,7 @@ typedef NSUInteger SDGridMenuState;
             }
             imageFrame = CGRectMake(0, frameHeight-(b+1)*foldWidth, frameWidth, foldWidth);
         }
-        CATransformLayer *transLayer = [self transformLayerFromImage:viewSnapShot Frame:imageFrame fold:b Duration:duration AnchorPiont:anchorPoint StartAngle:startAngle EndAngle:0];
+        CATransformLayer *transLayer = [self transformLayerFromImage:self.viewSnapShot Frame:imageFrame fold:b Duration:duration AnchorPiont:anchorPoint StartAngle:startAngle EndAngle:0];
         [prevLayer addSublayer:transLayer];
         prevLayer = transLayer;
     }
@@ -425,7 +485,7 @@ typedef NSUInteger SDGridMenuState;
     [CATransaction begin];
     [CATransaction setCompletionBlock:^{
         self.frame = selfFrame;
-        [origamiLayer removeFromSuperlayer];
+        [self.origamiLayer removeFromSuperlayer];
         self.origamiLayer = nil;
         _menuState = SDGridMenuStateIdle;
         
@@ -442,7 +502,7 @@ typedef NSUInteger SDGridMenuState;
     [CATransaction commit];
 }
 
-- (void)showTransitionWithImageView:(UIImageView*)imageView
+- (void)showTransitionWithImageView:(UIView*)_view
                       NumberOfFolds:(NSInteger)folds
                            Duration:(CGFloat)duration
                           Direction:(SDMenuDirection)direction
@@ -477,34 +537,35 @@ typedef NSUInteger SDGridMenuState;
     self.viewSnapShot = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
     
-    if (imageView) {
-        // remove the image first
-        imageView.image = nil;
-    }
+//    if (imageView) {
+//        // remove the image first
+//        imageView.image = nil;
+//    }
+    self.mainContentView.hidden = TRUE;
     // remove the shadow
     view.layer.shadowOpacity = 0.0f;
     
     //set 3D depth
     CATransform3D transform = CATransform3DIdentity;
     transform.m34 = -1.0/800.0;
-    if (!origamiLayer)
+    if (!self.origamiLayer)
         self.origamiLayer = [CALayer layer];
-    origamiLayer.frame = view.bounds;
-    origamiLayer.backgroundColor = [UIColor clearColor].CGColor;
-    origamiLayer.sublayerTransform = transform;
+    self.origamiLayer.frame = view.bounds;
+    self.origamiLayer.backgroundColor = [UIColor clearColor].CGColor;
+    self.origamiLayer.sublayerTransform = transform;
     
-    origamiLayer.shadowColor = [UIColor blackColor].CGColor;
-    origamiLayer.shadowOffset = CGSizeMake(3.0, 3.0);
-    origamiLayer.shadowOpacity = 0.7f;
+    self.origamiLayer.shadowColor = [UIColor blackColor].CGColor;
+    self.origamiLayer.shadowOffset = CGSizeMake(3.0, 3.0);
+    self.origamiLayer.shadowOpacity = 0.7f;
     
-    [view.layer addSublayer:origamiLayer];
+    [view.layer addSublayer:self.origamiLayer];
     
     //setup rotation angle
     double endAngle;
     CGFloat frameWidth = view.bounds.size.width;
     CGFloat frameHeight = view.bounds.size.height;
     CGFloat foldWidth = (direction < 2)?frameWidth/folds:frameHeight/folds;
-    CALayer *prevLayer = origamiLayer;
+    CALayer *prevLayer = self.origamiLayer;
     for (int b=0; b < folds; b++) {
         CGRect imageFrame;
         if (direction == SDMenuDirectionFromRight) {
@@ -551,7 +612,7 @@ typedef NSUInteger SDGridMenuState;
             }
             imageFrame = CGRectMake(0, frameHeight-(b+1)*foldWidth, frameWidth, foldWidth);
         }
-        CATransformLayer *transLayer = [self transformLayerFromImage:viewSnapShot Frame:imageFrame fold:b Duration:duration AnchorPiont:anchorPoint StartAngle:0 EndAngle:endAngle];
+        CATransformLayer *transLayer = [self transformLayerFromImage:self.viewSnapShot Frame:imageFrame fold:b Duration:duration AnchorPiont:anchorPoint StartAngle:0 EndAngle:endAngle];
         [prevLayer addSublayer:transLayer];
         prevLayer = transLayer;
     }
@@ -582,7 +643,7 @@ typedef NSUInteger SDGridMenuState;
 
 - (void)actionForItem:(id)sender
 {
-    [menuOverlay showMenu];
+    [self.menuOverlay showMenu];
 }
 
 #pragma mark - GHMenu methods
@@ -644,6 +705,10 @@ typedef NSUInteger SDGridMenuState;
     
 }
 
-
+-(void)setStory:(SDStory *)story{
+    _story = story;
+    
+    [self setNeedsLayout];
+}
 
 @end

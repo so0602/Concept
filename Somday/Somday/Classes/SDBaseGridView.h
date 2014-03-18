@@ -9,15 +9,25 @@
 #import <UIKit/UIKit.h>
 #import <QuartzCore/QuartzCore.h>
 
+#import "SDStory.h"
+
 @interface SDBaseGridView : UICollectionViewCell
 
-@property (nonatomic) UIImage *image;
-@property (nonatomic) UIImageView *backgroundImageView;
-@property (nonatomic) UIButton *shareButton;
-@property (nonatomic) UIButton *moreButton;
-@property (nonatomic) UIButton *likeButton;
-@property (nonatomic) UIButton *commentButton;
+@property (nonatomic, strong) IBOutlet UIView* mainContentView;
+@property (nonatomic, strong) IBOutlet UIImageView *backgroundImageView;
+@property (nonatomic, strong) IBOutlet UIButton *shareButton;
+@property (nonatomic, strong) IBOutlet UIButton *moreButton;
+@property (nonatomic, strong) IBOutlet UIButton *likeButton;
+@property (nonatomic, strong) IBOutlet UIButton *commentButton;
+@property (nonatomic, strong) IBOutlet UIButton *userButton;
+@property (nonatomic, strong) IBOutlet UILabel* userNameLabel;
+@property (nonatomic, strong) IBOutlet UILabel* infoLabel;
 
 + (CGFloat)heightForCell;
+
++(instancetype)gridViewWithStory:(SDStory*)story collectionView:(UICollectionView*)collectionView forIndexPath:(NSIndexPath*)indexPath;
++(Class)classWithStory:(SDStory*)story;
+
+@property (nonatomic, strong) SDStory* story;
 
 @end

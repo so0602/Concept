@@ -27,6 +27,15 @@
 
 @implementation SDStory
 
+@synthesize type;
+@synthesize imageName;
+@synthesize likeCount;
+@synthesize commentCount;
+@synthesize userIconName;
+@synthesize userName;
+@synthesize date;
+@synthesize address;
+
 -(id)initWithDictionary:(id)dictionary{
     if( self = [super init] ){
         self.ID = [dictionary objectForKey:SDStory_ID];
