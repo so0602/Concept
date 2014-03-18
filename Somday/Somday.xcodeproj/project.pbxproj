@@ -2159,7 +2159,6 @@
 				2EC3784718C5F0BA00D4161B /* SDHomeNavigationTitleView.h */,
 				2EC3784818C5F0BA00D4161B /* SDHomeNavigationTitleView.m */,
 				2EC3784E18C5F0D100D4161B /* SDHomeNavigationTitleView.xib */,
-<<<<<<< HEAD
 				2E84744718CD895100D49FBA /* SDBaseGridView.h */,
 				2E84744818CD895100D49FBA /* SDBaseGridView.m */,
 				2E880B0B18D805E20049446F /* SDStoryBookGridView.h */,
@@ -2167,9 +2166,7 @@
 				2E7A352618D8960600662504 /* SDStoryBookLayoutView.h */,
 				2E7A352718D8960600662504 /* SDStoryBookLayoutView.m */,
 				2E7A352918D8961B00662504 /* SDStoryBookLayoutView.xib */,
-=======
 				B6BE49DE18CF69A100DA7313 /* TextField */,
->>>>>>> 98c07a3ef3a3a9ffd30f45ac3ebf8b2f03358da1
 			);
 			name = Views;
 			sourceTree = "<group>";
