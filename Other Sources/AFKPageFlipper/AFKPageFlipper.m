@@ -221,36 +221,40 @@
 
 	// shadows
 	frontLayerShadow = [CALayer layer];
+    //frontLayerShadow.shadowPath =  [UIBezierPath bezierPathWithRoundedRect:frontLayer.bounds cornerRadius:frontLayer.cornerRadius].CGPath;
 	frontLayerShadow.frame = frontLayer.bounds;
 	frontLayerShadow.doubleSided = NO;
 	frontLayerShadow.masksToBounds = YES;
 	frontLayerShadow.opacity = 0;
-	frontLayerShadow.backgroundColor = [UIColor blackColor].CGColor;
+	frontLayerShadow.backgroundColor = [UIColor darkGrayColor].CGColor;
 	[frontLayer addSublayer:frontLayerShadow];
 
 	backLayerShadow = [CALayer layer];
+    //backLayerShadow.shadowPath =  [UIBezierPath bezierPathWithRoundedRect:backLayer.bounds cornerRadius:backLayerShadow.cornerRadius].CGPath;
 	backLayerShadow.frame = backLayer.bounds;
 	backLayerShadow.doubleSided = NO;
 	backLayerShadow.masksToBounds = YES;
 	backLayerShadow.opacity = 0;
-	backLayerShadow.backgroundColor = [UIColor blackColor].CGColor;
+	backLayerShadow.backgroundColor = [UIColor darkGrayColor].CGColor;
 	[backLayer addSublayer:backLayerShadow];
 	
 	
 	leftLayerShadow = [CALayer layer];
 	leftLayerShadow.frame = leftLayer.bounds;
+    //leftLayerShadow.shadowPath =  [UIBezierPath bezierPathWithRoundedRect:leftLayer.bounds cornerRadius:leftLayerShadow.cornerRadius].CGPath;
 	leftLayerShadow.doubleSided = NO;
 	leftLayerShadow.masksToBounds = YES;
 	leftLayerShadow.opacity = 0.0;
-	leftLayerShadow.backgroundColor = [UIColor blackColor].CGColor;
+	leftLayerShadow.backgroundColor = [UIColor darkGrayColor].CGColor;
 	[leftLayer addSublayer:leftLayerShadow];
 	
 	rightLayerShadow = [CALayer layer];
 	rightLayerShadow.frame = rightLayer.bounds;
+    //rightLayerShadow.shadowPath =  [UIBezierPath bezierPathWithRoundedRect:rightLayer.bounds cornerRadius:rightLayerShadow.cornerRadius].CGPath;
 	rightLayerShadow.doubleSided = NO;
 	rightLayerShadow.masksToBounds = YES;
 	rightLayerShadow.opacity = 0.0;
-	rightLayerShadow.backgroundColor = [UIColor blackColor].CGColor;
+	rightLayerShadow.backgroundColor = [UIColor darkGrayColor].CGColor;
 	[rightLayer addSublayer:rightLayerShadow];
 	// shadows
     
@@ -662,17 +666,6 @@
 		duration = 0.35;
 	}
 	
-//    flipAnimationLayer.masksToBounds = YES;
-//    flipAnimationLayer.cornerRadius = 0.8;
-//    frontLayerShadow.masksToBounds = YES;
-//    frontLayerShadow.cornerRadius = 0.8;
-//    backLayerShadow.masksToBounds = YES;
-//    backLayerShadow.cornerRadius = 0.8;
-//    leftLayerShadow.masksToBounds = YES;
-//    leftLayerShadow.cornerRadius = 0.8;
-//    rightLayerShadow.masksToBounds = YES;
-//    rightLayerShadow.cornerRadius = 0.8;
-//    
 	[UIView beginAnimations:@"FLIP1" context:nil];
 	[UIView setAnimationDuration:duration];
 	flipAnimationLayer.transform =  endTransform;
