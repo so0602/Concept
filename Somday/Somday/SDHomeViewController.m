@@ -15,13 +15,14 @@
 #import "UILabel+Addition.h"
 #import "UICollectionView+Addition.h"
 #import "NSNotificationCenter+Name.h"
+#import "SDStoryBookGridView.h"
 #import <objc/message.h>
 
 #define WidthForGrid [UIScreen mainScreen].bounds.size.width - 16 // padding = 8
 #define HeightForFullyDisplayNavigationBar 57.0f
 #define HeightForTriggerNavigationBarAnimation 23.0f
 
-#define Debug_count 500
+#define Debug_count 30
 
 @interface SDHomeViewController ()
 @property (nonatomic) NSMutableArray *dataSource;
@@ -39,6 +40,7 @@
 
 static NSString *HeaderCellIdentifier = @"HeaderCollectionViewCell";
 static NSString *CellIdentifier = @"CollectionViewCell";
+static NSString *StoryBookCellIdentifier = @"StoryBookCollectionViewCell";
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -182,10 +184,11 @@ static NSString *CellIdentifier = @"CollectionViewCell";
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     BOOL isFirstRow = indexPath.row==0;
-    SDBaseGridView *cell = (SDBaseGridView*)[collectionView dequeueReusableCellWithReuseIdentifier:isFirstRow?HeaderCellIdentifier:CellIdentifier forIndexPath:indexPath];
+    SDBaseGridView *cell = (SDBaseGridView*)[collectionView dequeueReusableCellWithReuseIdentifier:isFirstRow?HeaderCellIdentifier:StoryBookCellIdentifier  forIndexPath:indexPath];
     
     if (!isFirstRow) {
-        cell.image = [UIImage imageNamed:[_dataSource objectAtIndex:indexPath.row]];
+        if ([cell.reuseIdentifier isEqualToString:CellIdentifier])
+            cell.image = [UIImage imageNamed:[_dataSource objectAtIndex:indexPath.row]];
     } else {
         self.headerCollectionViewCell = (SDHomeHeaderCollectionViewCell*)cell;
         [self.headerCollectionViewCell addMotionEffect:[SDUtils sharedMotionEffectGroup]];
@@ -212,7 +215,7 @@ static NSString *CellIdentifier = @"CollectionViewCell";
 {
 
     UILabel *navigationTitleDayLabel = ((SDHomeNavigationTitleView *)self.navigationItem.titleView).dayLabel;
-    UILabel *navigationTitleDateLabel = ((SDHomeNavigationTitleView *)self.navigationItem.titleView).dateLabel;
+//    UILabel *navigationTitleDateLabel = ((SDHomeNavigationTitleView *)self.navigationItem.titleView).dateLabel;
     UILabel *headerDayLabel = self.headerCollectionViewCell.labels[0];
     UILabel *headerDateLabel = self.headerCollectionViewCell.labels[1];
     UILabel *headerWeekDayLabel = self.headerCollectionViewCell.labels[2];
@@ -221,7 +224,7 @@ static NSString *CellIdentifier = @"CollectionViewCell";
 //    CGFloat dayFontFactor = ([SDHomeHeaderCollectionViewCell fontForDayLabel].pointSize -navigationTitleDayLabel.font.pointSize)/(HeightForFullyDisplayNavigationBar-HeightForTriggerNavigationBarAnimation);
 //    CGFloat dateFontFactor = ([SDHomeHeaderCollectionViewCell fontForDateLabel].pointSize -navigationTitleDateLabel.font.pointSize)/(HeightForFullyDisplayNavigationBar-HeightForTriggerNavigationBarAnimation);
     CGFloat dayFontFactor = ([SDHomeHeaderCollectionViewCell fontForDayLabel].pointSize -navigationTitleDayLabel.font.pointSize)/(HeightForFullyDisplayNavigationBar-HeightForTriggerNavigationBarAnimation);
-    CGFloat dateFontFactor = ([SDHomeHeaderCollectionViewCell fontForDateLabel].pointSize -navigationTitleDateLabel.font.pointSize)/(HeightForFullyDisplayNavigationBar-HeightForTriggerNavigationBarAnimation);
+//    CGFloat dateFontFactor = ([SDHomeHeaderCollectionViewCell fontForDateLabel].pointSize -navigationTitleDateLabel.font.pointSize)/(HeightForFullyDisplayNavigationBar-HeightForTriggerNavigationBarAnimation);
     CGFloat netOffset = scrollView.contentOffset.y-HeightForTriggerNavigationBarAnimation;
 
     // Alpha Animation

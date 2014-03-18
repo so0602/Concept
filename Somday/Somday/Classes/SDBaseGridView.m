@@ -114,7 +114,7 @@ typedef NSUInteger SDGridMenuState;
     [likeButton setImage:image forState:UIControlStateNormal];
     likeButton.frame = CGRectMake(200, 260, image.size.width, image.size.height);
     [likeButton addTarget:self action:@selector(actionForItem:) forControlEvents:UIControlEventTouchUpInside];
-    [_backgroundImageView addSubview:likeButton];
+//    [_backgroundImageView addSubview:likeButton];
     
     // Add like menu
     self.menuOverlay = [[GHContextMenuView alloc] init];

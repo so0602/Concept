@@ -24,7 +24,17 @@
 		2E54CAE618C5DB9300B23A96 /* JosefinSans-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2E54CADB18C5DB9300B23A96 /* JosefinSans-Thin.ttf */; };
 		2E54CAE718C5DB9300B23A96 /* JosefinSans-ThinItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2E54CADC18C5DB9300B23A96 /* JosefinSans-ThinItalic.ttf */; };
 		2E54CAF218C5DE1A00B23A96 /* UIFont+Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E54CAF118C5DE1A00B23A96 /* UIFont+Addition.m */; };
+		2E7A351718D888D100662504 /* AFKPageFlipper.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E7A351018D888D100662504 /* AFKPageFlipper.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		2E7A351A18D888D100662504 /* UIViewExtention.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E7A351618D888D100662504 /* UIViewExtention.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		2E7A352518D88C6F00662504 /* LayoutViewExtention.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E7A352418D88C6F00662504 /* LayoutViewExtention.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		2E7A352818D8960600662504 /* SDStoryBookLayoutView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E7A352718D8960600662504 /* SDStoryBookLayoutView.m */; };
+		2E7A352A18D8961B00662504 /* SDStoryBookLayoutView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2E7A352918D8961B00662504 /* SDStoryBookLayoutView.xib */; };
 		2E84744918CD895100D49FBA /* SDBaseGridView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E84744818CD895100D49FBA /* SDBaseGridView.m */; };
+		2E880B0718D8054F0049446F /* AnimationDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E880B0018D8054F0049446F /* AnimationDelegate.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		2E880B0818D8054F0049446F /* AnimationFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E880B0218D8054F0049446F /* AnimationFrame.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		2E880B0918D8054F0049446F /* FlipView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E880B0418D8054F0049446F /* FlipView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		2E880B0A18D8054F0049446F /* GenericAnimationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E880B0618D8054F0049446F /* GenericAnimationView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		2E880B0D18D805E20049446F /* SDStoryBookGridView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E880B0C18D805E20049446F /* SDStoryBookGridView.m */; };
 		2EC3784918C5F0BA00D4161B /* SDHomeNavigationTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EC3784818C5F0BA00D4161B /* SDHomeNavigationTitleView.m */; };
 		2EC3784F18C5F0D100D4161B /* SDHomeNavigationTitleView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2EC3784E18C5F0D100D4161B /* SDHomeNavigationTitleView.xib */; };
 		2EC3785218C6130800D4161B /* UIColor+Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EC3785118C6130800D4161B /* UIColor+Extensions.m */; };
@@ -1056,8 +1066,28 @@
 		2E54CADC18C5DB9300B23A96 /* JosefinSans-ThinItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "JosefinSans-ThinItalic.ttf"; sourceTree = "<group>"; };
 		2E54CAF018C5DE1A00B23A96 /* UIFont+Addition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIFont+Addition.h"; path = "Classes/UIFont+Addition.h"; sourceTree = "<group>"; };
 		2E54CAF118C5DE1A00B23A96 /* UIFont+Addition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIFont+Addition.m"; path = "Classes/UIFont+Addition.m"; sourceTree = "<group>"; };
+		2E7A350F18D888D100662504 /* AFKPageFlipper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFKPageFlipper.h; sourceTree = "<group>"; };
+		2E7A351018D888D100662504 /* AFKPageFlipper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFKPageFlipper.m; sourceTree = "<group>"; };
+		2E7A351518D888D100662504 /* UIViewExtention.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIViewExtention.h; sourceTree = "<group>"; };
+		2E7A351618D888D100662504 /* UIViewExtention.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIViewExtention.m; sourceTree = "<group>"; };
+		2E7A352218D88AD100662504 /* ColorHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ColorHelper.h; sourceTree = "<group>"; };
+		2E7A352318D88C6F00662504 /* LayoutViewExtention.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LayoutViewExtention.h; sourceTree = "<group>"; };
+		2E7A352418D88C6F00662504 /* LayoutViewExtention.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LayoutViewExtention.m; sourceTree = "<group>"; };
+		2E7A352618D8960600662504 /* SDStoryBookLayoutView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SDStoryBookLayoutView.h; path = Classes/SDStoryBookLayoutView.h; sourceTree = "<group>"; };
+		2E7A352718D8960600662504 /* SDStoryBookLayoutView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SDStoryBookLayoutView.m; path = Classes/SDStoryBookLayoutView.m; sourceTree = "<group>"; };
+		2E7A352918D8961B00662504 /* SDStoryBookLayoutView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SDStoryBookLayoutView.xib; path = Classes/SDStoryBookLayoutView.xib; sourceTree = "<group>"; };
 		2E84744718CD895100D49FBA /* SDBaseGridView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SDBaseGridView.h; path = Classes/SDBaseGridView.h; sourceTree = "<group>"; };
 		2E84744818CD895100D49FBA /* SDBaseGridView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SDBaseGridView.m; path = Classes/SDBaseGridView.m; sourceTree = "<group>"; };
+		2E880AFF18D8054F0049446F /* AnimationDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnimationDelegate.h; sourceTree = "<group>"; };
+		2E880B0018D8054F0049446F /* AnimationDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnimationDelegate.m; sourceTree = "<group>"; };
+		2E880B0118D8054F0049446F /* AnimationFrame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnimationFrame.h; sourceTree = "<group>"; };
+		2E880B0218D8054F0049446F /* AnimationFrame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnimationFrame.m; sourceTree = "<group>"; };
+		2E880B0318D8054F0049446F /* FlipView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlipView.h; sourceTree = "<group>"; };
+		2E880B0418D8054F0049446F /* FlipView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlipView.m; sourceTree = "<group>"; };
+		2E880B0518D8054F0049446F /* GenericAnimationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GenericAnimationView.h; sourceTree = "<group>"; };
+		2E880B0618D8054F0049446F /* GenericAnimationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GenericAnimationView.m; sourceTree = "<group>"; };
+		2E880B0B18D805E20049446F /* SDStoryBookGridView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SDStoryBookGridView.h; path = Classes/SDStoryBookGridView.h; sourceTree = "<group>"; };
+		2E880B0C18D805E20049446F /* SDStoryBookGridView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SDStoryBookGridView.m; path = Classes/SDStoryBookGridView.m; sourceTree = "<group>"; };
 		2EC3784718C5F0BA00D4161B /* SDHomeNavigationTitleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SDHomeNavigationTitleView.h; path = Classes/SDHomeNavigationTitleView.h; sourceTree = "<group>"; };
 		2EC3784818C5F0BA00D4161B /* SDHomeNavigationTitleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SDHomeNavigationTitleView.m; path = Classes/SDHomeNavigationTitleView.m; sourceTree = "<group>"; };
 		2EC3784E18C5F0D100D4161B /* SDHomeNavigationTitleView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SDHomeNavigationTitleView.xib; path = Classes/SDHomeNavigationTitleView.xib; sourceTree = "<group>"; };
@@ -2087,6 +2117,11 @@
 				2EC3784E18C5F0D100D4161B /* SDHomeNavigationTitleView.xib */,
 				2E84744718CD895100D49FBA /* SDBaseGridView.h */,
 				2E84744818CD895100D49FBA /* SDBaseGridView.m */,
+				2E880B0B18D805E20049446F /* SDStoryBookGridView.h */,
+				2E880B0C18D805E20049446F /* SDStoryBookGridView.m */,
+				2E7A352618D8960600662504 /* SDStoryBookLayoutView.h */,
+				2E7A352718D8960600662504 /* SDStoryBookLayoutView.m */,
+				2E7A352918D8961B00662504 /* SDStoryBookLayoutView.xib */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -2108,6 +2143,37 @@
 				2E54CADC18C5DB9300B23A96 /* JosefinSans-ThinItalic.ttf */,
 			);
 			path = Font;
+			sourceTree = "<group>";
+		};
+		2E7A350E18D888D100662504 /* AFKPageFlipper */ = {
+			isa = PBXGroup;
+			children = (
+				2E7A352318D88C6F00662504 /* LayoutViewExtention.h */,
+				2E7A352418D88C6F00662504 /* LayoutViewExtention.m */,
+				2E7A352218D88AD100662504 /* ColorHelper.h */,
+				2E7A350F18D888D100662504 /* AFKPageFlipper.h */,
+				2E7A351018D888D100662504 /* AFKPageFlipper.m */,
+				2E7A351518D888D100662504 /* UIViewExtention.h */,
+				2E7A351618D888D100662504 /* UIViewExtention.m */,
+			);
+			name = AFKPageFlipper;
+			path = "../Other Sources/AFKPageFlipper";
+			sourceTree = "<group>";
+		};
+		2E880AFE18D8054F0049446F /* iOS-Flip-Transform-master */ = {
+			isa = PBXGroup;
+			children = (
+				2E880AFF18D8054F0049446F /* AnimationDelegate.h */,
+				2E880B0018D8054F0049446F /* AnimationDelegate.m */,
+				2E880B0118D8054F0049446F /* AnimationFrame.h */,
+				2E880B0218D8054F0049446F /* AnimationFrame.m */,
+				2E880B0318D8054F0049446F /* FlipView.h */,
+				2E880B0418D8054F0049446F /* FlipView.m */,
+				2E880B0518D8054F0049446F /* GenericAnimationView.h */,
+				2E880B0618D8054F0049446F /* GenericAnimationView.m */,
+			);
+			name = "iOS-Flip-Transform-master";
+			path = "../Other Sources/iOS-Flip-Transform-master";
 			sourceTree = "<group>";
 		};
 		2ED7A89218D43D9C00F76E17 /* GHContextMenu */ = {
@@ -3448,6 +3514,8 @@
 		EFA8EC0118BDDA4A00144B75 /* Other Sources */ = {
 			isa = PBXGroup;
 			children = (
+				2E7A350E18D888D100662504 /* AFKPageFlipper */,
+				2E880AFE18D8054F0049446F /* iOS-Flip-Transform-master */,
 				2E39E90918D4DF8700A7F917 /* AUISelectiveBordersView */,
 				2ED7A89218D43D9C00F76E17 /* GHContextMenu */,
 				EF891DC918CD8CB5005DC780 /* ASIHTTPRequest.xcodeproj */,
@@ -4444,6 +4512,7 @@
 				B65DE23318C60EB10076408C /* icons-shadow-24px_home@2x.png in Resources */,
 				B65DE17418C60EB10076408C /* icons-shadow-12px_play-bold.png in Resources */,
 				B65DE1CC18C60EB10076408C /* icons-shadow-16px_like.png in Resources */,
+				2E7A352A18D8961B00662504 /* SDStoryBookLayoutView.xib in Resources */,
 				B65DE1B418C60EB10076408C /* icons-shadow-16px_contrast-lo.png in Resources */,
 				B65DE09818C60EB10076408C /* icons-24px_quoteRight.png in Resources */,
 				B65DE09C18C60EB10076408C /* icons-24px_repeat.png in Resources */,
@@ -4516,14 +4585,19 @@
 				EFD0FC1218CD92CF0026F54F /* ASIFormDataRequest+Addition.m in Sources */,
 				2EFB3D1118D2E7F600110DC6 /* CAKeyframeAnimation+Addition.m in Sources */,
 				EF3B650A18CDA8AA00B0CF1C /* SDLogin.m in Sources */,
+				2E880B0918D8054F0049446F /* FlipView.m in Sources */,
 				EF3B651718CDAE8500B0CF1C /* SDStories.m in Sources */,
 				2ED35BC718C70A3500EDA245 /* UICollectionView+Addition.m in Sources */,
 				2E54CABF18C5D1D900B23A96 /* SDHomeViewController.m in Sources */,
 				EF3B650018CDA27700B0CF1C /* SDResponseBase.m in Sources */,
 				EFA8EBD018BDD87100144B75 /* SDAppDelegate.m in Sources */,
 				2E39E90E18D4DF8700A7F917 /* AUISelectiveBordersLayer.m in Sources */,
+				2E7A352818D8960600662504 /* SDStoryBookLayoutView.m in Sources */,
 				B6BE49D018CF457500DA7313 /* SDForgotPasswordViewController.m in Sources */,
+				2E7A351718D888D100662504 /* AFKPageFlipper.m in Sources */,
 				B65DDC1818C586760076408C /* SDMenuTableViewCell.m in Sources */,
+				2E880B0D18D805E20049446F /* SDStoryBookGridView.m in Sources */,
+				2E880B0A18D8054F0049446F /* GenericAnimationView.m in Sources */,
 				B65DE2B218C884D50076408C /* SDTopMenuViewController.m in Sources */,
 				EF3B650F18CDAC2500B0CF1C /* SDCheckUserExist.m in Sources */,
 				2E39E90F18D4DF8700A7F917 /* UIView+AUISelectiveBorder.m in Sources */,
@@ -4531,6 +4605,7 @@
 				B6BE49EB18CF739700DA7313 /* SDPasswordTextField.m in Sources */,
 				2E54CAF218C5DE1A00B23A96 /* UIFont+Addition.m in Sources */,
 				2EC3785818C61B0F00D4161B /* UINavigationItem+Addition.m in Sources */,
+				2E7A352518D88C6F00662504 /* LayoutViewExtention.m in Sources */,
 				2EC3785B18C6266C00D4161B /* UILabel+Addition.m in Sources */,
 				2EC3785218C6130800D4161B /* UIColor+Extensions.m in Sources */,
 				B65DDC1F18C58EE60076408C /* UIView+Addition.m in Sources */,
@@ -4538,6 +4613,7 @@
 				EF3B651318CDAD0000B0CF1C /* SDCreateUser.m in Sources */,
 				2E54CAC618C5D2C200B23A96 /* SDCollectionViewFlowLayout.m in Sources */,
 				EF891DE218CD8EA0005DC780 /* SDNetworkUtils.m in Sources */,
+				2E7A351A18D888D100662504 /* UIViewExtention.m in Sources */,
 				EF3B650318CDA2C200B0CF1C /* SDStatus.m in Sources */,
 				EF3B651E18CDB6BE00B0CF1C /* SDLoginViewController.m in Sources */,
 				B6BE49D818CF4F0900DA7313 /* SDSignUpViewController.m in Sources */,
@@ -4550,12 +4626,14 @@
 				B65DDC1218C57FB30076408C /* UIViewController+Addition.m in Sources */,
 				EFA8EBCC18BDD87100144B75 /* main.m in Sources */,
 				EF3B65B918D3008C00B0CF1C /* UIImageView+LBBlurredImage.m in Sources */,
+				2E880B0718D8054F0049446F /* AnimationDelegate.m in Sources */,
 				2ED7A89518D43D9C00F76E17 /* GHContextMenuView.m in Sources */,
 				B65DDC3518C5B2690076408C /* SDSearchViewController.m in Sources */,
 				EF3B651A18CDAE9400B0CF1C /* SDStory.m in Sources */,
 				2EC3784918C5F0BA00D4161B /* SDHomeNavigationTitleView.m in Sources */,
 				B6BE49E818CF72F400DA7313 /* SDTextField.m in Sources */,
 				EFD0FC1B18CD952B0026F54F /* JSONKit.m in Sources */,
+				2E880B0818D8054F0049446F /* AnimationFrame.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4719,7 +4797,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = NO;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Bank of Montreal";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Jeremy Chan (39G976S5HX)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Somday/Somday-Prefix.pch";
 				HEADER_SEARCH_PATHS = (
@@ -4737,7 +4815,7 @@
 					"-all_load",
 				);
 				PRODUCT_NAME = Somday;
-				PROVISIONING_PROFILE = "BC42C522-1308-4FD9-A581-DF448997D270";
+				PROVISIONING_PROFILE = "669AA18A-59F9-4261-83A8-AD42AB2DCC65";
 				USER_HEADER_SEARCH_PATHS = "";
 				WRAPPER_EXTENSION = app;
 			};
@@ -4751,7 +4829,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = NO;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Bank of Montreal";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Jeremy Chan (39G976S5HX)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Somday/Somday-Prefix.pch";
 				HEADER_SEARCH_PATHS = (
@@ -4769,7 +4847,7 @@
 					"-all_load",
 				);
 				PRODUCT_NAME = Somday;
-				PROVISIONING_PROFILE = "BC42C522-1308-4FD9-A581-DF448997D270";
+				PROVISIONING_PROFILE = "669AA18A-59F9-4261-83A8-AD42AB2DCC65";
 				USER_HEADER_SEARCH_PATHS = "";
 				WRAPPER_EXTENSION = app;
 			};
