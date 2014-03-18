@@ -8,16 +8,7 @@
 
 #import "SDTextGridView.h"
 
-@interface SDBaseGridView ()
-
--(void)initBackgroundImageView;
-
-@end
-
 @interface SDTextGridView ()
-
-@property (nonatomic, strong) IBOutlet UIView* textBackgroudView;
-@property (nonatomic, strong) IBOutlet UIImageView* arrowImageView;
 
 @end
 
@@ -25,13 +16,6 @@
 
 + (CGFloat)heightForCell{
     return 152;
-}
-
--(void)initBackgroundImageView{
-    [super initBackgroundImageView];
-    
-    [self.backgroundImageView addSubview:self.textBackgroudView];
-    [self.backgroundImageView addSubview:self.arrowImageView];
 }
 
 @end

@@ -29,7 +29,6 @@
 		2E7A352518D88C6F00662504 /* LayoutViewExtention.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E7A352418D88C6F00662504 /* LayoutViewExtention.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		2E7A352818D8960600662504 /* SDStoryBookLayoutView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E7A352718D8960600662504 /* SDStoryBookLayoutView.m */; };
 		2E7A352A18D8961B00662504 /* SDStoryBookLayoutView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2E7A352918D8961B00662504 /* SDStoryBookLayoutView.xib */; };
-		2E84744918CD895100D49FBA /* SDBaseGridView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E84744818CD895100D49FBA /* SDBaseGridView.m */; };
 		2E880B0718D8054F0049446F /* AnimationDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E880B0018D8054F0049446F /* AnimationDelegate.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		2E880B0818D8054F0049446F /* AnimationFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E880B0218D8054F0049446F /* AnimationFrame.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		2E880B0918D8054F0049446F /* FlipView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E880B0418D8054F0049446F /* FlipView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -856,6 +855,10 @@
 		B66E1BEF18D83B7500C292FA /* SDPhotoGridView.m in Sources */ = {isa = PBXBuildFile; fileRef = B66E1BEE18D83B7500C292FA /* SDPhotoGridView.m */; };
 		B66E1BF218D8585C00C292FA /* dump_user.png in Resources */ = {isa = PBXBuildFile; fileRef = B66E1BF018D8585C00C292FA /* dump_user.png */; };
 		B66E1BF318D8585C00C292FA /* dump_user@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B66E1BF118D8585C00C292FA /* dump_user@2x.png */; };
+		B66E1BF618D86B2B00C292FA /* SDVoiceGridView.m in Sources */ = {isa = PBXBuildFile; fileRef = B66E1BF518D86B2B00C292FA /* SDVoiceGridView.m */; };
+		B66E1BFD18D8A75D00C292FA /* 1kHz_44100Hz_16bit_05sec.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = B66E1BFB18D8A75D00C292FA /* 1kHz_44100Hz_16bit_05sec.mp3 */; };
+		B66E1BFE18D8A75D00C292FA /* 440Hz_44100Hz_16bit_05sec.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = B66E1BFC18D8A75D00C292FA /* 440Hz_44100Hz_16bit_05sec.mp3 */; };
+		B66E1C2018D8B33300C292FA /* SDBaseGridView.m in Sources */ = {isa = PBXBuildFile; fileRef = B66E1C1F18D8B33300C292FA /* SDBaseGridView.m */; };
 		B6BE49D018CF457500DA7313 /* SDForgotPasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6BE49CF18CF457500DA7313 /* SDForgotPasswordViewController.m */; };
 		B6BE49D818CF4F0900DA7313 /* SDSignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6BE49D718CF4F0900DA7313 /* SDSignUpViewController.m */; };
 		B6BE49DD18CF699F00DA7313 /* SDEmailTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = B6BE49DC18CF699F00DA7313 /* SDEmailTextField.m */; };
@@ -1097,8 +1100,6 @@
 		2E7A352618D8960600662504 /* SDStoryBookLayoutView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SDStoryBookLayoutView.h; path = Classes/SDStoryBookLayoutView.h; sourceTree = "<group>"; };
 		2E7A352718D8960600662504 /* SDStoryBookLayoutView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SDStoryBookLayoutView.m; path = Classes/SDStoryBookLayoutView.m; sourceTree = "<group>"; };
 		2E7A352918D8961B00662504 /* SDStoryBookLayoutView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SDStoryBookLayoutView.xib; path = Classes/SDStoryBookLayoutView.xib; sourceTree = "<group>"; };
-		2E84744718CD895100D49FBA /* SDBaseGridView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SDBaseGridView.h; path = Classes/SDBaseGridView.h; sourceTree = "<group>"; };
-		2E84744818CD895100D49FBA /* SDBaseGridView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SDBaseGridView.m; path = Classes/SDBaseGridView.m; sourceTree = "<group>"; };
 		2E880AFF18D8054F0049446F /* AnimationDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnimationDelegate.h; sourceTree = "<group>"; };
 		2E880B0018D8054F0049446F /* AnimationDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnimationDelegate.m; sourceTree = "<group>"; };
 		2E880B0118D8054F0049446F /* AnimationFrame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnimationFrame.h; sourceTree = "<group>"; };
@@ -1946,6 +1947,12 @@
 		B66E1BEE18D83B7500C292FA /* SDPhotoGridView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SDPhotoGridView.m; path = Classes/SDPhotoGridView.m; sourceTree = "<group>"; };
 		B66E1BF018D8585C00C292FA /* dump_user.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dump_user.png; sourceTree = "<group>"; };
 		B66E1BF118D8585C00C292FA /* dump_user@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "dump_user@2x.png"; sourceTree = "<group>"; };
+		B66E1BF418D86B2B00C292FA /* SDVoiceGridView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SDVoiceGridView.h; path = Classes/SDVoiceGridView.h; sourceTree = "<group>"; };
+		B66E1BF518D86B2B00C292FA /* SDVoiceGridView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SDVoiceGridView.m; path = Classes/SDVoiceGridView.m; sourceTree = "<group>"; };
+		B66E1BFB18D8A75D00C292FA /* 1kHz_44100Hz_16bit_05sec.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = 1kHz_44100Hz_16bit_05sec.mp3; sourceTree = "<group>"; };
+		B66E1BFC18D8A75D00C292FA /* 440Hz_44100Hz_16bit_05sec.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = 440Hz_44100Hz_16bit_05sec.mp3; sourceTree = "<group>"; };
+		B66E1C1E18D8B33300C292FA /* SDBaseGridView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SDBaseGridView.h; path = Classes/SDBaseGridView.h; sourceTree = "<group>"; };
+		B66E1C1F18D8B33300C292FA /* SDBaseGridView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SDBaseGridView.m; path = Classes/SDBaseGridView.m; sourceTree = "<group>"; };
 		B6BE49CE18CF457500DA7313 /* SDForgotPasswordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SDForgotPasswordViewController.h; path = Classes/SDForgotPasswordViewController.h; sourceTree = "<group>"; };
 		B6BE49CF18CF457500DA7313 /* SDForgotPasswordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SDForgotPasswordViewController.m; path = Classes/SDForgotPasswordViewController.m; sourceTree = "<group>"; };
 		B6BE49D618CF4F0900DA7313 /* SDSignUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SDSignUpViewController.h; path = Classes/SDSignUpViewController.h; sourceTree = "<group>"; };
@@ -2159,13 +2166,6 @@
 				2EC3784718C5F0BA00D4161B /* SDHomeNavigationTitleView.h */,
 				2EC3784818C5F0BA00D4161B /* SDHomeNavigationTitleView.m */,
 				2EC3784E18C5F0D100D4161B /* SDHomeNavigationTitleView.xib */,
-				2E84744718CD895100D49FBA /* SDBaseGridView.h */,
-				2E84744818CD895100D49FBA /* SDBaseGridView.m */,
-				2E880B0B18D805E20049446F /* SDStoryBookGridView.h */,
-				2E880B0C18D805E20049446F /* SDStoryBookGridView.m */,
-				2E7A352618D8960600662504 /* SDStoryBookLayoutView.h */,
-				2E7A352718D8960600662504 /* SDStoryBookLayoutView.m */,
-				2E7A352918D8961B00662504 /* SDStoryBookLayoutView.xib */,
 				B6BE49DE18CF69A100DA7313 /* TextField */,
 			);
 			name = Views;
@@ -3242,12 +3242,19 @@
 		B6BE4ABE18D8168000DA7313 /* GridView */ = {
 			isa = PBXGroup;
 			children = (
-				2E84744718CD895100D49FBA /* SDBaseGridView.h */,
-				2E84744818CD895100D49FBA /* SDBaseGridView.m */,
-				B6BE4ABB18D8167C00DA7313 /* SDTextGridView.h */,
-				B6BE4ABC18D8167C00DA7313 /* SDTextGridView.m */,
+				B66E1C1E18D8B33300C292FA /* SDBaseGridView.h */,
+				B66E1C1F18D8B33300C292FA /* SDBaseGridView.m */,
 				B66E1BED18D83B7500C292FA /* SDPhotoGridView.h */,
 				B66E1BEE18D83B7500C292FA /* SDPhotoGridView.m */,
+				2E880B0B18D805E20049446F /* SDStoryBookGridView.h */,
+				2E880B0C18D805E20049446F /* SDStoryBookGridView.m */,
+				2E7A352618D8960600662504 /* SDStoryBookLayoutView.h */,
+				2E7A352718D8960600662504 /* SDStoryBookLayoutView.m */,
+				2E7A352918D8961B00662504 /* SDStoryBookLayoutView.xib */,
+				B6BE4ABB18D8167C00DA7313 /* SDTextGridView.h */,
+				B6BE4ABC18D8167C00DA7313 /* SDTextGridView.m */,
+				B66E1BF418D86B2B00C292FA /* SDVoiceGridView.h */,
+				B66E1BF518D86B2B00C292FA /* SDVoiceGridView.m */,
 			);
 			name = GridView;
 			sourceTree = "<group>";
@@ -3328,6 +3335,8 @@
 		EF3B655618D2E8AF00B0CF1C /* Dump */ = {
 			isa = PBXGroup;
 			children = (
+				B66E1BFB18D8A75D00C292FA /* 1kHz_44100Hz_16bit_05sec.mp3 */,
+				B66E1BFC18D8A75D00C292FA /* 440Hz_44100Hz_16bit_05sec.mp3 */,
 				B66E1BF018D8585C00C292FA /* dump_user.png */,
 				B66E1BF118D8585C00C292FA /* dump_user@2x.png */,
 				EF3B655718D2E8AF00B0CF1C /* dump_00.jpg */,
@@ -4009,6 +4018,7 @@
 				B65DE0AA18C60EB10076408C /* icons-24px_stop.png in Resources */,
 				B65DE16818C60EB10076408C /* icons-shadow-12px_menu.png in Resources */,
 				B65DE1CB18C60EB10076408C /* icons-shadow-16px_joinedEvent@2x.png in Resources */,
+				B66E1BFE18D8A75D00C292FA /* 440Hz_44100Hz_16bit_05sec.mp3 in Resources */,
 				B65DE0B518C60EB10076408C /* icons-color-12px_add@2x.png in Resources */,
 				B65DDF7C18C60EB10076408C /* icons-12px_cross.png in Resources */,
 				B65DE0A818C60EB10076408C /* icons-24px_stop-bold.png in Resources */,
@@ -4550,6 +4560,7 @@
 				B65DE02118C60EB10076408C /* icons-16px_play@2x.png in Resources */,
 				B65DE1F818C60EB10076408C /* icons-shadow-16px_share.png in Resources */,
 				B65DE20518C60EB10076408C /* icons-shadow-16px_supported@2x.png in Resources */,
+				B66E1BFD18D8A75D00C292FA /* 1kHz_44100Hz_16bit_05sec.mp3 in Resources */,
 				B65DE14918C60EB10076408C /* icons-shadow-12px_dislike@2x.png in Resources */,
 				EF3B65AD18D2F97200B0CF1C /* icons-color-12px_warning.png in Resources */,
 				B65DDFC818C60EB10076408C /* icons-12px_support.png in Resources */,
@@ -4675,7 +4686,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				B65DDC0F18C57D1E0076408C /* SDUtils.m in Sources */,
-				2E84744918CD895100D49FBA /* SDBaseGridView.m in Sources */,
 				EF3B65B818D3008C00B0CF1C /* UIImage+ImageEffects.m in Sources */,
 				EF658E5E18C461C400FC9E07 /* SDMenuViewController.m in Sources */,
 				EFD0FC1218CD92CF0026F54F /* ASIFormDataRequest+Addition.m in Sources */,
@@ -4707,6 +4717,7 @@
 				2EC3785B18C6266C00D4161B /* UILabel+Addition.m in Sources */,
 				2EC3785218C6130800D4161B /* UIColor+Extensions.m in Sources */,
 				B65DDC1F18C58EE60076408C /* UIView+Addition.m in Sources */,
+				B66E1BF618D86B2B00C292FA /* SDVoiceGridView.m in Sources */,
 				2E54CACF18C5D7BF00B23A96 /* SDHomeHeaderCollectionViewCell.m in Sources */,
 				EF3B651318CDAD0000B0CF1C /* SDCreateUser.m in Sources */,
 				2E54CAC618C5D2C200B23A96 /* SDCollectionViewFlowLayout.m in Sources */,
@@ -4732,6 +4743,7 @@
 				2EC3784918C5F0BA00D4161B /* SDHomeNavigationTitleView.m in Sources */,
 				B6BE49E818CF72F400DA7313 /* SDTextField.m in Sources */,
 				EFD0FC1B18CD952B0026F54F /* JSONKit.m in Sources */,
+				B66E1C2018D8B33300C292FA /* SDBaseGridView.m in Sources */,
 				2E880B0818D8054F0049446F /* AnimationFrame.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -4913,7 +4925,7 @@
 					"-all_load",
 				);
 				PRODUCT_NAME = Somday;
-				PROVISIONING_PROFILE = "669AA18A-59F9-4261-83A8-AD42AB2DCC65";
+				PROVISIONING_PROFILE = "5C587514-A640-482C-B07B-CD282AAFCD3B";
 				USER_HEADER_SEARCH_PATHS = "";
 				WRAPPER_EXTENSION = app;
 			};
@@ -4945,7 +4957,7 @@
 					"-all_load",
 				);
 				PRODUCT_NAME = Somday;
-				PROVISIONING_PROFILE = "669AA18A-59F9-4261-83A8-AD42AB2DCC65";
+				PROVISIONING_PROFILE = "5C587514-A640-482C-B07B-CD282AAFCD3B";
 				USER_HEADER_SEARCH_PATHS = "";
 				WRAPPER_EXTENSION = app;
 			};

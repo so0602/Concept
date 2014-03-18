@@ -90,17 +90,23 @@ static NSString *HeaderCellIdentifier = @"HeaderCollectionViewCell";
         // Debug
         self.dataSource = [NSMutableArray new];
         BOOL toggle = TRUE;
+        BOOL toggle2 = TRUE;
         int min = 0;
         int max = 5;
         for( int i = 0; i <= Debug_count; i++ ){
             SDStory* story = [SDStory new];
-            
             story.type = [NSNumber numberWithInt:min + rand() % (max-min)];
-            
-            if( story.type.intValue == SDStoryType_Photo ){
-                story.imageName = toggle ? @"dump_03.jpg" : @"dump_02.jpg";
-                toggle = !toggle;
+            switch( story.type.intValue ){
+                case SDStoryType_Photo:
+                    story.imageName = toggle ? @"dump_03.jpg" : @"dump_02.jpg";
+                    toggle = !toggle;
+                    break;
+                case SDStoryType_Voice:
+                    story.audioName = toggle2 ? @"1kHz_44100Hz_16bit_05sec.mp3" : @"440Hz_44100Hz_16bit_05sec.mp3";
+                    toggle2 = !toggle2;
+                    break;
             }
+            NSLog(@"story: %@",story.type);
             story.userIconName = @"dump_user";
             story.userName = @"Thom.Y";
             story.date = [NSDate date];
@@ -133,6 +139,7 @@ static NSString *HeaderCellIdentifier = @"HeaderCollectionViewCell";
 
 - (void)updateBackgroundImageToCurrentIndex:(BOOL)toCurrentIndex
 {
+    
     if (_isbgImageAnimating)
         return;
     

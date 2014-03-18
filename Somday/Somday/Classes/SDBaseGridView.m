@@ -12,11 +12,13 @@
 
 #import "SDTextGridView.h"
 #import "SDPhotoGridView.h"
+#import "SDVoiceGridView.h"
 #import "SDStoryBookGridView.h"
 
 static NSString *BaseCellIdentifier = @"CollectionViewCell";
 static NSString *TextCellIdentifier = @"TextCollectionViewCell";
 static NSString *PhotoCellIdentifier = @"PhotoCollectionViewCell";
+static NSString *VoiceCellIdentifier = @"VoiceCollectionViewCell";
 static NSString *StoryBookCellIdentifier = @"StoryBookCollectionViewCell";
 
 KeyframeParametricBlock openFunction = ^double(double time) {
@@ -71,6 +73,9 @@ typedef NSUInteger SDGridMenuState;
         case SDStoryType_Photo:
             reuseIdentifier = PhotoCellIdentifier;
             break;
+        case SDStoryType_Voice:
+            reuseIdentifier = VoiceCellIdentifier;
+            break;
         case SDStoryType_Event:
             reuseIdentifier = TextCellIdentifier;
             break;
@@ -78,9 +83,6 @@ typedef NSUInteger SDGridMenuState;
             reuseIdentifier = StoryBookCellIdentifier;
             break;
         case SDStoryType_Link:
-            reuseIdentifier = TextCellIdentifier;
-            break;
-        case SDStoryType_Voice:
             reuseIdentifier = TextCellIdentifier;
             break;
     }
@@ -96,6 +98,9 @@ typedef NSUInteger SDGridMenuState;
         case SDStoryType_Photo:
             class = [SDPhotoGridView class];
             break;
+        case SDStoryType_Voice:
+            class = [SDVoiceGridView class];
+            break;
         case SDStoryType_Event:
             class = [SDTextGridView class];
             break;
@@ -104,9 +109,6 @@ typedef NSUInteger SDGridMenuState;
             break;
         case SDStoryType_Link:
             class = [SDTextGridView class];
-            break;
-        case SDStoryType_Voice:
-            class = [SDTextGridView class];            
             break;
     }
     
@@ -172,8 +174,7 @@ typedef NSUInteger SDGridMenuState;
     self.mainContentView.layer.masksToBounds = TRUE;
     self.mainContentView.layer.cornerRadius = 8.0f;
     
-    if (self.story.type.intValue == SDStoryType_Photo)
-        self.backgroundImageView.image = [UIImage imageNamed:self.story.imageName];
+    self.backgroundImageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@", self.story.imageName]];
     
     [self.shareButton setTitle:NSLocalizedString(@"Share", nil) forState:UIControlStateNormal];
     self.shareButton.titleLabel.font = [UIFont systemFontOfSize:9];
@@ -210,6 +211,7 @@ typedef NSUInteger SDGridMenuState;
     _menuState = SDGridMenuStateIdle;
     [self.origamiLayer removeFromSuperlayer];
     self.origamiLayer = nil;
+    self.mainContentView.hidden = FALSE;
 }
 
 -(void)didMoveToSuperview{
