@@ -95,7 +95,7 @@ static NSString *HeaderCellIdentifier = @"HeaderCollectionViewCell";
         int max = 5;
         for( int i = 0; i <= Debug_count; i++ ){
             SDStory* story = [SDStory new];
-            story.type = [NSNumber numberWithInt:min + rand() % (max-min)];
+            story.type = [NSNumber numberWithInt:min + arc4random() % (max-min)];
             switch( story.type.intValue ){
                 case SDStoryType_Photo:
                     story.imageName = toggle ? @"dump_03.jpg" : @"dump_02.jpg";
@@ -106,13 +106,12 @@ static NSString *HeaderCellIdentifier = @"HeaderCollectionViewCell";
                     toggle2 = !toggle2;
                     break;
             }
-            NSLog(@"story: %@",story.type);
             story.userIconName = @"dump_user";
             story.userName = @"Thom.Y";
             story.date = [NSDate date];
             story.address = @"AsiaWorld Expo";
-            story.likeCount = [NSNumber numberWithInt:rand() % 10000];
-            story.commentCount = [NSNumber numberWithInt:rand() % 10000];
+            story.likeCount = [NSNumber numberWithInt:arc4random() % 10000];
+            story.commentCount = [NSNumber numberWithInt:arc4random() % 10000];
             [_dataSource addObject:story];
         }
     }

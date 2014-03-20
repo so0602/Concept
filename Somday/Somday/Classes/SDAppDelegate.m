@@ -49,7 +49,8 @@
 
 - (void)applicationDidBecomeActive:(UIApplication *)application
 {
-    if( ![SDUtils username] ){
+    NSString* username = [SDUtils username];
+    if( !username.length ){
         if( ![self.mainViewController.presentedViewController isEqual:self.loginViewController] ){
             [self.mainViewController presentViewController:self.loginViewController animated:FALSE completion:^{
                 

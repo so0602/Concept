@@ -67,27 +67,24 @@
 }
 
 +(NSString*)username{
-    NSUserDefaults* userDefault = [NSUserDefaults standardUserDefaults];
-    return [userDefault objectForKey:@"USERNAME"];
+    KeychainItemWrapper* keychain = [SDUtils sharedKeychainItemWrapper];
+    return [keychain objectForKey:(__bridge id)kSecAttrAccount];
 }
 
 +(NSString*)password{
-    NSUserDefaults* userDefault = [NSUserDefaults standardUserDefaults];
-    return [userDefault objectForKey:@"PASSWORD"];
+    KeychainItemWrapper* keychain = [SDUtils sharedKeychainItemWrapper];
+    return [keychain objectForKey:(__bridge id)kSecValueData];
 }
 
 +(void)setUsername:(NSString*)username password:(NSString*)password{
-    NSUserDefaults* userDefault = [NSUserDefaults standardUserDefaults];
-    [userDefault setObject:username forKey:@"USERNAME"];
-    [userDefault setObject:password forKey:@"PASSWORD"];
-    [userDefault synchronize];
+    KeychainItemWrapper* keychain = [SDUtils sharedKeychainItemWrapper];
+    [keychain setObject:username forKey:(__bridge id)kSecAttrAccount];
+    [keychain setObject:password forKey:(__bridge id)kSecValueData];
 }
 
 +(void)logout{
-    NSUserDefaults* userDefault = [NSUserDefaults standardUserDefaults];
-    [userDefault removeObjectForKey:@"USERNAME"];
-    [userDefault removeObjectForKey:@"PASSWORD"];
-    [userDefault synchronize];
+    KeychainItemWrapper* keychain = [SDUtils sharedKeychainItemWrapper];
+    [keychain resetKeychainItem];
 }
 
 +(UIImage*)captureScreenForView:(UIView *)view
