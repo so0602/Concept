@@ -887,6 +887,7 @@
 		B6DC7C0418DAB2DF00023862 /* SDNewEventViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6DC7C0318DAB2DF00023862 /* SDNewEventViewController.m */; };
 		B6DC7C0718DAB2EE00023862 /* SDCheckInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6DC7C0618DAB2EE00023862 /* SDCheckInViewController.m */; };
 		B6DC7C0B18DAB35C00023862 /* KeychainItemWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = B6DC7C0A18DAB35C00023862 /* KeychainItemWrapper.m */; };
+		B6DC7C0F18DAE1B000023862 /* UITabBarController+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = B6DC7C0E18DAE1B000023862 /* UITabBarController+Additions.m */; };
 		EF3B650018CDA27700B0CF1C /* SDResponseBase.m in Sources */ = {isa = PBXBuildFile; fileRef = EF3B64FF18CDA27700B0CF1C /* SDResponseBase.m */; };
 		EF3B650318CDA2C200B0CF1C /* SDStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = EF3B650218CDA2C200B0CF1C /* SDStatus.m */; };
 		EF3B650A18CDA8AA00B0CF1C /* SDLogin.m in Sources */ = {isa = PBXBuildFile; fileRef = EF3B650918CDA8AA00B0CF1C /* SDLogin.m */; };
@@ -1995,6 +1996,8 @@
 		B6DC7C0618DAB2EE00023862 /* SDCheckInViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SDCheckInViewController.m; path = Classes/SDCheckInViewController.m; sourceTree = "<group>"; };
 		B6DC7C0918DAB35C00023862 /* KeychainItemWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeychainItemWrapper.h; sourceTree = "<group>"; };
 		B6DC7C0A18DAB35C00023862 /* KeychainItemWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeychainItemWrapper.m; sourceTree = "<group>"; };
+		B6DC7C0D18DAE1B000023862 /* UITabBarController+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UITabBarController+Additions.h"; path = "Classes/UITabBarController+Additions.h"; sourceTree = "<group>"; };
+		B6DC7C0E18DAE1B000023862 /* UITabBarController+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UITabBarController+Additions.m"; path = "Classes/UITabBarController+Additions.m"; sourceTree = "<group>"; };
 		EF3B64FE18CDA27700B0CF1C /* SDResponseBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SDResponseBase.h; path = Classes/SDResponseBase.h; sourceTree = "<group>"; };
 		EF3B64FF18CDA27700B0CF1C /* SDResponseBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SDResponseBase.m; path = Classes/SDResponseBase.m; sourceTree = "<group>"; };
 		EF3B650118CDA2C200B0CF1C /* SDStatus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SDStatus.h; path = Classes/SDStatus.h; sourceTree = "<group>"; };
@@ -3539,8 +3542,12 @@
 			children = (
 				EFD0FC1018CD92CF0026F54F /* ASIFormDataRequest+Addition.h */,
 				EFD0FC1118CD92CF0026F54F /* ASIFormDataRequest+Addition.m */,
+				2EFB3D0F18D2E7F600110DC6 /* CAKeyframeAnimation+Addition.h */,
+				2EFB3D1018D2E7F600110DC6 /* CAKeyframeAnimation+Addition.m */,
 				B64444A718CA374800CDD2D4 /* NSNotificationCenter+Name.h */,
 				B64444A818CA374800CDD2D4 /* NSNotificationCenter+Name.m */,
+				EF3B652218D042C600B0CF1C /* NSString+Addition.h */,
+				EF3B652318D042C600B0CF1C /* NSString+Addition.m */,
 				2ED35BC518C70A3500EDA245 /* UICollectionView+Addition.h */,
 				2ED35BC618C70A3500EDA245 /* UICollectionView+Addition.m */,
 				2EC3785018C6130800D4161B /* UIColor+Extensions.h */,
@@ -3551,18 +3558,16 @@
 				2EC3785A18C6266C00D4161B /* UILabel+Addition.m */,
 				2EC3785618C61B0F00D4161B /* UINavigationItem+Addition.h */,
 				2EC3785718C61B0F00D4161B /* UINavigationItem+Addition.m */,
+				B6DC7C0D18DAE1B000023862 /* UITabBarController+Additions.h */,
+				B6DC7C0E18DAE1B000023862 /* UITabBarController+Additions.m */,
 				B65DDC1918C587130076408C /* UITableViewCell+Addition.h */,
 				B65DDC1A18C587130076408C /* UITableViewCell+Addition.m */,
+				B6BE49E218CF707200DA7313 /* UITextField+Addition.h */,
+				B6BE49E318CF707200DA7313 /* UITextField+Addition.m */,
 				B65DDC1D18C58EE60076408C /* UIView+Addition.h */,
 				B65DDC1E18C58EE60076408C /* UIView+Addition.m */,
 				B65DDC1018C57FB30076408C /* UIViewController+Addition.h */,
 				B65DDC1118C57FB30076408C /* UIViewController+Addition.m */,
-				B6BE49E218CF707200DA7313 /* UITextField+Addition.h */,
-				B6BE49E318CF707200DA7313 /* UITextField+Addition.m */,
-				EF3B652218D042C600B0CF1C /* NSString+Addition.h */,
-				EF3B652318D042C600B0CF1C /* NSString+Addition.m */,
-				2EFB3D0F18D2E7F600110DC6 /* CAKeyframeAnimation+Addition.h */,
-				2EFB3D1018D2E7F600110DC6 /* CAKeyframeAnimation+Addition.m */,
 			);
 			name = Categories;
 			sourceTree = "<group>";
@@ -4782,6 +4787,7 @@
 				EF3B652418D042C600B0CF1C /* NSString+Addition.m in Sources */,
 				B64444A918CA374800CDD2D4 /* NSNotificationCenter+Name.m in Sources */,
 				B6BE49DD18CF699F00DA7313 /* SDEmailTextField.m in Sources */,
+				B6DC7C0F18DAE1B000023862 /* UITabBarController+Additions.m in Sources */,
 				B6BE49E418CF707200DA7313 /* UITextField+Addition.m in Sources */,
 				B65DDC1218C57FB30076408C /* UIViewController+Addition.m in Sources */,
 				EFA8EBCC18BDD87100144B75 /* main.m in Sources */,
