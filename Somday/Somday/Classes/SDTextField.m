@@ -72,6 +72,11 @@
     }
 }
 
+-(BOOL)checkFormat{
+    // Override
+    return TRUE;
+}
+
 #pragma mark - Private Functions
 
 -(void)initialize{

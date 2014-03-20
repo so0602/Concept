@@ -121,6 +121,12 @@
 
 #pragma mark - UITextFieldDelegate
 
+-(void)textFieldDidEndEditing:(UITextField *)textField{
+    if( [self.usernameTextField isEqual:textField] ){
+        [self checkEmail];
+    }
+}
+
 -(BOOL)textFieldShouldReturn:(UITextField *)textField{
     if( [textField isEqual:self.usernameTextField] ){
         [self checkEmail];
