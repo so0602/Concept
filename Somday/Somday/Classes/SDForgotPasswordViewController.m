@@ -38,8 +38,7 @@
 @property (nonatomic, strong) KBPopupBubbleView* bubbleView;
 
 @property (nonatomic, strong, readonly) NSString* errorMessage;
-
--(void)checkEmail;
+@property (nonatomic, strong) NSString* bubbleMessage;
 
 @end
 
@@ -73,18 +72,7 @@
     }
 }
 
--(NSString*)emailErrorMessage{
-    NSMutableArray* strings = [NSMutableArray array];
-    if( !self.usernameTextField.text.isEmailFormat ){
-        NSString* string = NSLocalizedString(@"ErrorMessage_EmailFormat", nil);
-        [strings addObject:string];
-    }
-    
-    if( strings.count ){
-        return [strings componentsJoinedByString:@"\n"];
-    }
-    return nil;
-}
+#pragma mark - Private Functions
 
 -(KBPopupBubbleView*)bubbleView{
     if( !_bubbleView ){
@@ -104,32 +92,58 @@
     return _bubbleView;
 }
 
--(void)checkEmail{
-    if( self.usernameTextField.text.isEmailFormat ){
-        self.usernameTextField.state = SDTextFieldStateCorrect;
-        [self.bubbleView hide:TRUE];
-        [self touchUpInside:self.submitButton];
-    }else{
-        self.usernameTextField.state = SDTextFieldStateError;
-        
-        self.bubbleView.label.text = self.emailErrorMessage;
+-(NSString*)emailErrorMessage{
+    NSMutableArray* strings = [NSMutableArray array];
+    if( !self.usernameTextField.text.isEmailFormat ){
+        NSString* string = NSLocalizedString(@"ErrorMessage_EmailFormat", nil);
+        [strings addObject:string];
+    }
+    
+    if( strings.count ){
+        return [strings componentsJoinedByString:@"\n"];
+    }
+    return nil;
+}
+
+-(void)setBubbleMessage:(NSString *)bubbleMessage{
+    _bubbleMessage = bubbleMessage;
+    self.bubbleView.label.text = bubbleMessage;
+    if( bubbleMessage.length ){
         if( !self.bubbleView.superview ){
             [self.bubbleView showInView:self.view animated:TRUE];
         }
+    }else{
+        [self.bubbleView hide:TRUE];
     }
 }
 
 #pragma mark - UITextFieldDelegate
 
 -(void)textFieldDidEndEditing:(UITextField *)textField{
-    if( [self.usernameTextField isEqual:textField] ){
-        [self checkEmail];
+    if( [textField isKindOfClass:[SDTextField class]] ){
+        BOOL success = [(SDTextField*)textField checkFormat];
+        if( [textField isEqual:self.usernameTextField] ){
+            if( success ){
+                self.bubbleMessage = nil;
+                [self touchUpInside:self.submitButton];
+            }else{
+                self.bubbleMessage = self.emailErrorMessage;
+            }
+        }
     }
 }
 
 -(BOOL)textFieldShouldReturn:(UITextField *)textField{
-    if( [textField isEqual:self.usernameTextField] ){
-        [self checkEmail];
+    if( [textField isKindOfClass:[SDTextField class]] ){
+        BOOL success = [(SDTextField*)textField checkFormat];
+        if( [textField isEqual:self.usernameTextField] ){
+            if( success ){
+                self.bubbleMessage = nil;
+                [self touchUpInside:self.submitButton];
+            }else{
+                self.bubbleMessage = self.emailErrorMessage;
+            }
+        }
     }
     return TRUE;
 }

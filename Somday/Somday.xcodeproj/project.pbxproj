@@ -3192,6 +3192,9 @@
 		B65DE2AF18C884A80076408C /* Menu - Top */ = {
 			isa = PBXGroup;
 			children = (
+				B6DC7BFD18DAB19500023862 /* Check in */,
+				B6DC7BF518DAB18F00023862 /* New Event */,
+				B6DC7BFE18DAB19C00023862 /* New Story */,
 				B65DE2B018C884D50076408C /* SDTopMenuViewController.h */,
 				B65DE2B118C884D50076408C /* SDTopMenuViewController.m */,
 			);
@@ -3257,6 +3260,27 @@
 				B66E1BF518D86B2B00C292FA /* SDVoiceGridView.m */,
 			);
 			name = GridView;
+			sourceTree = "<group>";
+		};
+		B6DC7BF518DAB18F00023862 /* New Event */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "New Event";
+			sourceTree = "<group>";
+		};
+		B6DC7BFD18DAB19500023862 /* Check in */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "Check in";
+			sourceTree = "<group>";
+		};
+		B6DC7BFE18DAB19C00023862 /* New Story */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "New Story";
 			sourceTree = "<group>";
 		};
 		EF3B64F818CDA25A00B0CF1C /* Models */ = {
