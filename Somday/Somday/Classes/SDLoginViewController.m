@@ -156,7 +156,9 @@
         _bubbleView.cornerRadius = 8;
         _bubbleView.useBorders = FALSE;
         _bubbleView.drawableColor = [UIColor whiteColor];
-        _bubbleView.label.font = [UIFont josefinSansSemiBoldFontOfSize:14];
+        UIFont* font = [UIFont systemFontOfSize:14];
+        font = [font setFontFamily:SDFontFamily_JosefinSans style:14];
+        _bubbleView.label.font = font;
         _bubbleView.draggable = FALSE;
     }
     return _bubbleView;

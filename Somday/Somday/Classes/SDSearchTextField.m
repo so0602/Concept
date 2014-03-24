@@ -9,6 +9,7 @@
 #import "SDSearchTextField.h"
 
 #import "UIView+Addition.h"
+#import "UIColor+Extensions.h"
 
 @interface SDSearchTextField ()
 
@@ -26,6 +27,36 @@
 -(id)initWithCoder:(NSCoder *)aDecoder{
     if( self = [super initWithCoder:aDecoder] ){
         [self initialize];
+        
+        if( [self respondsToSelector:@selector(setAttributedPlaceholder:)] ){
+            UIColor* color = [UIColor colorWithHexString:@"CCCCCC"];
+            NSShadow* shadow = [[NSShadow alloc] init];
+            shadow.shadowColor = [UIColor colorWithWhite:0 alpha:0.3];
+            shadow.shadowOffset = CGSizeMake(0, 1);
+            UIFont* font = [UIFont systemFontOfSize:12];
+            font = [font setFontFamily:SDFontFamily_Montserrat style:SDFontStyle_Regular];
+            
+            NSMutableDictionary* attributes = [NSMutableDictionary dictionary];
+            [attributes setObject:color forKey:NSForegroundColorAttributeName];
+            [attributes setObject:shadow forKey:NSShadowAttributeName];
+            [attributes setObject:font forKey:NSFontAttributeName];
+            
+            self.attributedPlaceholder = [[NSAttributedString alloc] initWithString:self.placeholder attributes:attributes];
+        }
+        
+        UIColor* color = [UIColor colorWithHexString:@"333333"];
+        NSShadow* shadow = [[NSShadow alloc] init];
+        shadow.shadowColor = [UIColor colorWithWhite:1 alpha:0.3];
+        shadow.shadowOffset = CGSizeMake(0, -1);
+        UIFont* font = self.font;
+        font = [font setFontFamily:SDFontFamily_Montserrat style:SDFontStyle_Regular];
+        
+        NSMutableDictionary* attributes = [NSMutableDictionary dictionary];
+        [attributes setObject:color forKey:NSForegroundColorAttributeName];
+        [attributes setObject:shadow forKey:NSShadowAttributeName];
+        [attributes setObject:font forKey:NSFontAttributeName];
+        
+        self.defaultTextAttributes = attributes;
     }
     return self;
 }
@@ -33,6 +64,36 @@
 -(id)initWithFrame:(CGRect)frame{
     if( self = [super initWithFrame:frame] ){
         [self initialize];
+        
+        if( [self respondsToSelector:@selector(setAttributedPlaceholder:)] ){
+            UIColor* color = [UIColor colorWithHexString:@"CCCCCC"];
+            NSShadow* shadow = [[NSShadow alloc] init];
+            shadow.shadowColor = [UIColor colorWithWhite:0 alpha:0.3];
+            shadow.shadowOffset = CGSizeMake(0, 1);
+            UIFont* font = self.font;
+            font = [font setFontFamily:SDFontFamily_Montserrat style:SDFontStyle_Regular];
+            
+            NSMutableDictionary* attributes = [NSMutableDictionary dictionary];
+            [attributes setObject:color forKey:NSForegroundColorAttributeName];
+            [attributes setObject:shadow forKey:NSShadowAttributeName];
+            [attributes setObject:font forKey:NSFontAttributeName];
+            
+            self.attributedPlaceholder = [[NSAttributedString alloc] initWithString:self.placeholder attributes:attributes];
+        }
+        
+        UIColor* color = [UIColor colorWithHexString:@"333333"];
+        NSShadow* shadow = [[NSShadow alloc] init];
+        shadow.shadowColor = [UIColor colorWithWhite:1 alpha:0.3];
+        shadow.shadowOffset = CGSizeMake(0, -1);
+        UIFont* font = self.font;
+        font = [font setFontFamily:SDFontFamily_Montserrat style:SDFontStyle_Regular];
+        
+        NSMutableDictionary* attributes = [NSMutableDictionary dictionary];
+        [attributes setObject:color forKey:NSForegroundColorAttributeName];
+        [attributes setObject:shadow forKey:NSShadowAttributeName];
+        [attributes setObject:font forKey:NSFontAttributeName];
+        
+        self.defaultTextAttributes = attributes;
     }
     return self;
 }

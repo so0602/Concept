@@ -679,7 +679,7 @@
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Events, tasks, friends..." minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="YHh-vl-Pgp" customClass="SDSearchTextField">
                                 <rect key="frame" x="58" y="30" width="235" height="44"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <textInputTraits key="textInputTraits" returnKeyType="search"/>
                                 <connections>
                                     <outlet property="delegate" destination="c77-pE-Sd3" id="pJK-N1-YkP"/>
