@@ -22,6 +22,7 @@
 #pragma mark - SDTextField Private Functions
 
 -(void)initialize{
+    [super initialize];
     self.rightImage = [UIImage imageNamed:@"icons-grey-ccc-12px_lock"];
 }
 

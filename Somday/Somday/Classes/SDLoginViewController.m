@@ -37,6 +37,7 @@
 @property (nonatomic, strong) IBOutlet SDTextField* passwordTextField;
 @property (nonatomic, strong) IBOutlet UIButton* loginButton;
 @property (nonatomic, strong) IBOutlet UIButton* forgotButton;
+@property (nonatomic, strong) IBOutlet UIButton* loginWithFacebookButton;
 @property (nonatomic, strong) IBOutlet UIButton* signUpButton;
 
 @property (nonatomic, strong) KBPopupBubbleView* bubbleView;
@@ -53,6 +54,14 @@
 
 -(void)viewDidLoad{
     [super viewDidLoad];
+    
+    UIFont* font = self.loginWithFacebookButton.titleLabel.font;
+    font = [font setFontFamily:SDFontFamily_Montserrat style:SDFontStyle_Regular];
+    self.loginWithFacebookButton.titleLabel.font = font;
+    
+    font = self.signUpButton.titleLabel.font;
+    font = [font setFontFamily:SDFontFamily_Montserrat style:SDFontStyle_Bold];
+    self.signUpButton.titleLabel.font = font;
     
     UIImage* image = self.textFieldBackgroundImageView.image;
     image = [image stretchableImageWithLeftCapWidth:image.size.width / 2 topCapHeight:image.size.height / 2];
@@ -80,6 +89,15 @@
     }
     
     [self.backgroundPicture processImage];
+}
+
+#pragma mark - SDViewController Override
+
+-(void)dismissKeyboard{
+    [super dismissKeyboard];
+    
+    [self.usernameTextField resignFirstResponder];
+    [self.passwordTextField resignFirstResponder];
 }
 
 #pragma mark - UIViewController Additions

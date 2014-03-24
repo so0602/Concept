@@ -13,6 +13,7 @@
 #import "SDUtils.h"
 
 #import "UIViewController+Addition.h"
+#import "UIFont+Addition.h"
 
 @implementation SDAppDelegate
 

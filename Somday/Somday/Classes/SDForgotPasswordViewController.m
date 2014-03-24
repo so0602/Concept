@@ -49,6 +49,18 @@
 -(void)viewDidLoad{
     [super viewDidLoad];
     
+    UIFont* font = self.backButton.titleLabel.font;
+    font = [font setFontFamily:SDFontFamily_Montserrat style:SDFontStyle_Regular];
+    self.backButton.titleLabel.font = font;
+    
+    font = self.mainTitleLabel.font;
+    font = [font setFontFamily:SDFontFamily_Montserrat style:SDFontStyle_Regular];
+    self.mainTitleLabel.font = font;
+    
+    font = self.descriptionLabel.font;
+    font = [font setFontFamily:SDFontFamily_Montserrat style:SDFontStyle_Regular];
+    self.descriptionLabel.font = font;
+    
     UIImage* image = self.textFieldBackgroundImageView.image;
     image = [image stretchableImageWithLeftCapWidth:image.size.width / 2 topCapHeight:image.size.height / 2];
     self.textFieldBackgroundImageView.image = image;
@@ -59,6 +71,14 @@
     
     UIImage* flippedImage = [UIImage imageWithCGImage:self.backgroundImage.CGImage scale:self.backgroundImage.scale orientation: UIImageOrientationUpMirrored];
     self.backgroundImageView.image = flippedImage;
+}
+
+#pragma mark - SDViewController Override
+
+-(void)dismissKeyboard{
+    [super dismissKeyboard];
+    
+    [self.usernameTextField resignFirstResponder];
 }
 
 #pragma mark - UIViewController Additions

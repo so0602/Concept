@@ -15,6 +15,7 @@
 
 #import "UIViewController+Addition.h"
 #import "UIFont+Addition.h"
+#import "UITextField+Addition.h"
 #import "NSString+Addition.h"
 
 @interface SDSignUpViewController ()<UIAlertViewDelegate, UITextFieldDelegate>
@@ -46,6 +47,10 @@
 -(void)viewDidLoad{
     [super viewDidLoad];
     
+    UIFont* font = self.backButton.titleLabel.font;
+    font = [font setFontFamily:SDFontFamily_Montserrat style:SDFontStyle_Regular];
+    self.backButton.titleLabel.font = font;
+    
     UILabel* label = [[UILabel alloc] initWithFrame:CGRectZero];
     label.backgroundColor = [UIColor clearColor];
     label.text = @"as your login";
@@ -74,6 +79,18 @@
     
     UIImage* flippedImage = [UIImage imageWithCGImage:self.backgroundImage.CGImage scale:self.backgroundImage.scale orientation: UIImageOrientationUpMirrored];
     self.backgroundImageView.image = flippedImage;
+    
+    self.confirmPasswordTextField.rightImage = nil;
+}
+
+#pragma mark - SDViewController Override
+
+-(void)dismissKeyboard{
+    [super dismissKeyboard];
+    
+    [self.usernameTextField resignFirstResponder];
+    [self.passwordTextField resignFirstResponder];
+    [self.confirmPasswordTextField resignFirstResponder];
 }
 
 #pragma mark - UIViewController Additions
