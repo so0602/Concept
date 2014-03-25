@@ -6,9 +6,20 @@
 //  Copyright (c) 2014 Freddy So. All rights reserved.
 //
 
+#import <QuartzCore/QuartzCore.h>
+
 #import "SDUtils.h"
 
-#import <QuartzCore/QuartzCore.h>
+#import "SDLoadingViewController.h"
+#import "SDAppDelegate.h"
+
+#import "UIViewController+Addition.h"
+
+@interface SDUtils ()
+
++(UIViewController*)loadingViewController;
+
+@end
 
 @implementation SDUtils
 
@@ -97,6 +108,36 @@
     return viewImage;
 }
 
+#pragma mark - Private Functions
 
++(UIViewController*)loadingViewController{
+    static UIViewController* loadingViewController = nil;
+    static dispatch_once_t oncePredicate;
+    
+    dispatch_once(&oncePredicate, ^{
+        loadingViewController = [SDLoadingViewController viewControllerFromStoryboardWithIdentifier:@"Loading"];
+    });
+    
+    return loadingViewController;
+}
+
++(void)showLoading{
+    UIViewController* viewController = [SDUtils loadingViewController];
+    if( !viewController.isViewLoaded ){
+        [viewController viewDidLoad];
+    }
+    if( !viewController.view.superview ){
+        SDAppDelegate* delegate = [UIApplication sharedApplication].delegate;
+        UIWindow* window = delegate.window;
+        [window addSubview:viewController.view];
+    }
+}
+
++(void)dismissLoading{
+    UIViewController* viewController = [SDUtils loadingViewController];
+    if( viewController.view.superview ){
+        [viewController.view removeFromSuperview];
+    }
+}
 
 @end

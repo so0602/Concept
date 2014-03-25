@@ -69,7 +69,11 @@
     self.backgroundImageView.image = self.backgroundImage;
 }
 
-#pragma mark - SDMenuViewController
+-(void)dealloc{
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:HomeBackgroundImageChangedNotification object:nil];
+}
+
+#pragma mark - Private Functions
 
 -(SDSearchViewController*)searchViewController{
     if( !_searchViewController ){
@@ -195,7 +199,8 @@
             [SDUtils logout];
             SDAppDelegate* delegate = [UIApplication sharedApplication].delegate;
             [delegate.mainViewController presentViewController:delegate.loginViewController animated:TRUE completion:^{
-                
+                SDDynamicsDrawerViewController* viewController = delegate.mainViewController;
+                [viewController setPaneState:MSDynamicsDrawerPaneStateClosed];
             }];
         }
             break;

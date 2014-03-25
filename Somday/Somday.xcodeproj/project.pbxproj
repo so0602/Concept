@@ -858,6 +858,7 @@
 		B66E1BFE18D8A75D00C292FA /* 440Hz_44100Hz_16bit_05sec.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = B66E1BFC18D8A75D00C292FA /* 440Hz_44100Hz_16bit_05sec.mp3 */; };
 		B66E1C2018D8B33300C292FA /* SDBaseGridView.m in Sources */ = {isa = PBXBuildFile; fileRef = B66E1C1F18D8B33300C292FA /* SDBaseGridView.m */; };
 		B6777A5618E0A9F900BD8F05 /* SDViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6777A5518E0A9F900BD8F05 /* SDViewController.m */; };
+		B6777B7818E1C24C00BD8F05 /* SDLoadingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6777B7718E1C24C00BD8F05 /* SDLoadingViewController.m */; };
 		B6BE49D018CF457500DA7313 /* SDForgotPasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6BE49CF18CF457500DA7313 /* SDForgotPasswordViewController.m */; };
 		B6BE49D818CF4F0900DA7313 /* SDSignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6BE49D718CF4F0900DA7313 /* SDSignUpViewController.m */; };
 		B6BE49DD18CF699F00DA7313 /* SDEmailTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = B6BE49DC18CF699F00DA7313 /* SDEmailTextField.m */; };
@@ -1957,6 +1958,8 @@
 		B66E1C1F18D8B33300C292FA /* SDBaseGridView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SDBaseGridView.m; path = Classes/SDBaseGridView.m; sourceTree = "<group>"; };
 		B6777A5418E0A9F900BD8F05 /* SDViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SDViewController.h; path = Classes/SDViewController.h; sourceTree = "<group>"; };
 		B6777A5518E0A9F900BD8F05 /* SDViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SDViewController.m; path = Classes/SDViewController.m; sourceTree = "<group>"; };
+		B6777B7618E1C24C00BD8F05 /* SDLoadingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SDLoadingViewController.h; path = Classes/SDLoadingViewController.h; sourceTree = "<group>"; };
+		B6777B7718E1C24C00BD8F05 /* SDLoadingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SDLoadingViewController.m; path = Classes/SDLoadingViewController.m; sourceTree = "<group>"; };
 		B6BE49CE18CF457500DA7313 /* SDForgotPasswordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SDForgotPasswordViewController.h; path = Classes/SDForgotPasswordViewController.h; sourceTree = "<group>"; };
 		B6BE49CF18CF457500DA7313 /* SDForgotPasswordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SDForgotPasswordViewController.m; path = Classes/SDForgotPasswordViewController.m; sourceTree = "<group>"; };
 		B6BE49D618CF4F0900DA7313 /* SDSignUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SDSignUpViewController.h; path = Classes/SDSignUpViewController.h; sourceTree = "<group>"; };
@@ -3223,6 +3226,15 @@
 			name = Base;
 			sourceTree = "<group>";
 		};
+		B6777B6E18E1C23A00BD8F05 /* Loading */ = {
+			isa = PBXGroup;
+			children = (
+				B6777B7618E1C24C00BD8F05 /* SDLoadingViewController.h */,
+				B6777B7718E1C24C00BD8F05 /* SDLoadingViewController.m */,
+			);
+			name = Loading;
+			sourceTree = "<group>";
+		};
 		B6BE49CD18CF455000DA7313 /* Forgot Password */ = {
 			isa = PBXGroup;
 			children = (
@@ -3535,6 +3547,7 @@
 			children = (
 				B6777A4C18E0A9E100BD8F05 /* Base */,
 				B65DE2AA18C884940076408C /* Home */,
+				B6777B6E18E1C23A00BD8F05 /* Loading */,
 				EF3B651B18CDB6AB00B0CF1C /* Login */,
 				B65DDC1418C5865C0076408C /* Main */,
 			);
@@ -4789,6 +4802,7 @@
 				2E54CACF18C5D7BF00B23A96 /* SDHomeHeaderCollectionViewCell.m in Sources */,
 				EF3B651318CDAD0000B0CF1C /* SDCreateUser.m in Sources */,
 				2E54CAC618C5D2C200B23A96 /* SDCollectionViewFlowLayout.m in Sources */,
+				B6777B7818E1C24C00BD8F05 /* SDLoadingViewController.m in Sources */,
 				B6DC7C0718DAB2EE00023862 /* SDCheckInViewController.m in Sources */,
 				EF891DE218CD8EA0005DC780 /* SDNetworkUtils.m in Sources */,
 				2E7A351A18D888D100662504 /* UIViewExtention.m in Sources */,

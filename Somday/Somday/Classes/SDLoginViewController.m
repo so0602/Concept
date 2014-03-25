@@ -46,6 +46,9 @@
 @property (nonatomic, strong, readonly) NSString* emailErrorMessage;
 @property (nonatomic, strong) NSString* bubbleMessage;
 
+@property (nonatomic, strong) NSString* signedUsername;
+@property (nonatomic, strong) NSString* signedPassword;
+
 @end
 
 @implementation SDLoginViewController
@@ -60,7 +63,7 @@
     self.loginWithFacebookButton.titleLabel.font = font;
     
     font = self.signUpButton.titleLabel.font;
-    font = [font setFontFamily:SDFontFamily_Montserrat style:SDFontStyle_Bold];
+    font = [font setFontFamily:SDFontFamily_Montserrat style:SDFontStyle_Regular];
     self.signUpButton.titleLabel.font = font;
     
     UIImage* image = self.textFieldBackgroundImageView.image;
@@ -89,6 +92,15 @@
     }
     
     [self.backgroundPicture processImage];
+}
+
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    
+    self.usernameTextField.text = self.signedUsername;
+    self.passwordTextField.text = self.signedPassword;
+    self.usernameTextField.state = SDTextFieldStateNormal;
+    self.passwordTextField.state = SDTextFieldStateNormal;
 }
 
 #pragma mark - SDViewController Override
@@ -228,6 +240,14 @@
         }else if( [textField isEqual:self.passwordTextField] ){
             [self touchUpInside:self.loginButton];
         }
+    }
+    return TRUE;
+}
+
+-(BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{
+    string = [textField.text stringByReplacingCharactersInRange:range withString:string];
+    if( !string.length && [textField isKindOfClass:[SDTextField class]] ){
+        ((SDTextField*)textField).state = SDTextFieldStateNormal;
     }
     return TRUE;
 }

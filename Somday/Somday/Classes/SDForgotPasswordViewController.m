@@ -171,4 +171,12 @@
     return TRUE;
 }
 
+-(BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{
+    string = [textField.text stringByReplacingCharactersInRange:range withString:string];
+    if( !string.length && [textField isKindOfClass:[SDTextField class]] ){
+        ((SDTextField*)textField).state = SDTextFieldStateNormal;
+    }
+    return TRUE;
+}
+
 @end

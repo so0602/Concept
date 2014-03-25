@@ -16,6 +16,7 @@
 #import "UIViewController+Addition.h"
 #import "UIFont+Addition.h"
 #import "UITextField+Addition.h"
+#import "UIColor+Extensions.h"
 #import "NSString+Addition.h"
 
 @interface SDSignUpViewController ()<UIAlertViewDelegate, UITextFieldDelegate>
@@ -54,20 +55,22 @@
     UILabel* label = [[UILabel alloc] initWithFrame:CGRectZero];
     label.backgroundColor = [UIColor clearColor];
     label.text = @"as your login";
-    label.font = [UIFont josefinSansFontOfSize:14];
-    label.textColor = [UIColor colorWithWhite:0.5 alpha:0.8];
+    font = [UIFont systemFontOfSize:12];
+    font = [font setFontFamily:SDFontFamily_Montserrat style:SDFontStyle_Regular];
+    label.font = font;
+    label.shadowColor = [UIColor colorWithWhite:0 alpha:0.3];
+    label.textColor = [UIColor colorWithHexString:@"CCCCCC"];
     [label sizeToFit];
     self.usernameTextField.rightView = label;
-    self.usernameTextField.rightViewMode = UITextFieldViewModeUnlessEditing;
     
     label = [[UILabel alloc] initWithFrame:CGRectZero];
     label.backgroundColor = [UIColor clearColor];
     label.text = @"at least 8 characters";
-    label.font = [UIFont josefinSansFontOfSize:14];
-    label.textColor = [UIColor colorWithWhite:0.5 alpha:0.8];
+    label.font = font;
+    label.shadowColor = [UIColor colorWithWhite:0 alpha:0.3];
+    label.textColor = [UIColor colorWithHexString:@"CCCCCC"];
     [label sizeToFit];
     self.passwordTextField.rightView = label;
-    self.passwordTextField.rightViewMode = UITextFieldViewModeUnlessEditing;
     
     UIImage* image = self.textFieldBackgroundImageView.image;
     image = [image stretchableImageWithLeftCapWidth:image.size.width / 2 topCapHeight:image.size.height / 2];
@@ -239,6 +242,14 @@
         }else if( [textField isEqual:self.confirmPasswordTextField] ){
             [self touchUpInside:self.signUpButton];
         }
+    }
+    return TRUE;
+}
+
+-(BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{
+    string = [textField.text stringByReplacingCharactersInRange:range withString:string];
+    if( !string.length && [textField isKindOfClass:[SDTextField class]] ){
+        ((SDTextField*)textField).state = SDTextFieldStateNormal;
     }
     return TRUE;
 }

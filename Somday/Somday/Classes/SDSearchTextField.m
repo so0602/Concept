@@ -69,7 +69,7 @@
             UIColor* color = [UIColor colorWithHexString:@"CCCCCC"];
             NSShadow* shadow = [[NSShadow alloc] init];
             shadow.shadowColor = [UIColor colorWithWhite:0 alpha:0.3];
-            shadow.shadowOffset = CGSizeMake(0, 1);
+            shadow.shadowOffset = CGSizeMake(0, -1);
             UIFont* font = self.font;
             font = [font setFontFamily:SDFontFamily_Montserrat style:SDFontStyle_Regular];
             
@@ -84,7 +84,7 @@
         UIColor* color = [UIColor colorWithHexString:@"333333"];
         NSShadow* shadow = [[NSShadow alloc] init];
         shadow.shadowColor = [UIColor colorWithWhite:1 alpha:0.3];
-        shadow.shadowOffset = CGSizeMake(0, -1);
+        shadow.shadowOffset = CGSizeMake(0, 1);
         UIFont* font = self.font;
         font = [font setFontFamily:SDFontFamily_Montserrat style:SDFontStyle_Regular];
         

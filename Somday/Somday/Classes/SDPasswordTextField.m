@@ -30,7 +30,11 @@
 
 -(BOOL)checkFormat{
     BOOL checkFormat = self.text.isPasswordFormat;
-    self.state = checkFormat ? SDTextFieldStateCorrect : SDTextFieldStateError;
+    if( !self.text.length ){
+        self.state = SDTextFieldStateNormal;
+    }else{
+        self.state = checkFormat ? SDTextFieldStateCorrect : SDTextFieldStateError;
+    }
     return checkFormat;
 }
 

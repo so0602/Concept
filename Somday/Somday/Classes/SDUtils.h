@@ -40,4 +40,7 @@
 
 +(UIImage*)captureScreenForView:(UIView *)view;
 
++(void)showLoading;
++(void)dismissLoading;
+
 @end

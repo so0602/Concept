@@ -93,7 +93,7 @@
         UIColor* color = [UIColor colorWithHexString:@"666666"];
         NSShadow* shadow = [[NSShadow alloc] init];
         shadow.shadowColor = [UIColor colorWithWhite:0 alpha:0.3];
-        shadow.shadowOffset = CGSizeMake(0, 1);
+        shadow.shadowOffset = CGSizeMake(0, -1);
         UIFont* font = self.font;
         font = [font setFontFamily:SDFontFamily_Montserrat style:SDFontStyle_Regular];
         
@@ -108,7 +108,7 @@
     UIColor* color = [UIColor colorWithHexString:@"333333"];
     NSShadow* shadow = [[NSShadow alloc] init];
     shadow.shadowColor = [UIColor colorWithWhite:1 alpha:0.3];
-    shadow.shadowOffset = CGSizeMake(0, -1);
+    shadow.shadowOffset = CGSizeMake(0, 1);
     UIFont* font = self.font;
     font = [font setFontFamily:SDFontFamily_Montserrat style:SDFontStyle_Regular];
     
@@ -137,7 +137,7 @@
             _rightImageView.contentMode = UIViewContentModeLeft;
         }
         self.rightView = _rightImageView;
-        self.rightViewMode = UITextFieldViewModeAlways;
+        self.rightViewMode = UITextFieldViewModeUnlessEditing;
     }else{
         _rightImageView = (id)self.rightView;
     }
@@ -148,30 +148,30 @@
 #pragma mark - UITextField Override
 
 -(CGRect)editingRectForBounds:(CGRect)bounds{
-    bounds = CGRectInset(bounds, 10, 0);
-    bounds.origin.x -= 10;
-    bounds.size.width -= CGRectGetWidth(self.rightView.bounds) - 10;
+    bounds = CGRectInset(bounds, 16, 0);
+    bounds.size.width -= CGRectGetWidth(self.rightView.bounds) - 6;
+//    bounds.size.width -= (self.text.length ? 0 : CGRectGetWidth(self.rightView.bounds)) - 6;
     return bounds;
 }
 
 -(CGRect)textRectForBounds:(CGRect)bounds{
-    bounds = CGRectInset(bounds, 10, 0);
-    bounds.origin.x -= 10;
-    bounds.size.width -= CGRectGetWidth(self.rightView.bounds) - 10;
+    bounds = CGRectInset(bounds, 16, 0);
+    bounds.size.width -= CGRectGetWidth(self.rightView.bounds) - 6;
+//    bounds.size.width -= (self.text.length ? 0 : CGRectGetWidth(self.rightView.bounds)) - 6;
     return bounds;
 }
 
 -(CGRect)placeholderRectForBounds:(CGRect)bounds{
-    bounds = CGRectInset(bounds, 10, 0);
-    bounds.origin.x -= 10;
-    bounds.size.width -= CGRectGetWidth(self.rightView.bounds) - 10;
+    bounds = CGRectInset(bounds, 16, 0);
+    bounds.size.width -= CGRectGetWidth(self.rightView.bounds) - 6;
+//    bounds.size.width -= (self.text.length ? 0 : CGRectGetWidth(self.rightView.bounds)) - 6;
     return bounds;
 }
 
 -(CGRect)rightViewRectForBounds:(CGRect)bounds{
     CGRect newBounds = self.rightView.bounds;
     newBounds.origin.y = CGRectGetMidY(bounds) - CGRectGetMidY(newBounds);
-    newBounds.origin.x = CGRectGetWidth(bounds) - CGRectGetWidth(newBounds) - 10;
+    newBounds.origin.x = CGRectGetWidth(bounds) - CGRectGetWidth(newBounds) - 16;
     bounds = newBounds;
     return bounds;
 }

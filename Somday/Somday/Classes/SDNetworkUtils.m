@@ -8,6 +8,8 @@
 
 #import "SDNetworkUtils.h"
 
+#import "SDUtils.h"
+
 #import "JSONKit.h"
 
 #import "ASIFormDataRequest+Addition.h"
@@ -42,6 +44,7 @@ const CGFloat SDTimeOutSeconds = 60.0f;
 
     ASIHTTPRequest* request = [SDNetworkUtils requestWithUrl:UserLoginUrl attributes:attributes completion:completionBlock failed:failedBlock returnClass:[SDLogin class]];
     
+    [SDUtils showLoading];
     [request startAsynchronous];
     
     return request;
@@ -55,6 +58,7 @@ const CGFloat SDTimeOutSeconds = 60.0f;
     
     ASIHTTPRequest* request = [SDNetworkUtils requestWithUrl:CheckUserExistUrl attributes:attributes completion:completionBlock failed:failedBlock returnClass:[SDCheckUserExist class]];
     
+    [SDUtils showLoading];
     [request startAsynchronous];
     
     return request;
@@ -70,6 +74,7 @@ const CGFloat SDTimeOutSeconds = 60.0f;
     
     ASIHTTPRequest* request = [SDNetworkUtils requestWithUrl:CreateUserUrl attributes:attributes completion:completionBlock failed:failedBlock returnClass:[SDCreateUser class]];
     
+    [SDUtils showLoading];
     [request startAsynchronous];
     
     return request;
@@ -83,6 +88,7 @@ const CGFloat SDTimeOutSeconds = 60.0f;
     
     ASIHTTPRequest* request = [SDNetworkUtils requestWithUrl:GetStoryListUrl attributes:attributes completion:completionBlock failed:failedBlock returnClass:[SDStories class]];
     
+    [SDUtils showLoading];
     [request startAsynchronous];
     
     return request;
@@ -116,9 +122,6 @@ const CGFloat SDTimeOutSeconds = 60.0f;
     [request addRequestHeader:@"Content-Type" value:@"application/json; encoding=utf-8"];
     [request addRequestHeader:@"Accept" value:@"application/json"];
     
-//    request.shouldCompressRequestBody = FALSE;
-//    request.allowCompressedResponse = FALSE;
-    
     NSMutableDictionary* rawData = [SDNetworkUtils baseRawData];
     [rawData addEntriesFromDictionary:attributes];
     
@@ -134,6 +137,7 @@ const CGFloat SDTimeOutSeconds = 60.0f;
             response.request = request;
             failedBlock(response);
         }
+        [SDUtils dismissLoading];
     }];
     
     [request setFailedBlock:^{
@@ -142,6 +146,7 @@ const CGFloat SDTimeOutSeconds = 60.0f;
             response.request = request;
             failedBlock(response);
         }
+        [SDUtils dismissLoading];
     }];
     
     return request;
