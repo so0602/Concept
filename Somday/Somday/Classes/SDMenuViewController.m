@@ -132,11 +132,7 @@
 }
 
 -(void)hideSearchView{
-//    [self.dynamicsDrawerViewController setPaneState:(MSDynamicsDrawerPaneState)SDDynamicsDrawerPaneStateMenu animated:TRUE allowUserInterruption:TRUE completion:nil];
-    [self.dynamicsDrawerViewController setPaneState:MSDynamicsDrawerPaneStateMenu animated:TRUE allowUserInterruption:TRUE completion:nil];
-//    [self.dynamicsDrawerViewController setPaneState:(MSDynamicsDrawerPaneState)SDDynamicsDrawerPaneStateClosed animated:TRUE allowUserInterruption:FALSE completion:^{
-//        [self.dynamicsDrawerViewController setPaneState:(MSDynamicsDrawerPaneState)SDDynamicsDrawerPaneStateMenu animated:TRUE allowUserInterruption:FALSE completion:nil];
-//    }];
+    [self.dynamicsDrawerViewController setPaneState:MSDynamicsDrawerPaneStateClosed animated:TRUE allowUserInterruption:TRUE completion:nil];
     
     [self.dynamicsDrawerViewController updatePeneViewCornerRadius:8.0f];
     
