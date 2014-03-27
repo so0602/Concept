@@ -1402,6 +1402,11 @@ void MSDynamicsDrawerDirectionActionForMaskedValues(NSInteger direction, MSDynam
                 }
             }];
         }];
+        
+        if( shouldReceiveTouch && (self.paneState == MSDynamicsDrawerPaneStateClosed) ){
+            [self setRevealWidth:point.y > 44 ? MSMenuWidth : CGRectGetWidth(self.view.frame) forDirection:MSDynamicsDrawerDirectionLeft];
+        }
+        
         return shouldReceiveTouch;
     } else if (gestureRecognizer == self.paneTapGestureRecognizer) {
         MSDynamicsDrawerPaneState paneState;

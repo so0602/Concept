@@ -58,7 +58,6 @@ const CGFloat SDTimeOutSeconds = 60.0f;
     
     ASIHTTPRequest* request = [SDNetworkUtils requestWithUrl:CheckUserExistUrl attributes:attributes completion:completionBlock failed:failedBlock returnClass:[SDCheckUserExist class]];
     
-    [SDUtils showLoading];
     [request startAsynchronous];
     
     return request;

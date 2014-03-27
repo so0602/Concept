@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
+#import "UIFont+Addition.h"
+
 @interface UIView (Addition)
 
 -(UIImage*)convertViewToImage;
@@ -17,9 +19,11 @@
 @property (nonatomic) CGFloat width;
 @property (nonatomic) CGFloat height;
 
-- (void)setX:(CGFloat)x;
-- (void)setY:(CGFloat)y;
-- (void)setSize:(CGSize)size;
-- (void)setOrigin:(CGPoint)origin;
+@property (nonatomic) CGFloat x;
+@property (nonatomic) CGFloat y;
+@property (nonatomic) CGSize size;
+@property (nonatomic) CGPoint origin;
+
+-(void)changeFont:(SDFontFamily)fontFamily style:(SDFontStyle)fontStyle;
 
 @end

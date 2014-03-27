@@ -859,6 +859,14 @@
 		B66E1C2018D8B33300C292FA /* SDBaseGridView.m in Sources */ = {isa = PBXBuildFile; fileRef = B66E1C1F18D8B33300C292FA /* SDBaseGridView.m */; };
 		B6777A5618E0A9F900BD8F05 /* SDViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6777A5518E0A9F900BD8F05 /* SDViewController.m */; };
 		B6777B7818E1C24C00BD8F05 /* SDLoadingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6777B7718E1C24C00BD8F05 /* SDLoadingViewController.m */; };
+		B6B8274618E3DABF009C8A37 /* FTAnimation+UIView.m in Sources */ = {isa = PBXBuildFile; fileRef = B6B8273F18E3DABF009C8A37 /* FTAnimation+UIView.m */; };
+		B6B8274718E3DABF009C8A37 /* FTAnimationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B6B8274218E3DABF009C8A37 /* FTAnimationManager.m */; };
+		B6B8274818E3DABF009C8A37 /* FTUtils+NSObject.m in Sources */ = {isa = PBXBuildFile; fileRef = B6B8274418E3DABF009C8A37 /* FTUtils+NSObject.m */; };
+		B6B8274B18E3DAEF009C8A37 /* msgBubble.png in Resources */ = {isa = PBXBuildFile; fileRef = B6B8274918E3DAEF009C8A37 /* msgBubble.png */; };
+		B6B8274C18E3DAEF009C8A37 /* msgBubble@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B6B8274A18E3DAEF009C8A37 /* msgBubble@2x.png */; };
+		B6B8275018E3DB4A009C8A37 /* SDErrorBubbleView.m in Sources */ = {isa = PBXBuildFile; fileRef = B6B8274F18E3DB4A009C8A37 /* SDErrorBubbleView.m */; };
+		B6B8275218E3E0B3009C8A37 /* SDErrorBubbleView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B6B8275118E3E0B3009C8A37 /* SDErrorBubbleView.xib */; };
+		B6B8275518E4145E009C8A37 /* SDGradientView.m in Sources */ = {isa = PBXBuildFile; fileRef = B6B8275418E4145E009C8A37 /* SDGradientView.m */; };
 		B6BE49D018CF457500DA7313 /* SDForgotPasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6BE49CF18CF457500DA7313 /* SDForgotPasswordViewController.m */; };
 		B6BE49D818CF4F0900DA7313 /* SDSignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6BE49D718CF4F0900DA7313 /* SDSignUpViewController.m */; };
 		B6BE49DD18CF699F00DA7313 /* SDEmailTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = B6BE49DC18CF699F00DA7313 /* SDEmailTextField.m */; };
@@ -1960,6 +1968,21 @@
 		B6777A5518E0A9F900BD8F05 /* SDViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SDViewController.m; path = Classes/SDViewController.m; sourceTree = "<group>"; };
 		B6777B7618E1C24C00BD8F05 /* SDLoadingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SDLoadingViewController.h; path = Classes/SDLoadingViewController.h; sourceTree = "<group>"; };
 		B6777B7718E1C24C00BD8F05 /* SDLoadingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SDLoadingViewController.m; path = Classes/SDLoadingViewController.m; sourceTree = "<group>"; };
+		B6B8273E18E3DABF009C8A37 /* FTAnimation+UIView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "FTAnimation+UIView.h"; sourceTree = "<group>"; };
+		B6B8273F18E3DABF009C8A37 /* FTAnimation+UIView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "FTAnimation+UIView.m"; sourceTree = "<group>"; };
+		B6B8274018E3DABF009C8A37 /* FTAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTAnimation.h; sourceTree = "<group>"; };
+		B6B8274118E3DABF009C8A37 /* FTAnimationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTAnimationManager.h; sourceTree = "<group>"; };
+		B6B8274218E3DABF009C8A37 /* FTAnimationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FTAnimationManager.m; sourceTree = "<group>"; };
+		B6B8274318E3DABF009C8A37 /* FTUtils+NSObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "FTUtils+NSObject.h"; sourceTree = "<group>"; };
+		B6B8274418E3DABF009C8A37 /* FTUtils+NSObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "FTUtils+NSObject.m"; sourceTree = "<group>"; };
+		B6B8274518E3DABF009C8A37 /* FTUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTUtils.h; sourceTree = "<group>"; };
+		B6B8274918E3DAEF009C8A37 /* msgBubble.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = msgBubble.png; sourceTree = "<group>"; };
+		B6B8274A18E3DAEF009C8A37 /* msgBubble@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "msgBubble@2x.png"; sourceTree = "<group>"; };
+		B6B8274E18E3DB4A009C8A37 /* SDErrorBubbleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SDErrorBubbleView.h; path = Classes/SDErrorBubbleView.h; sourceTree = "<group>"; };
+		B6B8274F18E3DB4A009C8A37 /* SDErrorBubbleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SDErrorBubbleView.m; path = Classes/SDErrorBubbleView.m; sourceTree = "<group>"; };
+		B6B8275118E3E0B3009C8A37 /* SDErrorBubbleView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SDErrorBubbleView.xib; path = "Interface Builders/SDErrorBubbleView.xib"; sourceTree = "<group>"; };
+		B6B8275318E4145E009C8A37 /* SDGradientView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SDGradientView.h; path = Classes/SDGradientView.h; sourceTree = "<group>"; };
+		B6B8275418E4145E009C8A37 /* SDGradientView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SDGradientView.m; path = Classes/SDGradientView.m; sourceTree = "<group>"; };
 		B6BE49CE18CF457500DA7313 /* SDForgotPasswordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SDForgotPasswordViewController.h; path = Classes/SDForgotPasswordViewController.h; sourceTree = "<group>"; };
 		B6BE49CF18CF457500DA7313 /* SDForgotPasswordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SDForgotPasswordViewController.m; path = Classes/SDForgotPasswordViewController.m; sourceTree = "<group>"; };
 		B6BE49D618CF4F0900DA7313 /* SDSignUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SDSignUpViewController.h; path = Classes/SDSignUpViewController.h; sourceTree = "<group>"; };
@@ -2178,6 +2201,8 @@
 		2E54CACC18C5D78E00B23A96 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				B6B8274D18E3DB24009C8A37 /* Bubble View */,
+				B6B8275618E41475009C8A37 /* Gradient View */,
 				B6BE4ABE18D8168000DA7313 /* GridView */,
 				2E54CACD18C5D7BF00B23A96 /* SDHomeHeaderCollectionViewCell.h */,
 				2E54CACE18C5D7BF00B23A96 /* SDHomeHeaderCollectionViewCell.m */,
@@ -2328,6 +2353,8 @@
 				B65DDE0518C60EB10076408C /* icons-shadow-12px */,
 				B65DDE7818C60EB10076408C /* icons-shadow-16px */,
 				B65DDEEB18C60EB10076408C /* icons-shadow-24px */,
+				B6B8274918E3DAEF009C8A37 /* msgBubble.png */,
+				B6B8274A18E3DAEF009C8A37 /* msgBubble@2x.png */,
 				EF3B655118D2E83000B0CF1C /* prelogin-logo.png */,
 				EF3B655218D2E83100B0CF1C /* prelogin-logo@2x.png */,
 				EF3B658A18D2ED4B00B0CF1C /* prelogin-textField-1.png */,
@@ -3235,6 +3262,41 @@
 			name = Loading;
 			sourceTree = "<group>";
 		};
+		B6B8273D18E3DABF009C8A37 /* FTUtils */ = {
+			isa = PBXGroup;
+			children = (
+				B6B8273E18E3DABF009C8A37 /* FTAnimation+UIView.h */,
+				B6B8273F18E3DABF009C8A37 /* FTAnimation+UIView.m */,
+				B6B8274018E3DABF009C8A37 /* FTAnimation.h */,
+				B6B8274118E3DABF009C8A37 /* FTAnimationManager.h */,
+				B6B8274218E3DABF009C8A37 /* FTAnimationManager.m */,
+				B6B8274318E3DABF009C8A37 /* FTUtils+NSObject.h */,
+				B6B8274418E3DABF009C8A37 /* FTUtils+NSObject.m */,
+				B6B8274518E3DABF009C8A37 /* FTUtils.h */,
+			);
+			name = FTUtils;
+			path = "../Other Sources/FTUtils";
+			sourceTree = "<group>";
+		};
+		B6B8274D18E3DB24009C8A37 /* Bubble View */ = {
+			isa = PBXGroup;
+			children = (
+				B6B8274E18E3DB4A009C8A37 /* SDErrorBubbleView.h */,
+				B6B8274F18E3DB4A009C8A37 /* SDErrorBubbleView.m */,
+				B6B8275118E3E0B3009C8A37 /* SDErrorBubbleView.xib */,
+			);
+			name = "Bubble View";
+			sourceTree = "<group>";
+		};
+		B6B8275618E41475009C8A37 /* Gradient View */ = {
+			isa = PBXGroup;
+			children = (
+				B6B8275318E4145E009C8A37 /* SDGradientView.h */,
+				B6B8275418E4145E009C8A37 /* SDGradientView.m */,
+			);
+			name = "Gradient View";
+			sourceTree = "<group>";
+		};
 		B6BE49CD18CF455000DA7313 /* Forgot Password */ = {
 			isa = PBXGroup;
 			children = (
@@ -3679,6 +3741,7 @@
 		EFA8EC0118BDDA4A00144B75 /* Other Sources */ = {
 			isa = PBXGroup;
 			children = (
+				B6B8273D18E3DABF009C8A37 /* FTUtils */,
 				2E7A350E18D888D100662504 /* AFKPageFlipper */,
 				EF891DC918CD8CB5005DC780 /* ASIHTTPRequest.xcodeproj */,
 				2E39E90918D4DF8700A7F917 /* AUISelectiveBordersView */,
@@ -4060,6 +4123,7 @@
 				B65DE23818C60EB10076408C /* icons-shadow-24px_important3.png in Resources */,
 				B65DE08D18C60EB10076408C /* icons-24px_newEvent@2x.png in Resources */,
 				B65DE16E18C60EB10076408C /* icons-shadow-12px_myself.png in Resources */,
+				B6B8274C18E3DAEF009C8A37 /* msgBubble@2x.png in Resources */,
 				B65DE21818C60EB10076408C /* icons-shadow-24px_calendar-border.png in Resources */,
 				B65DE25818C60EB10076408C /* icons-shadow-24px_play-bold.png in Resources */,
 				B65DE13318C60EB10076408C /* icons-shadow-12px_bell@2x.png in Resources */,
@@ -4256,6 +4320,7 @@
 				B65DE24E18C60EB10076408C /* icons-shadow-24px_mic.png in Resources */,
 				B65DE10618C60EB10076408C /* icons-color-12px_public.png in Resources */,
 				B65DE24818C60EB10076408C /* icons-shadow-24px_lock.png in Resources */,
+				B6B8275218E3E0B3009C8A37 /* SDErrorBubbleView.xib in Resources */,
 				B65DDF8018C60EB10076408C /* icons-12px_dislike.png in Resources */,
 				B65DE06618C60EB10076408C /* icons-24px_disliked.png in Resources */,
 				B65DE00218C60EB10076408C /* icons-16px_joinedEvent.png in Resources */,
@@ -4411,6 +4476,7 @@
 				B65DE03C18C60EB10076408C /* icons-16px_supported.png in Resources */,
 				B65DE04B18C60EB10076408C /* icons-24px_arrowRight@2x.png in Resources */,
 				B65DE20B18C60EB10076408C /* icons-shadow-24px_add@2x.png in Resources */,
+				B6B8274B18E3DAEF009C8A37 /* msgBubble.png in Resources */,
 				B6BE4AAB18D7F95200DA7313 /* icons-16px_quoteLeft.png in Resources */,
 				B6BE4AA518D75FAD00DA7313 /* icons-color-12px_cross.png in Resources */,
 				B65DE18718C60EB10076408C /* icons-shadow-12px_share@2x.png in Resources */,
@@ -4765,7 +4831,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				B65DDC0F18C57D1E0076408C /* SDUtils.m in Sources */,
+				B6B8275518E4145E009C8A37 /* SDGradientView.m in Sources */,
 				EF3B65B818D3008C00B0CF1C /* UIImage+ImageEffects.m in Sources */,
+				B6B8274818E3DABF009C8A37 /* FTUtils+NSObject.m in Sources */,
 				EF658E5E18C461C400FC9E07 /* SDMenuViewController.m in Sources */,
 				EFD0FC1218CD92CF0026F54F /* ASIFormDataRequest+Addition.m in Sources */,
 				2EFB3D1118D2E7F600110DC6 /* CAKeyframeAnimation+Addition.m in Sources */,
@@ -4808,12 +4876,14 @@
 				2E7A351A18D888D100662504 /* UIViewExtention.m in Sources */,
 				EF3B650318CDA2C200B0CF1C /* SDStatus.m in Sources */,
 				B66E1BEF18D83B7500C292FA /* SDPhotoGridView.m in Sources */,
+				B6B8274718E3DABF009C8A37 /* FTAnimationManager.m in Sources */,
 				EF3B651E18CDB6BE00B0CF1C /* SDLoginViewController.m in Sources */,
 				B6BE49D818CF4F0900DA7313 /* SDSignUpViewController.m in Sources */,
 				B65DDC1B18C587130076408C /* UITableViewCell+Addition.m in Sources */,
 				EF3B652418D042C600B0CF1C /* NSString+Addition.m in Sources */,
 				B64444A918CA374800CDD2D4 /* NSNotificationCenter+Name.m in Sources */,
 				B6777A5618E0A9F900BD8F05 /* SDViewController.m in Sources */,
+				B6B8274618E3DABF009C8A37 /* FTAnimation+UIView.m in Sources */,
 				B6BE49DD18CF699F00DA7313 /* SDEmailTextField.m in Sources */,
 				B6DC7C0F18DAE1B000023862 /* UITabBarController+Additions.m in Sources */,
 				B6BE49E418CF707200DA7313 /* UITextField+Addition.m in Sources */,
@@ -4829,6 +4899,7 @@
 				EFD0FC1B18CD952B0026F54F /* JSONKit.m in Sources */,
 				B66E1C2018D8B33300C292FA /* SDBaseGridView.m in Sources */,
 				2E880B0818D8054F0049446F /* AnimationFrame.m in Sources */,
+				B6B8275018E3DB4A009C8A37 /* SDErrorBubbleView.m in Sources */,
 				B6DC7C0B18DAB35C00023862 /* KeychainItemWrapper.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

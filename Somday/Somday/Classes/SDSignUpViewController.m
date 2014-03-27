@@ -11,13 +11,15 @@
 #import "SDNetworkUtils.h"
 #import "SDTextField.h"
 
-#import "KBPopupBubbleView.h"
+#import "SDErrorBubbleView.h"
 
 #import "UIViewController+Addition.h"
 #import "UIFont+Addition.h"
 #import "UITextField+Addition.h"
 #import "UIColor+Extensions.h"
 #import "NSString+Addition.h"
+
+#import "FTAnimation+UIView.h"
 
 @interface SDSignUpViewController ()<UIAlertViewDelegate, UITextFieldDelegate>
 
@@ -31,7 +33,7 @@
 @property (nonatomic, strong) IBOutlet SDTextField* passwordTextField;
 @property (nonatomic, strong) IBOutlet SDTextField* confirmPasswordTextField;
 
-@property (nonatomic, strong) KBPopupBubbleView* bubbleView;
+@property (nonatomic, strong) SDErrorBubbleView* bubbleView;
 
 @property (nonatomic, strong, readonly) NSString* errorMessage;
 @property (nonatomic, strong, readonly) NSString* emailErrorMessage;
@@ -48,14 +50,12 @@
 -(void)viewDidLoad{
     [super viewDidLoad];
     
-    UIFont* font = self.backButton.titleLabel.font;
-    font = [font setFontFamily:SDFontFamily_Montserrat style:SDFontStyle_Regular];
-    self.backButton.titleLabel.font = font;
+    [self.backButton changeFont:SDFontFamily_Montserrat style:SDFontStyle_Regular];
     
     UILabel* label = [[UILabel alloc] initWithFrame:CGRectZero];
     label.backgroundColor = [UIColor clearColor];
     label.text = @"as your login";
-    font = [UIFont systemFontOfSize:12];
+    UIFont* font = [UIFont systemFontOfSize:12];
     font = [font setFontFamily:SDFontFamily_Montserrat style:SDFontStyle_Regular];
     label.font = font;
     label.shadowColor = [UIColor colorWithWhite:0 alpha:0.3];
@@ -125,20 +125,16 @@
 
 #pragma mark - Private Functions
 
--(KBPopupBubbleView*)bubbleView{
+-(SDErrorBubbleView*)bubbleView{
     if( !_bubbleView ){
+        _bubbleView = [SDErrorBubbleView bubbleView];
+        
         CGRect frame = self.usernameTextField.frame;
-        frame.origin.y -= 50;
-        frame.size.height = 50;
+        frame.origin.y -= _bubbleView.height + 12;
         frame = [self.usernameTextField.superview convertRect:frame toView:self.view];
-        _bubbleView = [[KBPopupBubbleView alloc] initWithFrame:frame];
-        _bubbleView.position = kKBPopupPointerPositionLeft;
-        _bubbleView.side = kKBPopupPointerSideBottom;
-        _bubbleView.cornerRadius = 8;
-        _bubbleView.useBorders = FALSE;
-        _bubbleView.drawableColor = [UIColor whiteColor];
-        _bubbleView.label.font = [UIFont josefinSansSemiBoldFontOfSize:14];
-        _bubbleView.draggable = FALSE;
+        
+        _bubbleView.x = frame.origin.x;
+        _bubbleView.y = frame.origin.y;
     }
     return _bubbleView;
 }
@@ -182,22 +178,24 @@
         self.usernameTextField.state = SDTextFieldStateCorrect;
     } failed:^(SDCheckUserExist *response) {
         self.usernameTextField.state = SDTextFieldStateError;
-        self.bubbleView.label.text = response.failMessage;
+        self.bubbleView.message = response.failMessage;
         if( !self.bubbleView.superview ){
-            [self.bubbleView showInView:self.view animated:TRUE];
+            [self.view addSubview:self.bubbleView];
+            [self.bubbleView popIn:0.3 delegate:nil];
         }
     }];
 }
 
 -(void)setBubbleMessage:(NSString *)bubbleMessage{
     _bubbleMessage = bubbleMessage;
-    self.bubbleView.label.text = bubbleMessage;
+    self.bubbleView.message = bubbleMessage;
     if( bubbleMessage.length ){
         if( !self.bubbleView.superview ){
-            [self.bubbleView showInView:self.view animated:TRUE];
+            [self.view addSubview:self.bubbleView];
+            [self.bubbleView popIn:0.3 delegate:nil];
         }
     }else{
-        [self.bubbleView hide:TRUE];
+        [self.bubbleView popOut:0.3 delegate:self.bubbleView startSelector:nil stopSelector:@selector(removeFromSuperview)];
     }
 }
 
@@ -211,6 +209,12 @@
 
 #pragma mark - UITextFieldDelegate
 
+-(void)textFieldDidBeginEditing:(UITextField *)textField{
+    if( [textField isKindOfClass:[SDTextField class]] ){
+        ((SDTextField*)textField).state = SDTextFieldStateNormal;
+    }
+}
+
 -(void)textFieldDidEndEditing:(UITextField *)textField{
     if( [textField isKindOfClass:[SDTextField class]] ){
         BOOL success = [(SDTextField*)textField checkFormat];
@@ -221,6 +225,8 @@
             }else{
                 self.bubbleMessage = self.errorMessage;
             }
+        }else if( [textField isEqual:self.confirmPasswordTextField] ){
+            ((SDTextField*)textField).state = [textField.text isEqualToString:self.passwordTextField.text] ? ((SDTextField*)textField).state : SDTextFieldStateError;
         }
     }
 }
@@ -240,6 +246,7 @@
         }else if( [textField isEqual:self.passwordTextField] ){
             [self.confirmPasswordTextField becomeFirstResponder];
         }else if( [textField isEqual:self.confirmPasswordTextField] ){
+            ((SDTextField*)textField).state = [textField.text isEqualToString:self.passwordTextField.text] ? ((SDTextField*)textField).state : SDTextFieldStateError;
             [self touchUpInside:self.signUpButton];
         }
     }

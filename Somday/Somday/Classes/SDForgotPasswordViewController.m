@@ -9,15 +9,15 @@
 #import "SDForgotPasswordViewController.h"
 
 #import "SDTextField.h"
+#import "SDErrorBubbleView.h"
 
 #import "GPUImage.h"
-
-#import "KBPopupBubbleView.h"
 
 #import "UIViewController+Addition.h"
 #import "UIFont+Addition.h"
 #import "NSString+Addition.h"
 #import "UIImageView+LBBlurredImage.h"
+#import "FTAnimation+UIView.h"
 
 @interface SDForgotPasswordViewController ()<UITextFieldDelegate>
 
@@ -35,7 +35,7 @@
 @property (nonatomic, strong) IBOutlet UIImageView* textFieldBackgroundImageView;
 @property (nonatomic, strong) IBOutlet SDTextField* usernameTextField;
 
-@property (nonatomic, strong) KBPopupBubbleView* bubbleView;
+@property (nonatomic, strong) SDErrorBubbleView* bubbleView;
 
 @property (nonatomic, strong, readonly) NSString* errorMessage;
 @property (nonatomic, strong) NSString* bubbleMessage;
@@ -49,17 +49,11 @@
 -(void)viewDidLoad{
     [super viewDidLoad];
     
-    UIFont* font = self.backButton.titleLabel.font;
-    font = [font setFontFamily:SDFontFamily_Montserrat style:SDFontStyle_Regular];
-    self.backButton.titleLabel.font = font;
+    [self.backButton changeFont:SDFontFamily_Montserrat style:SDFontStyle_Regular];
     
-    font = self.mainTitleLabel.font;
-    font = [font setFontFamily:SDFontFamily_Montserrat style:SDFontStyle_Regular];
-    self.mainTitleLabel.font = font;
+    [self.mainTitleLabel changeFont:SDFontFamily_Montserrat style:SDFontStyle_Regular];
     
-    font = self.descriptionLabel.font;
-    font = [font setFontFamily:SDFontFamily_Montserrat style:SDFontStyle_Regular];
-    self.descriptionLabel.font = font;
+    [self.descriptionLabel changeFont:SDFontFamily_Montserrat style:SDFontStyle_Regular];
     
     UIImage* image = self.textFieldBackgroundImageView.image;
     image = [image stretchableImageWithLeftCapWidth:image.size.width / 2 topCapHeight:image.size.height / 2];
@@ -94,23 +88,16 @@
 
 #pragma mark - Private Functions
 
--(KBPopupBubbleView*)bubbleView{
+-(SDErrorBubbleView*)bubbleView{
     if( !_bubbleView ){
-        CGRect frame = self.usernameTextField.frame;
-        frame.origin.y -= 50;
-        frame.size.height = 50;
-        frame = [self.usernameTextField.superview convertRect:frame toView:self.view];
-        _bubbleView = [[KBPopupBubbleView alloc] initWithFrame:frame];
-        _bubbleView.position = kKBPopupPointerPositionLeft;
-        _bubbleView.side = kKBPopupPointerSideBottom;
-        _bubbleView.cornerRadius = 8;
-        _bubbleView.useBorders = FALSE;
-        _bubbleView.drawableColor = [UIColor whiteColor];
+        _bubbleView = [SDErrorBubbleView bubbleView];
         
-        UIFont* font = [UIFont systemFontOfSize:14];
-        font = [font setFontFamily:SDFontFamily_JosefinSans style:14];
-        _bubbleView.label.font = font;
-        _bubbleView.draggable = FALSE;
+        CGRect frame = self.usernameTextField.frame;
+        frame.origin.y -= _bubbleView.height + 12;
+        frame = [self.usernameTextField.superview convertRect:frame toView:self.view];
+        
+        _bubbleView.x = frame.origin.x;
+        _bubbleView.y = frame.origin.y;
     }
     return _bubbleView;
 }
@@ -130,17 +117,24 @@
 
 -(void)setBubbleMessage:(NSString *)bubbleMessage{
     _bubbleMessage = bubbleMessage;
-    self.bubbleView.label.text = bubbleMessage;
+    self.bubbleView.message = bubbleMessage;
     if( bubbleMessage.length ){
         if( !self.bubbleView.superview ){
-            [self.bubbleView showInView:self.view animated:TRUE];
+            [self.view addSubview:self.bubbleView];
+            [self.bubbleView popIn:0.3 delegate:nil];
         }
     }else{
-        [self.bubbleView hide:TRUE];
+        [self.bubbleView popOut:0.3 delegate:self.bubbleView startSelector:nil stopSelector:@selector(removeFromSuperview)];
     }
 }
 
 #pragma mark - UITextFieldDelegate
+
+-(void)textFieldDidBeginEditing:(UITextField *)textField{
+    if( [textField isKindOfClass:[SDTextField class]] ){
+        ((SDTextField*)textField).state = SDTextFieldStateNormal;
+    }
+}
 
 -(void)textFieldDidEndEditing:(UITextField *)textField{
     if( [textField isKindOfClass:[SDTextField class]] ){

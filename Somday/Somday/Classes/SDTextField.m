@@ -149,21 +149,21 @@
 
 -(CGRect)editingRectForBounds:(CGRect)bounds{
     bounds = CGRectInset(bounds, 16, 0);
-    bounds.size.width -= CGRectGetWidth(self.rightView.bounds) - 6;
-//    bounds.size.width -= (self.text.length ? 0 : CGRectGetWidth(self.rightView.bounds)) - 6;
+    bounds.size.width += 8;
+//    bounds.size.width -= (self.text.length ? 0 : CGRectGetWidth(self.rightView.bounds)) - 8;
     return bounds;
 }
 
 -(CGRect)textRectForBounds:(CGRect)bounds{
     bounds = CGRectInset(bounds, 16, 0);
-    bounds.size.width -= CGRectGetWidth(self.rightView.bounds) - 6;
+    bounds.size.width -= CGRectGetWidth(self.rightView.bounds) + 8;
 //    bounds.size.width -= (self.text.length ? 0 : CGRectGetWidth(self.rightView.bounds)) - 6;
     return bounds;
 }
 
 -(CGRect)placeholderRectForBounds:(CGRect)bounds{
     bounds = CGRectInset(bounds, 16, 0);
-    bounds.size.width -= CGRectGetWidth(self.rightView.bounds) - 6;
+    bounds.size.width -= CGRectGetWidth(self.rightView.bounds) - 16;
 //    bounds.size.width -= (self.text.length ? 0 : CGRectGetWidth(self.rightView.bounds)) - 6;
     return bounds;
 }

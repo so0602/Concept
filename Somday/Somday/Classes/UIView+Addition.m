@@ -47,6 +47,9 @@
     self.frame = frame;
 }
 
+-(CGFloat)x{
+    return self.frame.origin.x;
+}
 - (void)setX:(CGFloat)x
 {
     CGRect frame = self.frame;
@@ -54,6 +57,9 @@
     self.frame = frame;
 }
 
+-(CGFloat)y{
+    return self.frame.origin.y;
+}
 - (void)setY:(CGFloat)y
 {
     CGRect frame = self.frame;
@@ -61,6 +67,9 @@
     self.frame = frame;
 }
 
+-(CGSize)size{
+    return self.frame.size;
+}
 - (void)setSize:(CGSize)size
 {
     CGRect frame = self.frame;
@@ -69,12 +78,32 @@
     self.frame = frame;
 }
 
+-(CGPoint)origin{
+    return self.frame.origin;
+}
 - (void)setOrigin:(CGPoint)origin
 {
     CGRect frame = self.frame;
     frame.origin.x = origin.x;
     frame.origin.y = origin.y;
     self.frame = frame;
+}
+
+-(void)changeFont:(SDFontFamily)fontFamily style:(SDFontStyle)fontStyle{
+    UIFont* font = nil;
+    UILabel* label = nil;
+    UIButton* button = nil;
+    if( [self isKindOfClass:[UILabel class]] ){
+        label = (id)self;
+        font = label.font;
+    }else if( [self isKindOfClass:[UIButton class]] ){
+        button = (id)self;
+        font = button.titleLabel.font;
+    }
+    font = [font setFontFamily:fontFamily style:fontStyle];
+    
+    label.font = font;
+    button.titleLabel.font = font;
 }
 
 @end
