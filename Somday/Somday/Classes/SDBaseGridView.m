@@ -15,6 +15,7 @@
 #import "SDVoiceGridView.h"
 #import "SDStoryBookGridView.h"
 #import "SDGradientView.h"
+#import "SDWebsiteGridView.h"
 
 #import "UIView+Addition.h"
 
@@ -24,6 +25,7 @@ static NSString *PhotoCellIdentifier = @"PhotoCollectionViewCell";
 static NSString *HalfPhotoCellIdentifier = @"HalfPhotoCollectionViewCell";
 static NSString *VoiceCellIdentifier = @"VoiceCollectionViewCell";
 static NSString *StoryBookCellIdentifier = @"StoryBookCollectionViewCell";
+static NSString *WebsiteCellIdentifier = @"WebsiteCollectionViewCell";
 
 KeyframeParametricBlock openFunction = ^double(double time) {
     return sin(time*M_PI_2);
@@ -54,6 +56,7 @@ typedef NSUInteger SDGridMenuState;
 @property (nonatomic, strong) IBOutlet UIImageView *backgroundImageView;
 @property (nonatomic, strong) IBOutlet SDGradientView* topGradientView;
 @property (nonatomic, strong) IBOutlet SDGradientView* bottomGradientView;
+@property (nonatomic, strong) IBOutlet UILabel* titleLabel;
 @property (nonatomic, strong) IBOutlet UIButton *shareButton;
 @property (nonatomic, strong) IBOutlet UIButton *moreButton;
 @property (nonatomic, strong) IBOutlet UIButton *likeButton;
@@ -100,7 +103,7 @@ typedef NSUInteger SDGridMenuState;
             reuseIdentifier = StoryBookCellIdentifier;
             break;
         case SDStoryType_Link:
-            reuseIdentifier = TextCellIdentifier;
+            reuseIdentifier = WebsiteCellIdentifier;
             break;
     }
     return [collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
@@ -126,7 +129,7 @@ typedef NSUInteger SDGridMenuState;
             class = [SDStoryBookGridView class];
             break;
         case SDStoryType_Link:
-            class = [SDTextGridView class];
+            class = [SDWebsiteGridView class];
             break;
     }
     
@@ -216,6 +219,10 @@ typedef NSUInteger SDGridMenuState;
 - (void)layoutSubviews
 {
     [super layoutSubviews];
+    
+    if( self.story.title ){
+        self.titleLabel.text = self.story.title;
+    }
     
     self.backgroundImageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@", self.story.imageName]];
     

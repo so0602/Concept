@@ -15,12 +15,15 @@ typedef NS_ENUM(NSUInteger, SDStoryType){
     SDStoryType_Event,
     SDStoryType_Storybook,
     SDStoryType_Link,
+    
+    SDStoryType_Min = SDStoryType_Text,
+    SDStoryType_Max = SDStoryType_Link,
 };
 
 @interface SDStory : NSObject<SDDataObjectBase>
 
 @property (nonatomic, strong, readonly) NSNumber* ID;
-@property (nonatomic, strong, readonly) NSString* title;
+//@property (nonatomic, strong, readonly) NSString* title;
 @property (nonatomic, strong, readonly) NSString* summary;
 @property (nonatomic, strong, readonly) NSString* content;
 @property (nonatomic, strong, readonly) NSString* videoUrl;
@@ -33,6 +36,7 @@ typedef NS_ENUM(NSUInteger, SDStoryType){
 @property (nonatomic, strong, readonly) NSArray* images;
 
 // Temp Data
+@property (nonatomic, strong) NSString* title;
 @property (nonatomic, strong) NSNumber* type;
 @property (nonatomic, strong) NSString* imageName;
 @property (nonatomic, strong) NSNumber* likeCount;
@@ -42,6 +46,8 @@ typedef NS_ENUM(NSUInteger, SDStoryType){
 @property (nonatomic, strong) NSDate* date;
 @property (nonatomic, strong) NSString* address;
 @property (nonatomic, strong) NSString* audioName;
+@property (nonatomic, strong) NSString* websiteLink;
+@property (nonatomic, strong) UIImage* websiteImage;
 
 @end
 

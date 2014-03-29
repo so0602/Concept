@@ -144,8 +144,153 @@
                                             <outletCollection property="labels" destination="dVk-7i-CcX" id="Ltk-8D-KJS"/>
                                         </connections>
                                     </collectionViewCell>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" contentMode="center" reuseIdentifier="TextCollectionViewCell" id="hxw-zf-gd2" customClass="SDTextGridView">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" contentMode="center" reuseIdentifier="WebsiteCollectionViewCell" id="TTf-sD-6eg" customClass="SDWebsiteGridView">
                                         <rect key="frame" x="8" y="196" width="304" height="152"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="304" height="152"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LDB-zJ-n7X">
+                                                    <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="9"/>
+                                                    <inset key="titleEdgeInsets" minX="-25" minY="36" maxX="0.0" maxY="0.0"/>
+                                                    <inset key="imageEdgeInsets" minX="10" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                                    <state key="normal" title="Share" image="icons-24px_share.png">
+                                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </state>
+                                                    <connections>
+                                                        <action selector="touchUpInside:" destination="TTf-sD-6eg" eventType="touchUpInside" id="5jh-3E-gKO"/>
+                                                    </connections>
+                                                </button>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p1K-ee-XNS">
+                                                    <rect key="frame" x="0.0" y="102" width="50" height="50"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <state key="normal" image="icons-24px_more.png">
+                                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </state>
+                                                    <connections>
+                                                        <action selector="touchUpInside:" destination="TTf-sD-6eg" eventType="touchUpInside" id="rfP-uR-klE"/>
+                                                    </connections>
+                                                </button>
+                                                <view clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OMm-qX-tii">
+                                                    <rect key="frame" x="0.0" y="0.0" width="304" height="152"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <subviews>
+                                                        <imageView tag="999" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0au-Oa-p9h">
+                                                            <rect key="frame" x="0.0" y="0.0" width="304" height="152"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <color key="backgroundColor" white="0.2464644161" alpha="0.59999999999999998" colorSpace="calibratedWhite"/>
+                                                        </imageView>
+                                                        <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PCp-r7-X1N">
+                                                            <rect key="frame" x="0.0" y="0.0" width="304" height="96"/>
+                                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                            <subviews>
+                                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Aib-Wo-bDI">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="152" height="96"/>
+                                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                                </imageView>
+                                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label Label Label Label Label Label Label Label Label Label Label Label Label Label Label Label Label Label Label Label Label" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="142" translatesAutoresizingMaskIntoConstraints="NO" id="dP1-TM-San">
+                                                                    <rect key="frame" x="157" y="22" width="142" height="42"/>
+                                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="readwriteweb.com" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="142" translatesAutoresizingMaskIntoConstraints="NO" id="x1D-vc-eFv">
+                                                                    <rect key="frame" x="157" y="64" width="142" height="12"/>
+                                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="8"/>
+                                                                    <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="0.59999999999999998" colorSpace="calibratedRGB"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                            </subviews>
+                                                            <color key="backgroundColor" red="0.27058823529999998" green="0.56470588239999997" blue="0.51764705879999995" alpha="1" colorSpace="calibratedRGB"/>
+                                                        </view>
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="separator-1.png" translatesAutoresizingMaskIntoConstraints="NO" id="fj9-32-D8B">
+                                                            <rect key="frame" x="0.0" y="94.5" width="304" height="1"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        </imageView>
+                                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YmP-Ze-Fog">
+                                                            <rect key="frame" x="202" y="121" width="50" height="26"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
+                                                            <inset key="titleEdgeInsets" minX="2" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                                            <size key="titleShadowOffset" width="0.0" height="1"/>
+                                                            <state key="normal" title="299" image="icons-shadow-16px_like.png">
+                                                                <color key="titleShadowColor" white="0.0" alpha="0.29999999999999999" colorSpace="calibratedWhite"/>
+                                                            </state>
+                                                            <connections>
+                                                                <action selector="touchUpInside:" destination="TTf-sD-6eg" eventType="touchUpInside" id="Vdc-25-KZD"/>
+                                                            </connections>
+                                                        </button>
+                                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f2u-1X-81Q">
+                                                            <rect key="frame" x="254" y="121" width="50" height="26"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
+                                                            <inset key="titleEdgeInsets" minX="2" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                                            <size key="titleShadowOffset" width="0.0" height="1"/>
+                                                            <state key="normal" title="299" image="icons-shadow-16px_comment.png">
+                                                                <color key="titleShadowColor" white="0.0" alpha="0.29999999999999999" colorSpace="calibratedWhite"/>
+                                                            </state>
+                                                            <connections>
+                                                                <action selector="touchUpInside:" destination="TTf-sD-6eg" eventType="touchUpInside" id="C9L-Qh-1Xw"/>
+                                                            </connections>
+                                                        </button>
+                                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P84-II-Nd6">
+                                                            <rect key="frame" x="8" y="100" width="48" height="48"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <state key="normal" image="dump_user.png">
+                                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                            </state>
+                                                            <connections>
+                                                                <action selector="touchUpInside:" destination="TTf-sD-6eg" eventType="touchUpInside" id="e4J-Ft-jbS"/>
+                                                            </connections>
+                                                        </button>
+                                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Thom.Y" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f5H-NS-dNE">
+                                                            <rect key="frame" x="60" y="112" width="133" height="21"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
+                                                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                                            <nil key="highlightedColor"/>
+                                                            <color key="shadowColor" white="0.0" alpha="0.29999999999999999" colorSpace="calibratedWhite"/>
+                                                            <size key="shadowOffset" width="0.0" height="1"/>
+                                                        </label>
+                                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="8:00pm at AsiaWorld Expo" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cn9-DD-0hd">
+                                                            <rect key="frame" x="60" y="124" width="133" height="21"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="9"/>
+                                                            <color key="textColor" white="1" alpha="0.40000000000000002" colorSpace="calibratedWhite"/>
+                                                            <nil key="highlightedColor"/>
+                                                            <color key="shadowColor" white="0.0" alpha="0.29999999999999999" colorSpace="calibratedWhite"/>
+                                                            <size key="shadowOffset" width="0.0" height="1"/>
+                                                        </label>
+                                                    </subviews>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                </view>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <size key="customSize" width="304" height="152"/>
+                                        <connections>
+                                            <outlet property="backgroundImageView" destination="0au-Oa-p9h" id="dUD-Iu-SNG"/>
+                                            <outlet property="commentButton" destination="f2u-1X-81Q" id="0sU-2Z-9IN"/>
+                                            <outlet property="infoLabel" destination="cn9-DD-0hd" id="X1R-XI-TUv"/>
+                                            <outlet property="likeButton" destination="YmP-Ze-Fog" id="4DG-Vp-DEi"/>
+                                            <outlet property="mainContentView" destination="OMm-qX-tii" id="Kip-lc-D9f"/>
+                                            <outlet property="moreButton" destination="p1K-ee-XNS" id="qgP-Al-dSP"/>
+                                            <outlet property="shareButton" destination="LDB-zJ-n7X" id="Qyo-2R-1Pn"/>
+                                            <outlet property="titleLabel" destination="dP1-TM-San" id="mRk-RZ-OU5"/>
+                                            <outlet property="userButton" destination="P84-II-Nd6" id="wDS-GR-Kkd"/>
+                                            <outlet property="userNameLabel" destination="f5H-NS-dNE" id="OYW-z4-QJY"/>
+                                            <outlet property="websiteImageView" destination="Aib-Wo-bDI" id="LSN-ea-k6k"/>
+                                            <outlet property="websiteLinkLabel" destination="x1D-vc-eFv" id="LcZ-rf-Dff"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" contentMode="center" reuseIdentifier="TextCollectionViewCell" id="hxw-zf-gd2" customClass="SDTextGridView">
+                                        <rect key="frame" x="8" y="358" width="304" height="152"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="304" height="152"/>
@@ -279,12 +424,13 @@
                                             <outlet property="mainContentView" destination="YuQ-MH-mYa" id="zOC-CD-9Al"/>
                                             <outlet property="moreButton" destination="Xtg-hy-wx0" id="Jk6-0X-BJt"/>
                                             <outlet property="shareButton" destination="rjd-do-kzB" id="iuG-bW-Ezg"/>
+                                            <outlet property="titleLabel" destination="q7E-pt-tl2" id="o1z-Wz-LJ7"/>
                                             <outlet property="userButton" destination="9Ez-Rk-Pmj" id="Hxc-bn-kPh"/>
                                             <outlet property="userNameLabel" destination="gxR-HG-MUf" id="mOd-yz-WkX"/>
                                         </connections>
                                     </collectionViewCell>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" contentMode="center" reuseIdentifier="PhotoCollectionViewCell" id="u7A-M5-Llf" customClass="SDPhotoGridView">
-                                        <rect key="frame" x="8" y="358" width="304" height="304"/>
+                                        <rect key="frame" x="8" y="520" width="304" height="304"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="304" height="304"/>
@@ -423,13 +569,14 @@
                                             <outlet property="mainContentView" destination="I7H-c2-zrv" id="VOI-R6-eBL"/>
                                             <outlet property="moreButton" destination="apF-tG-vDT" id="9hI-2W-IlC"/>
                                             <outlet property="shareButton" destination="Zkj-mF-qmM" id="Gq2-Wv-Vft"/>
+                                            <outlet property="titleLabel" destination="eUL-xf-eGo" id="EeM-mF-r6W"/>
                                             <outlet property="topGradientView" destination="Ujb-CR-bjH" id="MJy-Hy-CCs"/>
                                             <outlet property="userButton" destination="tXN-fl-o7k" id="3YE-FR-ekk"/>
                                             <outlet property="userNameLabel" destination="vmd-eo-WP5" id="vq5-YC-frN"/>
                                         </connections>
                                     </collectionViewCell>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" contentMode="center" reuseIdentifier="HalfPhotoCollectionViewCell" id="aHd-Qp-kdQ" customClass="SDPhotoGridView">
-                                        <rect key="frame" x="8" y="672" width="304" height="152"/>
+                                        <rect key="frame" x="8" y="834" width="304" height="152"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="304" height="152"/>
@@ -568,13 +715,14 @@
                                             <outlet property="mainContentView" destination="AEa-Zd-PLN" id="G2x-EC-A7y"/>
                                             <outlet property="moreButton" destination="eJH-TG-bD1" id="Tnd-Xe-p4e"/>
                                             <outlet property="shareButton" destination="0x9-NB-Ugj" id="shF-i3-hrR"/>
+                                            <outlet property="titleLabel" destination="J4E-5e-Kla" id="Ur0-Gg-bjY"/>
                                             <outlet property="topGradientView" destination="8Ub-no-Fps" id="ljQ-wu-hhS"/>
                                             <outlet property="userButton" destination="ebR-54-Ekj" id="tcY-q2-fpi"/>
                                             <outlet property="userNameLabel" destination="9p2-eN-g2G" id="W8X-QF-Jqz"/>
                                         </connections>
                                     </collectionViewCell>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" contentMode="center" reuseIdentifier="VoiceCollectionViewCell" id="cBH-To-2xc" customClass="SDVoiceGridView">
-                                        <rect key="frame" x="8" y="834" width="304" height="152"/>
+                                        <rect key="frame" x="8" y="996" width="304" height="152"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="304" height="152"/>
@@ -720,12 +868,13 @@
                                             <outlet property="moreButton" destination="1Pv-T8-GeN" id="I2x-aS-pxq"/>
                                             <outlet property="shareButton" destination="U6a-zu-7JQ" id="sZp-dp-AEH"/>
                                             <outlet property="timeLabel" destination="vdF-J0-mCP" id="beR-6g-wAC"/>
+                                            <outlet property="titleLabel" destination="hW2-V5-2nW" id="1UG-3S-8M6"/>
                                             <outlet property="userButton" destination="0WW-PO-nll" id="KYG-sU-1Jr"/>
                                             <outlet property="userNameLabel" destination="igp-aK-4Si" id="ck5-JM-nMv"/>
                                         </connections>
                                     </collectionViewCell>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" contentMode="center" reuseIdentifier="CollectionViewCell" id="1Bx-Xz-QOA" customClass="SDBaseGridView">
-                                        <rect key="frame" x="8" y="996" width="304" height="304"/>
+                                        <rect key="frame" x="8" y="1158" width="304" height="304"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="304" height="304"/>
@@ -736,7 +885,7 @@
                                         <size key="customSize" width="304" height="304"/>
                                     </collectionViewCell>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" contentMode="center" reuseIdentifier="StoryBookCollectionViewCell" id="ucc-df-I5M" userLabel="StoryBook Grid View - CollectionViewCell" customClass="SDStoryBookGridView">
-                                        <rect key="frame" x="8" y="1310" width="304" height="304"/>
+                                        <rect key="frame" x="8" y="1472" width="304" height="304"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="304" height="304"/>
@@ -1639,6 +1788,7 @@
         <image name="prelogin-textField-1.png" width="48" height="60"/>
         <image name="prelogin-textField-2.png" width="48" height="104"/>
         <image name="prelogin-textField-3.png" width="48" height="148"/>
+        <image name="separator-1.png" width="320" height="1"/>
         <image name="separator-2.png" width="320" height="1"/>
         <image name="storyQuote-story.png" width="304" height="16"/>
         <image name="storyQuote-text.png" width="304" height="16"/>

@@ -43,6 +43,8 @@
 		2ED35BC718C70A3500EDA245 /* UICollectionView+Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = 2ED35BC618C70A3500EDA245 /* UICollectionView+Addition.m */; };
 		2ED7A89518D43D9C00F76E17 /* GHContextMenuView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2ED7A89418D43D9C00F76E17 /* GHContextMenuView.m */; };
 		2EFB3D1118D2E7F600110DC6 /* CAKeyframeAnimation+Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EFB3D1018D2E7F600110DC6 /* CAKeyframeAnimation+Addition.m */; };
+		B60C27BC18E6FAB0000ED405 /* SDWebsiteGridView.m in Sources */ = {isa = PBXBuildFile; fileRef = B60C27BB18E6FAB0000ED405 /* SDWebsiteGridView.m */; };
+		B60C27C518E6FE88000ED405 /* dump_website@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B60C27C418E6FE88000ED405 /* dump_website@2x.png */; };
 		B64444A918CA374800CDD2D4 /* NSNotificationCenter+Name.m in Sources */ = {isa = PBXBuildFile; fileRef = B64444A818CA374800CDD2D4 /* NSNotificationCenter+Name.m */; };
 		B65DDC0F18C57D1E0076408C /* SDUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = B65DDC0E18C57D1E0076408C /* SDUtils.m */; };
 		B65DDC1218C57FB30076408C /* UIViewController+Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = B65DDC1118C57FB30076408C /* UIViewController+Addition.m */; };
@@ -1139,6 +1141,9 @@
 		2ED7A89418D43D9C00F76E17 /* GHContextMenuView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GHContextMenuView.m; sourceTree = "<group>"; };
 		2EFB3D0F18D2E7F600110DC6 /* CAKeyframeAnimation+Addition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "CAKeyframeAnimation+Addition.h"; path = "Classes/CAKeyframeAnimation+Addition.h"; sourceTree = "<group>"; };
 		2EFB3D1018D2E7F600110DC6 /* CAKeyframeAnimation+Addition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "CAKeyframeAnimation+Addition.m"; path = "Classes/CAKeyframeAnimation+Addition.m"; sourceTree = "<group>"; };
+		B60C27BA18E6FAB0000ED405 /* SDWebsiteGridView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SDWebsiteGridView.h; path = Classes/SDWebsiteGridView.h; sourceTree = "<group>"; };
+		B60C27BB18E6FAB0000ED405 /* SDWebsiteGridView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SDWebsiteGridView.m; path = Classes/SDWebsiteGridView.m; sourceTree = "<group>"; };
+		B60C27C418E6FE88000ED405 /* dump_website@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "dump_website@2x.png"; sourceTree = "<group>"; };
 		B64444A718CA374800CDD2D4 /* NSNotificationCenter+Name.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSNotificationCenter+Name.h"; path = "Classes/NSNotificationCenter+Name.h"; sourceTree = "<group>"; };
 		B64444A818CA374800CDD2D4 /* NSNotificationCenter+Name.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSNotificationCenter+Name.m"; path = "Classes/NSNotificationCenter+Name.m"; sourceTree = "<group>"; };
 		B65DDC0D18C57D1E0076408C /* SDUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SDUtils.h; path = Classes/SDUtils.h; sourceTree = "<group>"; };
@@ -3354,6 +3359,8 @@
 				B6BE4ABC18D8167C00DA7313 /* SDTextGridView.m */,
 				B66E1BF418D86B2B00C292FA /* SDVoiceGridView.h */,
 				B66E1BF518D86B2B00C292FA /* SDVoiceGridView.m */,
+				B60C27BA18E6FAB0000ED405 /* SDWebsiteGridView.h */,
+				B60C27BB18E6FAB0000ED405 /* SDWebsiteGridView.m */,
 			);
 			name = GridView;
 			sourceTree = "<group>";
@@ -3473,12 +3480,13 @@
 			children = (
 				B66E1BFB18D8A75D00C292FA /* 1kHz_44100Hz_16bit_05sec.mp3 */,
 				B66E1BFC18D8A75D00C292FA /* 440Hz_44100Hz_16bit_05sec.mp3 */,
-				B66E1BF018D8585C00C292FA /* dump_user.png */,
-				B66E1BF118D8585C00C292FA /* dump_user@2x.png */,
 				EF3B655718D2E8AF00B0CF1C /* dump_00.jpg */,
 				EF3B655818D2E8AF00B0CF1C /* dump_01.jpg */,
 				EF3B655918D2E8AF00B0CF1C /* dump_02.jpg */,
 				EF3B655A18D2E8AF00B0CF1C /* dump_03.jpg */,
+				B66E1BF018D8585C00C292FA /* dump_user.png */,
+				B66E1BF118D8585C00C292FA /* dump_user@2x.png */,
+				B60C27C418E6FE88000ED405 /* dump_website@2x.png */,
 			);
 			path = Dump;
 			sourceTree = "<group>";
@@ -4331,6 +4339,7 @@
 				B65DDFA818C60EB10076408C /* icons-12px_newEvent.png in Resources */,
 				B65DDF5F18C60EB10076408C /* icons-12px_add@2x.png in Resources */,
 				B65DE02918C60EB10076408C /* icons-16px_refresh@2x.png in Resources */,
+				B60C27C518E6FE88000ED405 /* dump_website@2x.png in Resources */,
 				B65DE19118C60EB10076408C /* icons-shadow-12px_support@2x.png in Resources */,
 				B65DE0A118C60EB10076408C /* icons-24px_setting@2x.png in Resources */,
 				EF3B659E18D2F51A00B0CF1C /* icon-24px-social-fb@2x.png in Resources */,
@@ -4847,6 +4856,7 @@
 				2E39E90E18D4DF8700A7F917 /* AUISelectiveBordersLayer.m in Sources */,
 				2E7A352818D8960600662504 /* SDStoryBookLayoutView.m in Sources */,
 				B6FD653018E0833700CCCB03 /* UIColor+Extensions.m in Sources */,
+				B60C27BC18E6FAB0000ED405 /* SDWebsiteGridView.m in Sources */,
 				B6BE49D018CF457500DA7313 /* SDForgotPasswordViewController.m in Sources */,
 				2E7A351718D888D100662504 /* AFKPageFlipper.m in Sources */,
 				B65DDC1818C586760076408C /* SDMenuTableViewCell.m in Sources */,

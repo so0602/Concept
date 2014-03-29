@@ -91,8 +91,8 @@ static NSString *HeaderCellIdentifier = @"HeaderCollectionViewCell";
         self.dataSource = [NSMutableArray new];
         BOOL toggle = TRUE;
         BOOL toggle2 = TRUE;
-        int min = 0;
-        int max = 5;
+        int min = SDStoryType_Min;
+        int max = SDStoryType_Max + 1;
         for( int i = 0; i <= Debug_count; i++ ){
             SDStory* story = [SDStory new];
             story.type = [NSNumber numberWithInt:min + arc4random() % (max-min)];
@@ -105,6 +105,11 @@ static NSString *HeaderCellIdentifier = @"HeaderCollectionViewCell";
                     story.audioName = toggle2 ? @"1kHz_44100Hz_16bit_05sec.mp3" : @"440Hz_44100Hz_16bit_05sec.mp3";
                     toggle2 = !toggle2;
                     break;
+                case SDStoryType_Link:
+                    story.websiteLink = @"http://us.playstation.com/ps4/games/metal-gear-solidv-ground-zeroes-ps4.html";
+                    story.websiteImage = [UIImage imageNamed:@"dump_website"];
+                    story.title = @"World-renowned Kojima Productions showcases the latest masterpiece in the Metal Gear Solid franchise with Metal Gear Solid V: Ground Zeroes.";
+                    break;
             }
             story.userIconName = @"dump_user";
             story.userName = @"Thom.Y";
@@ -113,6 +118,7 @@ static NSString *HeaderCellIdentifier = @"HeaderCollectionViewCell";
             story.likeCount = [NSNumber numberWithInt:arc4random() % 10000];
             story.commentCount = [NSNumber numberWithInt:arc4random() % 10000];
             [_dataSource addObject:story];
+            NSLog(@"type: %@", story.type);
         }
     }
 }
@@ -206,20 +212,21 @@ static NSString *HeaderCellIdentifier = @"HeaderCollectionViewCell";
 #pragma mark - UICollectionViewDataSource Methods
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return Debug_count;
+    return self.dataSource.count;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     SDBaseGridView *cell = nil;
-    if( indexPath.row ){
-        SDStory* story = [self.dataSource objectAtIndex:indexPath.row];        
-        cell = [SDBaseGridView gridViewWithStory:story collectionView:collectionView forIndexPath:indexPath];
-        cell.story = story;
-    }else{ // isFirstRow
+    
+    if( indexPath.row == 0 ){
         cell = [collectionView dequeueReusableCellWithReuseIdentifier:HeaderCellIdentifier forIndexPath:indexPath];
         self.headerCollectionViewCell = (id)cell;
         [self.headerCollectionViewCell addMotionEffect:[SDUtils sharedMotionEffectGroup]];
+    }else{
+        SDStory* story = [self.dataSource objectAtIndex:indexPath.row];
+        cell = [SDBaseGridView gridViewWithStory:story collectionView:collectionView forIndexPath:indexPath];
+        cell.story = story;
     }
     
     return cell;
