@@ -13,6 +13,8 @@
 
 @interface SDBaseGridView : UICollectionViewCell <UIGestureRecognizerDelegate>
 
+@property (nonatomic, strong) IBOutlet UIImageView* blurBackgroundImageView;
+
 @property (nonatomic) BOOL disableSwipeGesture;
 
 + (CGFloat)heightForCell;

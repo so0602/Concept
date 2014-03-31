@@ -3749,10 +3749,10 @@
 		EFA8EC0118BDDA4A00144B75 /* Other Sources */ = {
 			isa = PBXGroup;
 			children = (
-				B6B8273D18E3DABF009C8A37 /* FTUtils */,
 				2E7A350E18D888D100662504 /* AFKPageFlipper */,
 				EF891DC918CD8CB5005DC780 /* ASIHTTPRequest.xcodeproj */,
 				2E39E90918D4DF8700A7F917 /* AUISelectiveBordersView */,
+				B6B8273D18E3DABF009C8A37 /* FTUtils */,
 				2ED7A89218D43D9C00F76E17 /* GHContextMenu */,
 				B65DDC2518C5B1410076408C /* GPUImage.xcodeproj */,
 				2E880AFE18D8054F0049446F /* iOS-Flip-Transform-master */,
