@@ -479,7 +479,7 @@ void MSDynamicsDrawerDirectionActionForMaskedValues(NSInteger direction, MSDynam
 
 - (void)didUpdateDynamicAnimatorAction
 {
-    [UIApplication sharedApplication].keyWindow.userInteractionEnabled = NO;
+    //[UIApplication sharedApplication].keyWindow.userInteractionEnabled = NO;
     [self paneViewDidUpdateFrame];
 }
 
@@ -1217,6 +1217,9 @@ void MSDynamicsDrawerDirectionActionForMaskedValues(NSInteger direction, MSDynam
 
 - (void)setViewUserInteractionEnabled:(BOOL)enabled
 {
+    // Issue - 30
+    return;
+    
     static NSInteger disableCount;
     if (!enabled) {
         disableCount++;
@@ -1475,7 +1478,7 @@ void MSDynamicsDrawerDirectionActionForMaskedValues(NSInteger direction, MSDynam
         self.dynamicAnimatorCompletion = nil;
     }
     
-    [UIApplication sharedApplication].keyWindow.userInteractionEnabled = YES;
+    //[UIApplication sharedApplication].keyWindow.userInteractionEnabled = YES;
 }
 
 @end

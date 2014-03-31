@@ -143,7 +143,9 @@ const CGFloat SDTimeOutSeconds = 60.0f;
     [request setFailedBlock:^{
         if( failedBlock ){
             SDResponseBase* response = [[class alloc] initWithDictionary:nil];
+
             response.request = weakRequest;
+
             failedBlock(response);
         }
         [SDUtils dismissLoading];
