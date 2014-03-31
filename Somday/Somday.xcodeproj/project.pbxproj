@@ -852,6 +852,7 @@
 		B65DE27A18C60EB10076408C /* icons-shadow-24px_warning.png in Resources */ = {isa = PBXBuildFile; fileRef = B65DDF5C18C60EB10076408C /* icons-shadow-24px_warning.png */; };
 		B65DE27B18C60EB10076408C /* icons-shadow-24px_warning@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B65DDF5D18C60EB10076408C /* icons-shadow-24px_warning@2x.png */; };
 		B65DE2B218C884D50076408C /* SDTopMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B65DE2B118C884D50076408C /* SDTopMenuViewController.m */; };
+		B663F00B18E9BA3C0077E3FF /* SDMainNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = B663F00A18E9BA3C0077E3FF /* SDMainNavigationController.m */; };
 		B66E1BEF18D83B7500C292FA /* SDPhotoGridView.m in Sources */ = {isa = PBXBuildFile; fileRef = B66E1BEE18D83B7500C292FA /* SDPhotoGridView.m */; };
 		B66E1BF218D8585C00C292FA /* dump_user.png in Resources */ = {isa = PBXBuildFile; fileRef = B66E1BF018D8585C00C292FA /* dump_user.png */; };
 		B66E1BF318D8585C00C292FA /* dump_user@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B66E1BF118D8585C00C292FA /* dump_user@2x.png */; };
@@ -1959,6 +1960,8 @@
 		B65DDF5D18C60EB10076408C /* icons-shadow-24px_warning@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icons-shadow-24px_warning@2x.png"; sourceTree = "<group>"; };
 		B65DE2B018C884D50076408C /* SDTopMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SDTopMenuViewController.h; path = Classes/SDTopMenuViewController.h; sourceTree = "<group>"; };
 		B65DE2B118C884D50076408C /* SDTopMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SDTopMenuViewController.m; path = Classes/SDTopMenuViewController.m; sourceTree = "<group>"; };
+		B663F00918E9BA3C0077E3FF /* SDMainNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SDMainNavigationController.h; path = Classes/SDMainNavigationController.h; sourceTree = "<group>"; };
+		B663F00A18E9BA3C0077E3FF /* SDMainNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SDMainNavigationController.m; path = Classes/SDMainNavigationController.m; sourceTree = "<group>"; };
 		B66E1BED18D83B7500C292FA /* SDPhotoGridView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SDPhotoGridView.h; path = Classes/SDPhotoGridView.h; sourceTree = "<group>"; };
 		B66E1BEE18D83B7500C292FA /* SDPhotoGridView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SDPhotoGridView.m; path = Classes/SDPhotoGridView.m; sourceTree = "<group>"; };
 		B66E1BF018D8585C00C292FA /* dump_user.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dump_user.png; sourceTree = "<group>"; };
@@ -3249,6 +3252,15 @@
 			name = "Menu - Top";
 			sourceTree = "<group>";
 		};
+		B663F00C18E9BB030077E3FF /* Main Navigation */ = {
+			isa = PBXGroup;
+			children = (
+				B663F00918E9BA3C0077E3FF /* SDMainNavigationController.h */,
+				B663F00A18E9BA3C0077E3FF /* SDMainNavigationController.m */,
+			);
+			name = "Main Navigation";
+			sourceTree = "<group>";
+		};
 		B6777A4C18E0A9E100BD8F05 /* Base */ = {
 			isa = PBXGroup;
 			children = (
@@ -3620,6 +3632,7 @@
 				B6777B6E18E1C23A00BD8F05 /* Loading */,
 				EF3B651B18CDB6AB00B0CF1C /* Login */,
 				B65DDC1418C5865C0076408C /* Main */,
+				B663F00C18E9BB030077E3FF /* Main Navigation */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -4911,6 +4924,7 @@
 				2E880B0818D8054F0049446F /* AnimationFrame.m in Sources */,
 				B6B8275018E3DB4A009C8A37 /* SDErrorBubbleView.m in Sources */,
 				B6DC7C0B18DAB35C00023862 /* KeychainItemWrapper.m in Sources */,
+				B663F00B18E9BA3C0077E3FF /* SDMainNavigationController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -4,10 +4,10 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
     <scenes>
-        <!--Navigation Controller-->
+        <!--Main Navigation Controller-->
         <scene sceneID="kty-40-Clg">
             <objects>
-                <navigationController definesPresentationContext="YES" navigationBarHidden="YES" id="GfC-Yl-lCZ" sceneMemberID="viewController">
+                <navigationController definesPresentationContext="YES" navigationBarHidden="YES" id="GfC-Yl-lCZ" customClass="SDMainNavigationController" sceneMemberID="viewController">
                     <nil key="simulatedTopBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="ZhL-dX-BN1">
                         <autoresizingMask key="autoresizingMask"/>

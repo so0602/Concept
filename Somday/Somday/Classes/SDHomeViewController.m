@@ -90,6 +90,7 @@ static NSString *HeaderCellIdentifier = @"HeaderCollectionViewCell";
     GPUImagePicture* picture = [[GPUImagePicture alloc] initWithImage:[UIImage imageNamed:@"Debug_Story_1"]];
     [picture addTarget:_bgImageFilter1];
     [picture processImage];
+    
     GPUImagePicture* picture1 = [[GPUImagePicture alloc] initWithImage:[UIImage imageNamed:@"Debug_Story_1"]];
     [picture1 addTarget:_bgImageFilter2];
     [picture1 processImage];
