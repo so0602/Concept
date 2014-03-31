@@ -19,4 +19,8 @@ typedef NS_ENUM(NSInteger, SDTextFieldState) {
 
 @property (nonatomic, assign) SDTextFieldState state;
 
+@property (nonatomic, strong) UIView* normalRightView;
+
+-(BOOL)checkFormat;
+
 @end

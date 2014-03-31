@@ -11,7 +11,7 @@
 @interface SDStory ()
 
 @property (nonatomic, strong, readwrite) NSNumber* ID;
-@property (nonatomic, strong, readwrite) NSString* title;
+//@property (nonatomic, strong, readwrite) NSString* title;
 @property (nonatomic, strong, readwrite) NSString* summary;
 @property (nonatomic, strong, readwrite) NSString* content;
 @property (nonatomic, strong, readwrite) NSString* videoUrl;

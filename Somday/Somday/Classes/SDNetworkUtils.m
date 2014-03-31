@@ -8,6 +8,8 @@
 
 #import "SDNetworkUtils.h"
 
+#import "SDUtils.h"
+
 #import "JSONKit.h"
 
 #import "ASIFormDataRequest+Addition.h"
@@ -42,6 +44,7 @@ const CGFloat SDTimeOutSeconds = 60.0f;
 
     ASIHTTPRequest* request = [SDNetworkUtils requestWithUrl:UserLoginUrl attributes:attributes completion:completionBlock failed:failedBlock returnClass:[SDLogin class]];
     
+    [SDUtils showLoading];
     [request startAsynchronous];
     
     return request;
@@ -70,6 +73,7 @@ const CGFloat SDTimeOutSeconds = 60.0f;
     
     ASIHTTPRequest* request = [SDNetworkUtils requestWithUrl:CreateUserUrl attributes:attributes completion:completionBlock failed:failedBlock returnClass:[SDCreateUser class]];
     
+    [SDUtils showLoading];
     [request startAsynchronous];
     
     return request;
@@ -83,6 +87,7 @@ const CGFloat SDTimeOutSeconds = 60.0f;
     
     ASIHTTPRequest* request = [SDNetworkUtils requestWithUrl:GetStoryListUrl attributes:attributes completion:completionBlock failed:failedBlock returnClass:[SDStories class]];
     
+    [SDUtils showLoading];
     [request startAsynchronous];
     
     return request;
@@ -116,34 +121,34 @@ const CGFloat SDTimeOutSeconds = 60.0f;
     [request addRequestHeader:@"Content-Type" value:@"application/json; encoding=utf-8"];
     [request addRequestHeader:@"Accept" value:@"application/json"];
     
-//    request.shouldCompressRequestBody = FALSE;
-//    request.allowCompressedResponse = FALSE;
-    
     NSMutableDictionary* rawData = [SDNetworkUtils baseRawData];
     [rawData addEntriesFromDictionary:attributes];
     
     NSString* jsonString = rawData.JSONString;
     
     [request appendPostData:[jsonString dataUsingEncoding:NSUTF8StringEncoding]];
-    
-    __weak ASIHTTPRequest* wRequest = request;
-    
+
+    __weak ASIHTTPRequest* weakRequest = request;
     [request setCompletionBlock:^{
-        SDResponseBase* response = [[class alloc] initWithDictionary:wRequest.responseString.objectFromJSONString];
+        SDResponseBase* response = [[class alloc] initWithDictionary:weakRequest.responseString.objectFromJSONString];
         if( response.isSuccess && completionBlock ){
             completionBlock(response);
         }else if( !response.isSuccess && failedBlock ){
-            response.request = wRequest;
+            response.request = weakRequest;
             failedBlock(response);
         }
+        [SDUtils dismissLoading];
     }];
     
     [request setFailedBlock:^{
         if( failedBlock ){
             SDResponseBase* response = [[class alloc] initWithDictionary:nil];
-            response.request = wRequest;
+
+            response.request = weakRequest;
+
             failedBlock(response);
         }
+        [SDUtils dismissLoading];
     }];
     
     return request;

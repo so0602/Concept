@@ -11,11 +11,15 @@
 #import "SDNetworkUtils.h"
 #import "SDTextField.h"
 
-#import "KBPopupBubbleView.h"
+#import "SDErrorBubbleView.h"
 
 #import "UIViewController+Addition.h"
 #import "UIFont+Addition.h"
+#import "UITextField+Addition.h"
+#import "UIColor+Extensions.h"
 #import "NSString+Addition.h"
+
+#import "FTAnimation+UIView.h"
 
 @interface SDSignUpViewController ()<UIAlertViewDelegate, UITextFieldDelegate>
 
@@ -29,15 +33,13 @@
 @property (nonatomic, strong) IBOutlet SDTextField* passwordTextField;
 @property (nonatomic, strong) IBOutlet SDTextField* confirmPasswordTextField;
 
-@property (nonatomic, strong) UITextField* targetTextField;
-@property (nonatomic, strong) KBPopupBubbleView* bubbleView;
+@property (nonatomic, strong) SDErrorBubbleView* bubbleView;
 
 @property (nonatomic, strong, readonly) NSString* errorMessage;
 @property (nonatomic, strong, readonly) NSString* emailErrorMessage;
+@property (nonatomic, strong) NSString* bubbleMessage;
 
 -(void)checkEmail;
--(void)checkPassword;
--(void)checkConfirmPassword;
 
 @end
 
@@ -48,23 +50,27 @@
 -(void)viewDidLoad{
     [super viewDidLoad];
     
+    [self.backButton changeFont:SDFontFamily_Montserrat style:SDFontStyle_Regular];
+    
     UILabel* label = [[UILabel alloc] initWithFrame:CGRectZero];
     label.backgroundColor = [UIColor clearColor];
     label.text = @"as your login";
-    label.font = [UIFont josefinSansFontOfSize:14];
-    label.textColor = [UIColor colorWithWhite:0.5 alpha:0.8];
+    UIFont* font = [UIFont systemFontOfSize:12];
+    font = [font setFontFamily:SDFontFamily_Montserrat style:SDFontStyle_Regular];
+    label.font = font;
+    label.shadowColor = [UIColor colorWithWhite:0 alpha:0.3];
+    label.textColor = [UIColor colorWithHexString:@"CCCCCC"];
     [label sizeToFit];
     self.usernameTextField.rightView = label;
-    self.usernameTextField.rightViewMode = UITextFieldViewModeUnlessEditing;
     
     label = [[UILabel alloc] initWithFrame:CGRectZero];
     label.backgroundColor = [UIColor clearColor];
     label.text = @"at least 8 characters";
-    label.font = [UIFont josefinSansFontOfSize:14];
-    label.textColor = [UIColor colorWithWhite:0.5 alpha:0.8];
+    label.font = font;
+    label.shadowColor = [UIColor colorWithWhite:0 alpha:0.3];
+    label.textColor = [UIColor colorWithHexString:@"CCCCCC"];
     [label sizeToFit];
     self.passwordTextField.rightView = label;
-    self.passwordTextField.rightViewMode = UITextFieldViewModeUnlessEditing;
     
     UIImage* image = self.textFieldBackgroundImageView.image;
     image = [image stretchableImageWithLeftCapWidth:image.size.width / 2 topCapHeight:image.size.height / 2];
@@ -76,6 +82,18 @@
     
     UIImage* flippedImage = [UIImage imageWithCGImage:self.backgroundImage.CGImage scale:self.backgroundImage.scale orientation: UIImageOrientationUpMirrored];
     self.backgroundImageView.image = flippedImage;
+    
+    self.confirmPasswordTextField.rightImage = nil;
+}
+
+#pragma mark - SDViewController Override
+
+-(void)dismissKeyboard{
+    [super dismissKeyboard];
+    
+    [self.usernameTextField resignFirstResponder];
+    [self.passwordTextField resignFirstResponder];
+    [self.confirmPasswordTextField resignFirstResponder];
 }
 
 #pragma mark - UIViewController Additions
@@ -85,7 +103,6 @@
         [self.usernameTextField resignFirstResponder];
         [self.passwordTextField resignFirstResponder];
         [self.confirmPasswordTextField resignFirstResponder];
-        self.targetTextField = nil;
         
         NSString* errorMessage = self.errorMessage;
         if( errorMessage ){
@@ -107,6 +124,20 @@
 }
 
 #pragma mark - Private Functions
+
+-(SDErrorBubbleView*)bubbleView{
+    if( !_bubbleView ){
+        _bubbleView = [SDErrorBubbleView bubbleView];
+        
+        CGRect frame = self.usernameTextField.frame;
+        frame.origin.y -= _bubbleView.height + 12;
+        frame = [self.usernameTextField.superview convertRect:frame toView:self.view];
+        
+        _bubbleView.x = frame.origin.x;
+        _bubbleView.y = frame.origin.y;
+    }
+    return _bubbleView;
+}
 
 -(NSString*)errorMessage{
     NSMutableArray* strings = [NSMutableArray array];
@@ -142,54 +173,30 @@
     return nil;
 }
 
--(KBPopupBubbleView*)bubbleView{
-    if( !_bubbleView ){
-        CGRect frame = self.usernameTextField.frame;
-        frame.origin.y -= 50;
-        frame.size.height = 50;
-        frame = [self.usernameTextField.superview convertRect:frame toView:self.view];
-        _bubbleView = [[KBPopupBubbleView alloc] initWithFrame:frame];
-        _bubbleView.position = kKBPopupPointerPositionLeft;
-        _bubbleView.side = kKBPopupPointerSideBottom;
-        _bubbleView.cornerRadius = 8;
-        _bubbleView.useBorders = FALSE;
-        _bubbleView.drawableColor = [UIColor whiteColor];
-        _bubbleView.label.font = [UIFont josefinSansSemiBoldFontOfSize:14];
-        _bubbleView.draggable = FALSE;
-    }
-    return _bubbleView;
-}
-
 -(void)checkEmail{
-    if( self.usernameTextField.text.isEmailFormat ){
-        self.usernameTextField.state = SDTextFieldStateLoading;
-        [self.bubbleView hide:TRUE];
-        
-        [SDNetworkUtils checkUserExistWithUsername:self.usernameTextField.text completion:^(SDCheckUserExist *response) {
-            self.usernameTextField.state = SDTextFieldStateCorrect;
-        } failed:^(SDCheckUserExist *response) {
-            self.usernameTextField.state = SDTextFieldStateError;
-            self.bubbleView.label.text = response.failMessage;
-            if( !self.bubbleView.superview ){
-                [self.bubbleView showInView:self.view animated:TRUE];
-            }
-        }];
-    }else{
+    [SDNetworkUtils checkUserExistWithUsername:self.usernameTextField.text completion:^(SDCheckUserExist *response) {
+        self.usernameTextField.state = SDTextFieldStateCorrect;
+    } failed:^(SDCheckUserExist *response) {
         self.usernameTextField.state = SDTextFieldStateError;
-        
-        self.bubbleView.label.text = self.emailErrorMessage;
+        self.bubbleView.message = response.failMessage;
         if( !self.bubbleView.superview ){
-            [self.bubbleView showInView:self.view animated:TRUE];
+            [self.view addSubview:self.bubbleView];
+            [self.bubbleView popIn:0.3 delegate:nil];
         }
+    }];
+}
+
+-(void)setBubbleMessage:(NSString *)bubbleMessage{
+    _bubbleMessage = bubbleMessage;
+    self.bubbleView.message = bubbleMessage;
+    if( bubbleMessage.length ){
+        if( !self.bubbleView.superview ){
+            [self.view addSubview:self.bubbleView];
+            [self.bubbleView popIn:0.3 delegate:nil];
+        }
+    }else{
+        [self.bubbleView popOut:0.3 delegate:self.bubbleView startSelector:nil stopSelector:@selector(removeFromSuperview)];
     }
-}
-
--(void)checkPassword{
-    self.passwordTextField.state = self.passwordTextField.text.isPasswordFormat ? SDTextFieldStateCorrect : SDTextFieldStateError;
-}
-
--(void)checkConfirmPassword{
-    self.confirmPasswordTextField.state = self.confirmPasswordTextField.text.isPasswordFormat ? SDTextFieldStateCorrect : SDTextFieldStateError;
 }
 
 #pragma mark - UIAlertViewDelegate
@@ -203,31 +210,53 @@
 #pragma mark - UITextFieldDelegate
 
 -(void)textFieldDidBeginEditing:(UITextField *)textField{
-    if( ![self.targetTextField isEqual:textField] ){
-        if( [self.targetTextField isEqual:self.usernameTextField] ){
-            [self checkEmail];
-        }else if( [self.targetTextField isEqual:self.passwordTextField] ){
-            [self checkPassword];
-        }else if( [self.targetTextField isEqual:self.confirmPasswordTextField] ){
-            [self checkConfirmPassword];
+    if( [textField isKindOfClass:[SDTextField class]] ){
+        ((SDTextField*)textField).state = SDTextFieldStateNormal;
+    }
+}
+
+-(void)textFieldDidEndEditing:(UITextField *)textField{
+    if( [textField isKindOfClass:[SDTextField class]] ){
+        BOOL success = [(SDTextField*)textField checkFormat];
+        if( [textField isEqual:self.usernameTextField] ){
+            if( success ){
+                self.bubbleMessage = nil;
+                [self checkEmail];
+            }else{
+                self.bubbleMessage = self.errorMessage;
+            }
+        }else if( [textField isEqual:self.confirmPasswordTextField] ){
+            ((SDTextField*)textField).state = [textField.text isEqualToString:self.passwordTextField.text] ? ((SDTextField*)textField).state : SDTextFieldStateError;
         }
-        self.targetTextField = textField;
     }
 }
 
 -(BOOL)textFieldShouldReturn:(UITextField *)textField{
-    if( [textField isEqual:self.usernameTextField] ){
-        [self.passwordTextField becomeFirstResponder];
-        [self checkEmail];
-        self.targetTextField = textField;
-    }else if( [textField isEqual:self.passwordTextField] ){
-        [self.confirmPasswordTextField becomeFirstResponder];
-        [self checkPassword];
-        self.targetTextField = textField;
-    }else if( [textField isEqual:self.confirmPasswordTextField] ){
-        [self checkConfirmPassword];
-        self.targetTextField = nil;
-        [self touchUpInside:self.signUpButton];
+    if( [textField isKindOfClass:[SDTextField class]] ){
+        BOOL success = [(SDTextField*)textField checkFormat];
+        
+        if( [textField isEqual:self.usernameTextField] ){
+            [self.passwordTextField becomeFirstResponder];
+            if( success ){
+                self.bubbleMessage = nil;
+                [self checkEmail];
+            }else{
+                self.bubbleMessage = self.errorMessage;
+            }
+        }else if( [textField isEqual:self.passwordTextField] ){
+            [self.confirmPasswordTextField becomeFirstResponder];
+        }else if( [textField isEqual:self.confirmPasswordTextField] ){
+            ((SDTextField*)textField).state = [textField.text isEqualToString:self.passwordTextField.text] ? ((SDTextField*)textField).state : SDTextFieldStateError;
+            [self touchUpInside:self.signUpButton];
+        }
+    }
+    return TRUE;
+}
+
+-(BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{
+    string = [textField.text stringByReplacingCharactersInRange:range withString:string];
+    if( !string.length && [textField isKindOfClass:[SDTextField class]] ){
+        ((SDTextField*)textField).state = SDTextFieldStateNormal;
     }
     return TRUE;
 }

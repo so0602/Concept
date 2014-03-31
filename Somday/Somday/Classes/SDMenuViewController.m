@@ -69,7 +69,11 @@
     self.backgroundImageView.image = self.backgroundImage;
 }
 
-#pragma mark - SDMenuViewController
+-(void)dealloc{
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:HomeBackgroundImageChangedNotification object:nil];
+}
+
+#pragma mark - Private Functions
 
 -(SDSearchViewController*)searchViewController{
     if( !_searchViewController ){
@@ -132,11 +136,7 @@
 }
 
 -(void)hideSearchView{
-//    [self.dynamicsDrawerViewController setPaneState:(MSDynamicsDrawerPaneState)SDDynamicsDrawerPaneStateMenu animated:TRUE allowUserInterruption:TRUE completion:nil];
-    [self.dynamicsDrawerViewController setPaneState:MSDynamicsDrawerPaneStateMenu animated:TRUE allowUserInterruption:TRUE completion:nil];
-//    [self.dynamicsDrawerViewController setPaneState:(MSDynamicsDrawerPaneState)SDDynamicsDrawerPaneStateClosed animated:TRUE allowUserInterruption:FALSE completion:^{
-//        [self.dynamicsDrawerViewController setPaneState:(MSDynamicsDrawerPaneState)SDDynamicsDrawerPaneStateMenu animated:TRUE allowUserInterruption:FALSE completion:nil];
-//    }];
+    [self.dynamicsDrawerViewController setPaneState:MSDynamicsDrawerPaneStateClosed animated:TRUE allowUserInterruption:TRUE completion:nil];
     
     [self.dynamicsDrawerViewController updatePeneViewCornerRadius:8.0f];
     
@@ -199,7 +199,8 @@
             [SDUtils logout];
             SDAppDelegate* delegate = [UIApplication sharedApplication].delegate;
             [delegate.mainViewController presentViewController:delegate.loginViewController animated:TRUE completion:^{
-                
+                SDDynamicsDrawerViewController* viewController = delegate.mainViewController;
+                [viewController setPaneState:MSDynamicsDrawerPaneStateClosed];
             }];
         }
             break;

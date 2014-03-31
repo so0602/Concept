@@ -25,7 +25,7 @@ static const char* UITextField_RightImageKey = "&#_UITextField_RightImageKey_#&"
     if( !rightImageView || ![rightImageView isKindOfClass:[UIImageView class]]){
         rightImageView = [[UIImageView alloc] initWithImage:rightImage];
         self.rightView = rightImageView;
-        self.rightViewMode = UITextFieldViewModeAlways;
+        self.rightViewMode = UITextFieldViewModeUnlessEditing;
     }else{
         rightImageView.image = rightImage;
     }

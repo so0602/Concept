@@ -390,6 +390,8 @@
 				DSTROOT = /tmp/MSDynamicsDrawerViewController.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MSDynamicsDrawerViewController/MSDynamicsDrawerViewController-Prefix.pch";
+				INSTALL_GROUP = "";
+				INSTALL_OWNER = "";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -402,6 +404,8 @@
 				DSTROOT = /tmp/MSDynamicsDrawerViewController.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MSDynamicsDrawerViewController/MSDynamicsDrawerViewController-Prefix.pch";
+				INSTALL_GROUP = "";
+				INSTALL_OWNER = "";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;

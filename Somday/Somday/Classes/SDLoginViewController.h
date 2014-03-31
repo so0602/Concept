@@ -8,7 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SDLoginViewController : UIViewController
+#import "SDViewController.h"
+
+@interface SDLoginViewController : SDViewController
 
 @property (nonatomic, strong) UIImage* backgroundImage;
 

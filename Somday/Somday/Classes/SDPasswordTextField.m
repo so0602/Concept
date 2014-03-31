@@ -9,6 +9,7 @@
 #import "SDPasswordTextField.h"
 
 #import "UITextField+Addition.h"
+#import "NSString+Addition.h"
 
 @interface SDTextField ()
 
@@ -21,7 +22,20 @@
 #pragma mark - SDTextField Private Functions
 
 -(void)initialize{
+    [super initialize];
     self.rightImage = [UIImage imageNamed:@"icons-grey-ccc-12px_lock"];
+}
+
+#pragma mark - Override
+
+-(BOOL)checkFormat{
+    BOOL checkFormat = self.text.isPasswordFormat;
+    if( !self.text.length ){
+        self.state = SDTextFieldStateNormal;
+    }else{
+        self.state = checkFormat ? SDTextFieldStateCorrect : SDTextFieldStateError;
+    }
+    return checkFormat;
 }
 
 @end

@@ -13,15 +13,8 @@
 
 @interface SDBaseGridView : UICollectionViewCell <UIGestureRecognizerDelegate>
 
-@property (nonatomic, strong) IBOutlet UIView* mainContentView;
-@property (nonatomic, strong) IBOutlet UIImageView *backgroundImageView;
-@property (nonatomic, strong) IBOutlet UIButton *shareButton;
-@property (nonatomic, strong) IBOutlet UIButton *moreButton;
-@property (nonatomic, strong) IBOutlet UIButton *likeButton;
-@property (nonatomic, strong) IBOutlet UIButton *commentButton;
-@property (nonatomic, strong) IBOutlet UIButton *userButton;
-@property (nonatomic, strong) IBOutlet UILabel* userNameLabel;
-@property (nonatomic, strong) IBOutlet UILabel* infoLabel;
+@property (nonatomic, strong) IBOutlet UIImageView* blurBackgroundImageView;
+
 @property (nonatomic) BOOL disableSwipeGesture;
 
 + (CGFloat)heightForCell;

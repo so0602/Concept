@@ -15,11 +15,16 @@
 
 #import "GPUImage.h"
 
+#import "SDTextGridView.h"
+
 #import "UINavigationItem+Addition.h"
 #import "UILabel+Addition.h"
 #import "UICollectionView+Addition.h"
+#import "UIView+Addition.h"
+#import "UIImage+ImageEffects.h"
 #import "NSNotificationCenter+Name.h"
 #import "SDStoryBookGridView.h"
+
 #import <objc/message.h>
 
 #define WidthForGrid [UIScreen mainScreen].bounds.size.width - 16 // padding = 8
@@ -38,6 +43,13 @@
 @property (nonatomic) GPUImageiOSBlurFilter *bgImageFilter1;
 @property (nonatomic) GPUImageiOSBlurFilter *bgImageFilter2;
 @property (nonatomic) BOOL isbgImageAnimating;
+
+@property (nonatomic, strong) UIImage* background;
+@property (nonatomic, strong) UIImage* convertedBackground;
+
+-(void)updateVisibleCollectionViewCellsBackground;
+-(void)updateCollectionViewCellBackground:(UICollectionViewCell*)cell;
+
 @end
 
 @implementation SDHomeViewController
@@ -81,6 +93,8 @@ static NSString *HeaderCellIdentifier = @"HeaderCollectionViewCell";
     GPUImagePicture* picture1 = [[GPUImagePicture alloc] initWithImage:[UIImage imageNamed:@"Debug_Story_1"]];
     [picture1 addTarget:_bgImageFilter2];
     [picture1 processImage];
+    self.background = [UIImage imageNamed:@"Debug_Story_1"];
+    self.convertedBackground = self.background;
     
     [[NSNotificationCenter defaultCenter] postNotificationName:HomeBackgroundImageChangedNotification object:[UIImage imageNamed:@"Debug_Story_1"]];
     
@@ -91,11 +105,11 @@ static NSString *HeaderCellIdentifier = @"HeaderCollectionViewCell";
         self.dataSource = [NSMutableArray new];
         BOOL toggle = TRUE;
         BOOL toggle2 = TRUE;
-        int min = 0;
-        int max = 5;
+        int min = SDStoryType_Min;
+        int max = SDStoryType_Max + 1;
         for( int i = 0; i <= Debug_count; i++ ){
             SDStory* story = [SDStory new];
-            story.type = [NSNumber numberWithInt:min + rand() % (max-min)];
+            story.type = [NSNumber numberWithInt:min + arc4random() % (max-min)];
             switch( story.type.intValue ){
                 case SDStoryType_Photo:
                     story.imageName = toggle ? @"dump_03.jpg" : @"dump_02.jpg";
@@ -105,15 +119,20 @@ static NSString *HeaderCellIdentifier = @"HeaderCollectionViewCell";
                     story.audioName = toggle2 ? @"1kHz_44100Hz_16bit_05sec.mp3" : @"440Hz_44100Hz_16bit_05sec.mp3";
                     toggle2 = !toggle2;
                     break;
+                case SDStoryType_Link:
+                    story.websiteLink = @"http://us.playstation.com/ps4/games/metal-gear-solidv-ground-zeroes-ps4.html";
+                    story.websiteImage = [UIImage imageNamed:@"dump_website"];
+                    story.title = @"World-renowned Kojima Productions showcases the latest masterpiece in the Metal Gear Solid franchise with Metal Gear Solid V: Ground Zeroes.";
+                    break;
             }
-            NSLog(@"story: %@",story.type);
             story.userIconName = @"dump_user";
             story.userName = @"Thom.Y";
             story.date = [NSDate date];
             story.address = @"AsiaWorld Expo";
-            story.likeCount = [NSNumber numberWithInt:rand() % 10000];
-            story.commentCount = [NSNumber numberWithInt:rand() % 10000];
+            story.likeCount = [NSNumber numberWithInt:arc4random() % 10000];
+            story.commentCount = [NSNumber numberWithInt:arc4random() % 10000];
             [_dataSource addObject:story];
+            NSLog(@"type: %@", story.type);
         }
     }
 }
@@ -122,6 +141,7 @@ static NSString *HeaderCellIdentifier = @"HeaderCollectionViewCell";
 {
     [super viewWillAppear:animated];
     [self updateBackgroundImageToCurrentIndex:YES];
+    [self updateVisibleCollectionViewCellsBackground];
 }
 
 - (void)didReceiveMemoryWarning
@@ -233,20 +253,22 @@ static NSString *HeaderCellIdentifier = @"HeaderCollectionViewCell";
 #pragma mark - UICollectionViewDataSource Methods
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return Debug_count;
+    return self.dataSource.count;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     SDBaseGridView *cell = nil;
-    if( indexPath.row ){
-        SDStory* story = [self.dataSource objectAtIndex:indexPath.row];        
-        cell = [SDBaseGridView gridViewWithStory:story collectionView:collectionView forIndexPath:indexPath];
-        cell.story = story;
-    }else{ // isFirstRow
+    
+    if( indexPath.row == 0 ){
         cell = [collectionView dequeueReusableCellWithReuseIdentifier:HeaderCellIdentifier forIndexPath:indexPath];
         self.headerCollectionViewCell = (id)cell;
         [self.headerCollectionViewCell addMotionEffect:[SDUtils sharedMotionEffectGroup]];
+    }else{
+        SDStory* story = [self.dataSource objectAtIndex:indexPath.row];
+        cell = [SDBaseGridView gridViewWithStory:story collectionView:collectionView forIndexPath:indexPath];
+        cell.story = story;
+        [self updateCollectionViewCellBackground:cell];
     }
     
     return cell;
@@ -311,6 +333,8 @@ static NSString *HeaderCellIdentifier = @"HeaderCollectionViewCell";
         //[headerDateLabel setFontSize:[SDHomeHeaderCollectionViewCell fontForDateLabel].pointSize];
     }
     
+    
+    [self updateVisibleCollectionViewCellsBackground];
 }
 
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
@@ -338,6 +362,53 @@ static NSString *HeaderCellIdentifier = @"HeaderCollectionViewCell";
 - (void)topMenuWillClose
 {
     [SDUtils rotateBackView:_buttons[1]];
+}
+
+-(void)setConvertedBackground:(UIImage *)convertedBackground{
+    UIImageView* imageView = [[UIImageView alloc] initWithFrame:self.bgImageView1.bounds];
+    if( CGSizeEqualToSize(imageView.size, CGSizeZero) ){
+        imageView.bounds = self.view.bounds;
+    }
+    imageView.contentMode = UIViewContentModeScaleAspectFill;
+    imageView.image = convertedBackground;
+    _convertedBackground = [imageView.convertViewToImage applyBlurWithRadius:15 tintColor:[UIColor colorWithWhite:0 alpha:0.5] saturationDeltaFactor:3 maskImage:nil];
+    
+    [self updateVisibleCollectionViewCellsBackground];
+}
+
+-(void)updateVisibleCollectionViewCellsBackground{
+    NSArray* cells = self.collectionView.visibleCells;
+    for( UICollectionViewCell* cell in cells ){
+        UIImageView* view = nil;
+        SEL selector = @selector(blurBackgroundImageView);
+        if( [cell respondsToSelector:selector] ){
+            view = objc_msgSend(cell, selector);
+        }
+        if( view ){
+            UIImage* image = self.convertedBackground;
+            CGRect frame = [view convertRect:view.frame toView:self.view];
+            CGImageRef imageRef = CGImageCreateWithImageInRect(image.CGImage, frame);
+            UIImage *img = [UIImage imageWithCGImage:imageRef];
+            CGImageRelease(imageRef);
+            view.image = img;
+        }
+    }
+}
+
+-(void)updateCollectionViewCellBackground:(UICollectionViewCell*)cell{
+    UIImageView* view = nil;
+    SEL selector = @selector(blurBackgroundImageView);
+    if( [cell respondsToSelector:selector] ){
+        view = objc_msgSend(cell, selector);
+    }
+    if( view ){
+        UIImage* image = self.convertedBackground;
+        CGRect frame = [view convertRect:view.frame toView:self.view];
+        CGImageRef imageRef = CGImageCreateWithImageInRect(image.CGImage, frame);
+        UIImage *img = [UIImage imageWithCGImage:imageRef];
+        CGImageRelease(imageRef);
+        view.image = img;
+    }
 }
 
 @end

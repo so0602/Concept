@@ -6,6 +6,8 @@
   Copyright (c) 2014 Freddy So. All rights reserved.
 */
 
-"ErrorMessage_EmailFormat" = "● Invaild Email Format";
-"ErrorMessage_PasswordFormat" = "● Must be at least 8 characters";
-"ErrorMessage_ConfirmPasswordFormat" = "● Confirm Password is not match";
+"ErrorMessage_FillInfo" = "Please fill in your email and password";
+"ErrorMessage_EmailFormat" = "Invaild Email Format";
+"ErrorMessage_PasswordFormat" = "Must be at least 8 characters";
+"ErrorMessage_ConfirmPasswordFormat" = "Confirm Password is not match";
+"ErrorMessage_NotMatch" = "Your email and password do not match";

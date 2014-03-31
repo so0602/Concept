@@ -14,12 +14,18 @@
 #import "SDPhotoGridView.h"
 #import "SDVoiceGridView.h"
 #import "SDStoryBookGridView.h"
+#import "SDGradientView.h"
+#import "SDWebsiteGridView.h"
+
+#import "UIView+Addition.h"
 
 static NSString *BaseCellIdentifier = @"CollectionViewCell";
 static NSString *TextCellIdentifier = @"TextCollectionViewCell";
 static NSString *PhotoCellIdentifier = @"PhotoCollectionViewCell";
+static NSString *HalfPhotoCellIdentifier = @"HalfPhotoCollectionViewCell";
 static NSString *VoiceCellIdentifier = @"VoiceCollectionViewCell";
 static NSString *StoryBookCellIdentifier = @"StoryBookCollectionViewCell";
+static NSString *WebsiteCellIdentifier = @"WebsiteCollectionViewCell";
 
 KeyframeParametricBlock openFunction = ^double(double time) {
     return sin(time*M_PI_2);
@@ -46,6 +52,19 @@ typedef NSUInteger SDGridMenuState;
 
 @interface SDBaseGridView () <GHContextOverlayViewDataSource, GHContextOverlayViewDelegate>
 
+@property (nonatomic, strong) IBOutlet UIView* mainContentView;
+@property (nonatomic, strong) IBOutlet UIImageView *backgroundImageView;
+@property (nonatomic, strong) IBOutlet SDGradientView* topGradientView;
+@property (nonatomic, strong) IBOutlet SDGradientView* bottomGradientView;
+@property (nonatomic, strong) IBOutlet UILabel* titleLabel;
+@property (nonatomic, strong) IBOutlet UIButton *shareButton;
+@property (nonatomic, strong) IBOutlet UIButton *moreButton;
+@property (nonatomic, strong) IBOutlet UIButton *likeButton;
+@property (nonatomic, strong) IBOutlet UIButton *commentButton;
+@property (nonatomic, strong) IBOutlet UIButton *userButton;
+@property (nonatomic, strong) IBOutlet UILabel* userNameLabel;
+@property (nonatomic, strong) IBOutlet UILabel* infoLabel;
+
 @property (nonatomic) SDGridMenuState menuState;
 @property (nonatomic, strong) CALayer *origamiLayer;
 @property (nonatomic) CGFloat start;
@@ -71,6 +90,7 @@ typedef NSUInteger SDGridMenuState;
             reuseIdentifier = TextCellIdentifier;
             break;
         case SDStoryType_Photo:
+            // TODO
             reuseIdentifier = PhotoCellIdentifier;
             break;
         case SDStoryType_Voice:
@@ -83,7 +103,7 @@ typedef NSUInteger SDGridMenuState;
             reuseIdentifier = StoryBookCellIdentifier;
             break;
         case SDStoryType_Link:
-            reuseIdentifier = TextCellIdentifier;
+            reuseIdentifier = WebsiteCellIdentifier;
             break;
     }
     return [collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
@@ -96,6 +116,7 @@ typedef NSUInteger SDGridMenuState;
             class = [SDTextGridView class];
             break;
         case SDStoryType_Photo:
+            // TODO
             class = [SDPhotoGridView class];
             break;
         case SDStoryType_Voice:
@@ -108,7 +129,7 @@ typedef NSUInteger SDGridMenuState;
             class = [SDStoryBookGridView class];
             break;
         case SDStoryType_Link:
-            class = [SDTextGridView class];
+            class = [SDWebsiteGridView class];
             break;
     }
     
@@ -156,9 +177,11 @@ typedef NSUInteger SDGridMenuState;
     [self addGestureRecognizer:recognizer];
 }
 
-- (void)layoutSubviews
-{
-    [super layoutSubviews];
+-(void)awakeFromNib{
+    [super awakeFromNib];
+    
+    self.topGradientView.colors = @[(id)[UIColor colorWithWhite:0 alpha:0.2].CGColor, (id)[UIColor clearColor].CGColor];
+    self.bottomGradientView.colors = @[(id)[UIColor clearColor].CGColor, (id)[UIColor colorWithWhite:0 alpha:0.4].CGColor];
     
     // BackgroundColor
     self.backgroundColor = [UIColor clearColor];
@@ -174,20 +197,35 @@ typedef NSUInteger SDGridMenuState;
     self.mainContentView.layer.masksToBounds = TRUE;
     self.mainContentView.layer.cornerRadius = 8.0f;
     
-    self.backgroundImageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@", self.story.imageName]];
-    
     [self.shareButton setTitle:NSLocalizedString(@"Share", nil) forState:UIControlStateNormal];
     self.shareButton.titleLabel.font = [UIFont systemFontOfSize:9];
     
     self.userButton.clipsToBounds = TRUE;
     self.userButton.layer.masksToBounds = TRUE;
     self.userButton.layer.cornerRadius = CGRectGetWidth(self.userButton.bounds) / 2;
-    self.userButton.layer.shadowColor = [UIColor blackColor].CGColor;
-    self.userButton.layer.shadowOffset = CGSizeMake(3.0, 3.0);
+    self.userButton.layer.shadowColor = [UIColor colorWithWhite:0 alpha:0.3].CGColor;
+    self.userButton.layer.shadowOffset = CGSizeMake(0.0, 2.0);
     self.userButton.layer.shadowOpacity = 0.7f;
     self.userButton.layer.shadowPath =  [UIBezierPath bezierPathWithRoundedRect:self.userButton.bounds cornerRadius:self.userButton.layer.cornerRadius].CGPath;
-    self.userButton.layer.borderWidth = 2;
-    self.userButton.layer.borderColor = [UIColor whiteColor].CGColor;
+    self.userButton.layer.borderWidth = 1;
+    self.userButton.layer.borderColor = [UIColor colorWithWhite:1 alpha:0.4].CGColor;
+    
+    [self.userNameLabel changeFont:SDFontFamily_Montserrat style:SDFontStyle_Bold];
+    [self.infoLabel changeFont:SDFontFamily_Montserrat style:SDFontStyle_Regular];
+    [self.likeButton changeFont:SDFontFamily_Montserrat style:SDFontStyle_Regular];
+    [self.commentButton changeFont:SDFontFamily_Montserrat style:SDFontStyle_Regular];
+}
+
+- (void)layoutSubviews
+{
+    [super layoutSubviews];
+    
+    if( self.story.title ){
+        self.titleLabel.text = self.story.title;
+    }
+    
+    self.backgroundImageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@", self.story.imageName]];
+    
     [self.userButton setImage:[UIImage imageNamed:self.story.userIconName] forState:UIControlStateNormal];
     
     self.userNameLabel.text = self.story.userName;
@@ -203,7 +241,6 @@ typedef NSUInteger SDGridMenuState;
     count = self.story.commentCount.intValue;
     string = count >= 1000 ? [NSString stringWithFormat:@"%ldk", count / 1000] : [NSString stringWithFormat:@"%ld", count];
     [self.commentButton setTitle:string forState:UIControlStateNormal];
-    
 }
 
 - (void)prepareForReuse

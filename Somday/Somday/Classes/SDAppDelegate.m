@@ -13,6 +13,7 @@
 #import "SDUtils.h"
 
 #import "UIViewController+Addition.h"
+#import "UIFont+Addition.h"
 
 @implementation SDAppDelegate
 
@@ -49,7 +50,8 @@
 
 - (void)applicationDidBecomeActive:(UIApplication *)application
 {
-    if( ![SDUtils username] ){
+    NSString* username = [SDUtils username];
+    if( !username.length ){
         if( ![self.mainViewController.presentedViewController isEqual:self.loginViewController] ){
             [self.mainViewController presentViewController:self.loginViewController animated:FALSE completion:^{
                 

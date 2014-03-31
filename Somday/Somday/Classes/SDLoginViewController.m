@@ -17,10 +17,11 @@
 #import "SDSignUpViewController.h"
 
 #import "SDTextField.h"
+#import "SDErrorBubbleView.h"
 
 #import "GPUImage.h"
 
-#import "KBPopupBubbleView.h"
+#import "FTAnimation+UIView.h"
 
 #import "NSString+Addition.h"
 #import "UIViewController+Addition.h"
@@ -37,16 +38,17 @@
 @property (nonatomic, strong) IBOutlet SDTextField* passwordTextField;
 @property (nonatomic, strong) IBOutlet UIButton* loginButton;
 @property (nonatomic, strong) IBOutlet UIButton* forgotButton;
+@property (nonatomic, strong) IBOutlet UIButton* loginWithFacebookButton;
 @property (nonatomic, strong) IBOutlet UIButton* signUpButton;
 
-@property (nonatomic, strong) UITextField* targetTextField;
-@property (nonatomic, strong) KBPopupBubbleView* bubbleView;
+@property (nonatomic, strong) SDErrorBubbleView* bubbleView;
 
 @property (nonatomic, strong, readonly) NSString* errorMessage;
 @property (nonatomic, strong, readonly) NSString* emailErrorMessage;
+@property (nonatomic, strong) NSString* bubbleMessage;
 
--(void)checkEmail;
--(void)checkPassword;
+@property (nonatomic, strong) NSString* signedUsername;
+@property (nonatomic, strong) NSString* signedPassword;
 
 @end
 
@@ -56,6 +58,9 @@
 
 -(void)viewDidLoad{
     [super viewDidLoad];
+    
+    [self.loginWithFacebookButton changeFont:SDFontFamily_Montserrat style:SDFontStyle_Regular];
+    [self.signUpButton changeFont:SDFontFamily_Montserrat style:SDFontStyle_Regular];
     
     UIImage* image = self.textFieldBackgroundImageView.image;
     image = [image stretchableImageWithLeftCapWidth:image.size.width / 2 topCapHeight:image.size.height / 2];
@@ -85,13 +90,30 @@
     [self.backgroundPicture processImage];
 }
 
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    
+    self.usernameTextField.text = self.signedUsername;
+    self.passwordTextField.text = self.signedPassword;
+    self.usernameTextField.state = SDTextFieldStateNormal;
+    self.passwordTextField.state = SDTextFieldStateNormal;
+}
+
+#pragma mark - SDViewController Override
+
+-(void)dismissKeyboard{
+    [super dismissKeyboard];
+    
+    [self.usernameTextField resignFirstResponder];
+    [self.passwordTextField resignFirstResponder];
+}
+
 #pragma mark - UIViewController Additions
 
 -(void)touchUpInside:(id)sender{
     if( [self.loginButton isEqual:sender] ){
         [self.usernameTextField resignFirstResponder];
         [self.passwordTextField resignFirstResponder];
-        self.targetTextField = nil;
         
         NSString* errorMessage = self.errorMessage;
         if( errorMessage ){
@@ -130,15 +152,39 @@
 
 #pragma mark - Private Functions
 
+-(SDErrorBubbleView*)bubbleView{
+    if( !_bubbleView ){
+        _bubbleView = [SDErrorBubbleView bubbleView];
+        
+        CGRect frame = self.usernameTextField.frame;
+        frame.origin.y -= _bubbleView.height + 12;
+        frame = [self.usernameTextField.superview convertRect:frame toView:self.view];
+        
+        _bubbleView.x = frame.origin.x;
+        _bubbleView.y = frame.origin.y;
+    }
+    return _bubbleView;
+}
+
 -(NSString*)errorMessage{
     NSMutableArray* strings = [NSMutableArray array];
-    if( !self.usernameTextField.text.isEmailFormat ){
-        NSString* string = NSLocalizedString(@"ErrorMessage_EmailFormat", nil);
+    if( !self.usernameTextField.text.length && !self.passwordTextField.text.length ){
+        NSString* string = NSLocalizedString(@"ErrorMessage_FillInfo", nil);
         [strings addObject:string];
-    }
-    if( !self.passwordTextField.text.isPasswordFormat ){
-        NSString* string = NSLocalizedString(@"ErrorMessage_PasswordFormat", nil);
-        [strings addObject:string];
+    }else{
+        if( !self.usernameTextField.text.isEmailFormat ){
+            NSString* string = NSLocalizedString(@"ErrorMessage_EmailFormat", nil);
+            [strings addObject:string];
+        }
+//        if( !self.passwordTextField.text.isPasswordFormat ){
+//            NSString* string = NSLocalizedString(@"ErrorMessage_PasswordFormat", nil);
+//            [strings addObject:string];
+//        }
+        if( (self.usernameTextField.text.length && !self.passwordTextField.text.length) ||
+           (!self.usernameTextField.text.length && self.passwordTextField.text.length) ){
+            NSString* string = NSLocalizedString(@"ErrorMessage_NotMatch", nil);
+            [strings addObject:string];
+        }
     }
     
     if( strings.count ){
@@ -160,66 +206,56 @@
     return nil;
 }
 
--(KBPopupBubbleView*)bubbleView{
-    if( !_bubbleView ){
-        CGRect frame = self.usernameTextField.frame;
-        frame.origin.y -= 50;
-        frame.size.height = 50;
-        frame = [self.usernameTextField.superview convertRect:frame toView:self.view];
-        _bubbleView = [[KBPopupBubbleView alloc] initWithFrame:frame];
-        _bubbleView.position = kKBPopupPointerPositionLeft;
-        _bubbleView.side = kKBPopupPointerSideBottom;
-        _bubbleView.cornerRadius = 8;
-        _bubbleView.useBorders = FALSE;
-        _bubbleView.drawableColor = [UIColor whiteColor];
-        _bubbleView.label.font = [UIFont josefinSansSemiBoldFontOfSize:14];
-        _bubbleView.draggable = FALSE;
-    }
-    return _bubbleView;
-}
-
--(void)checkEmail{
-    if( self.usernameTextField.text.isEmailFormat ){
-        self.usernameTextField.state = SDTextFieldStateCorrect;
-        [self.bubbleView hide:TRUE];
-    }else{
-        self.usernameTextField.state = SDTextFieldStateError;
-        
-        self.bubbleView.label.text = self.emailErrorMessage;
+-(void)setBubbleMessage:(NSString *)bubbleMessage{
+    _bubbleMessage = bubbleMessage;
+    self.bubbleView.message = bubbleMessage;
+    if( bubbleMessage.length ){
         if( !self.bubbleView.superview ){
-            [self.bubbleView showInView:self.view animated:TRUE];
+            [self.view addSubview:self.bubbleView];
+            [self.bubbleView popIn:0.3 delegate:nil];
         }
+    }else{
+        [self.bubbleView popOut:0.3 delegate:self.bubbleView startSelector:nil stopSelector:@selector(removeFromSuperview)];
     }
-}
-
--(void)checkPassword{
-    self.passwordTextField.state = self.passwordTextField.text.isPasswordFormat ? SDTextFieldStateCorrect : SDTextFieldStateError;
 }
 
 #pragma mark - UITextFieldDelegate
 
 -(void)textFieldDidBeginEditing:(UITextField *)textField{
-    if( ![self.targetTextField isEqual:textField] ){
-        if( [self.targetTextField isEqual:self.usernameTextField] && [textField isEqual:self.passwordTextField] ){
-            [self checkEmail];
-            self.targetTextField = textField;
-        }else if( [self.targetTextField isEqual:self.passwordTextField] && [textField isEqual:self.usernameTextField] ){
-            [self checkPassword];
-            self.targetTextField = nil;
+    if( [textField isKindOfClass:[SDTextField class]] ){
+        ((SDTextField*)textField).state = SDTextFieldStateNormal;
+    }
+}
+
+-(void)textFieldDidEndEditing:(UITextField *)textField{
+    if( [textField isKindOfClass:[SDTextField class]] ){
+        if( [textField isEqual:self.usernameTextField] ){
+            BOOL success = [(SDTextField*)textField checkFormat];
+            NSString* message = success ? nil : (textField.text.length ? self.emailErrorMessage : nil);
+            self.bubbleMessage = message;
         }
-        
     }
 }
 
 -(BOOL)textFieldShouldReturn:(UITextField *)textField{
-    if( [textField isEqual:self.usernameTextField] ){
-        [self.passwordTextField becomeFirstResponder];
-        [self checkEmail];
-        self.targetTextField = textField;
-    }else if( [textField isEqual:self.passwordTextField] ){
-        [self checkPassword];
-        [self touchUpInside:self.loginButton];
-        self.targetTextField = nil;
+    if( [textField isKindOfClass:[SDTextField class]] ){
+        if( [textField isEqual:self.usernameTextField] ){
+            BOOL success = [(SDTextField*)textField checkFormat];
+            [self.passwordTextField becomeFirstResponder];
+            NSString* message = success ? nil : (textField.text.length ? self.emailErrorMessage : nil);
+            self.bubbleMessage = message;
+        }else if( [textField isEqual:self.passwordTextField] ){
+            [self touchUpInside:self.loginButton];
+        }
+    }
+    return TRUE;
+}
+
+-(BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{
+    string = [textField.text stringByReplacingCharactersInRange:range withString:string];
+    if( !string.length && [textField isKindOfClass:[SDTextField class]] ){
+        ((SDTextField*)textField).state = SDTextFieldStateNormal;
+        self.bubbleMessage = nil;
     }
     return TRUE;
 }

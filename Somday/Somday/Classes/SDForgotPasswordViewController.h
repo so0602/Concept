@@ -8,7 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SDForgotPasswordViewController : UIViewController
+#import "SDViewController.h"
+
+@interface SDForgotPasswordViewController : SDViewController
 
 @property (nonatomic, strong) UIImage* backgroundImage;
 

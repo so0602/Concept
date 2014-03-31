@@ -9,15 +9,15 @@
 #import "SDForgotPasswordViewController.h"
 
 #import "SDTextField.h"
+#import "SDErrorBubbleView.h"
 
 #import "GPUImage.h"
-
-#import "KBPopupBubbleView.h"
 
 #import "UIViewController+Addition.h"
 #import "UIFont+Addition.h"
 #import "NSString+Addition.h"
 #import "UIImageView+LBBlurredImage.h"
+#import "FTAnimation+UIView.h"
 
 @interface SDForgotPasswordViewController ()<UITextFieldDelegate>
 
@@ -35,11 +35,10 @@
 @property (nonatomic, strong) IBOutlet UIImageView* textFieldBackgroundImageView;
 @property (nonatomic, strong) IBOutlet SDTextField* usernameTextField;
 
-@property (nonatomic, strong) KBPopupBubbleView* bubbleView;
+@property (nonatomic, strong) SDErrorBubbleView* bubbleView;
 
 @property (nonatomic, strong, readonly) NSString* errorMessage;
-
--(void)checkEmail;
+@property (nonatomic, strong) NSString* bubbleMessage;
 
 @end
 
@@ -49,6 +48,12 @@
 
 -(void)viewDidLoad{
     [super viewDidLoad];
+    
+    [self.backButton changeFont:SDFontFamily_Montserrat style:SDFontStyle_Regular];
+    
+    [self.mainTitleLabel changeFont:SDFontFamily_Montserrat style:SDFontStyle_Regular];
+    
+    [self.descriptionLabel changeFont:SDFontFamily_Montserrat style:SDFontStyle_Regular];
     
     UIImage* image = self.textFieldBackgroundImageView.image;
     image = [image stretchableImageWithLeftCapWidth:image.size.width / 2 topCapHeight:image.size.height / 2];
@@ -62,6 +67,14 @@
     self.backgroundImageView.image = flippedImage;
 }
 
+#pragma mark - SDViewController Override
+
+-(void)dismissKeyboard{
+    [super dismissKeyboard];
+    
+    [self.usernameTextField resignFirstResponder];
+}
+
 #pragma mark - UIViewController Additions
 
 -(void)touchUpInside:(id)sender{
@@ -71,6 +84,22 @@
         [self dismissViewControllerAnimated:TRUE completion:^{ 
         }];
     }
+}
+
+#pragma mark - Private Functions
+
+-(SDErrorBubbleView*)bubbleView{
+    if( !_bubbleView ){
+        _bubbleView = [SDErrorBubbleView bubbleView];
+        
+        CGRect frame = self.usernameTextField.frame;
+        frame.origin.y -= _bubbleView.height + 12;
+        frame = [self.usernameTextField.superview convertRect:frame toView:self.view];
+        
+        _bubbleView.x = frame.origin.x;
+        _bubbleView.y = frame.origin.y;
+    }
+    return _bubbleView;
 }
 
 -(NSString*)emailErrorMessage{
@@ -86,44 +115,60 @@
     return nil;
 }
 
--(KBPopupBubbleView*)bubbleView{
-    if( !_bubbleView ){
-        CGRect frame = self.usernameTextField.frame;
-        frame.origin.y -= 50;
-        frame.size.height = 50;
-        frame = [self.usernameTextField.superview convertRect:frame toView:self.view];
-        _bubbleView = [[KBPopupBubbleView alloc] initWithFrame:frame];
-        _bubbleView.position = kKBPopupPointerPositionLeft;
-        _bubbleView.side = kKBPopupPointerSideBottom;
-        _bubbleView.cornerRadius = 8;
-        _bubbleView.useBorders = FALSE;
-        _bubbleView.drawableColor = [UIColor whiteColor];
-        _bubbleView.label.font = [UIFont josefinSansSemiBoldFontOfSize:14];
-        _bubbleView.draggable = FALSE;
-    }
-    return _bubbleView;
-}
-
--(void)checkEmail{
-    if( self.usernameTextField.text.isEmailFormat ){
-        self.usernameTextField.state = SDTextFieldStateCorrect;
-        [self.bubbleView hide:TRUE];
-        [self touchUpInside:self.submitButton];
-    }else{
-        self.usernameTextField.state = SDTextFieldStateError;
-        
-        self.bubbleView.label.text = self.emailErrorMessage;
+-(void)setBubbleMessage:(NSString *)bubbleMessage{
+    _bubbleMessage = bubbleMessage;
+    self.bubbleView.message = bubbleMessage;
+    if( bubbleMessage.length ){
         if( !self.bubbleView.superview ){
-            [self.bubbleView showInView:self.view animated:TRUE];
+            [self.view addSubview:self.bubbleView];
+            [self.bubbleView popIn:0.3 delegate:nil];
         }
+    }else{
+        [self.bubbleView popOut:0.3 delegate:self.bubbleView startSelector:nil stopSelector:@selector(removeFromSuperview)];
     }
 }
 
 #pragma mark - UITextFieldDelegate
 
+-(void)textFieldDidBeginEditing:(UITextField *)textField{
+    if( [textField isKindOfClass:[SDTextField class]] ){
+        ((SDTextField*)textField).state = SDTextFieldStateNormal;
+    }
+}
+
+-(void)textFieldDidEndEditing:(UITextField *)textField{
+    if( [textField isKindOfClass:[SDTextField class]] ){
+        BOOL success = [(SDTextField*)textField checkFormat];
+        if( [textField isEqual:self.usernameTextField] ){
+            if( success ){
+                self.bubbleMessage = nil;
+                [self touchUpInside:self.submitButton];
+            }else{
+                self.bubbleMessage = self.emailErrorMessage;
+            }
+        }
+    }
+}
+
 -(BOOL)textFieldShouldReturn:(UITextField *)textField{
-    if( [textField isEqual:self.usernameTextField] ){
-        [self checkEmail];
+    if( [textField isKindOfClass:[SDTextField class]] ){
+        BOOL success = [(SDTextField*)textField checkFormat];
+        if( [textField isEqual:self.usernameTextField] ){
+            if( success ){
+                self.bubbleMessage = nil;
+                [self touchUpInside:self.submitButton];
+            }else{
+                self.bubbleMessage = self.emailErrorMessage;
+            }
+        }
+    }
+    return TRUE;
+}
+
+-(BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{
+    string = [textField.text stringByReplacingCharactersInRange:range withString:string];
+    if( !string.length && [textField isKindOfClass:[SDTextField class]] ){
+        ((SDTextField*)textField).state = SDTextFieldStateNormal;
     }
     return TRUE;
 }
