@@ -62,7 +62,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
-                            <collectionView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" showsHorizontalScrollIndicator="NO" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="9Cs-Oj-N38">
+                            <collectionView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="9Cs-Oj-N38">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -559,7 +559,7 @@
                                         <size key="customSize" width="304" height="304"/>
                                     </collectionViewCell>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" contentMode="center" reuseIdentifier="StoryBookCollectionViewCell" id="ucc-df-I5M" userLabel="StoryBook Grid View - CollectionViewCell" customClass="SDStoryBookGridView">
-                                        <rect key="frame" x="8" y="986" width="304" height="304"/>
+                                        <rect key="frame" x="8" y="1148" width="304" height="304"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="304" height="304"/>
@@ -624,8 +624,12 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="XJS-mC-OuD" firstAttribute="top" secondItem="aYH-lB-KeN" secondAttribute="top" constant="10" id="3vg-qB-g4R"/>
+                            <constraint firstAttribute="bottom" secondItem="9Cs-Oj-N38" secondAttribute="bottom" id="66d-ja-P85"/>
                             <constraint firstItem="XJS-mC-OuD" firstAttribute="bottom" secondItem="ehq-x2-nxa" secondAttribute="bottom" id="9ra-6F-HpU"/>
+                            <constraint firstItem="9Cs-Oj-N38" firstAttribute="top" secondItem="aYH-lB-KeN" secondAttribute="top" id="MpS-cc-mMQ"/>
                             <constraint firstItem="XJS-mC-OuD" firstAttribute="top" secondItem="ehq-x2-nxa" secondAttribute="top" id="Qph-4l-OKh"/>
+                            <constraint firstItem="9Cs-Oj-N38" firstAttribute="leading" secondItem="aYH-lB-KeN" secondAttribute="leading" id="Quh-Ea-sVS"/>
+                            <constraint firstAttribute="trailing" secondItem="9Cs-Oj-N38" secondAttribute="trailing" id="RDH-Xn-AdF"/>
                             <constraint firstItem="XJS-mC-OuD" firstAttribute="leading" secondItem="aYH-lB-KeN" secondAttribute="leading" constant="266" id="ehS-74-sPj"/>
                             <constraint firstAttribute="trailing" secondItem="XJS-mC-OuD" secondAttribute="trailing" constant="10" id="nlR-k8-lz3"/>
                             <constraint firstItem="ehq-x2-nxa" firstAttribute="leading" secondItem="aYH-lB-KeN" secondAttribute="leading" constant="10" id="z5i-Fo-rsH"/>

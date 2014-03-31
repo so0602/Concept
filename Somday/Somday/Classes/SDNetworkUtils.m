@@ -109,7 +109,7 @@ const CGFloat SDTimeOutSeconds = 60.0f;
 }
 
 +(ASIHTTPRequest*)requestWithUrl:(NSString*)url attributes:(NSDictionary*)attributes completion:(void(^)(id<SDResponseBase> response))completionBlock failed:(void(^)(id<SDResponseBase> response))failedBlock returnClass:(Class)class{
-    __weak ASIHTTPRequest* request = [ASIHTTPRequest requestWithURL:[NSURL URLWithString:url]];
+    ASIHTTPRequest* request = [ASIHTTPRequest requestWithURL:[NSURL URLWithString:url]];
     
     request.timeOutSeconds = SDTimeOutSeconds;
     request.requestMethod = @"POST";
@@ -125,13 +125,15 @@ const CGFloat SDTimeOutSeconds = 60.0f;
     NSString* jsonString = rawData.JSONString;
     
     [request appendPostData:[jsonString dataUsingEncoding:NSUTF8StringEncoding]];
-
+    
+    __weak ASIHTTPRequest* wRequest = request;
+    
     [request setCompletionBlock:^{
-        SDResponseBase* response = [[class alloc] initWithDictionary:request.responseString.objectFromJSONString];
+        SDResponseBase* response = [[class alloc] initWithDictionary:wRequest.responseString.objectFromJSONString];
         if( response.isSuccess && completionBlock ){
             completionBlock(response);
         }else if( !response.isSuccess && failedBlock ){
-            response.request = request;
+            response.request = wRequest;
             failedBlock(response);
         }
     }];
@@ -139,7 +141,7 @@ const CGFloat SDTimeOutSeconds = 60.0f;
     [request setFailedBlock:^{
         if( failedBlock ){
             SDResponseBase* response = [[class alloc] initWithDictionary:nil];
-            response.request = request;
+            response.request = wRequest;
             failedBlock(response);
         }
     }];

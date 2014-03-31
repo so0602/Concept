@@ -18,7 +18,7 @@
 @interface SDStoryBookGridView () <AFKPageFlipperDataSource, UIGestureRecognizerDelegate>
 @property (nonatomic) UIPanGestureRecognizer *panGestureRecognizer;
 @property (nonatomic) AFKPageFlipper *flipView;
-- (void)panned:(UIPanGestureRecognizer *)recognizer;
+@property (nonatomic) BOOL isTipsShowed;
 @end
 
 @implementation SDStoryBookGridView
@@ -48,6 +48,17 @@
 - (void)layoutSubviews
 {
     [super layoutSubviews];
+    if (!_isTipsShowed) {
+        [flipView triggerFlipTipsAnimation];
+        _isTipsShowed = YES;
+    }
+}
+
+- (void)prepareForReuse
+{
+    [super prepareForReuse];
+    [flipView setCurrentPage:0];
+    _isTipsShowed = NO;
 }
 
 #pragma mark - Private Functions

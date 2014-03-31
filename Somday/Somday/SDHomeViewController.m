@@ -144,6 +144,7 @@ static NSString *HeaderCellIdentifier = @"HeaderCollectionViewCell";
         return;
     
     NSArray *visibleItems = [_collectionView indexPathsForSortedVisibleItems];
+    
     if (visibleItems.count > 2 || !toCurrentIndex) {
         _isbgImageAnimating = YES;
         NSIndexPath *indexPath;
@@ -154,26 +155,51 @@ static NSString *HeaderCellIdentifier = @"HeaderCollectionViewCell";
             indexPath = visibleItems[visibleItems.count-2];
         
         SDStory* story = [self.dataSource objectAtIndex:indexPath.row];
+        UIImage* image = nil;
         if( story.imageName ){
-            UIImage* image = [UIImage imageNamed:story.imageName];
+            NSLog(@"name: %@", story.imageName);
+            image = [UIImage imageNamed:story.imageName];
+        } else {
+            NSArray *storyImages = [_dataSource valueForKey:@"imageName"];
             
-            _bgImageView2.alpha = 0.0f;
+            NSInteger index = 0;
+            NSString *imageName = nil;
+            for (int i=(int)indexPath.row;i>=0;i--) {
+                if (storyImages[i] != [NSNull null] && ((NSString*)storyImages[i]).length) {
+                    imageName = storyImages[i];
+                    index = i;
+                    break;
+                }
+            }
+            for (int i=(int)indexPath.row;i<storyImages.count;i++) {
+                if (storyImages[i] != [NSNull null] && ((NSString*)storyImages[i]).length) {
+                    if (!imageName || (imageName && indexPath.row-index>i-indexPath.row)) {
+                        imageName = storyImages[i];
+                        index = i;
+                    }
+                    break;
+                }
+            }
+            
+            image = imageName?[UIImage imageNamed:imageName]:nil;
+        }
+        
+        _bgImageView2.alpha = 0.0f;
+        GPUImagePicture* picture = [[GPUImagePicture alloc] initWithImage:image];
+        [picture addTarget:_bgImageFilter2];
+        [picture processImage];
+        
+        [[NSNotificationCenter defaultCenter] postNotificationName:HomeBackgroundImageChangedNotification object:image];
+        
+        [UIView animateWithDuration:0.4 animations:^{
+            _bgImageView2.alpha = 1.0f;
+        } completion:^(BOOL finished) {
+            _isbgImageAnimating = NO;
             GPUImagePicture* picture = [[GPUImagePicture alloc] initWithImage:image];
-            [picture addTarget:_bgImageFilter2];
+            [picture addTarget:_bgImageFilter1];
             [picture processImage];
             
-            [[NSNotificationCenter defaultCenter] postNotificationName:HomeBackgroundImageChangedNotification object:image];
-            
-            [UIView animateWithDuration:0.4 animations:^{
-                _bgImageView2.alpha = 1.0f;
-            } completion:^(BOOL finished) {
-                _isbgImageAnimating = NO;
-                GPUImagePicture* picture = [[GPUImagePicture alloc] initWithImage:image];
-                [picture addTarget:_bgImageFilter1];
-                [picture processImage];
-                
-            }];
-        }
+        }];
     }
 }
 

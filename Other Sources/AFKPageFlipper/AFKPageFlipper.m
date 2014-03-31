@@ -824,6 +824,47 @@
 	
 }
 
+- (void) triggerFlipTipsAnimation {
+		
+    return;
+    
+	if (currentPage) {
+		return;
+	}
+    
+	flipDirection = AFKPageFlipperDirectionLeft;
+	
+	currentPage = 1;
+	
+	self.newView = [self.dataSource viewForPage:1 inFlipper:self];
+	
+	[self addSubview:self.newView];
+	
+    [self setDisabled:TRUE];
+    [self initFlip];
+    //[self setFlipProgress:0.01 setDelegate:NO animate:NO];
+    
+//		if (pageDifference > 1) {
+//			NSMutableDictionary* dictionary = [[NSMutableDictionary alloc] init];
+//			[dictionary setObject:[NSString stringWithFormat:@"%f",0.01] forKey:@"PROGRESS"];
+//			[dictionary setObject:[NSString stringWithFormat:@"%d",NO] forKey:@"DELEGATE"];
+//			[dictionary setObject:[NSString stringWithFormat:@"%d",NO] forKey:@"ANIMATE"];
+//			
+//			//multi-flip-for 2
+//			[self setFlipProgress2:dictionary];
+//			
+//			if (pageDifference > 2) {
+//				//multi flip-for more than 2
+//				[self setFlipProgress3:dictionary];
+//			}
+//			
+//			[dictionary release];
+//		}
+    [self performSelector:@selector(flipPage) withObject:Nil afterDelay:3.000];
+
+	
+}
+
 
 @synthesize dataSource;
 
@@ -942,6 +983,7 @@
 				if (hasFailed) {
 					[self setDisabled:TRUE];
 					[self setFlipProgress:0.0 setDelegate:YES animate:YES];
+                    SDLog(@"currentPage: %li, %li", (long)currentPage, (long)oldPage);
 					currentPage = oldPage;
 					return;
 				}

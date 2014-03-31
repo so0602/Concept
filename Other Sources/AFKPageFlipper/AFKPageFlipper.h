@@ -79,7 +79,7 @@ typedef enum {
 @property (nonatomic,assign) UIView *newView;
 @property (nonatomic,readonly) BOOL animating;
 
-
+- (void) triggerFlipTipsAnimation;
 - (void) setCurrentPage:(NSInteger) value animated:(BOOL) animated;
 
 @end
