@@ -42,6 +42,8 @@
 		2ED27A6218C6CA2700DB4EC9 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2ED27A6118C6CA2700DB4EC9 /* Images.xcassets */; };
 		2ED35BC718C70A3500EDA245 /* UICollectionView+Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = 2ED35BC618C70A3500EDA245 /* UICollectionView+Addition.m */; };
 		2ED7A89518D43D9C00F76E17 /* GHContextMenuView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2ED7A89418D43D9C00F76E17 /* GHContextMenuView.m */; };
+		2ED985D618ED406D005CB4F9 /* SDEventGridView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2ED985D518ED406D005CB4F9 /* SDEventGridView.m */; };
+		2ED985E218ED59D0005CB4F9 /* JTListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2ED985E118ED59D0005CB4F9 /* JTListView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		2EFB3D1118D2E7F600110DC6 /* CAKeyframeAnimation+Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EFB3D1018D2E7F600110DC6 /* CAKeyframeAnimation+Addition.m */; };
 		B60C27BC18E6FAB0000ED405 /* SDWebsiteGridView.m in Sources */ = {isa = PBXBuildFile; fileRef = B60C27BB18E6FAB0000ED405 /* SDWebsiteGridView.m */; };
 		B60C27C518E6FE88000ED405 /* dump_website@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B60C27C418E6FE88000ED405 /* dump_website@2x.png */; };
@@ -1139,6 +1141,10 @@
 		2ED35BC618C70A3500EDA245 /* UICollectionView+Addition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UICollectionView+Addition.m"; path = "Classes/UICollectionView+Addition.m"; sourceTree = "<group>"; };
 		2ED7A89318D43D9C00F76E17 /* GHContextMenuView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GHContextMenuView.h; sourceTree = "<group>"; };
 		2ED7A89418D43D9C00F76E17 /* GHContextMenuView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GHContextMenuView.m; sourceTree = "<group>"; };
+		2ED985D418ED406D005CB4F9 /* SDEventGridView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SDEventGridView.h; path = Classes/SDEventGridView.h; sourceTree = "<group>"; };
+		2ED985D518ED406D005CB4F9 /* SDEventGridView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SDEventGridView.m; path = Classes/SDEventGridView.m; sourceTree = "<group>"; };
+		2ED985E018ED59D0005CB4F9 /* JTListView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JTListView.h; sourceTree = "<group>"; };
+		2ED985E118ED59D0005CB4F9 /* JTListView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JTListView.m; sourceTree = "<group>"; };
 		2EFB3D0F18D2E7F600110DC6 /* CAKeyframeAnimation+Addition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "CAKeyframeAnimation+Addition.h"; path = "Classes/CAKeyframeAnimation+Addition.h"; sourceTree = "<group>"; };
 		2EFB3D1018D2E7F600110DC6 /* CAKeyframeAnimation+Addition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "CAKeyframeAnimation+Addition.m"; path = "Classes/CAKeyframeAnimation+Addition.m"; sourceTree = "<group>"; };
 		B60C27BA18E6FAB0000ED405 /* SDWebsiteGridView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SDWebsiteGridView.h; path = Classes/SDWebsiteGridView.h; sourceTree = "<group>"; };
@@ -2279,6 +2285,16 @@
 			path = "../Other Sources/GHContextMenu";
 			sourceTree = "<group>";
 		};
+		2ED985DF18ED59D0005CB4F9 /* JTListView */ = {
+			isa = PBXGroup;
+			children = (
+				2ED985E018ED59D0005CB4F9 /* JTListView.h */,
+				2ED985E118ED59D0005CB4F9 /* JTListView.m */,
+			);
+			name = JTListView;
+			path = "../Other Sources/JTListView";
+			sourceTree = "<group>";
+		};
 		B65DDC0A18C57D050076408C /* Utils */ = {
 			isa = PBXGroup;
 			children = (
@@ -3361,6 +3377,8 @@
 				B66E1BF518D86B2B00C292FA /* SDVoiceGridView.m */,
 				B60C27BA18E6FAB0000ED405 /* SDWebsiteGridView.h */,
 				B60C27BB18E6FAB0000ED405 /* SDWebsiteGridView.m */,
+				2ED985D418ED406D005CB4F9 /* SDEventGridView.h */,
+				2ED985D518ED406D005CB4F9 /* SDEventGridView.m */,
 			);
 			name = GridView;
 			sourceTree = "<group>";
@@ -3749,6 +3767,7 @@
 		EFA8EC0118BDDA4A00144B75 /* Other Sources */ = {
 			isa = PBXGroup;
 			children = (
+				2ED985DF18ED59D0005CB4F9 /* JTListView */,
 				2E7A350E18D888D100662504 /* AFKPageFlipper */,
 				EF891DC918CD8CB5005DC780 /* ASIHTTPRequest.xcodeproj */,
 				2E39E90918D4DF8700A7F917 /* AUISelectiveBordersView */,
@@ -4841,6 +4860,7 @@
 			files = (
 				B65DDC0F18C57D1E0076408C /* SDUtils.m in Sources */,
 				B6B8275518E4145E009C8A37 /* SDGradientView.m in Sources */,
+				2ED985D618ED406D005CB4F9 /* SDEventGridView.m in Sources */,
 				EF3B65B818D3008C00B0CF1C /* UIImage+ImageEffects.m in Sources */,
 				B6B8274818E3DABF009C8A37 /* FTUtils+NSObject.m in Sources */,
 				EF658E5E18C461C400FC9E07 /* SDMenuViewController.m in Sources */,
@@ -4850,6 +4870,7 @@
 				2E880B0918D8054F0049446F /* FlipView.m in Sources */,
 				EF3B651718CDAE8500B0CF1C /* SDStories.m in Sources */,
 				2ED35BC718C70A3500EDA245 /* UICollectionView+Addition.m in Sources */,
+				2ED985E218ED59D0005CB4F9 /* JTListView.m in Sources */,
 				2E54CABF18C5D1D900B23A96 /* SDHomeViewController.m in Sources */,
 				EF3B650018CDA27700B0CF1C /* SDResponseBase.m in Sources */,
 				EFA8EBD018BDD87100144B75 /* SDAppDelegate.m in Sources */,
