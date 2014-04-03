@@ -654,7 +654,7 @@
     
     
 	float duration = animate ? 0.5 * fabs((newAngle - currentAngle) / (endFlipAngle - startFlipAngle)) : 0;
-	NSLog(@"progress %2.f, %2.f, %2.f, %2.f", progress, endFlipAngle, startFlipAngle, newAngle);
+	NSLog(@"progress %2.f, %2.f, %2.f, %2.f, %2.f", progress, endFlipAngle, startFlipAngle, newAngle, duration);
 	currentAngle = newAngle;
 	
 	CATransform3D endTransform = CATransform3DIdentity;

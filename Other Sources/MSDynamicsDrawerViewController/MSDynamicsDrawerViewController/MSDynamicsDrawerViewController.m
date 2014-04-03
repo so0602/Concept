@@ -30,7 +30,8 @@
 #import "MSDynamicsDrawerViewController.h"
 
 #define HeightForStatusBar 20
-#define BoundaryOriginY -1 + HeightForStatusBar
+//#define BoundaryOriginY -1 + HeightForStatusBar
+#define BoundaryOriginY HeightForStatusBar
 
 //#define DEBUG_LAYOUT
 
@@ -277,11 +278,12 @@ void MSDynamicsDrawerDirectionActionForMaskedValues(NSInteger direction, MSDynam
     self.paneTapGestureRecognizer.delegate = self;
     [self.paneView addGestureRecognizer:self.paneTapGestureRecognizer];
     
-    self.gravityMagnitude = 2.0;
-    self.elasticity = 0.3;
-    self.bounceElasticity = 0.5;
-    self.bounceMagnitude = 60.0;
+    self.gravityMagnitude = 3.0; // 2.0
+    self.elasticity = 0.0; //0.3
+    self.bounceElasticity = 0.0;  //0.5
+    self.bounceMagnitude = 0.0; // 60
     self.paneStateOpenWideEdgeOffset = 20.0;
+
     
 #if defined(DEBUG_LAYOUT)
     self.drawerView.backgroundColor = [[UIColor redColor] colorWithAlphaComponent:0.5];
@@ -291,6 +293,11 @@ void MSDynamicsDrawerDirectionActionForMaskedValues(NSInteger direction, MSDynam
     self.paneView.layer.borderColor = [[UIColor greenColor] CGColor];
     self.paneView.layer.borderWidth = 2.0;
 #endif
+}
+
+-(void)topMenuWillClose{
+    _currentDrawerDirection = MSDynamicsDrawerDirectionNone;
+    //self.paneState = MSDynamicsDrawerPaneStateClosed;
 }
 
 #pragma mark Bouncing
@@ -480,13 +487,135 @@ void MSDynamicsDrawerDirectionActionForMaskedValues(NSInteger direction, MSDynam
 - (void)didUpdateDynamicAnimatorAction
 {
     //[UIApplication sharedApplication].keyWindow.userInteractionEnabled = NO;
-    [self paneViewDidUpdateFrame];
+    //[self paneViewDidUpdateFrame];
 }
 
 - (void)addDynamicsBehaviorsToCreatePaneState:(MSDynamicsDrawerPaneState)paneState;
 {
     [self addDynamicsBehaviorsToCreatePaneState:paneState pushMagnitude:0.0 pushAngle:0.0 pushElasticity:self.elasticity];
 }
+
+//- (void)addDynamicsBehaviorsToCreatePaneState:(MSDynamicsDrawerPaneState)paneState pushMagnitude:(CGFloat)pushMagnitude pushAngle:(CGFloat)pushAngle pushElasticity:(CGFloat)elasticity
+//{
+//    if (self.currentDrawerDirection == MSDynamicsDrawerDirectionNone) {
+//        return;
+//    }
+//    
+//    [self setPaneViewControllerViewUserInteractionEnabled:(paneState == MSDynamicsDrawerPaneStateClosed)];
+//    
+//    [self.paneBoundaryCollisionBehavior removeAllBoundaries];
+//    if( (paneState == MSDynamicsDrawerPaneStateMenu && self.paneState == MSDynamicsDrawerPaneStateOpen) ||
+//       (paneState == MSDynamicsDrawerPaneStateMenu && self.paneState == MSDynamicsDrawerPaneStateMenu) ||
+//       (paneState == MSDynamicsDrawerPaneStateMenu && self.paneState == MSDynamicsDrawerPaneStateClosed && CGRectGetMinX(self.paneView.frame) >= MSMenuWidth ) ){
+//        UIBezierPath* path = [self boundaryPathForState:MSDynamicsDrawerPaneStateClosed direction:self.currentDrawerDirection];
+//        
+//        CGRect boundary = CGRectZero;
+//        boundary.origin = (CGPoint){-1.0, BoundaryOriginY};
+//        if (self.possibleDrawerDirection & MSDynamicsDrawerDirectionHorizontal) {
+//            boundary.size.height = (CGRectGetHeight(self.paneView.frame) + 1.0);
+//            boundary.size.width = ((CGRectGetWidth(self.paneView.frame) * 2.0) + self.paneStateOpenWideEdgeOffset + 2.0);
+//            boundary.origin.x += MSMenuWidth;
+//        } else if (self.possibleDrawerDirection & MSDynamicsDrawerDirectionVertical) {
+//            boundary.size.width = (CGRectGetWidth(self.paneView.frame) + 1.0);
+//            boundary.size.height = ((CGRectGetHeight(self.paneView.frame) * 2.0) + self.paneStateOpenWideEdgeOffset + 2.0);
+//            boundary.origin.y = MIN(MSTopMenuHeight - 1, boundary.origin.y+MSTopMenuHeight);
+//        }
+//        path = [UIBezierPath bezierPathWithRect:boundary];
+//        
+//        [self.paneBoundaryCollisionBehavior addBoundaryWithIdentifier:MSDynamicsDrawerBoundaryIdentifier forPath:path];
+//        [self.dynamicAnimator addBehavior:self.paneBoundaryCollisionBehavior];
+//        
+//        self.paneGravityBehavior.magnitude = [self gravityMagnitude];
+//        self.paneGravityBehavior.angle = [self gravityAngleForState:MSDynamicsDrawerPaneStateClosed direction:self.currentDrawerDirection];
+//        [self.dynamicAnimator addBehavior:self.paneGravityBehavior];
+//        NSLog(@"angle: %f", self.paneGravityBehavior.angle);
+//    }else{
+//        UIBezierPath* path = [self boundaryPathForState:paneState direction:self.currentDrawerDirection];
+//        [self.paneBoundaryCollisionBehavior addBoundaryWithIdentifier:MSDynamicsDrawerBoundaryIdentifier forPath:path];
+//        NSLog(@"path: %@", path);
+//        
+//        [self.dynamicAnimator addBehavior:self.paneBoundaryCollisionBehavior];
+//        
+//        self.paneGravityBehavior.magnitude = [self gravityMagnitude];
+//        self.paneGravityBehavior.angle = [self gravityAngleForState:paneState direction:self.currentDrawerDirection];
+//        [self.dynamicAnimator addBehavior:self.paneGravityBehavior];
+//        NSLog(@"angle: %f", self.paneGravityBehavior.angle);
+//    }
+//
+//    
+//    if (elasticity != 0.0) {
+//        self.paneElasticityBehavior.elasticity = elasticity;
+//        [self.dynamicAnimator addBehavior:self.paneElasticityBehavior];
+//    }
+//    
+//    if (pushMagnitude != 0.0) {
+//        self.panePushBehavior.angle = pushAngle;
+//        self.panePushBehavior.magnitude = pushMagnitude;
+//        self.panePushBehavior.active = YES;
+//        [self.dynamicAnimator addBehavior:self.panePushBehavior];
+//    }
+//    
+//    self.potentialPaneState = paneState;
+//    
+//    if ([self.delegate respondsToSelector:@selector(dynamicsDrawerViewController:mayUpdateToPaneState:forDirection:)]) {
+//        [self.delegate dynamicsDrawerViewController:self mayUpdateToPaneState:paneState forDirection:self.currentDrawerDirection];
+//    }
+//}
+//
+//- (UIBezierPath *)boundaryPathForState:(MSDynamicsDrawerPaneState)state direction:(MSDynamicsDrawerDirection)direction
+//{
+//    NSAssert(MSDynamicsDrawerDirectionIsCardinal(direction), @"Boundary is undefined for a non-cardinal reveal direction");
+//    CGRect boundary = CGRectZero;
+//    boundary.origin = (CGPoint){-1.0, BoundaryOriginY};
+//    if (self.possibleDrawerDirection & MSDynamicsDrawerDirectionHorizontal) {
+//        boundary.size.height = (CGRectGetHeight(self.paneView.frame) + 1.0);
+//        switch (state) {
+//            case MSDynamicsDrawerPaneStateClosed:
+//                boundary.size.width = ((CGRectGetWidth(self.paneView.frame) * 2.0) + self.paneStateOpenWideEdgeOffset + 2.0);
+//                break;
+//            case MSDynamicsDrawerPaneStateMenu:
+//                boundary.size.width = ((CGRectGetWidth(self.paneView.frame) + MSMenuWidth) + 2.0);
+//                break;
+//            case MSDynamicsDrawerPaneStateOpen:
+//                boundary.size.width = ((CGRectGetWidth(self.paneView.frame) + self.openStateRevealWidth) + 2.0);
+//                break;
+//            case MSDynamicsDrawerPaneStateOpenWide:
+//                boundary.size.width = ((CGRectGetWidth(self.paneView.frame) * 2.0) + self.paneStateOpenWideEdgeOffset + 2.0);
+//                break;
+//        }
+//    } else if (self.possibleDrawerDirection & MSDynamicsDrawerDirectionVertical) {
+//        boundary.size.width = (CGRectGetWidth(self.paneView.frame) + 1.0);
+//        switch (state) {
+//            case MSDynamicsDrawerPaneStateClosed:
+//                boundary.size.height = ((CGRectGetHeight(self.paneView.frame) * 2.0) + self.paneStateOpenWideEdgeOffset + 2.0);
+//                break;
+//            case MSDynamicsDrawerPaneStateMenu:
+//                boundary.size.height = ((CGRectGetHeight(self.paneView.frame) + MSMenuWidth) + 2.0);
+//                break;
+//            case MSDynamicsDrawerPaneStateOpen:
+//                boundary.size.height = ((CGRectGetHeight(self.paneView.frame) + self.openStateRevealWidth) + 2.0);
+//                break;
+//            case MSDynamicsDrawerPaneStateOpenWide:
+//                boundary.size.height = ((CGRectGetHeight(self.paneView.frame) * 2.0) + self.paneStateOpenWideEdgeOffset + 2.0);
+//                break;
+//        }
+//    }
+//    switch (direction) {
+//        case MSDynamicsDrawerDirectionRight:
+//            boundary.origin.x = ((CGRectGetWidth(self.paneView.frame) + 1.0) - boundary.size.width);
+//            break;
+//        case MSDynamicsDrawerDirectionBottom:
+//            boundary.origin.y = ((CGRectGetHeight(self.paneView.frame) + 1.0) - boundary.size.height);
+//            break;
+//        case MSDynamicsDrawerDirectionNone:
+//            boundary = CGRectZero;
+//            break;
+//        default:
+//            break;
+//    }
+//    
+//    return [UIBezierPath bezierPathWithRect:boundary];
+//}
 
 - (void)addDynamicsBehaviorsToCreatePaneState:(MSDynamicsDrawerPaneState)paneState pushMagnitude:(CGFloat)pushMagnitude pushAngle:(CGFloat)pushAngle pushElasticity:(CGFloat)elasticity
 {
@@ -534,7 +663,7 @@ void MSDynamicsDrawerDirectionActionForMaskedValues(NSInteger direction, MSDynam
         [self.dynamicAnimator addBehavior:self.paneGravityBehavior];
         NSLog(@"angle: %f", self.paneGravityBehavior.angle);
     }
-
+    
     
     if (elasticity != 0.0) {
         self.paneElasticityBehavior.elasticity = elasticity;
@@ -559,46 +688,55 @@ void MSDynamicsDrawerDirectionActionForMaskedValues(NSInteger direction, MSDynam
 {
     NSAssert(MSDynamicsDrawerDirectionIsCardinal(direction), @"Boundary is undefined for a non-cardinal reveal direction");
     CGRect boundary = CGRectZero;
-    boundary.origin = (CGPoint){-1.0, BoundaryOriginY};
+    boundary.origin = (CGPoint){0.0, BoundaryOriginY};
     if (self.possibleDrawerDirection & MSDynamicsDrawerDirectionHorizontal) {
-        boundary.size.height = (CGRectGetHeight(self.paneView.frame) + 1.0);
+        boundary.size.height = (CGRectGetHeight(self.paneView.frame));
         switch (state) {
             case MSDynamicsDrawerPaneStateClosed:
-                boundary.size.width = ((CGRectGetWidth(self.paneView.frame) * 2.0) + self.paneStateOpenWideEdgeOffset + 2.0);
+                if (self.dynamicAnimator.behaviors.count)
+                    boundary.origin = (CGPoint){-0.5, BoundaryOriginY};
+                else
+                    boundary.origin = (CGPoint){-1.0, BoundaryOriginY};
+                    
+                boundary.size.width = ((CGRectGetWidth(self.paneView.frame) * 2.0) + self.paneStateOpenWideEdgeOffset + 1.0);
                 break;
             case MSDynamicsDrawerPaneStateMenu:
-                boundary.size.width = ((CGRectGetWidth(self.paneView.frame) + MSMenuWidth) + 2.0);
+                boundary.size.width = ((CGRectGetWidth(self.paneView.frame) + MSMenuWidth) + 1.0);
                 break;
             case MSDynamicsDrawerPaneStateOpen:
-                boundary.size.width = ((CGRectGetWidth(self.paneView.frame) + self.openStateRevealWidth) + 2.0);
+                boundary.size.width = ((CGRectGetWidth(self.paneView.frame) + self.openStateRevealWidth) + 1.0);
                 break;
             case MSDynamicsDrawerPaneStateOpenWide:
-                boundary.size.width = ((CGRectGetWidth(self.paneView.frame) * 2.0) + self.paneStateOpenWideEdgeOffset + 2.0);
+                boundary.size.width = ((CGRectGetWidth(self.paneView.frame) * 2.0) + self.paneStateOpenWideEdgeOffset + 1.0);
                 break;
         }
     } else if (self.possibleDrawerDirection & MSDynamicsDrawerDirectionVertical) {
-        boundary.size.width = (CGRectGetWidth(self.paneView.frame) + 1.0);
+        boundary.size.width = (CGRectGetWidth(self.paneView.frame) );
         switch (state) {
             case MSDynamicsDrawerPaneStateClosed:
-                boundary.size.height = ((CGRectGetHeight(self.paneView.frame) * 2.0) + self.paneStateOpenWideEdgeOffset + 2.0);
+                if (self.dynamicAnimator.behaviors.count)
+                    boundary.origin = (CGPoint){0.0, BoundaryOriginY - 0.5};
+                else
+                    boundary.origin = (CGPoint){0.0, BoundaryOriginY - 1.0};
+                boundary.size.height = ((CGRectGetHeight(self.paneView.frame) * 2.0) + self.paneStateOpenWideEdgeOffset);
                 break;
             case MSDynamicsDrawerPaneStateMenu:
-                boundary.size.height = ((CGRectGetHeight(self.paneView.frame) + MSMenuWidth) + 2.0);
+                boundary.size.height = ((CGRectGetHeight(self.paneView.frame) + MSMenuWidth) + 1.0);
                 break;
             case MSDynamicsDrawerPaneStateOpen:
-                boundary.size.height = ((CGRectGetHeight(self.paneView.frame) + self.openStateRevealWidth) + 2.0);
+                boundary.size.height = ((CGRectGetHeight(self.paneView.frame) + self.openStateRevealWidth) + 1.0);
                 break;
             case MSDynamicsDrawerPaneStateOpenWide:
-                boundary.size.height = ((CGRectGetHeight(self.paneView.frame) * 2.0) + self.paneStateOpenWideEdgeOffset + 2.0);
+                boundary.size.height = ((CGRectGetHeight(self.paneView.frame) * 2.0) + self.paneStateOpenWideEdgeOffset + 1.0);
                 break;
         }
     }
     switch (direction) {
         case MSDynamicsDrawerDirectionRight:
-            boundary.origin.x = ((CGRectGetWidth(self.paneView.frame) + 1.0) - boundary.size.width);
+            boundary.origin.x = ((CGRectGetWidth(self.paneView.frame)) - boundary.size.width);
             break;
         case MSDynamicsDrawerDirectionBottom:
-            boundary.origin.y = ((CGRectGetHeight(self.paneView.frame) + 1.0) - boundary.size.height);
+            boundary.origin.y = ((CGRectGetHeight(self.paneView.frame)) - boundary.size.height);
             break;
         case MSDynamicsDrawerDirectionNone:
             boundary = CGRectZero;
@@ -752,6 +890,7 @@ void MSDynamicsDrawerDirectionActionForMaskedValues(NSInteger direction, MSDynam
 
 - (void)paneViewDidUpdateFrame
 {
+    NSLog(@"paneViewDidUpdateFrame frame!!!: %@", NSStringFromCGRect(self.paneView.frame));
     if (self.shouldAlignStatusBarToPaneView) {
         NSString *key = [[NSString alloc] initWithData:[NSData dataWithBytes:(unsigned char []){0x73, 0x74, 0x61, 0x74, 0x75, 0x73, 0x42, 0x61, 0x72} length:9] encoding:NSASCIIStringEncoding];
         id object = [UIApplication sharedApplication];
@@ -761,7 +900,7 @@ void MSDynamicsDrawerDirectionActionForMaskedValues(NSInteger direction, MSDynam
         }
         statusBar.transform = CGAffineTransformMakeTranslation(self.paneView.frame.origin.x, self.paneView.frame.origin.y);
     }
-    
+    NSLog(@"chk4");
     CGPoint openWidePoint = [self paneViewOriginForPaneState:MSDynamicsDrawerPaneStateOpenWide];
     
     CGRect paneFrame = self.paneView.frame;
@@ -790,6 +929,7 @@ void MSDynamicsDrawerDirectionActionForMaskedValues(NSInteger direction, MSDynam
     }
     
     [self updateStylers];
+    NSLog(@"paneViewDidUpdateFrame2 frame!!!: %@", NSStringFromCGRect(self.paneView.frame));
 }
 
 - (void)setPaneState:(MSDynamicsDrawerPaneState)paneState
@@ -856,9 +996,10 @@ void MSDynamicsDrawerDirectionActionForMaskedValues(NSInteger direction, MSDynam
     }
     
     // Update pane frame regardless of if it's changed
-    self.paneView.frame = (CGRect){[self paneViewOriginForPaneState:paneState], self.paneView.frame.size};
+//    NSLog(@"chk5");
+//    self.paneView.frame = (CGRect){[self paneViewOriginForPaneState:paneState], self.paneView.frame.size};
+//    NSLog(@"paneView reset frame!!!: %@", NSStringFromCGRect(self.paneView.frame));
 
-    
     // Update `currentDirection` to `MSDynamicsDrawerDirectionNone` if the `paneState` is `MSDynamicsDrawerPaneStateClosed`
     if (paneState == MSDynamicsDrawerPaneStateClosed) {
         self.currentDrawerDirection = MSDynamicsDrawerDirectionNone;
@@ -867,6 +1008,8 @@ void MSDynamicsDrawerDirectionActionForMaskedValues(NSInteger direction, MSDynam
 
 - (CGPoint)paneViewOriginForPaneState:(MSDynamicsDrawerPaneState)paneState
 {
+    NSLog(@"paneView frame!!!: %@", NSStringFromCGRect(self.paneView.frame));
+
     CGPoint paneViewOrigin = CGPointZero;
     paneViewOrigin.y = HeightForStatusBar;
     switch (paneState) {
@@ -927,6 +1070,7 @@ void MSDynamicsDrawerDirectionActionForMaskedValues(NSInteger direction, MSDynam
         default:
             break;
     }
+    NSLog(@"paneView3 frame!!!: %@", NSStringFromCGRect(self.paneView.frame));
     return paneViewOrigin;
 }
 
@@ -934,6 +1078,7 @@ void MSDynamicsDrawerDirectionActionForMaskedValues(NSInteger direction, MSDynam
 {
     BOOL validState = NO;
     for (MSDynamicsDrawerPaneState currentPaneState = MSDynamicsDrawerPaneStateClosed; currentPaneState <= MSDynamicsDrawerPaneStateMax; currentPaneState++) {
+        NSLog(@"chk1");
         CGPoint paneStatePaneViewOrigin = [self paneViewOriginForPaneState:currentPaneState];
         CGPoint currentPaneViewOrigin = (CGPoint){roundf(self.paneView.frame.origin.x), roundf(self.paneView.frame.origin.y)};
         CGFloat epsilon = 2.0;
@@ -951,6 +1096,7 @@ void MSDynamicsDrawerDirectionActionForMaskedValues(NSInteger direction, MSDynam
     CGFloat minDistance = CGFLOAT_MAX;
     MSDynamicsDrawerPaneState minPaneState = NSIntegerMax;
     for (MSDynamicsDrawerPaneState currentPaneState = MSDynamicsDrawerPaneStateClosed; currentPaneState <= MSDynamicsDrawerPaneStateMax; currentPaneState++) {
+        NSLog(@"chk2");
         CGPoint paneStatePaneViewOrigin = [self paneViewOriginForPaneState:currentPaneState];
         CGPoint currentPaneViewOrigin = (CGPoint){roundf(self.paneView.frame.origin.x), roundf(self.paneView.frame.origin.y)};
         CGFloat distance = sqrt(pow((paneStatePaneViewOrigin.x - currentPaneViewOrigin.x), 2) + pow((paneStatePaneViewOrigin.y - currentPaneViewOrigin.y), 2));
@@ -1117,6 +1263,7 @@ void MSDynamicsDrawerDirectionActionForMaskedValues(NSInteger direction, MSDynam
 
 - (CGRect)paneViewFrameForPanWithStartLocation:(CGPoint)startLocation currentLocation:(CGPoint)currentLocation bounded:(inout BOOL *)bounded
 {
+    NSLog(@"paneView1: %@", NSStringFromCGRect(self.paneView.frame));
     CGFloat panDelta = [self deltaForPanWithStartLocation:startLocation currentLocation:currentLocation];
 
     // Track the pane frame to the pan gesture
@@ -1134,19 +1281,19 @@ void MSDynamicsDrawerDirectionActionForMaskedValues(NSInteger direction, MSDynam
     switch (self.currentDrawerDirection) {
         case MSDynamicsDrawerDirectionLeft:
             paneLocation = &paneFrame.origin.x;
-            paneBoundOpenLocation = [self openStateRevealWidth];
+            paneBoundOpenLocation = (int)[self openStateRevealWidth];
             break;
         case MSDynamicsDrawerDirectionRight:
             paneLocation = &paneFrame.origin.x;
-            paneBoundClosedLocation = -[self openStateRevealWidth];
+            paneBoundClosedLocation = -(int)[self openStateRevealWidth];
             break;
         case MSDynamicsDrawerDirectionTop:
             paneLocation = &paneFrame.origin.y;
-            paneBoundOpenLocation = [self openStateRevealWidth];
+            paneBoundOpenLocation = (int)[self openStateRevealWidth];
             break;
         case MSDynamicsDrawerDirectionBottom:
             paneLocation = &paneFrame.origin.y;
-            paneBoundClosedLocation = -[self openStateRevealWidth];
+            paneBoundClosedLocation = -(int)[self openStateRevealWidth];
             break;
         default:
             break;
@@ -1165,6 +1312,7 @@ void MSDynamicsDrawerDirectionActionForMaskedValues(NSInteger direction, MSDynam
     else {
         *bounded = NO;
     }
+    NSLog(@"paneView2: %@", NSStringFromCGRect(self.paneView.frame));
     
     return paneFrame;
 }
@@ -1317,6 +1465,7 @@ void MSDynamicsDrawerDirectionActionForMaskedValues(NSInteger direction, MSDynam
                 paneVelocity = currentPaneVelocity;
             }
             // If the drawer is being swiped into the closed state, set the direciton to none and the state to closed since the user is manually doing so
+            NSLog(@"chk3");
             if ((self.currentDrawerDirection != MSDynamicsDrawerDirectionNone) &&
                 (currentPanDirection != MSDynamicsDrawerDirectionNone) &&
                 CGPointEqualToPoint(self.paneView.frame.origin, [self paneViewOriginForPaneState:MSDynamicsDrawerPaneStateClosed])) {
@@ -1334,6 +1483,7 @@ void MSDynamicsDrawerDirectionActionForMaskedValues(NSInteger direction, MSDynam
                 }
                 // If not released with a velocity over the threhold, update to nearest `paneState`
                 else {
+                        NSLog(@"chkkkk2");
                     [self addDynamicsBehaviorsToCreatePaneState:[self nearestPaneState]];
                 }
             }
@@ -1360,6 +1510,9 @@ void MSDynamicsDrawerDirectionActionForMaskedValues(NSInteger direction, MSDynam
 - (BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer
 {
     if (gestureRecognizer == self.panePanGestureRecognizer) {
+        if (((self.paneState == MSDynamicsDrawerPaneStateClosed) && [self.delegate isKindOfClass:NSClassFromString(@"SDTopMenuViewController")]) && self.currentDrawerDirection != MSDynamicsDrawerDirectionTop)
+            return NO;
+        
         if ([self.delegate respondsToSelector:@selector(dynamicsDrawerViewController:shouldBeginPanePan:)]) {
             if (![self.delegate dynamicsDrawerViewController:self shouldBeginPanePan:self.panePanGestureRecognizer]) {
                 return NO;
@@ -1448,37 +1601,86 @@ void MSDynamicsDrawerDirectionActionForMaskedValues(NSInteger direction, MSDynam
 
 }
 
-#pragma mark - UIDynamicAnimatorDelegate
+-(NSInteger)roundToInteger:(NSInteger)value
+{
+    if (value%10) {
+        return value - (value%10);
+    } else {
+        return value;
+    }
+}
 
+#pragma mark - UIDynamicAnimatorDelegate
 - (void)dynamicAnimatorDidPause:(UIDynamicAnimator *)animator
 {
+    NSLog(@"dynamicAnimatorDidPause: %@", self.paneView);
+    self.paneView.frame = CGRectMake([self roundToInteger:(int)self.paneView.frame.origin.x], [self roundToInteger:(int)self.paneView.frame.origin.y], (int)self.paneView.frame.size.width, (int)self.paneView.frame.size.height);
+    
     // If the dynaimc animator has paused while the `panePanGestureRecognizer` is active, ignore it as it's a side effect of removing behaviors, not a resting state
     if (self.panePanGestureRecognizer.state != UIGestureRecognizerStatePossible) return;
     
     // Since a resting pane state has been reached, we can remove all behaviors
     [self.dynamicAnimator removeAllBehaviors];
     
-    // Update the pane state to the nearest pane state
-    [self _setPaneState:[self nearestPaneState]];
-    
-    if ([self nearestPaneState] == MSDynamicsDrawerPaneStateClosed)
+    if ([self nearestPaneState] == MSDynamicsDrawerPaneStateClosed) {
         [self updatePeneViewCornerRadius:0.0f];
-    
-    // Update pane user interaction appropriately
-    [self setPaneViewControllerViewUserInteractionEnabled:(self.paneState == MSDynamicsDrawerPaneStateClosed)];
+        self.paneView.frame = CGRectMake(0, HeightForStatusBar, (int)self.paneView.frame.size.width, (int)self.paneView.frame.size.height);
+    } else if ([self nearestPaneState] == MSDynamicsDrawerPaneStateMenu && self.currentDrawerDirection != MSDynamicsDrawerDirectionTop) {
+        self.paneView.frame = CGRectMake(MSMenuWidth, HeightForStatusBar, (int)self.paneView.frame.size.width, (int)self.paneView.frame.size.height);
+    }
     
     if (self.paneView.frame.origin.x==[UIScreen mainScreen].bounds.size.width)
         [self updatePeneViewCornerRadius:0.0];
     
-    // Since rotation is disabled while the dynamic animator is running, we invoke this method to cause rotation to happen (if device rotation has occured during state transition)
+    
     [UIViewController attemptRotationToDeviceOrientation];
     
     if (self.dynamicAnimatorCompletion) {
         self.dynamicAnimatorCompletion();
         self.dynamicAnimatorCompletion = nil;
     }
-    
-    //[UIApplication sharedApplication].keyWindow.userInteractionEnabled = YES;
 }
+
+
+//- (void)dynamicAnimatorDidPause:(UIDynamicAnimator *)animator
+//{
+//    
+////    if (self.paneView.frame.origin.x == -0.5) {
+////        CGRect rect = self.paneView.frame;
+////        rect.origin.x = 0.0;
+////        self.paneView.frame = rect;
+////    }
+////      self.paneView.frame = CGRectMake((int)self.paneView.frame.origin.x, (int)self.paneView.frame.origin.y, (int)self.paneView.frame.size.width, (int)self.paneView.frame.size.height);
+//    return;
+//    
+//    // If the dynaimc animator has paused while the `panePanGestureRecognizer` is active, ignore it as it's a side effect of removing behaviors, not a resting state
+//    if (self.panePanGestureRecognizer.state != UIGestureRecognizerStatePossible) return;
+//    
+//    // Since a resting pane state has been reached, we can remove all behaviors
+//    [self.dynamicAnimator removeAllBehaviors];
+//    
+//    // Update the pane state to the nearest pane state
+//    NSLog(@"chkkkk1");
+//    [self _setPaneState:[self nearestPaneState]];
+//    
+//    if ([self nearestPaneState] == MSDynamicsDrawerPaneStateClosed)
+//        [self updatePeneViewCornerRadius:0.0f];
+//    
+//    // Update pane user interaction appropriately
+//    [self setPaneViewControllerViewUserInteractionEnabled:(self.paneState == MSDynamicsDrawerPaneStateClosed)];
+//    
+//    if (self.paneView.frame.origin.x==[UIScreen mainScreen].bounds.size.width)
+//        [self updatePeneViewCornerRadius:0.0];
+//    
+//    // Since rotation is disabled while the dynamic animator is running, we invoke this method to cause rotation to happen (if device rotation has occured during state transition)
+//    [UIViewController attemptRotationToDeviceOrientation];
+//    
+//    if (self.dynamicAnimatorCompletion) {
+//        self.dynamicAnimatorCompletion();
+//        self.dynamicAnimatorCompletion = nil;
+//    }
+//    
+//    //[UIApplication sharedApplication].keyWindow.userInteractionEnabled = YES;
+//}
 
 @end
