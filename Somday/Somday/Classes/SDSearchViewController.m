@@ -28,21 +28,21 @@
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     
-    self.backgroundImageView.clipsToBounds = TRUE;
-    self.backgroundImageView.layer.contentsGravity = kCAGravityTop;
-    
-    if( !self.blurFilter ){
-        self.blurFilter = [[GPUImageiOSBlurFilter alloc] init];
-        self.blurFilter.blurRadiusInPixels = 1.0f;
-    }
-    
-    if( !self.backgroundPicture ){
-        self.backgroundPicture = [[GPUImagePicture alloc] initWithImage:self.backgroundImage];
-        [self.backgroundPicture addTarget:self.blurFilter];
-        [self.blurFilter addTarget:self.backgroundImageView];
-    }
-    
-    [self.backgroundPicture processImage];
+//    self.backgroundImageView.clipsToBounds = TRUE;
+//    self.backgroundImageView.layer.contentsGravity = kCAGravityTop;
+//    
+//    if( !self.blurFilter ){
+//        self.blurFilter = [[GPUImageiOSBlurFilter alloc] init];
+//        self.blurFilter.blurRadiusInPixels = 1.0f;
+//    }
+//    
+//    if( !self.backgroundPicture ){
+//        self.backgroundPicture = [[GPUImagePicture alloc] initWithImage:self.backgroundImage];
+//        [self.backgroundPicture addTarget:self.blurFilter];
+//        [self.blurFilter addTarget:self.backgroundImageView];
+//    }
+//    
+//    [self.backgroundPicture processImage];
 }
 
 -(void)viewDidLoad{

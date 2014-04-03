@@ -11,6 +11,12 @@
 NSString* TopMenuWillClose = @"TopMenuWillClose";
 NSString* TopMenuDidClosed = @"TopMenuDidClosed";
 NSString* HomeBackgroundImageChangedNotification = @"HomeBackgroundImageChangedNotification";
+NSString* MainBackgroundImageWillChangeNotification = @"MainBackgroundImageWillChange";
+NSString* MainBackgroundImageDidChangeNotification = @"MainBackgroundImageDidChange";
+
+NSString* DynamicsDrawerViewControllerMayUpdateNotification = @"DynamicsDrawerViewControllerMayUpdate";
+NSString* DynamicsDrawerViewControllerDidUpdateNotification = @"DynamicsDrawerViewControllerDidUpdate";
+NSString* DynamicsDrawerViewControllerShouldBeginPanePanNotification = @"DynamicsDrawerViewControllerShouldBeginPanePan";
 
 @implementation NSNotificationCenter (Name)
 

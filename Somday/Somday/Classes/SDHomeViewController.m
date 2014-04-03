@@ -8,6 +8,7 @@
 
 #import "SDHomeViewController.h"
 
+#import "SDAppDelegate.h"
 #import "SDHomeHeaderCollectionViewCell.h"
 #import "SDHomeNavigationTitleView.h"
 #import "SDBaseGridView.h"
@@ -25,6 +26,8 @@
 #import "NSNotificationCenter+Name.h"
 #import "SDStoryBookGridView.h"
 
+#import "SDTranslucentImageView.h"
+
 #import <objc/message.h>
 
 #define WidthForGrid [UIScreen mainScreen].bounds.size.width - 16 // padding = 8
@@ -37,18 +40,19 @@
 @property (nonatomic) NSMutableArray *dataSource;
 @property (nonatomic) IBOutletCollection(UIButton) NSArray *buttons;
 @property (nonatomic) IBOutlet UICollectionView *collectionView;
-@property (nonatomic) IBOutlet GPUImageView *bgImageView1;
-@property (nonatomic) IBOutlet GPUImageView *bgImageView2;
 @property (nonatomic) SDHomeHeaderCollectionViewCell *headerCollectionViewCell;
-@property (nonatomic) GPUImageiOSBlurFilter *bgImageFilter1;
-@property (nonatomic) GPUImageiOSBlurFilter *bgImageFilter2;
-@property (nonatomic) BOOL isbgImageAnimating;
+//@property (nonatomic) IBOutlet GPUImageView *bgImageView1;
+//@property (nonatomic) IBOutlet GPUImageView *bgImageView2;
+//@property (nonatomic) GPUImageiOSBlurFilter *bgImageFilter1;
+//@property (nonatomic) GPUImageiOSBlurFilter *bgImageFilter2;
 
 @property (nonatomic, strong) UIImage* background;
-@property (nonatomic, strong) UIImage* convertedBackground;
+
+@property (nonatomic, strong) IBOutlet SDTranslucentImageView* backgroundView;
 
 -(void)updateVisibleCollectionViewCellsBackground;
 -(void)updateCollectionViewCellBackground:(UICollectionViewCell*)cell;
+-(void)mainBackgroundImageWillChange:(NSNotification*)notification;
 
 @end
 
@@ -74,32 +78,35 @@ static NSString *HeaderCellIdentifier = @"HeaderCollectionViewCell";
     [self.navigationItem showSDTitleView];
     
     // Add blur
-    _bgImageView1.clipsToBounds = _bgImageView2.clipsToBounds = YES;
-    _bgImageView1.layer.contentsGravity = _bgImageView2.layer.contentsGravity = kCAGravityTop;
-    _bgImageView1.fillMode = _bgImageView2.fillMode = kGPUImageFillModePreserveAspectRatioAndFill;
-    
-    self.bgImageFilter1 = [[GPUImageiOSBlurFilter alloc] init];
-    _bgImageFilter1.blurRadiusInPixels = 1.0f;
-    [_bgImageFilter1 addTarget:_bgImageView1];
-    
-    self.bgImageFilter2 = [[GPUImageiOSBlurFilter alloc] init];
-    _bgImageFilter2.blurRadiusInPixels = 1.0f;
-    [_bgImageFilter2 addTarget:_bgImageView2];
+//    _bgImageView1.clipsToBounds = _bgImageView2.clipsToBounds = YES;
+//    _bgImageView1.layer.contentsGravity = _bgImageView2.layer.contentsGravity = kCAGravityTop;
+//    _bgImageView1.fillMode = _bgImageView2.fillMode = kGPUImageFillModePreserveAspectRatioAndFill;
+//    
+//    self.bgImageFilter1 = [[GPUImageiOSBlurFilter alloc] init];
+//    _bgImageFilter1.blurRadiusInPixels = 1.0f;
+//    [_bgImageFilter1 addTarget:_bgImageView1];
+//    
+//    self.bgImageFilter2 = [[GPUImageiOSBlurFilter alloc] init];
+//    _bgImageFilter2.blurRadiusInPixels = 1.0f;
+//    [_bgImageFilter2 addTarget:_bgImageView2];
     
     // Show default place holder for the background
-    GPUImagePicture* picture = [[GPUImagePicture alloc] initWithImage:[UIImage imageNamed:@"Debug_Story_1"]];
-    [picture addTarget:_bgImageFilter1];
-    [picture processImage];
-    
-    GPUImagePicture* picture1 = [[GPUImagePicture alloc] initWithImage:[UIImage imageNamed:@"Debug_Story_1"]];
-    [picture1 addTarget:_bgImageFilter2];
-    [picture1 processImage];
+//    GPUImagePicture* picture = [[GPUImagePicture alloc] initWithImage:[UIImage imageNamed:@"Debug_Story_1"]];
+//    [picture addTarget:_bgImageFilter1];
+//    [picture processImage];
+//    
+//    GPUImagePicture* picture1 = [[GPUImagePicture alloc] initWithImage:[UIImage imageNamed:@"Debug_Story_1"]];
+//    [picture1 addTarget:_bgImageFilter2];
+//    [picture1 processImage];
     self.background = [UIImage imageNamed:@"Debug_Story_1"];
-    self.convertedBackground = self.background;
     
     [[NSNotificationCenter defaultCenter] postNotificationName:HomeBackgroundImageChangedNotification object:[UIImage imageNamed:@"Debug_Story_1"]];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(topMenuWillClose) name:TopMenuWillClose object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(mainBackgroundImageWillChange:) name:MainBackgroundImageWillChangeNotification object:nil];
+    
+    
     
     {
         // Debug
@@ -136,6 +143,7 @@ static NSString *HeaderCellIdentifier = @"HeaderCollectionViewCell";
             NSLog(@"type: %@", story.type);
         }
     }
+    [self mainBackgroundImageWillChange:nil];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -154,74 +162,6 @@ static NSString *HeaderCellIdentifier = @"HeaderCollectionViewCell";
 - (void)dealloc
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
-}
-
-#pragma mark -
-
-- (void)updateBackgroundImageToCurrentIndex:(BOOL)toCurrentIndex
-{
-    
-    if (_isbgImageAnimating)
-        return;
-    
-    NSArray *visibleItems = [_collectionView indexPathsForSortedVisibleItems];
-    
-    if (visibleItems.count > 2 || !toCurrentIndex) {
-        _isbgImageAnimating = YES;
-        NSIndexPath *indexPath;
-
-        if (!toCurrentIndex)
-            indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
-        else
-            indexPath = visibleItems[visibleItems.count-2];
-        
-        SDStory* story = [self.dataSource objectAtIndex:indexPath.row];
-        UIImage* image = nil;
-        if( story.imageName ){
-            NSLog(@"name: %@", story.imageName);
-            image = [UIImage imageNamed:story.imageName];
-        } else {
-            NSArray *storyImages = [_dataSource valueForKey:@"imageName"];
-            
-            NSInteger index = 0;
-            NSString *imageName = nil;
-            for (int i=(int)indexPath.row;i>=0;i--) {
-                if (storyImages[i] != [NSNull null] && ((NSString*)storyImages[i]).length) {
-                    imageName = storyImages[i];
-                    index = i;
-                    break;
-                }
-            }
-            for (int i=(int)indexPath.row;i<storyImages.count;i++) {
-                if (storyImages[i] != [NSNull null] && ((NSString*)storyImages[i]).length) {
-                    if (!imageName || (imageName && indexPath.row-index>i-indexPath.row)) {
-                        imageName = storyImages[i];
-                        index = i;
-                    }
-                    break;
-                }
-            }
-            
-            image = imageName?[UIImage imageNamed:imageName]:nil;
-        }
-        
-        _bgImageView2.alpha = 0.0f;
-        GPUImagePicture* picture = [[GPUImagePicture alloc] initWithImage:image];
-        [picture addTarget:_bgImageFilter2];
-        [picture processImage];
-        
-        [[NSNotificationCenter defaultCenter] postNotificationName:HomeBackgroundImageChangedNotification object:image];
-        
-        [UIView animateWithDuration:0.4 animations:^{
-            _bgImageView2.alpha = 1.0f;
-        } completion:^(BOOL finished) {
-            _isbgImageAnimating = NO;
-            GPUImagePicture* picture = [[GPUImagePicture alloc] initWithImage:image];
-            [picture addTarget:_bgImageFilter1];
-            [picture processImage];
-            
-        }];
-    }
 }
 
 #pragma mark - IBAction
@@ -365,16 +305,13 @@ static NSString *HeaderCellIdentifier = @"HeaderCollectionViewCell";
     [SDUtils rotateBackView:_buttons[1]];
 }
 
--(void)setConvertedBackground:(UIImage *)convertedBackground{
-    UIImageView* imageView = [[UIImageView alloc] initWithFrame:self.bgImageView1.bounds];
-    if( CGSizeEqualToSize(imageView.size, CGSizeZero) ){
-        imageView.bounds = self.view.bounds;
-    }
-    imageView.contentMode = UIViewContentModeScaleAspectFill;
-    imageView.image = convertedBackground;
-    _convertedBackground = [imageView.convertViewToImage applyBlurWithRadius:15 tintColor:[UIColor colorWithWhite:0 alpha:0.5] saturationDeltaFactor:3 maskImage:nil];
-    
-    [self updateVisibleCollectionViewCellsBackground];
+-(UIImage*)background{
+    SDAppDelegate* delegate = (id)[UIApplication sharedApplication].delegate;
+    return delegate.navigationController.backgroundImage;
+}
+-(void)setBackground:(UIImage *)background{
+    SDAppDelegate* delegate = (id)[UIApplication sharedApplication].delegate;
+    delegate.navigationController.backgroundImage = background;
 }
 
 -(void)updateVisibleCollectionViewCellsBackground{
@@ -386,12 +323,10 @@ static NSString *HeaderCellIdentifier = @"HeaderCollectionViewCell";
             view = objc_msgSend(cell, selector);
         }
         if( view ){
-            UIImage* image = self.convertedBackground;
+            SDAppDelegate* delegate = (id)[UIApplication sharedApplication].delegate;
+            SDMainNavigationController* viewController = delegate.navigationController;
             CGRect frame = [view convertRect:view.frame toView:self.view];
-            CGImageRef imageRef = CGImageCreateWithImageInRect(image.CGImage, frame);
-            UIImage *img = [UIImage imageWithCGImage:imageRef];
-            CGImageRelease(imageRef);
-            view.image = img;
+            view.image = [viewController processedBackgroundImageWithFrame:frame];
         }
     }
 }
@@ -403,12 +338,67 @@ static NSString *HeaderCellIdentifier = @"HeaderCollectionViewCell";
         view = objc_msgSend(cell, selector);
     }
     if( view ){
-        UIImage* image = self.convertedBackground;
+        SDAppDelegate* delegate = (id)[UIApplication sharedApplication].delegate;
+        SDMainNavigationController* viewController = delegate.navigationController;
         CGRect frame = [view convertRect:view.frame toView:self.view];
-        CGImageRef imageRef = CGImageCreateWithImageInRect(image.CGImage, frame);
-        UIImage *img = [UIImage imageWithCGImage:imageRef];
-        CGImageRelease(imageRef);
-        view.image = img;
+        view.image = [viewController processedBackgroundImageWithFrame:frame];
+    }
+}
+
+-(void)mainBackgroundImageWillChange:(NSNotification*)notification{
+    SDMainNavigationController* viewController = notification.object;
+    if( !viewController ){
+        SDAppDelegate* delegate = (id)[UIApplication sharedApplication].delegate;
+        viewController = delegate.navigationController;
+    }
+    self.backgroundView.targetImage = viewController.processedBackgroundImage;
+    self.backgroundView.targetView = viewController.currentBackgroundView.superview;
+//    [self.backgroundView setNeedsLayout];
+    [self updateVisibleCollectionViewCellsBackground];
+}
+
+- (void)updateBackgroundImageToCurrentIndex:(BOOL)toCurrentIndex
+{
+    NSArray *visibleItems = [_collectionView indexPathsForSortedVisibleItems];
+    
+    if (visibleItems.count > 2 || !toCurrentIndex) {
+        NSIndexPath *indexPath;
+        
+        if (!toCurrentIndex)
+            indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
+        else
+            indexPath = visibleItems[visibleItems.count-2];
+        
+        SDStory* story = [self.dataSource objectAtIndex:indexPath.row];
+        UIImage* image = nil;
+        if( story.imageName ){
+            NSLog(@"name: %@", story.imageName);
+            image = [UIImage imageNamed:story.imageName];
+        } else {
+            NSArray *storyImages = [_dataSource valueForKey:@"imageName"];
+            
+            NSInteger index = 0;
+            NSString *imageName = nil;
+            for (int i=(int)indexPath.row;i>=0;i--) {
+                if (storyImages[i] != [NSNull null] && ((NSString*)storyImages[i]).length) {
+                    imageName = storyImages[i];
+                    index = i;
+                    break;
+                }
+            }
+            for (int i=(int)indexPath.row;i<storyImages.count;i++) {
+                if (storyImages[i] != [NSNull null] && ((NSString*)storyImages[i]).length) {
+                    if (!imageName || (imageName && indexPath.row-index>i-indexPath.row)) {
+                        imageName = storyImages[i];
+                        index = i;
+                    }
+                    break;
+                }
+            }
+            
+            image = imageName?[UIImage imageNamed:imageName]:nil;
+        }
+        self.background = image;
     }
 }
 

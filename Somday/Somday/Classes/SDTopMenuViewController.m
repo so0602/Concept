@@ -100,16 +100,19 @@
 #pragma mark - MSDynamicsDrawerViewControllerDelegate
 
 -(void)dynamicsDrawerViewController:(MSDynamicsDrawerViewController *)drawerViewController mayUpdateToPaneState:(MSDynamicsDrawerPaneState)paneState forDirection:(MSDynamicsDrawerDirection)direction{
+    [[NSNotificationCenter defaultCenter] postNotificationName:DynamicsDrawerViewControllerMayUpdateNotification object:nil];
     if( paneState == MSDynamicsDrawerPaneStateClosed ){
         [[NSNotificationCenter defaultCenter] postNotificationName:TopMenuWillClose object:nil];
     }
 }
 -(void)dynamicsDrawerViewController:(MSDynamicsDrawerViewController *)drawerViewController didUpdateToPaneState:(MSDynamicsDrawerPaneState)paneState forDirection:(MSDynamicsDrawerDirection)direction{
+    [[NSNotificationCenter defaultCenter] postNotificationName:DynamicsDrawerViewControllerDidUpdateNotification object:nil];
     if( paneState == MSDynamicsDrawerPaneStateClosed ){
         [[NSNotificationCenter defaultCenter] postNotificationName:TopMenuDidClosed object:nil];
     }
 }
 -(BOOL)dynamicsDrawerViewController:(MSDynamicsDrawerViewController *)drawerViewController shouldBeginPanePan:(UIPanGestureRecognizer *)panGestureRecognizer{
+    [[NSNotificationCenter defaultCenter] postNotificationName:DynamicsDrawerViewControllerShouldBeginPanePanNotification object:nil];
     return TRUE;
 }
 

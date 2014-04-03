@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
+#import "SDMainNavigationController.h"
 #import "SDDynamicsDrawerViewController.h"
 #import "SDLoginViewController.h"
 
@@ -15,7 +16,7 @@
 
 @property (nonatomic, strong) UIWindow *window;
 
-@property (nonatomic, strong) UINavigationController* navigationController;
+@property (nonatomic, strong) SDMainNavigationController* navigationController;
 @property (nonatomic, strong) SDLoginViewController* loginViewController;
 @property (nonatomic, strong) SDDynamicsDrawerViewController* mainViewController;
 

@@ -199,7 +199,8 @@ const CGFloat SDPaneViewFilterViewTag = 7777;
     UIView *filterView = [self.paneView viewWithTag:SDPaneViewFilterViewTag];
     if (!filterView) {
         filterView = [[UIView alloc] initWithFrame:self.paneView.bounds];
-        filterView.backgroundColor = [UIColor whiteColor];
+        //filterView.backgroundColor = [UIColor whiteColor];
+        filterView.backgroundColor = [UIColor clearColor];
         filterView.alpha = 0.0f;
         filterView.userInteractionEnabled = NO;
         filterView.layer.masksToBounds = YES;

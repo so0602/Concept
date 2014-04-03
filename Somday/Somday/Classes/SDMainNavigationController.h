@@ -11,5 +11,9 @@
 @interface SDMainNavigationController : UINavigationController
 
 @property (nonatomic, strong) UIImage* backgroundImage;
+@property (nonatomic, strong, readonly) UIImage* processedBackgroundImage;
+@property (nonatomic, strong, readonly) UIView* currentBackgroundView;
+
+-(UIImage*)processedBackgroundImageWithFrame:(CGRect)frame;
 
 @end

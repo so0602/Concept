@@ -31,7 +31,7 @@
                     <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
                     <navigationItem key="navigationItem" id="eZ1-mz-knU"/>
@@ -52,15 +52,19 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <view contentMode="scaleAspectFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="z2I-yH-0kz" userLabel="Image 1" customClass="GPUImageView">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="tZs-GV-7SS" customClass="SDTranslucentImageView">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                            </imageView>
+                            <view hidden="YES" contentMode="scaleAspectFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="z2I-yH-0kz" userLabel="Image 1" customClass="GPUImageView">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
-                            <view contentMode="scaleAspectFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hKr-Q9-Hws" userLabel="Image 2" customClass="GPUImageView">
+                            <view hidden="YES" contentMode="scaleAspectFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hKr-Q9-Hws" userLabel="Image 2" customClass="GPUImageView">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
                             <collectionView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="9Cs-Oj-N38">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
@@ -264,7 +268,7 @@
                                                             <size key="shadowOffset" width="0.0" height="1"/>
                                                         </label>
                                                     </subviews>
-                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                                 </view>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -349,7 +353,7 @@
                                                             <color key="backgroundColor" red="0.27058823529999998" green="0.56470588239999997" blue="0.51764705879999995" alpha="1" colorSpace="calibratedRGB"/>
                                                         </view>
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="separator-1.png" translatesAutoresizingMaskIntoConstraints="NO" id="fj9-32-D8B">
-                                                            <rect key="frame" x="0.0" y="94.5" width="304" height="1"/>
+                                                            <rect key="frame" x="0.0" y="95.5" width="304" height="1"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                         </imageView>
                                                         <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YmP-Ze-Fog">
@@ -407,7 +411,7 @@
                                                             <size key="shadowOffset" width="0.0" height="1"/>
                                                         </label>
                                                     </subviews>
-                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                                 </view>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -851,7 +855,7 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                     </subviews>
-                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                                 </view>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -947,24 +951,27 @@
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="XJS-mC-OuD" firstAttribute="top" secondItem="aYH-lB-KeN" secondAttribute="top" constant="10" id="3vg-qB-g4R"/>
                             <constraint firstAttribute="bottom" secondItem="9Cs-Oj-N38" secondAttribute="bottom" id="66d-ja-P85"/>
                             <constraint firstItem="XJS-mC-OuD" firstAttribute="bottom" secondItem="ehq-x2-nxa" secondAttribute="bottom" id="9ra-6F-HpU"/>
+                            <constraint firstAttribute="bottom" secondItem="tZs-GV-7SS" secondAttribute="bottom" id="LHw-XA-Uh8"/>
                             <constraint firstItem="9Cs-Oj-N38" firstAttribute="top" secondItem="aYH-lB-KeN" secondAttribute="top" id="MpS-cc-mMQ"/>
                             <constraint firstItem="XJS-mC-OuD" firstAttribute="top" secondItem="ehq-x2-nxa" secondAttribute="top" id="Qph-4l-OKh"/>
                             <constraint firstItem="9Cs-Oj-N38" firstAttribute="leading" secondItem="aYH-lB-KeN" secondAttribute="leading" id="Quh-Ea-sVS"/>
                             <constraint firstAttribute="trailing" secondItem="9Cs-Oj-N38" secondAttribute="trailing" id="RDH-Xn-AdF"/>
+                            <constraint firstItem="tZs-GV-7SS" firstAttribute="leading" secondItem="aYH-lB-KeN" secondAttribute="leading" id="TOo-uk-MIf"/>
                             <constraint firstItem="XJS-mC-OuD" firstAttribute="leading" secondItem="aYH-lB-KeN" secondAttribute="leading" constant="266" id="ehS-74-sPj"/>
                             <constraint firstAttribute="trailing" secondItem="XJS-mC-OuD" secondAttribute="trailing" constant="10" id="nlR-k8-lz3"/>
+                            <constraint firstAttribute="trailing" secondItem="tZs-GV-7SS" secondAttribute="trailing" id="tMO-hp-xID"/>
+                            <constraint firstItem="tZs-GV-7SS" firstAttribute="top" secondItem="aYH-lB-KeN" secondAttribute="top" id="uNW-nw-UJY"/>
                             <constraint firstItem="ehq-x2-nxa" firstAttribute="leading" secondItem="aYH-lB-KeN" secondAttribute="leading" constant="10" id="z5i-Fo-rsH"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Qjx-NR-CEA"/>
                     <connections>
-                        <outlet property="bgImageView1" destination="z2I-yH-0kz" id="OD4-cd-c6Y"/>
-                        <outlet property="bgImageView2" destination="hKr-Q9-Hws" id="ym4-6n-Fmt"/>
+                        <outlet property="backgroundView" destination="tZs-GV-7SS" id="SCX-7W-wom"/>
                         <outlet property="collectionView" destination="9Cs-Oj-N38" id="3KY-c9-gFn"/>
                         <outletCollection property="buttons" destination="ehq-x2-nxa" id="et3-d1-g2e"/>
                         <outletCollection property="buttons" destination="zlk-2i-E0e" id="i81-Y7-brF"/>
@@ -986,7 +993,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iNh-cV-HcS" customClass="GPUImageView">
+                            <view hidden="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iNh-cV-HcS" customClass="GPUImageView">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -1363,7 +1370,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Xfp-kY-Wbe">
+                            <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Xfp-kY-Wbe">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
@@ -1412,7 +1419,7 @@
                                 </connections>
                             </tableView>
                         </subviews>
-                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </view>
                     <connections>
                         <outlet property="backgroundImageView" destination="Xfp-kY-Wbe" id="RmJ-nb-XWc"/>
@@ -1435,7 +1442,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fJv-Bg-6xe">
+                            <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fJv-Bg-6xe">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
@@ -1523,7 +1530,7 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" red="0.031372550874948502" green="0.090196080505847931" blue="0.15686275064945221" alpha="1" colorSpace="deviceRGB"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </view>
                     <connections>
                         <outlet property="backgroundImageView" destination="fJv-Bg-6xe" id="5XE-VA-uV6"/>

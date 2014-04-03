@@ -218,7 +218,8 @@
             @finally {
                 if( !paneViewController ){
                     paneViewController = [[UIViewController alloc] init];
-                    paneViewController.view.backgroundColor = [UIColor redColor];
+                    paneViewController.view.backgroundColor = [UIColor clearColor];
+//                    paneViewController.view.backgroundColor = [UIColor redColor];
                 }
             }
             
@@ -263,9 +264,11 @@
 #pragma mark - MSDynamicsDrawerViewControllerDelegate
 
 -(void)dynamicsDrawerViewController:(MSDynamicsDrawerViewController *)drawerViewController mayUpdateToPaneState:(MSDynamicsDrawerPaneState)paneState forDirection:(MSDynamicsDrawerDirection)direction{
+    [[NSNotificationCenter defaultCenter] postNotificationName:DynamicsDrawerViewControllerMayUpdateNotification object:nil];
     SDLog(@"paneState: %ld", paneState);
 }
 -(void)dynamicsDrawerViewController:(MSDynamicsDrawerViewController *)drawerViewController didUpdateToPaneState:(MSDynamicsDrawerPaneState)paneState forDirection:(MSDynamicsDrawerDirection)direction{
+    [[NSNotificationCenter defaultCenter] postNotificationName:DynamicsDrawerViewControllerDidUpdateNotification object:nil];
     if( !self.changingTab ){
         if( paneState == MSDynamicsDrawerPaneStateOpen || paneState == MSDynamicsDrawerPaneStateOpenWide ){
             self.searchViewController.view.alpha = 1.0;
@@ -282,6 +285,7 @@
     }
 }
 -(BOOL)dynamicsDrawerViewController:(MSDynamicsDrawerViewController *)drawerViewController shouldBeginPanePan:(UIPanGestureRecognizer *)panGestureRecognizer{
+    [[NSNotificationCenter defaultCenter] postNotificationName:DynamicsDrawerViewControllerShouldBeginPanePanNotification object:nil];
     return TRUE;
 }
 

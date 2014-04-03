@@ -12,6 +12,13 @@ extern NSString* TopMenuWillClose;
 extern NSString* TopMenuDidClosed;
 extern NSString* HomeBackgroundImageChangedNotification;
 
+extern NSString* MainBackgroundImageWillChangeNotification;
+extern NSString* MainBackgroundImageDidChangeNotification;
+
+extern NSString* DynamicsDrawerViewControllerMayUpdateNotification;
+extern NSString* DynamicsDrawerViewControllerDidUpdateNotification;
+extern NSString* DynamicsDrawerViewControllerShouldBeginPanePanNotification;
+
 @interface NSNotificationCenter (Name)
 
 @end
