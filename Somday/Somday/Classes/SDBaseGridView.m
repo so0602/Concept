@@ -16,6 +16,7 @@
 #import "SDStoryBookGridView.h"
 #import "SDGradientView.h"
 #import "SDWebsiteGridView.h"
+#import "SDEventGridView.h"
 
 #import "UIView+Addition.h"
 
@@ -26,6 +27,7 @@ static NSString *HalfPhotoCellIdentifier = @"HalfPhotoCollectionViewCell";
 static NSString *VoiceCellIdentifier = @"VoiceCollectionViewCell";
 static NSString *StoryBookCellIdentifier = @"StoryBookCollectionViewCell";
 static NSString *WebsiteCellIdentifier = @"WebsiteCollectionViewCell";
+static NSString *EventCellIdentifier = @"EventCollectionViewCell";
 
 KeyframeParametricBlock openFunction = ^double(double time) {
     return sin(time*M_PI_2);
@@ -97,7 +99,7 @@ typedef NSUInteger SDGridMenuState;
             reuseIdentifier = VoiceCellIdentifier;
             break;
         case SDStoryType_Event:
-            reuseIdentifier = TextCellIdentifier;
+            reuseIdentifier = EventCellIdentifier;
             break;
         case SDStoryType_Storybook:
             reuseIdentifier = StoryBookCellIdentifier;
@@ -123,7 +125,7 @@ typedef NSUInteger SDGridMenuState;
             class = [SDVoiceGridView class];
             break;
         case SDStoryType_Event:
-            class = [SDTextGridView class];
+            class = [SDEventGridView class];
             break;
         case SDStoryType_Storybook:
             class = [SDStoryBookGridView class];

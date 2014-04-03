@@ -120,6 +120,7 @@ static NSString *HeaderCellIdentifier = @"HeaderCollectionViewCell";
             story.type = [NSNumber numberWithInt:min + arc4random() % (max-min)];
             switch( story.type.intValue ){
                 case SDStoryType_Photo:
+                case SDStoryType_Event:
                     story.imageName = toggle ? @"dump_03.jpg" : @"dump_02.jpg";
                     toggle = !toggle;
                     break;

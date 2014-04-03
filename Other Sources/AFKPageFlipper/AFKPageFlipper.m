@@ -46,12 +46,14 @@
 #pragma mark Private interface
 
 
-//@interface AFKPageFlipper()
-//
+@interface AFKPageFlipper()
+{
+    float progressflipDirection; // 1: left 0: right
+}
 //@property (nonatomic,assign) UIView *currentView;
 //@property (nonatomic,assign) UIView *newView;
-//
-//@end
+
+@end
 
 
 @implementation AFKPageFlipper
@@ -645,10 +647,14 @@
 }
 
 - (void) setFlipProgress:(float) progress setDelegate:(BOOL) setDelegate animate:(BOOL) animate {
-	
-	float newAngle = startFlipAngle + progress * (endFlipAngle - startFlipAngle);
+	progressflipDirection = progress;
+	//float newAngle = startFlipAngle + progress * (endFlipAngle - startFlipAngle);
+    
+    float newAngle = startFlipAngle + progress * (endFlipAngle - startFlipAngle);
+    
+    
 	float duration = animate ? 0.5 * fabs((newAngle - currentAngle) / (endFlipAngle - startFlipAngle)) : 0;
-	
+	NSLog(@"progress %2.f, %2.f, %2.f, %2.f, %2.f", progress, endFlipAngle, startFlipAngle, newAngle, duration);
 	currentAngle = newAngle;
 	
 	CATransform3D endTransform = CATransform3DIdentity;
@@ -927,6 +933,8 @@
 	
 	pageDifference = 1;
 	
+    NSLog(@"current page: %li", (long)self.currentPage);
+    
 	switch (recognizer.state) {
 		case UIGestureRecognizerStateBegan:
 			if (!animating) {
@@ -988,8 +996,14 @@
 					return;
 				}
 				[self setDisabled:TRUE];
-				setNewViewOnCompletion = YES;
-				[self setFlipProgress:1.0 setDelegate:YES animate:YES];
+                
+                setNewViewOnCompletion = YES;
+                
+                NSLog(@"progressflipDirection %.2f, %li, %li", roundf(progressflipDirection), (long)self.currentPage, (long)oldPage);
+                if (!roundf(progressflipDirection))
+                    currentPage = oldPage;
+                
+				[self setFlipProgress:roundf(progressflipDirection) setDelegate:YES animate:YES];
 			}
 			
 			break;

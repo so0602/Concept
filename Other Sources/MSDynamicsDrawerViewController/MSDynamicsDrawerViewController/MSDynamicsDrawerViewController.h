@@ -152,6 +152,8 @@ typedef NS_ENUM(NSInteger, MSDynamicsDrawerPaneState) {
  */
 @property (nonatomic, assign) MSDynamicsDrawerPaneState paneState;
 
+-(void)topMenuWillClose;
+
 /**
  The state of the pane view as defined in a `MSDynamicsDrawerPaneState`.
  

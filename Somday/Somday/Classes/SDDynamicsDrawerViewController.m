@@ -117,6 +117,13 @@ const CGFloat SDPaneViewFilterViewTag = 7777;
     UIView* view = self.addBarButtonItem.customView;
     view = view.subviews.firstObject;
     [SDUtils rotateBackView:view];
+    [super topMenuWillClose];
+    self.delegate = self.menuViewController;
+    self.customDelegate = self.menuViewController;
+    if( [self drawerViewControllerForDirection:MSDynamicsDrawerDirectionTop] ){
+        [self setDrawerViewController:nil forDirection:MSDynamicsDrawerDirectionTop];
+    }
+    [self setDrawerViewController:self.menuViewController forDirection:MSDynamicsDrawerDirectionLeft];
 }
 
 -(void)topMenuDidClosed{
@@ -312,6 +319,7 @@ const CGFloat SDPaneViewFilterViewTag = 7777;
                 [self.customDelegate dynamicsDrawerViewController:self paneViewPositionDidChanged:self.paneView.frame.origin];
             }
             // If the drawer is being swiped into the closed state, set the direciton to none and the state to closed since the user is manually doing so
+            NSLog(@"chk7");
             if ((self.currentDrawerDirection != MSDynamicsDrawerDirectionNone) &&
                 (currentPanDirection != MSDynamicsDrawerDirectionNone) &&
                 CGPointEqualToPoint(self.paneView.frame.origin, [self paneViewOriginForPaneState:MSDynamicsDrawerPaneStateClosed])) {
@@ -346,6 +354,7 @@ const CGFloat SDPaneViewFilterViewTag = 7777;
 
 - (void)setPaneViewController:(UIViewController *)paneViewController animated:(BOOL)animated completion:(void (^)(void))completion
 {
+    NSLog(@"setPaneViewController frame!!!: %@", NSStringFromCGRect(self.paneView.frame));
     NSParameterAssert(paneViewController);
     if (!animated) {
         self.paneViewController = paneViewController;
@@ -413,10 +422,12 @@ const CGFloat SDPaneViewFilterViewTag = 7777;
             if (completion) completion();
         }];
     }
+    NSLog(@"setPaneViewController2 frame!!!: %@", NSStringFromCGRect(self.paneView.frame));
 }
 
 - (void)replaceViewController:(UIViewController *)existingViewController withViewController:(UIViewController *)newViewController inContainerView:(UIView *)containerView completion:(void (^)(void))completion
 {
+    NSLog(@"replaceViewController frame!!!: %@", NSStringFromCGRect(self.paneView.frame));
     // Add initial view controller
 	if (!existingViewController && newViewController) {
         [newViewController willMoveToParentViewController:self];
@@ -449,6 +460,7 @@ const CGFloat SDPaneViewFilterViewTag = 7777;
         [newViewController endAppearanceTransition];
         if (completion) completion();
     }
+    NSLog(@"replaceViewController2 frame!!!: %@", NSStringFromCGRect(self.paneView.frame));
 }
 
 @end

@@ -292,6 +292,7 @@
 #pragma mark - SDDynamicsDrawerViewControllerDelegate
 
 -(void)dynamicsDrawerViewController:(MSDynamicsDrawerViewController *)drawerViewController paneViewPositionDidChanged:(CGPoint)position{
+    // To Freddy: what's that??
     if( !self.animationTimer && [drawerViewController drawerViewControllerForDirection:MSDynamicsDrawerDirectionLeft] ){
         self.animationTimer = [NSTimer scheduledTimerWithTimeInterval:0.1 target:self selector:@selector(searchViewAnimationUpdate) userInfo:nil repeats:TRUE];
     }
