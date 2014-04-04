@@ -13,7 +13,7 @@
 #import "NSNotificationCenter+Name.h"
 #import "UIView+Addition.h"
 
-@interface SDTranslucentImageView ()
+@interface SDTranslucentImageView () <SDMainNavigationControllerDelegate>
 
 -(void)viewControllerWillUpdate:(NSNotification*)notification;
 -(void)viewControllerDidUpdate:(NSNotification *)notification;
@@ -33,12 +33,18 @@
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(viewControllerWillUpdate:) name:MainBackgroundImageWillChangeNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(viewControllerDidUpdate:) name:MainBackgroundImageDidChangeNotification object:nil];
+    
+//    SDAppDelegate* delegate = [UIApplication sharedApplication].delegate;
+//    [delegate.navigationController addDelegate:self];
 }
 
 -(void)removeFromSuperview{
     [super removeFromSuperview];
     
     [[NSNotificationCenter defaultCenter] removeObserver:self];
+    
+    SDAppDelegate* delegate = [UIApplication sharedApplication].delegate;
+    [delegate.navigationController removeDelegate:self];
 }
 
 -(void)layoutSubviews{
@@ -89,6 +95,16 @@
 -(void)viewControllerDidUpdate:(NSNotification *)notification{
     self.keepUpdate = FALSE;
     [self setNeedsLayout];
+}
+
+#pragma mark - SDMainNavigationControllerDelegate
+
+-(void)navigationController:(SDMainNavigationController*)navigationController backgroundWillChange:(UIImage*)processedBackgroundImage{
+    [self viewControllerWillUpdate:nil];
+}
+
+-(void)navigationController:(SDMainNavigationController*)navigationController backgroundDidChange:(UIImage*)processedBackgroundImage{
+    [self viewControllerDidUpdate:nil];
 }
 
 @end

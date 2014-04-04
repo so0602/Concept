@@ -132,6 +132,7 @@ const CGFloat SDPaneViewFilterViewTag = 7777;
     [self updatePeneViewCornerRadius:0.0];
     if( [self drawerViewControllerForDirection:MSDynamicsDrawerDirectionTop] ){
         [self setDrawerViewController:nil forDirection:MSDynamicsDrawerDirectionTop];
+        [self.topMenuViewController.view removeFromSuperview];
     }
     [self setDrawerViewController:self.menuViewController forDirection:MSDynamicsDrawerDirectionLeft];
     
@@ -242,7 +243,10 @@ const CGFloat SDPaneViewFilterViewTag = 7777;
 {
     if ([self paneTapToCloseEnabledForDirection:self.currentDrawerDirection]) {
         [self updatePeneViewCornerRadius:0.0f];
-        [self addDynamicsBehaviorsToCreatePaneState:MSDynamicsDrawerPaneStateClosed];
+        [self setPaneState:MSDynamicsDrawerPaneStateClosed animated:TRUE allowUserInterruption:FALSE completion:^{
+            [[NSNotificationCenter defaultCenter] postNotificationName:DynamicsDrawerViewControllerDidUpdateNotification object:nil];
+        }];
+//        [self addDynamicsBehaviorsToCreatePaneState:MSDynamicsDrawerPaneStateClosed];
     }
 }
 

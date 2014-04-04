@@ -28,6 +28,8 @@ static const CGFloat ProcessedBackgroundImageScaleFactor = 1;
 
 -(void)initialize;
 
+@property (nonatomic, strong) NSMutableArray* delegates;
+
 @end
 
 @implementation SDMainNavigationController
@@ -68,6 +70,10 @@ static const CGFloat ProcessedBackgroundImageScaleFactor = 1;
         self.processedBackgroundImage = imageView.convertViewToImage;
         self.processedBackgroundImageWithDarkLayer = [self.processedBackgroundImage applyBlurWithRadius:1 tintColor:[UIColor colorWithWhite:0 alpha:0.5] saturationDeltaFactor:1 maskImage:nil];
         
+        for( id<SDMainNavigationControllerDelegate> delegate in self.delegates ){
+            [delegate navigationController:self backgroundDidChange:self.processedBackgroundImage];
+        }
+        
         [[NSNotificationCenter defaultCenter] postNotificationName:MainBackgroundImageDidChangeNotification object:self userInfo:nil];
     }else{
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
@@ -104,12 +110,18 @@ static const CGFloat ProcessedBackgroundImageScaleFactor = 1;
                     [prevImageView removeFromSuperview];
                     prevImageView.alpha = 1.0;
                     
+                    for( id<SDMainNavigationControllerDelegate> delegate in self.delegates ){
+                        [delegate navigationController:self backgroundDidChange:self.processedBackgroundImage];
+                    }
                     [[NSNotificationCenter defaultCenter] postNotificationName:MainBackgroundImageDidChangeNotification object:self userInfo:nil];
                 }];
                 
                 [self.backgroundImageViews replaceObjectAtIndex:index withObject:imageView];
                 self.currentIndex = index;
                 
+                for( id<SDMainNavigationControllerDelegate> delegate in self.delegates ){
+                    [delegate navigationController:self backgroundWillChange:self.processedBackgroundImage];
+                }
                 [[NSNotificationCenter defaultCenter] postNotificationName:MainBackgroundImageWillChangeNotification object:self userInfo:nil];
             });
         });
@@ -129,6 +141,22 @@ static const CGFloat ProcessedBackgroundImageScaleFactor = 1;
     return image;
 }
 
+-(void)addDelegate:(id<SDMainNavigationControllerDelegate>)delegate{
+    if( !delegate ){
+        return;
+    }
+    if( ![self.delegates containsObject:delegate] ){
+        [self.delegates addObject:delegate];
+    }
+}
+
+-(void)removeDelegate:(id<SDMainNavigationControllerDelegate>)delegate{
+    if( !delegate ){
+        return;
+    }
+    [self.delegates removeObject:delegate];
+}
+
 #pragma mark - Private Functions
 
 -(void)initialize{
@@ -138,6 +166,8 @@ static const CGFloat ProcessedBackgroundImageScaleFactor = 1;
     }
     
     self.currentIndex = 0;
+    
+    self.delegates = [NSMutableArray array];
 }
 
 -(UIView*)currentBackgroundView{
