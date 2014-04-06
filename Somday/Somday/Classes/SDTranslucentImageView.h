@@ -2,7 +2,7 @@
 //  SDTranslucentImageView.h
 //  Somday
 //
-//  Created by Freddy on 1/4/14.
+//  Created by Freddy on 7/4/14.
 //  Copyright (c) 2014 Freddy So. All rights reserved.
 //
 

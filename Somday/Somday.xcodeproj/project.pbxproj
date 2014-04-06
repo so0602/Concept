@@ -48,6 +48,7 @@
 		B60C27BC18E6FAB0000ED405 /* SDWebsiteGridView.m in Sources */ = {isa = PBXBuildFile; fileRef = B60C27BB18E6FAB0000ED405 /* SDWebsiteGridView.m */; };
 		B60C27C518E6FE88000ED405 /* dump_website@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B60C27C418E6FE88000ED405 /* dump_website@2x.png */; };
 		B64444A918CA374800CDD2D4 /* NSNotificationCenter+Name.m in Sources */ = {isa = PBXBuildFile; fileRef = B64444A818CA374800CDD2D4 /* NSNotificationCenter+Name.m */; };
+		B64DBD1118F1B80D0023E362 /* SDTranslucentImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = B64DBD1018F1B80D0023E362 /* SDTranslucentImageView.m */; };
 		B65DDC0F18C57D1E0076408C /* SDUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = B65DDC0E18C57D1E0076408C /* SDUtils.m */; };
 		B65DDC1218C57FB30076408C /* UIViewController+Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = B65DDC1118C57FB30076408C /* UIViewController+Addition.m */; };
 		B65DDC1818C586760076408C /* SDMenuTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B65DDC1718C586760076408C /* SDMenuTableViewCell.m */; };
@@ -855,7 +856,7 @@
 		B65DE27B18C60EB10076408C /* icons-shadow-24px_warning@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B65DDF5D18C60EB10076408C /* icons-shadow-24px_warning@2x.png */; };
 		B65DE2B218C884D50076408C /* SDTopMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B65DE2B118C884D50076408C /* SDTopMenuViewController.m */; };
 		B663F00B18E9BA3C0077E3FF /* SDMainNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = B663F00A18E9BA3C0077E3FF /* SDMainNavigationController.m */; };
-		B663F00F18E9D2B90077E3FF /* SDTranslucentImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = B663F00E18E9D2B90077E3FF /* SDTranslucentImageView.m */; };
+		B663F00F18E9D2B90077E3FF /* SDMainTranslucentImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = B663F00E18E9D2B90077E3FF /* SDMainTranslucentImageView.m */; };
 		B66E1BEF18D83B7500C292FA /* SDPhotoGridView.m in Sources */ = {isa = PBXBuildFile; fileRef = B66E1BEE18D83B7500C292FA /* SDPhotoGridView.m */; };
 		B66E1BF218D8585C00C292FA /* dump_user.png in Resources */ = {isa = PBXBuildFile; fileRef = B66E1BF018D8585C00C292FA /* dump_user.png */; };
 		B66E1BF318D8585C00C292FA /* dump_user@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B66E1BF118D8585C00C292FA /* dump_user@2x.png */; };
@@ -1155,6 +1156,8 @@
 		B60C27C418E6FE88000ED405 /* dump_website@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "dump_website@2x.png"; sourceTree = "<group>"; };
 		B64444A718CA374800CDD2D4 /* NSNotificationCenter+Name.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSNotificationCenter+Name.h"; path = "Classes/NSNotificationCenter+Name.h"; sourceTree = "<group>"; };
 		B64444A818CA374800CDD2D4 /* NSNotificationCenter+Name.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSNotificationCenter+Name.m"; path = "Classes/NSNotificationCenter+Name.m"; sourceTree = "<group>"; };
+		B64DBD0F18F1B80D0023E362 /* SDTranslucentImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SDTranslucentImageView.h; path = Classes/SDTranslucentImageView.h; sourceTree = "<group>"; };
+		B64DBD1018F1B80D0023E362 /* SDTranslucentImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SDTranslucentImageView.m; path = Classes/SDTranslucentImageView.m; sourceTree = "<group>"; };
 		B65DDC0D18C57D1E0076408C /* SDUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SDUtils.h; path = Classes/SDUtils.h; sourceTree = "<group>"; };
 		B65DDC0E18C57D1E0076408C /* SDUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SDUtils.m; path = Classes/SDUtils.m; sourceTree = "<group>"; };
 		B65DDC1018C57FB30076408C /* UIViewController+Addition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIViewController+Addition.h"; path = "Classes/UIViewController+Addition.h"; sourceTree = "<group>"; };
@@ -1970,8 +1973,8 @@
 		B65DE2B118C884D50076408C /* SDTopMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SDTopMenuViewController.m; path = Classes/SDTopMenuViewController.m; sourceTree = "<group>"; };
 		B663F00918E9BA3C0077E3FF /* SDMainNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SDMainNavigationController.h; path = Classes/SDMainNavigationController.h; sourceTree = "<group>"; };
 		B663F00A18E9BA3C0077E3FF /* SDMainNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SDMainNavigationController.m; path = Classes/SDMainNavigationController.m; sourceTree = "<group>"; };
-		B663F00D18E9D2B90077E3FF /* SDTranslucentImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SDTranslucentImageView.h; path = Classes/SDTranslucentImageView.h; sourceTree = "<group>"; };
-		B663F00E18E9D2B90077E3FF /* SDTranslucentImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SDTranslucentImageView.m; path = Classes/SDTranslucentImageView.m; sourceTree = "<group>"; };
+		B663F00D18E9D2B90077E3FF /* SDMainTranslucentImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SDMainTranslucentImageView.h; path = Classes/SDMainTranslucentImageView.h; sourceTree = "<group>"; };
+		B663F00E18E9D2B90077E3FF /* SDMainTranslucentImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SDMainTranslucentImageView.m; path = Classes/SDMainTranslucentImageView.m; sourceTree = "<group>"; };
 		B66E1BED18D83B7500C292FA /* SDPhotoGridView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SDPhotoGridView.h; path = Classes/SDPhotoGridView.h; sourceTree = "<group>"; };
 		B66E1BEE18D83B7500C292FA /* SDPhotoGridView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SDPhotoGridView.m; path = Classes/SDPhotoGridView.m; sourceTree = "<group>"; };
 		B66E1BF018D8585C00C292FA /* dump_user.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dump_user.png; sourceTree = "<group>"; };
@@ -2223,15 +2226,14 @@
 			children = (
 				B6B8274D18E3DB24009C8A37 /* Bubble View */,
 				B6B8275618E41475009C8A37 /* Gradient View */,
-				B6BE4ABE18D8168000DA7313 /* GridView */,
+				B6BE4ABE18D8168000DA7313 /* Grid View */,
 				2E54CACD18C5D7BF00B23A96 /* SDHomeHeaderCollectionViewCell.h */,
 				2E54CACE18C5D7BF00B23A96 /* SDHomeHeaderCollectionViewCell.m */,
 				2EC3784718C5F0BA00D4161B /* SDHomeNavigationTitleView.h */,
 				2EC3784818C5F0BA00D4161B /* SDHomeNavigationTitleView.m */,
 				2EC3784E18C5F0D100D4161B /* SDHomeNavigationTitleView.xib */,
 				B6BE49DE18CF69A100DA7313 /* TextField */,
-				B663F00D18E9D2B90077E3FF /* SDTranslucentImageView.h */,
-				B663F00E18E9D2B90077E3FF /* SDTranslucentImageView.m */,
+				B64DBD0E18F1B7E60023E362 /* Translucent View */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -2304,6 +2306,17 @@
 			);
 			name = JTListView;
 			path = "../Other Sources/JTListView";
+			sourceTree = "<group>";
+		};
+		B64DBD0E18F1B7E60023E362 /* Translucent View */ = {
+			isa = PBXGroup;
+			children = (
+				B663F00D18E9D2B90077E3FF /* SDMainTranslucentImageView.h */,
+				B663F00E18E9D2B90077E3FF /* SDMainTranslucentImageView.m */,
+				B64DBD0F18F1B80D0023E362 /* SDTranslucentImageView.h */,
+				B64DBD1018F1B80D0023E362 /* SDTranslucentImageView.m */,
+			);
+			name = "Translucent View";
 			sourceTree = "<group>";
 		};
 		B65DDC0A18C57D050076408C /* Utils */ = {
@@ -3379,7 +3392,7 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		B6BE4ABE18D8168000DA7313 /* GridView */ = {
+		B6BE4ABE18D8168000DA7313 /* Grid View */ = {
 			isa = PBXGroup;
 			children = (
 				B66E1C1E18D8B33300C292FA /* SDBaseGridView.h */,
@@ -3400,7 +3413,7 @@
 				2ED985D418ED406D005CB4F9 /* SDEventGridView.h */,
 				2ED985D518ED406D005CB4F9 /* SDEventGridView.m */,
 			);
-			name = GridView;
+			name = "Grid View";
 			sourceTree = "<group>";
 		};
 		B6DC7BF518DAB18F00023862 /* New Event */ = {
@@ -4905,7 +4918,7 @@
 				B6FD653018E0833700CCCB03 /* UIColor+Extensions.m in Sources */,
 				B60C27BC18E6FAB0000ED405 /* SDWebsiteGridView.m in Sources */,
 				B6BE49D018CF457500DA7313 /* SDForgotPasswordViewController.m in Sources */,
-				B663F00F18E9D2B90077E3FF /* SDTranslucentImageView.m in Sources */,
+				B663F00F18E9D2B90077E3FF /* SDMainTranslucentImageView.m in Sources */,
 				2E7A351718D888D100662504 /* AFKPageFlipper.m in Sources */,
 				B65DDC1818C586760076408C /* SDMenuTableViewCell.m in Sources */,
 				B6DC7C0118DAB2C300023862 /* SDNewStoryViewController.m in Sources */,
@@ -4931,6 +4944,7 @@
 				B6777B7818E1C24C00BD8F05 /* SDLoadingViewController.m in Sources */,
 				B6DC7C0718DAB2EE00023862 /* SDCheckInViewController.m in Sources */,
 				EF891DE218CD8EA0005DC780 /* SDNetworkUtils.m in Sources */,
+				B64DBD1118F1B80D0023E362 /* SDTranslucentImageView.m in Sources */,
 				2E7A351A18D888D100662504 /* UIViewExtention.m in Sources */,
 				EF3B650318CDA2C200B0CF1C /* SDStatus.m in Sources */,
 				B66E1BEF18D83B7500C292FA /* SDPhotoGridView.m in Sources */,
