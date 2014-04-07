@@ -91,8 +91,12 @@ static const CGFloat ProcessedBackgroundImageScaleFactor = 1;
                 
                 self.processedBackgroundImage = [imageView.convertViewToImage resizeImageProportionallyWithScaleFactor:ProcessedBackgroundImageScaleFactor];
                 self.processedBackgroundImageWithDarkLayer = self.processedBackgroundImage.defaultDarkBlur;
-                self.processedBackgroundImageWithDarkLayer = self.processedBackgroundImage;
+//                self.processedBackgroundImageWithDarkLayer = self.processedBackgroundImage;
                 
+                NSData* p1 = UIImagePNGRepresentation(self.processedBackgroundImage);
+                NSData* p2 = UIImagePNGRepresentation(self.processedBackgroundImageWithDarkLayer);
+                [p1 writeToFile:[[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"p1.png"] atomically:TRUE];
+                [p2 writeToFile:[[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"p2.png"] atomically:TRUE];
                 __block UIImageView* prevImageView = (id)self.currentBackgroundView;
                 
                 imageView.alpha = 0.0f;
@@ -135,7 +139,7 @@ static const CGFloat ProcessedBackgroundImageScaleFactor = 1;
     UIImage *image = [UIImage imageWithCGImage:imageRef];
     float scale = [UIScreen mainScreen].scale;
     if( scale > 1 ){
-        image = [UIImage imageWithCGImage:image.CGImage scale:0.5 orientation:image.imageOrientation];
+        image = [UIImage imageWithCGImage:image.CGImage scale:1 / scale orientation:image.imageOrientation];
     }
     CGImageRelease(imageRef);
     return image;

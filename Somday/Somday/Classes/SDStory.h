@@ -20,6 +20,19 @@ typedef NS_ENUM(NSUInteger, SDStoryType){
     SDStoryType_Max = SDStoryType_Link,
 };
 
+//typedef NS_ENUM(NSUInteger, SDStoryType){
+//    SDStoryType_Link,
+//    SDStoryType_Voice,
+//    SDStoryType_Photo,
+//    SDStoryType_Text,
+//    SDStoryType_Event,
+//    SDStoryType_Storybook,
+//    
+//    
+//    SDStoryType_Min = SDStoryType_Link,
+//    SDStoryType_Max = SDStoryType_Photo,
+//};
+
 @interface SDStory : NSObject<SDDataObjectBase>
 
 @property (nonatomic, strong, readonly) NSNumber* ID;
