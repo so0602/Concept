@@ -26,7 +26,7 @@
 #import "NSNotificationCenter+Name.h"
 #import "SDStoryBookGridView.h"
 
-#import "SDTranslucentImageView.h"
+#import "SDMainTranslucentImageView.h"
 
 #import <objc/message.h>
 
@@ -48,7 +48,7 @@
 
 @property (nonatomic, strong) UIImage* background;
 
-@property (nonatomic, strong) IBOutlet SDTranslucentImageView* backgroundView;
+@property (nonatomic, strong) IBOutlet SDMainTranslucentImageView* backgroundView;
 
 -(void)updateVisibleCollectionViewCellsBackground;
 -(void)updateCollectionViewCellBackground:(UICollectionViewCell*)cell;

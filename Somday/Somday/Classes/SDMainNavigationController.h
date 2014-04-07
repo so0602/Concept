@@ -8,6 +8,15 @@
 
 #import <UIKit/UIKit.h>
 
+@class SDMainNavigationController;
+
+@protocol SDMainNavigationControllerDelegate<NSObject>
+
+-(void)navigationController:(SDMainNavigationController*)navigationController backgroundWillChange:(UIImage*)processedBackgroundImage;
+-(void)navigationController:(SDMainNavigationController*)navigationController backgroundDidChange:(UIImage*)processedBackgroundImage;
+
+@end
+
 @interface SDMainNavigationController : UINavigationController
 
 @property (nonatomic, strong) UIImage* backgroundImage;
@@ -15,5 +24,8 @@
 @property (nonatomic, strong, readonly) UIView* currentBackgroundView;
 
 -(UIImage*)processedBackgroundImageWithFrame:(CGRect)frame;
+
+-(void)addDelegate:(id<SDMainNavigationControllerDelegate>)delegate;
+-(void)removeDelegate:(id<SDMainNavigationControllerDelegate>)delegate;
 
 @end

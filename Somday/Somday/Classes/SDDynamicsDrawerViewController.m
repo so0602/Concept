@@ -90,6 +90,8 @@ const CGFloat SDPaneViewFilterViewTag = 7777;
     self.delegate = self.menuViewController;
     self.customDelegate = self.menuViewController;
     
+    [self.topMenuViewController.view removeFromSuperview];
+    
     [self setPaneState:MSDynamicsDrawerPaneStateMenu inDirection:MSDynamicsDrawerDirectionLeft animated:TRUE allowUserInterruption:FALSE completion:nil];
     
     [self updatePeneViewCornerRadius:SDPaneViewCornerRadius];
@@ -103,6 +105,10 @@ const CGFloat SDPaneViewFilterViewTag = 7777;
     UIView* view = self.addBarButtonItem.customView;
     view = view.subviews.firstObject;
     [SDUtils rotateView:view];
+    
+    if( self.menuViewController.view.superview ){
+        [self.menuViewController.view removeFromSuperview];
+    }
     
     [self setDrawerViewController:self.topMenuViewController forDirection:MSDynamicsDrawerDirectionTop];
     self.delegate = self.topMenuViewController;
@@ -133,8 +139,8 @@ const CGFloat SDPaneViewFilterViewTag = 7777;
     if( [self drawerViewControllerForDirection:MSDynamicsDrawerDirectionTop] ){
         [self setDrawerViewController:nil forDirection:MSDynamicsDrawerDirectionTop];
     }
+    [self.topMenuViewController.view removeFromSuperview];
     [self setDrawerViewController:self.menuViewController forDirection:MSDynamicsDrawerDirectionLeft];
-    
 }
 
 -(UIBarButtonItem*)menuBarButtonItem{
@@ -242,7 +248,17 @@ const CGFloat SDPaneViewFilterViewTag = 7777;
 {
     if ([self paneTapToCloseEnabledForDirection:self.currentDrawerDirection]) {
         [self updatePeneViewCornerRadius:0.0f];
-        [self addDynamicsBehaviorsToCreatePaneState:MSDynamicsDrawerPaneStateClosed];
+        
+        SDDynamicsDrawerViewController* weakSelf = self;
+        [self setPaneState:MSDynamicsDrawerPaneStateClosed animated:TRUE allowUserInterruption:FALSE completion:^{
+            [[NSNotificationCenter defaultCenter] postNotificationName:DynamicsDrawerViewControllerDidUpdateNotification object:nil];
+            
+            if( weakSelf.topMenuViewController.view.superview ){
+                [weakSelf topMenuDidClosed];
+            }else if( weakSelf.menuViewController.view.superview ){
+            }
+        }];
+//        [self addDynamicsBehaviorsToCreatePaneState:MSDynamicsDrawerPaneStateClosed];
     }
 }
 
@@ -458,6 +474,10 @@ const CGFloat SDPaneViewFilterViewTag = 7777;
         [containerView addSubview:newViewController.view];
         [newViewController didMoveToParentViewController:self];
         [newViewController endAppearanceTransition];
+        if (completion) completion();
+    }
+    else if( existingViewController == newViewController ){
+        [containerView addSubview:newViewController.view];
         if (completion) completion();
     }
     NSLog(@"replaceViewController2 frame!!!: %@", NSStringFromCGRect(self.paneView.frame));
