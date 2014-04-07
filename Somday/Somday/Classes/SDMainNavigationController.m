@@ -93,10 +93,6 @@ static const CGFloat ProcessedBackgroundImageScaleFactor = 1;
                 self.processedBackgroundImageWithDarkLayer = self.processedBackgroundImage.defaultDarkBlur;
 //                self.processedBackgroundImageWithDarkLayer = self.processedBackgroundImage;
                 
-                NSData* p1 = UIImagePNGRepresentation(self.processedBackgroundImage);
-                NSData* p2 = UIImagePNGRepresentation(self.processedBackgroundImageWithDarkLayer);
-                [p1 writeToFile:[[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"p1.png"] atomically:TRUE];
-                [p2 writeToFile:[[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"p2.png"] atomically:TRUE];
                 __block UIImageView* prevImageView = (id)self.currentBackgroundView;
                 
                 imageView.alpha = 0.0f;

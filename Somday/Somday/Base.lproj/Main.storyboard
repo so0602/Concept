@@ -892,7 +892,11 @@
                                                             <rect key="frame" x="0.0" y="0.0" width="304" height="304"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                         </imageView>
-                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rVK-fN-txh">
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GL0-vW-7DK" customClass="SDTranslucentImageView">
+                                                            <rect key="frame" x="304" y="0.0" width="304" height="248"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        </imageView>
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rVK-fN-txh" customClass="SDTranslucentImageView">
                                                             <rect key="frame" x="0.0" y="248" width="304" height="56"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                         </imageView>
@@ -980,12 +984,14 @@
                                         <connections>
                                             <outlet property="addToCalendarButton" destination="544-iY-O1L" id="XDM-Gf-p0I"/>
                                             <outlet property="backgroundImageView" destination="p9f-tc-zGW" id="Xcv-m5-MtX"/>
+                                            <outlet property="bottomImageView" destination="rVK-fN-txh" id="vyq-Ll-V1R"/>
                                             <outlet property="eventDay" destination="cPj-YA-uZF" id="rL9-eY-fu1"/>
                                             <outlet property="eventMonth" destination="LUD-us-jcF" id="xv8-07-1Ro"/>
                                             <outlet property="eventName" destination="bVl-oz-4Z9" id="95u-3A-n0f"/>
                                             <outlet property="eventOwner" destination="Jsp-7B-X6z" id="uZX-bg-rbf"/>
                                             <outlet property="mainContentView" destination="JmK-X1-dOm" id="ydv-DW-xSC"/>
                                             <outlet property="pageControl" destination="vQ2-nH-yRe" id="zeV-Rr-0l4"/>
+                                            <outlet property="scrollBackgroundImageView" destination="GL0-vW-7DK" id="aGB-pT-asF"/>
                                             <outlet property="scrollView" destination="GYL-jf-oag" id="CqJ-nq-qRF"/>
                                         </connections>
                                     </collectionViewCell>
