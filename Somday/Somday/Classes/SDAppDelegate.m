@@ -14,11 +14,14 @@
 
 #import "UIViewController+Addition.h"
 #import "UIFont+Addition.h"
+#import <GoogleMaps/GoogleMaps.h>
 
 @implementation SDAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    [GMSServices provideAPIKey:@"AIzaSyAyCESqzxtHjgNcXwwq6mwxqlspVitC3z8"];
+    
     self.navigationController = (id)self.window.rootViewController;
     
 //    self.mainViewController = [SDDynamicsDrawerViewController viewControllerFromStoryboardWithIdentifier:@"Main"];
