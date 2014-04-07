@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5053" systemVersion="13C64" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="GfC-Yl-lCZ">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5053" systemVersion="13A603" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="GfC-Yl-lCZ">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
@@ -957,7 +957,7 @@
                                                             <color key="shadowColor" white="0.2464644161" alpha="0.59999999999999998" colorSpace="calibratedWhite"/>
                                                             <size key="shadowOffset" width="0.0" height="1"/>
                                                         </label>
-                                                        <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" pagingEnabled="YES" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GYL-jf-oag" customClass="JTListView">
+                                                        <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" bounces="NO" pagingEnabled="YES" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GYL-jf-oag" customClass="JTListView">
                                                             <rect key="frame" x="0.0" y="0.0" width="304" height="248"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                             <connections>
@@ -966,7 +966,7 @@
                                                             </connections>
                                                         </scrollView>
                                                         <pageControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="4" translatesAutoresizingMaskIntoConstraints="NO" id="vQ2-nH-yRe">
-                                                            <rect key="frame" x="117" y="215" width="70" height="37"/>
+                                                            <rect key="frame" x="117" y="218" width="70" height="37"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                         </pageControl>
                                                     </subviews>
@@ -980,7 +980,6 @@
                                         <connections>
                                             <outlet property="addToCalendarButton" destination="544-iY-O1L" id="XDM-Gf-p0I"/>
                                             <outlet property="backgroundImageView" destination="p9f-tc-zGW" id="Xcv-m5-MtX"/>
-                                            <outlet property="blurBackgroundImageView" destination="rVK-fN-txh" id="NlZ-4h-Cpq"/>
                                             <outlet property="eventDay" destination="cPj-YA-uZF" id="rL9-eY-fu1"/>
                                             <outlet property="eventMonth" destination="LUD-us-jcF" id="xv8-07-1Ro"/>
                                             <outlet property="eventName" destination="bVl-oz-4Z9" id="95u-3A-n0f"/>

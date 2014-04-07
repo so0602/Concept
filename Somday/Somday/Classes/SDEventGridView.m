@@ -27,6 +27,7 @@ typedef NS_ENUM(NSUInteger, SDEventPageType){
 @property (nonatomic, strong) IBOutlet UILabel *eventOwner;
 @property (nonatomic, strong) IBOutlet UILabel *eventDay;
 @property (nonatomic, strong) IBOutlet UILabel *eventMonth;
+@property (nonatomic, strong) SDEventMapView * mapView;
 @property (nonatomic, strong) NSMutableArray *pages;
 @end
 
@@ -51,8 +52,6 @@ typedef NS_ENUM(NSUInteger, SDEventPageType){
     return self;
 }
 
-
-
 - (void)awakeFromNib{
     [super awakeFromNib];
     self.scrollView.layout = JTListViewLayoutLeftToRight;
@@ -60,7 +59,6 @@ typedef NS_ENUM(NSUInteger, SDEventPageType){
     self.eventMonth.font = [UIFont josefinSansFontOfSize:14];
     self.eventName.font = [UIFont boldSystemFontOfSize:12];
     self.eventOwner.font = [UIFont systemFontOfSize:9];
-    
 }
 
 - (void)prepareForReuse
@@ -71,6 +69,7 @@ typedef NS_ENUM(NSUInteger, SDEventPageType){
     view.backgroundColor = [UIColor clearColor];
     [_pages addObject:view];
     _pageControl.currentPage = 0;
+    [_mapView reset];
     [_scrollView scrollToItemAtIndex:0 atScrollPosition:JTListViewScrollPositionNone animated:NO];
     
 }
@@ -99,7 +98,9 @@ typedef NS_ENUM(NSUInteger, SDEventPageType){
     switch (index) {
         case SDEventPageType_Map:
         {
-            SDEventMapView *mapView = [[NSBundle mainBundle] loadNibNamed:@"SDEventMapView" owner:nil options:nil].lastObject;
+            SDEventMapView * mapView = [[NSBundle mainBundle] loadNibNamed:@"SDEventMapView" owner:nil options:nil].lastObject;
+//            [mapView setLocation:@"ICC" latitude:22.303153 longitude:114.159900 zoom:13];
+            self.mapView = mapView;
             view = mapView;
             break;
         }
@@ -125,12 +126,10 @@ typedef NS_ENUM(NSUInteger, SDEventPageType){
     }
     view.frame = CGRectMake(0, 0, listView.frame.size.width, listView.frame.size.height);
     [_pages addObject:view];
-    NSLog(@"_pages: %@ | index %lu", _pages, (unsigned long)index);
     return view;
 }
 
 #pragma mark - JTListViewDelegate
-
 - (CGFloat)listView:(JTListView *)listView widthForItemAtIndex:(NSUInteger)index
 {
     return CGRectGetWidth(listView.frame);
@@ -148,6 +147,11 @@ typedef NS_ENUM(NSUInteger, SDEventPageType){
     CGFloat pageWidth = scrollView.frame.size.width;
 	NSInteger fPage = roundf(scrollView.contentOffset.x/pageWidth);
 	self.pageControl.currentPage = fPage;
+    
+    if (scrollView.contentOffset.x == scrollView.contentSize.width - CGRectGetWidth(scrollView.frame)) {
+        if (!_mapView.waypoints.count)
+            [_mapView setLocation:@"ICC" latitude:22.303153 longitude:114.159900 zoom:13];
+    }
 }
 
 @end

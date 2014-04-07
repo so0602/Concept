@@ -107,7 +107,6 @@ static NSString *HeaderCellIdentifier = @"HeaderCollectionViewCell";
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(mainBackgroundImageWillChange:) name:MainBackgroundImageWillChangeNotification object:nil];
     
     
-    
     {
         // Debug
         self.dataSource = [NSMutableArray new];
@@ -150,8 +149,13 @@ static NSString *HeaderCellIdentifier = @"HeaderCollectionViewCell";
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    [self updateBackgroundImageToCurrentIndex:YES];
     [self updateVisibleCollectionViewCellsBackground];
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    [self updateBackgroundImageToCurrentIndex:YES];
 }
 
 - (void)didReceiveMemoryWarning

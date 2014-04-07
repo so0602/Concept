@@ -15,4 +15,5 @@
     #import <Foundation/Foundation.h>
     #import "SDUtils.h"
     #import "UIFont+Addition.h"
+    #import "UIColor+Extensions.h"
 #endif
