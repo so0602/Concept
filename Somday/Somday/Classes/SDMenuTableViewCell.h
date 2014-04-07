@@ -8,8 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-#import "UITableViewCell+Addition.h"
-
 @interface SDMenuTableViewCell : UITableViewCell
 
 @end

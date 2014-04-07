@@ -10,8 +10,6 @@
 
 #import "GPUImage.h"
 
-#import "UIViewController+Addition.h"
-
 @interface SDSearchViewController ()<UITextFieldDelegate>
 
 @property (nonatomic, strong) IBOutlet GPUImageView* backgroundImageView;

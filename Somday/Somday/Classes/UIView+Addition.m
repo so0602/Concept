@@ -14,6 +14,11 @@
     UIGraphicsBeginImageContext(self.bounds.size);
     [self drawViewHierarchyInRect:self.bounds afterScreenUpdates:YES];
     UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+    
+//    float scale = [UIScreen mainScreen].scale;
+//    if( scale > 1 ){
+//        image = [UIImage imageWithCGImage:image.CGImage scale:scale orientation:image.imageOrientation];
+//    }
     UIGraphicsEndImageContext();
     
     return image;

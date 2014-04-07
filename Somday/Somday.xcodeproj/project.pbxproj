@@ -961,6 +961,9 @@
 		EF3B65B218D2F97200B0CF1C /* icons-grey-ccc-12px_mail@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EF3B65AA18D2F97200B0CF1C /* icons-grey-ccc-12px_mail@2x.png */; };
 		EF3B65B818D3008C00B0CF1C /* UIImage+ImageEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = EF3B65B518D3008C00B0CF1C /* UIImage+ImageEffects.m */; };
 		EF3B65B918D3008C00B0CF1C /* UIImageView+LBBlurredImage.m in Sources */ = {isa = PBXBuildFile; fileRef = EF3B65B718D3008C00B0CF1C /* UIImageView+LBBlurredImage.m */; };
+		EF4DB2F218F28B2500615FE4 /* SDEventOverviewView.m in Sources */ = {isa = PBXBuildFile; fileRef = EF4DB2F118F28B2500615FE4 /* SDEventOverviewView.m */; };
+		EF4DB30118F28BB000615FE4 /* SDEventOverviewView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EF4DB30018F28BB000615FE4 /* SDEventOverviewView.xib */; };
+		EF4DB30418F2917700615FE4 /* UIImage+CustomBlur.m in Sources */ = {isa = PBXBuildFile; fileRef = EF4DB30318F2917700615FE4 /* UIImage+CustomBlur.m */; };
 		EF658E5E18C461C400FC9E07 /* SDMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EF658E5D18C461C400FC9E07 /* SDMenuViewController.m */; };
 		EF891DD418CD8CD2005DC780 /* libASIHTTPRequest.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EF891DCF18CD8CB5005DC780 /* libASIHTTPRequest.a */; };
 		EF891DD618CD8D6E005DC780 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EF891DD518CD8D6E005DC780 /* CFNetwork.framework */; };
@@ -2170,6 +2173,12 @@
 		EF3B65B518D3008C00B0CF1C /* UIImage+ImageEffects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImage+ImageEffects.m"; path = "../Other Sources/LBBlurredImage/LBBlurredImage/UIImage+ImageEffects.m"; sourceTree = "<group>"; };
 		EF3B65B618D3008C00B0CF1C /* UIImageView+LBBlurredImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIImageView+LBBlurredImage.h"; path = "../Other Sources/LBBlurredImage/LBBlurredImage/UIImageView+LBBlurredImage.h"; sourceTree = "<group>"; };
 		EF3B65B718D3008C00B0CF1C /* UIImageView+LBBlurredImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImageView+LBBlurredImage.m"; path = "../Other Sources/LBBlurredImage/LBBlurredImage/UIImageView+LBBlurredImage.m"; sourceTree = "<group>"; };
+		EF4DB2F018F28B2500615FE4 /* SDEventOverviewView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SDEventOverviewView.h; path = Classes/SDEventOverviewView.h; sourceTree = "<group>"; };
+		EF4DB2F118F28B2500615FE4 /* SDEventOverviewView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SDEventOverviewView.m; path = Classes/SDEventOverviewView.m; sourceTree = "<group>"; };
+		EF4DB30018F28BB000615FE4 /* SDEventOverviewView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SDEventOverviewView.xib; path = "Interface Builders/SDEventOverviewView.xib"; sourceTree = "<group>"; };
+		EF4DB30218F2917700615FE4 /* UIImage+CustomBlur.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIImage+CustomBlur.h"; path = "Classes/UIImage+CustomBlur.h"; sourceTree = "<group>"; };
+		EF4DB30318F2917700615FE4 /* UIImage+CustomBlur.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImage+CustomBlur.m"; path = "Classes/UIImage+CustomBlur.m"; sourceTree = "<group>"; };
+		EF4DB30518F2924100615FE4 /* SDAdditionHeaders.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = SDAdditionHeaders.h; path = Classes/SDAdditionHeaders.h; sourceTree = "<group>"; };
 		EF658E5C18C461C400FC9E07 /* SDMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SDMenuViewController.h; path = Classes/SDMenuViewController.h; sourceTree = "<group>"; };
 		EF658E5D18C461C400FC9E07 /* SDMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SDMenuViewController.m; path = Classes/SDMenuViewController.m; sourceTree = "<group>"; };
 		EF891DC918CD8CB5005DC780 /* ASIHTTPRequest.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ASIHTTPRequest.xcodeproj; path = "../Other Sources/ASIHTTPRequest/ASIHTTPRequest/ASIHTTPRequest.xcodeproj"; sourceTree = "<group>"; };
@@ -3435,26 +3444,14 @@
 		B6BE4ABE18D8168000DA7313 /* Grid View */ = {
 			isa = PBXGroup;
 			children = (
+				EF4DB2FE18F28B6800615FE4 /* Event */,
+				EF4DB2FA18F28B3500615FE4 /* Photo */,
 				B66E1C1E18D8B33300C292FA /* SDBaseGridView.h */,
 				B66E1C1F18D8B33300C292FA /* SDBaseGridView.m */,
-				B66E1BED18D83B7500C292FA /* SDPhotoGridView.h */,
-				B66E1BEE18D83B7500C292FA /* SDPhotoGridView.m */,
-				2E880B0B18D805E20049446F /* SDStoryBookGridView.h */,
-				2E880B0C18D805E20049446F /* SDStoryBookGridView.m */,
-				2E7A352618D8960600662504 /* SDStoryBookLayoutView.h */,
-				2E7A352718D8960600662504 /* SDStoryBookLayoutView.m */,
-				2E7A352918D8961B00662504 /* SDStoryBookLayoutView.xib */,
-				B6BE4ABB18D8167C00DA7313 /* SDTextGridView.h */,
-				B6BE4ABC18D8167C00DA7313 /* SDTextGridView.m */,
-				B66E1BF418D86B2B00C292FA /* SDVoiceGridView.h */,
-				B66E1BF518D86B2B00C292FA /* SDVoiceGridView.m */,
-				B60C27BA18E6FAB0000ED405 /* SDWebsiteGridView.h */,
-				B60C27BB18E6FAB0000ED405 /* SDWebsiteGridView.m */,
-				2ED985D418ED406D005CB4F9 /* SDEventGridView.h */,
-				2ED985D518ED406D005CB4F9 /* SDEventGridView.m */,
-				2E33BB8318EEA2F8004F9CF4 /* SDEventMapView.h */,
-				2E33BB8418EEA2F8004F9CF4 /* SDEventMapView.m */,
-				2E33BB8618EEA30A004F9CF4 /* SDEventMapView.xib */,
+				EF4DB2FB18F28B4400615FE4 /* Story Book */,
+				EF4DB2FC18F28B5200615FE4 /* Text */,
+				EF4DB2FD18F28B5B00615FE4 /* Voice */,
+				EF4DB2FF18F28B7300615FE4 /* Website */,
 			);
 			name = "Grid View";
 			sourceTree = "<group>";
@@ -3684,6 +3681,69 @@
 			name = LBBlurredImage;
 			sourceTree = "<group>";
 		};
+		EF4DB2FA18F28B3500615FE4 /* Photo */ = {
+			isa = PBXGroup;
+			children = (
+				B66E1BED18D83B7500C292FA /* SDPhotoGridView.h */,
+				B66E1BEE18D83B7500C292FA /* SDPhotoGridView.m */,
+			);
+			name = Photo;
+			sourceTree = "<group>";
+		};
+		EF4DB2FB18F28B4400615FE4 /* Story Book */ = {
+			isa = PBXGroup;
+			children = (
+				2E880B0B18D805E20049446F /* SDStoryBookGridView.h */,
+				2E880B0C18D805E20049446F /* SDStoryBookGridView.m */,
+				2E7A352618D8960600662504 /* SDStoryBookLayoutView.h */,
+				2E7A352718D8960600662504 /* SDStoryBookLayoutView.m */,
+				2E7A352918D8961B00662504 /* SDStoryBookLayoutView.xib */,
+			);
+			name = "Story Book";
+			sourceTree = "<group>";
+		};
+		EF4DB2FC18F28B5200615FE4 /* Text */ = {
+			isa = PBXGroup;
+			children = (
+				B6BE4ABB18D8167C00DA7313 /* SDTextGridView.h */,
+				B6BE4ABC18D8167C00DA7313 /* SDTextGridView.m */,
+			);
+			name = Text;
+			sourceTree = "<group>";
+		};
+		EF4DB2FD18F28B5B00615FE4 /* Voice */ = {
+			isa = PBXGroup;
+			children = (
+				B66E1BF418D86B2B00C292FA /* SDVoiceGridView.h */,
+				B66E1BF518D86B2B00C292FA /* SDVoiceGridView.m */,
+			);
+			name = Voice;
+			sourceTree = "<group>";
+		};
+		EF4DB2FE18F28B6800615FE4 /* Event */ = {
+			isa = PBXGroup;
+			children = (
+				2ED985D418ED406D005CB4F9 /* SDEventGridView.h */,
+				2ED985D518ED406D005CB4F9 /* SDEventGridView.m */,
+				2E33BB8318EEA2F8004F9CF4 /* SDEventMapView.h */,
+				2E33BB8418EEA2F8004F9CF4 /* SDEventMapView.m */,
+				2E33BB8618EEA30A004F9CF4 /* SDEventMapView.xib */,
+				EF4DB2F018F28B2500615FE4 /* SDEventOverviewView.h */,
+				EF4DB2F118F28B2500615FE4 /* SDEventOverviewView.m */,
+				EF4DB30018F28BB000615FE4 /* SDEventOverviewView.xib */,
+			);
+			name = Event;
+			sourceTree = "<group>";
+		};
+		EF4DB2FF18F28B7300615FE4 /* Website */ = {
+			isa = PBXGroup;
+			children = (
+				B60C27BA18E6FAB0000ED405 /* SDWebsiteGridView.h */,
+				B60C27BB18E6FAB0000ED405 /* SDWebsiteGridView.m */,
+			);
+			name = Website;
+			sourceTree = "<group>";
+		};
 		EF658E4D18C459D000FC9E07 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
@@ -3739,12 +3799,15 @@
 				B64444A818CA374800CDD2D4 /* NSNotificationCenter+Name.m */,
 				EF3B652218D042C600B0CF1C /* NSString+Addition.h */,
 				EF3B652318D042C600B0CF1C /* NSString+Addition.m */,
+				EF4DB30518F2924100615FE4 /* SDAdditionHeaders.h */,
 				2ED35BC518C70A3500EDA245 /* UICollectionView+Addition.h */,
 				2ED35BC618C70A3500EDA245 /* UICollectionView+Addition.m */,
 				2EC3785018C6130800D4161B /* UIColor+Extensions.h */,
 				B6FD652F18E0833700CCCB03 /* UIColor+Extensions.m */,
 				2E54CAF018C5DE1A00B23A96 /* UIFont+Addition.h */,
 				2E54CAF118C5DE1A00B23A96 /* UIFont+Addition.m */,
+				EF4DB30218F2917700615FE4 /* UIImage+CustomBlur.h */,
+				EF4DB30318F2917700615FE4 /* UIImage+CustomBlur.m */,
 				B682DBFA18ED32B9007FC041 /* UIImage+Resizing.h */,
 				B682DBFB18ED32B9007FC041 /* UIImage+Resizing.m */,
 				2EC3785918C6266C00D4161B /* UILabel+Addition.h */,
@@ -4233,6 +4296,7 @@
 				B65DE23A18C60EB10076408C /* icons-shadow-24px_joinedEvent-bold.png in Resources */,
 				B65DDF8D18C60EB10076408C /* icons-12px_important3@2x.png in Resources */,
 				B65DE12D18C60EB10076408C /* icons-shadow-12px_arrowLeft@2x.png in Resources */,
+				EF4DB30118F28BB000615FE4 /* SDEventOverviewView.xib in Resources */,
 				B65DE22B18C60EB10076408C /* icons-shadow-24px_dateAndTime@2x.png in Resources */,
 				B65DE18318C60EB10076408C /* icons-shadow-12px_search@2x.png in Resources */,
 				B65DE10118C60EB10076408C /* icons-color-12px_newStory@2x.png in Resources */,
@@ -5024,11 +5088,13 @@
 				2ED7A89518D43D9C00F76E17 /* GHContextMenuView.m in Sources */,
 				B65DDC3518C5B2690076408C /* SDSearchViewController.m in Sources */,
 				EF3B651A18CDAE9400B0CF1C /* SDStory.m in Sources */,
+				EF4DB30418F2917700615FE4 /* UIImage+CustomBlur.m in Sources */,
 				2EC3784918C5F0BA00D4161B /* SDHomeNavigationTitleView.m in Sources */,
 				B6BE49E818CF72F400DA7313 /* SDTextField.m in Sources */,
 				EFD0FC1B18CD952B0026F54F /* JSONKit.m in Sources */,
 				B66E1C2018D8B33300C292FA /* SDBaseGridView.m in Sources */,
 				2E880B0818D8054F0049446F /* AnimationFrame.m in Sources */,
+				EF4DB2F218F28B2500615FE4 /* SDEventOverviewView.m in Sources */,
 				B6B8275018E3DB4A009C8A37 /* SDErrorBubbleView.m in Sources */,
 				B6DC7C0B18DAB35C00023862 /* KeychainItemWrapper.m in Sources */,
 				B663F00B18E9BA3C0077E3FF /* SDMainNavigationController.m in Sources */,

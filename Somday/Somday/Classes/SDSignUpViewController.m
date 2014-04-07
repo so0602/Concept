@@ -13,12 +13,6 @@
 
 #import "SDErrorBubbleView.h"
 
-#import "UIViewController+Addition.h"
-#import "UIFont+Addition.h"
-#import "UITextField+Addition.h"
-#import "UIColor+Extensions.h"
-#import "NSString+Addition.h"
-
 #import "FTAnimation+UIView.h"
 
 @interface SDSignUpViewController ()<UIAlertViewDelegate, UITextFieldDelegate>

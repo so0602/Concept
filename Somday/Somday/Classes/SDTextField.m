@@ -8,10 +8,6 @@
 
 #import "SDTextField.h"
 
-#import "UITextField+Addition.h"
-#import "UIColor+Extensions.h"
-#import "UIView+Addition.h"
-
 @interface SDTextField ()
 
 -(void)initialize;

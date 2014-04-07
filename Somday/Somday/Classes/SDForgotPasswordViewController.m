@@ -13,9 +13,6 @@
 
 #import "GPUImage.h"
 
-#import "UIViewController+Addition.h"
-#import "UIFont+Addition.h"
-#import "NSString+Addition.h"
 #import "UIImageView+LBBlurredImage.h"
 #import "FTAnimation+UIView.h"
 

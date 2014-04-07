@@ -14,5 +14,5 @@
     #import <UIKit/UIKit.h>
     #import <Foundation/Foundation.h>
     #import "SDUtils.h"
-    #import "UIFont+Addition.h"
+    #import "SDAdditionHeaders.h"
 #endif

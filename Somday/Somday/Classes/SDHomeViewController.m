@@ -18,12 +18,8 @@
 
 #import "SDTextGridView.h"
 
-#import "UINavigationItem+Addition.h"
-#import "UILabel+Addition.h"
-#import "UICollectionView+Addition.h"
-#import "UIView+Addition.h"
 #import "UIImage+ImageEffects.h"
-#import "NSNotificationCenter+Name.h"
+
 #import "SDStoryBookGridView.h"
 
 #import "SDMainTranslucentImageView.h"
@@ -121,7 +117,7 @@ static NSString *HeaderCellIdentifier = @"HeaderCollectionViewCell";
             switch( story.type.intValue ){
                 case SDStoryType_Photo:
                 case SDStoryType_Event:
-                    story.imageName = toggle ? @"dump_03.jpg" : @"dump_02.jpg";
+                    story.imageName = toggle ? @"dump_03.jpg" : @"dump_03.jpg";
                     toggle = !toggle;
                     break;
                 case SDStoryType_Voice:
@@ -326,8 +322,20 @@ static NSString *HeaderCellIdentifier = @"HeaderCollectionViewCell";
         if( view ){
             SDAppDelegate* delegate = (id)[UIApplication sharedApplication].delegate;
             SDMainNavigationController* viewController = delegate.navigationController;
-            CGRect frame = [view convertRect:view.frame toView:self.view];
-            view.image = [viewController processedBackgroundImageWithFrame:frame];
+            CGRect frame = [view convertRect:view.frame toView:delegate.window];
+            UIImage* image = [viewController processedBackgroundImageWithFrame:frame];
+            if( frame.size.height != image.size.height ){
+                UIGraphicsBeginImageContext(CGSizeMake(frame.size.width * 2, frame.size.height * 2));
+                if( frame.origin.y < 0 ){
+                    [image drawInRect:CGRectMake(0, frame.size.height * 2 - image.size.height, image.size.width, image.size.height)];
+                }else{
+                    [image drawInRect:CGRectMake(0, 0, image.size.width, image.size.height)];
+                }
+                image = UIGraphicsGetImageFromCurrentImageContext();
+                UIGraphicsEndImageContext();
+            }
+            view.image = image;
+//            view.image = [viewController processedBackgroundImageWithFrame:frame];
         }
     }
 }
@@ -342,7 +350,20 @@ static NSString *HeaderCellIdentifier = @"HeaderCollectionViewCell";
         SDAppDelegate* delegate = (id)[UIApplication sharedApplication].delegate;
         SDMainNavigationController* viewController = delegate.navigationController;
         CGRect frame = [view convertRect:view.frame toView:self.view];
-        view.image = [viewController processedBackgroundImageWithFrame:frame];
+        UIImage* image = [viewController processedBackgroundImageWithFrame:frame];
+        if( frame.size.height != image.size.height ){
+            NSLog(@"frame: %@", NSStringFromCGRect(frame));
+            UIGraphicsBeginImageContext(CGSizeMake(frame.size.width * 2, frame.size.height * 2));
+            if( frame.origin.y < 0 ){
+                [image drawInRect:CGRectMake(0, frame.size.height * 2 - image.size.height, image.size.width, image.size.height)];
+            }else{
+                [image drawInRect:CGRectMake(0, 0, image.size.width, image.size.height)];
+            }
+            image = UIGraphicsGetImageFromCurrentImageContext();
+            UIGraphicsEndImageContext();
+        }
+        view.image = image;
+//        view.image = [viewController processedBackgroundImageWithFrame:frame];
     }
 }
 

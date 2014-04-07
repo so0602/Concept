@@ -8,8 +8,6 @@
 
 #import "SDTranslucentImageView.h"
 
-#import "UIView+Addition.h"
-
 @interface SDTranslucentImageView ()
 
 @property (nonatomic) BOOL keepUpdate;
@@ -27,10 +25,12 @@
             if( self.targetView && self.targetImage ){
                 CGRect frame = [self convertRect:self.frame toView:self.targetView];
                 UIImage* image = self.targetImage;
+                
                 CGImageRef imageRef = CGImageCreateWithImageInRect(image.CGImage, frame);
                 image = [UIImage imageWithCGImage:imageRef];
                 CGImageRelease(imageRef);
                 self.image = image;
+                
                 if( self.width > self.image.size.width || self.height > self.image.size.height ){
                     if( frame.origin.x > 0 ){
                         self.contentMode = UIViewContentModeLeft;

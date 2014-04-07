@@ -8,9 +8,6 @@
 
 #import "SDWebsiteGridView.h"
 
-#import "UIFont+Addition.h"
-#import "UIView+Addition.h"
-
 @interface SDWebsiteGridView ()
 
 @property (nonatomic, strong) IBOutlet UILabel* websiteLinkLabel;

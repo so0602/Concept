@@ -10,10 +10,7 @@
 
 #import "GPUImage.h"
 
-#import "UIView+Addition.h"
-#import "NSNotificationCenter+Name.h"
 #import "UIImage+ImageEffects.h"
-#import "UIImage+Resizing.h"
 
 static const NSUInteger BackgroundImageCount = 5;
 static const CGFloat ProcessedBackgroundImageScaleFactor = 1;
@@ -51,8 +48,7 @@ static const CGFloat ProcessedBackgroundImageScaleFactor = 1;
     __block BOOL isFirstView = [self.backgroundImageViews filteredArrayUsingPredicate:predicate].count == self.backgroundImageViews.count;
     
     if( isFirstView ){
-        UIImage* image = [_backgroundImage resizeImageProportionallyWithScaleFactor:0.4];
-        image = [image applyBlurWithRadius:5 tintColor:nil saturationDeltaFactor:2 maskImage:nil];
+        UIImage* image = [_backgroundImage resizeImageProportionallyWithScaleFactor:0.4].defaultBlur;
         
         UIImageView* imageView = [[UIImageView alloc] initWithFrame:self.view.bounds];
         imageView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
@@ -68,7 +64,7 @@ static const CGFloat ProcessedBackgroundImageScaleFactor = 1;
         self.currentIndex = 0;
         
         self.processedBackgroundImage = imageView.convertViewToImage;
-        self.processedBackgroundImageWithDarkLayer = [self.processedBackgroundImage applyBlurWithRadius:1 tintColor:[UIColor colorWithWhite:0 alpha:0.5] saturationDeltaFactor:1 maskImage:nil];
+        self.processedBackgroundImageWithDarkLayer = self.processedBackgroundImage.defaultDarkBlur;
         
         for( id<SDMainNavigationControllerDelegate> delegate in self.delegates ){
             [delegate navigationController:self backgroundDidChange:self.processedBackgroundImage];
@@ -77,8 +73,7 @@ static const CGFloat ProcessedBackgroundImageScaleFactor = 1;
         [[NSNotificationCenter defaultCenter] postNotificationName:MainBackgroundImageDidChangeNotification object:self userInfo:nil];
     }else{
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
-            __block UIImage* image = [_backgroundImage resizeImageProportionallyWithScaleFactor:0.4];
-            image = [image applyBlurWithRadius:5 tintColor:[UIColor colorWithWhite:0 alpha:0.2] saturationDeltaFactor:2 maskImage:nil];
+            __block UIImage* image = [_backgroundImage resizeImageProportionallyWithScaleFactor:0.4].defaultBlur;
             
             dispatch_async(dispatch_get_main_queue(), ^{
                 __block UIImageView* imageView = nil;
@@ -95,7 +90,8 @@ static const CGFloat ProcessedBackgroundImageScaleFactor = 1;
                 imageView.image = image;
                 
                 self.processedBackgroundImage = [imageView.convertViewToImage resizeImageProportionallyWithScaleFactor:ProcessedBackgroundImageScaleFactor];
-                self.processedBackgroundImageWithDarkLayer = [self.processedBackgroundImage applyBlurWithRadius:1 tintColor:[UIColor colorWithWhite:0 alpha:0.3] saturationDeltaFactor:1 maskImage:nil];
+                self.processedBackgroundImageWithDarkLayer = self.processedBackgroundImage.defaultDarkBlur;
+                self.processedBackgroundImageWithDarkLayer = self.processedBackgroundImage;
                 
                 __block UIImageView* prevImageView = (id)self.currentBackgroundView;
                 
@@ -137,6 +133,10 @@ static const CGFloat ProcessedBackgroundImageScaleFactor = 1;
     
     CGImageRef imageRef = CGImageCreateWithImageInRect(self.processedBackgroundImageWithDarkLayer.CGImage, frame);
     UIImage *image = [UIImage imageWithCGImage:imageRef];
+    float scale = [UIScreen mainScreen].scale;
+    if( scale > 1 ){
+        image = [UIImage imageWithCGImage:image.CGImage scale:0.5 orientation:image.imageOrientation];
+    }
     CGImageRelease(imageRef);
     return image;
 }

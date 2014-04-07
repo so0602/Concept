@@ -12,8 +12,6 @@
 
 #import "JSONKit.h"
 
-#import "ASIFormDataRequest+Addition.h"
-
 #define BaseUrl @"http://219.76.177.77:8100"
 
 #define UserLoginUrl BaseUrl @"/rest/auth/login"

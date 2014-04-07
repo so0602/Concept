@@ -7,7 +7,7 @@
 //
 
 #import "SDBaseGridView.h"
-#import "CAKeyframeAnimation+Addition.h"
+
 #import "GHContextMenuView.h"
 
 #import "SDTextGridView.h"
@@ -17,8 +17,6 @@
 #import "SDGradientView.h"
 #import "SDWebsiteGridView.h"
 #import "SDEventGridView.h"
-
-#import "UIView+Addition.h"
 
 static NSString *BaseCellIdentifier = @"CollectionViewCell";
 static NSString *TextCellIdentifier = @"TextCollectionViewCell";

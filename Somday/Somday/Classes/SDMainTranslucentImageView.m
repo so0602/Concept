@@ -12,7 +12,7 @@
 
 #import "NSNotificationCenter+Name.h"
 
-@interface SDTranslucentImageView ()
+@interface SDMainTranslucentImageView ()
 
 @property (nonatomic) BOOL keepUpdate;
 
@@ -26,6 +26,42 @@
 @end
 
 @implementation SDMainTranslucentImageView
+
+-(void)layoutSubviews{
+    [super layoutSubviews];
+    
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
+        dispatch_async(dispatch_get_main_queue(), ^{
+            
+            if( self.targetView && self.targetImage ){
+                CGRect frame = [self convertRect:self.frame toView:self.targetView];
+                UIImage* image = self.targetImage;
+                
+                CGImageRef imageRef = CGImageCreateWithImageInRect(image.CGImage, frame);
+                image = [UIImage imageWithCGImage:imageRef];
+                CGImageRelease(imageRef);
+                self.image = image;
+                
+                if( self.width > self.image.size.width || self.height > self.image.size.height ){
+                    if( frame.origin.x > 0 ){
+                        self.contentMode = UIViewContentModeLeft;
+                    }else if( frame.origin.x < 0 ){
+                        self.contentMode = UIViewContentModeRight;
+                    }else if( frame.origin.y > 0 ){
+                        self.contentMode = UIViewContentModeTop;
+                    }else if( frame.origin.y < 0 ){
+                        self.contentMode = UIViewContentModeBottom;
+                    }else{
+                        self.contentMode = UIViewContentModeScaleAspectFill;
+                    }
+                }
+                if( self.keepUpdate ){
+                    [self setNeedsLayout];
+                }
+            }
+        });
+    });
+}
 
 -(void)didMoveToSuperview{
     [super didMoveToSuperview];

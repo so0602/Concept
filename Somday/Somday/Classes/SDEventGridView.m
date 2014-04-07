@@ -9,6 +9,8 @@
 #import "SDEventGridView.h"
 #import "JTListView.h"
 #import "SDEventMapView.h"
+#import "SDEventOverviewView.h"
+#import "SDTranslucentImageView.h"
 
 #define numberOfEventPage 4
 
@@ -19,8 +21,16 @@ typedef NS_ENUM(NSUInteger, SDEventPageType){
     SDEventPageType_Map,
 };
 
+@interface SDBaseGridView ()
+
+@property (nonatomic, strong) IBOutlet UIImageView *backgroundImageView;
+
+@end
+
 @interface SDEventGridView()
 @property (nonatomic, strong) IBOutlet JTListView *scrollView;
+@property (nonatomic, strong) IBOutlet SDTranslucentImageView* scrollBackgroundImageView;
+@property (nonatomic, strong) IBOutlet SDTranslucentImageView* bottomImageView;
 @property (nonatomic, strong) IBOutlet UIPageControl *pageControl;
 @property (nonatomic, strong) IBOutlet UIButton *addToCalendarButton;
 @property (nonatomic, strong) IBOutlet UILabel *eventName;
@@ -60,7 +70,6 @@ typedef NS_ENUM(NSUInteger, SDEventPageType){
     self.eventMonth.font = [UIFont josefinSansFontOfSize:14];
     self.eventName.font = [UIFont boldSystemFontOfSize:12];
     self.eventOwner.font = [UIFont systemFontOfSize:9];
-    
 }
 
 - (void)prepareForReuse
@@ -79,6 +88,15 @@ typedef NS_ENUM(NSUInteger, SDEventPageType){
 {
     [super layoutSubviews];
     
+    UIImage* image = self.backgroundImageView.convertViewToImage.defaultBlur;
+    
+    self.bottomImageView.targetView = self.backgroundImageView;
+    self.bottomImageView.targetImage = image;
+    [self.bottomImageView layoutSubviews];
+    
+    self.scrollBackgroundImageView.targetView = self.backgroundImageView;
+    self.scrollBackgroundImageView.targetImage = image;
+    [self.scrollBackgroundImageView layoutSubviews];
 }
 
 #pragma mark - JTListViewDataSource
@@ -105,8 +123,8 @@ typedef NS_ENUM(NSUInteger, SDEventPageType){
         }
         case SDEventPageType_Overview:
         {
-            view = [[UIView alloc] init];
-            view.backgroundColor = [UIColor redColor];
+            SDEventOverviewView* overviewView = [[NSBundle mainBundle] loadNibNamed:@"SDEventOverviewView" owner:nil options:nil].lastObject;
+            view = overviewView;
             break;
         }
         case SDEventPageType_Calendar:
@@ -148,6 +166,11 @@ typedef NS_ENUM(NSUInteger, SDEventPageType){
     CGFloat pageWidth = scrollView.frame.size.width;
 	NSInteger fPage = roundf(scrollView.contentOffset.x/pageWidth);
 	self.pageControl.currentPage = fPage;
+    
+    if( scrollView.contentOffset.x > 0 && scrollView.contentOffset.x < scrollView.width ){
+        self.scrollBackgroundImageView.x = scrollView.width - scrollView.contentOffset.x;
+        [self.scrollBackgroundImageView setNeedsLayout];
+    }
 }
 
 @end

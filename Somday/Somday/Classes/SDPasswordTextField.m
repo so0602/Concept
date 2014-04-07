@@ -8,9 +8,6 @@
 
 #import "SDPasswordTextField.h"
 
-#import "UITextField+Addition.h"
-#import "NSString+Addition.h"
-
 @interface SDTextField ()
 
 -(void)initialize;

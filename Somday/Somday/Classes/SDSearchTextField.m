@@ -8,9 +8,6 @@
 
 #import "SDSearchTextField.h"
 
-#import "UIView+Addition.h"
-#import "UIColor+Extensions.h"
-
 @interface SDSearchTextField ()
 
 @property (nonatomic, strong) NSString* backgroundImageName;

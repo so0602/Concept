@@ -12,8 +12,6 @@
 
 #import "SDUtils.h"
 
-#import "UIViewController+Addition.h"
-#import "UIFont+Addition.h"
 #import <GoogleMaps/GoogleMaps.h>
 
 @implementation SDAppDelegate

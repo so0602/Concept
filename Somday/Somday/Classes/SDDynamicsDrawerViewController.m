@@ -15,9 +15,6 @@
 
 #import "SDUtils.h"
 
-#import "UIViewController+Addition.h"
-#import "NSNotificationCenter+Name.h"
-
 #import "UIView+AUISelectiveBorder.h"
 
 const CGFloat SDPaneViewVelocityThreshold = 5.0;

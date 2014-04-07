@@ -8,8 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-#import "SDTranslucentImageView.h"
+@interface SDMainTranslucentImageView : UIImageView
 
-@interface SDMainTranslucentImageView : SDTranslucentImageView
+@property (nonatomic, strong) UIView* targetView;
+@property (nonatomic, strong) UIImage* targetImage;
 
 @end

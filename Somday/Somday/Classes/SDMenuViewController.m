@@ -16,9 +16,6 @@
 
 #import "SDUtils.h"
 
-#import "UIViewController+Addition.h"
-#import "NSNotificationCenter+Name.h"
-
 @interface SDMenuViewController ()<SDSearchViewControllerDelegate>
 
 @property (nonatomic, strong) IBOutlet UIImageView* backgroundImageView;

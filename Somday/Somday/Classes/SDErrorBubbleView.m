@@ -8,9 +8,6 @@
 
 #import "SDErrorBubbleView.h"
 
-#import "UIViewController+Addition.h"
-#import "UIFont+Addition.h"
-
 @interface SDErrorBubbleView ()
 
 @property (nonatomic, strong) IBOutlet UIImageView* backgroundImageView;

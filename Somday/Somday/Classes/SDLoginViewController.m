@@ -23,10 +23,6 @@
 
 #import "FTAnimation+UIView.h"
 
-#import "NSString+Addition.h"
-#import "UIViewController+Addition.h"
-#import "UIFont+Addition.h"
-
 @interface SDLoginViewController ()<UITextFieldDelegate>
 
 @property (nonatomic, strong) IBOutlet GPUImageView* backgroundImageView;

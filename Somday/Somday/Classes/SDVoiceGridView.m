@@ -10,8 +10,6 @@
 
 #import "SDVoiceGridView.h"
 
-#import "UIView+Addition.h"
-
 #import <objc/runtime.h>
 
 static const char* UIButton_AudioStateKey = "&#_UIButton_AudioStateKey_#&";
