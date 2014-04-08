@@ -647,14 +647,17 @@
 }
 
 - (void) setFlipProgress:(float) progress setDelegate:(BOOL) setDelegate animate:(BOOL) animate {
-	progressflipDirection = progress;
-	//float newAngle = startFlipAngle + progress * (endFlipAngle - startFlipAngle);
+//	progressflipDirection = progress;
+//	//float newAngle = startFlipAngle + progress * (endFlipAngle - startFlipAngle);
+//    
+//    float newAngle = startFlipAngle + progress * (endFlipAngle - startFlipAngle);
+//    
+//    
+//	float duration = animate ? 0.5 * fabs((newAngle - currentAngle) / (endFlipAngle - startFlipAngle)) : 0;
+//	NSLog(@"progress %2.f, %2.f, %2.f, %2.f, %2.f", progress, endFlipAngle, startFlipAngle, newAngle, duration);
     
-    float newAngle = startFlipAngle + progress * (endFlipAngle - startFlipAngle);
-    
-    
+	float newAngle = startFlipAngle + progress * (endFlipAngle - startFlipAngle);
 	float duration = animate ? 0.5 * fabs((newAngle - currentAngle) / (endFlipAngle - startFlipAngle)) : 0;
-	NSLog(@"progress %2.f, %2.f, %2.f, %2.f, %2.f", progress, endFlipAngle, startFlipAngle, newAngle, duration);
 	currentAngle = newAngle;
 	
 	CATransform3D endTransform = CATransform3DIdentity;
@@ -998,12 +1001,13 @@
 				[self setDisabled:TRUE];
                 
                 setNewViewOnCompletion = YES;
+				[self setFlipProgress:1.0 setDelegate:YES animate:YES];
                 
-                NSLog(@"progressflipDirection %.2f, %li, %li", roundf(progressflipDirection), (long)self.currentPage, (long)oldPage);
-                if (!roundf(progressflipDirection))
-                    currentPage = oldPage;
-                
-				[self setFlipProgress:roundf(progressflipDirection) setDelegate:YES animate:YES];
+//                NSLog(@"progressflipDirection %.2f, %li, %li", roundf(progressflipDirection), (long)self.currentPage, (long)oldPage);
+//                if (!roundf(progressflipDirection))
+//                    currentPage = oldPage;
+//                
+//				[self setFlipProgress:roundf(progressflipDirection) setDelegate:YES animate:YES];
 			}
 			
 			break;

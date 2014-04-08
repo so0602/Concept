@@ -15,8 +15,6 @@
 
 #import "SDUtils.h"
 
-#import "UIView+AUISelectiveBorder.h"
-
 const CGFloat SDPaneViewVelocityThreshold = 5.0;
 const CGFloat SDPaneViewVelocityMultiplier = 5.0;
 const CGFloat SDPaneViewCornerRadius = 8.0;

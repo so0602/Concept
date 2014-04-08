@@ -57,8 +57,9 @@
 - (void)prepareForReuse
 {
     [super prepareForReuse];
-    [flipView setCurrentPage:0];
     _isTipsShowed = NO;
+    [flipView setCurrentPage:1];
+    
 }
 
 #pragma mark - Private Functions
@@ -86,6 +87,7 @@
     if (!flipView) {
         flipView = [[AFKPageFlipper alloc] initWithFrame:self.bounds];
         flipView.dataSource = self;
+        [flipView setCurrentPage:1];
     }
     return flipView;
 }

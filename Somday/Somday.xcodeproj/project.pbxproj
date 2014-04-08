@@ -21,8 +21,6 @@
 		2E33BB8218EEA0D7004F9CF4 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E33BB8118EEA0D7004F9CF4 /* QuartzCore.framework */; };
 		2E33BB8518EEA2F8004F9CF4 /* SDEventMapView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E33BB8418EEA2F8004F9CF4 /* SDEventMapView.m */; };
 		2E33BB8718EEA30A004F9CF4 /* SDEventMapView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2E33BB8618EEA30A004F9CF4 /* SDEventMapView.xib */; };
-		2E39E90E18D4DF8700A7F917 /* AUISelectiveBordersLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E39E90B18D4DF8700A7F917 /* AUISelectiveBordersLayer.m */; };
-		2E39E90F18D4DF8700A7F917 /* UIView+AUISelectiveBorder.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E39E90D18D4DF8700A7F917 /* UIView+AUISelectiveBorder.m */; };
 		2E54CABF18C5D1D900B23A96 /* SDHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E54CABE18C5D1D900B23A96 /* SDHomeViewController.m */; };
 		2E54CAC618C5D2C200B23A96 /* SDCollectionViewFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E54CAC518C5D2C200B23A96 /* SDCollectionViewFlowLayout.m */; };
 		2E54CACF18C5D7BF00B23A96 /* SDHomeHeaderCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E54CACE18C5D7BF00B23A96 /* SDHomeHeaderCollectionViewCell.m */; };
@@ -1121,10 +1119,6 @@
 		2E33BB8318EEA2F8004F9CF4 /* SDEventMapView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SDEventMapView.h; path = Classes/SDEventMapView.h; sourceTree = "<group>"; };
 		2E33BB8418EEA2F8004F9CF4 /* SDEventMapView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SDEventMapView.m; path = Classes/SDEventMapView.m; sourceTree = "<group>"; };
 		2E33BB8618EEA30A004F9CF4 /* SDEventMapView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SDEventMapView.xib; path = Classes/SDEventMapView.xib; sourceTree = "<group>"; };
-		2E39E90A18D4DF8700A7F917 /* AUISelectiveBordersLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AUISelectiveBordersLayer.h; sourceTree = "<group>"; };
-		2E39E90B18D4DF8700A7F917 /* AUISelectiveBordersLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AUISelectiveBordersLayer.m; sourceTree = "<group>"; };
-		2E39E90C18D4DF8700A7F917 /* UIView+AUISelectiveBorder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+AUISelectiveBorder.h"; sourceTree = "<group>"; };
-		2E39E90D18D4DF8700A7F917 /* UIView+AUISelectiveBorder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+AUISelectiveBorder.m"; sourceTree = "<group>"; };
 		2E54CABD18C5D1D900B23A96 /* SDHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SDHomeViewController.h; path = Classes/SDHomeViewController.h; sourceTree = "<group>"; };
 		2E54CABE18C5D1D900B23A96 /* SDHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SDHomeViewController.m; path = Classes/SDHomeViewController.m; sourceTree = "<group>"; };
 		2E54CAC418C5D2C200B23A96 /* SDCollectionViewFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SDCollectionViewFlowLayout.h; path = Classes/SDCollectionViewFlowLayout.h; sourceTree = "<group>"; };
@@ -2261,18 +2255,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		2E39E90918D4DF8700A7F917 /* AUISelectiveBordersView */ = {
-			isa = PBXGroup;
-			children = (
-				2E39E90A18D4DF8700A7F917 /* AUISelectiveBordersLayer.h */,
-				2E39E90B18D4DF8700A7F917 /* AUISelectiveBordersLayer.m */,
-				2E39E90C18D4DF8700A7F917 /* UIView+AUISelectiveBorder.h */,
-				2E39E90D18D4DF8700A7F917 /* UIView+AUISelectiveBorder.m */,
-			);
-			name = AUISelectiveBordersView;
-			path = "../Other Sources/AUISelectiveBordersView";
-			sourceTree = "<group>";
-		};
 		2E54CACC18C5D78E00B23A96 /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -3929,7 +3911,6 @@
 				2ED985DF18ED59D0005CB4F9 /* JTListView */,
 				2E7A350E18D888D100662504 /* AFKPageFlipper */,
 				EF891DC918CD8CB5005DC780 /* ASIHTTPRequest.xcodeproj */,
-				2E39E90918D4DF8700A7F917 /* AUISelectiveBordersView */,
 				B6B8273D18E3DABF009C8A37 /* FTUtils */,
 				2ED7A89218D43D9C00F76E17 /* GHContextMenu */,
 				B65DDC2518C5B1410076408C /* GPUImage.xcodeproj */,
@@ -5039,7 +5020,6 @@
 				2E54CABF18C5D1D900B23A96 /* SDHomeViewController.m in Sources */,
 				EF3B650018CDA27700B0CF1C /* SDResponseBase.m in Sources */,
 				EFA8EBD018BDD87100144B75 /* SDAppDelegate.m in Sources */,
-				2E39E90E18D4DF8700A7F917 /* AUISelectiveBordersLayer.m in Sources */,
 				2E7A352818D8960600662504 /* SDStoryBookLayoutView.m in Sources */,
 				B6FD653018E0833700CCCB03 /* UIColor+Extensions.m in Sources */,
 				B60C27BC18E6FAB0000ED405 /* SDWebsiteGridView.m in Sources */,
@@ -5053,7 +5033,6 @@
 				B65DE2B218C884D50076408C /* SDTopMenuViewController.m in Sources */,
 				EF3B650F18CDAC2500B0CF1C /* SDCheckUserExist.m in Sources */,
 				B6BE4ABD18D8167C00DA7313 /* SDTextGridView.m in Sources */,
-				2E39E90F18D4DF8700A7F917 /* UIView+AUISelectiveBorder.m in Sources */,
 				EFA8EBD618BDD87100144B75 /* SDDynamicsDrawerViewController.m in Sources */,
 				B6BE49EB18CF739700DA7313 /* SDPasswordTextField.m in Sources */,
 				2E33BB8518EEA2F8004F9CF4 /* SDEventMapView.m in Sources */,
