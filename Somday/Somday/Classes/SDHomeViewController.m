@@ -30,7 +30,7 @@
 #define HeightForFullyDisplayNavigationBar 57.0f
 #define HeightForTriggerNavigationBarAnimation 23.0f
 
-#define Debug_count 30
+#define Debug_count 50
 
 @interface SDHomeViewController ()
 @property (nonatomic) NSMutableArray *dataSource;
@@ -115,9 +115,22 @@ static NSString *HeaderCellIdentifier = @"HeaderCollectionViewCell";
             story.type = [NSNumber numberWithInt:min + arc4random() % (max-min)];
             switch( story.type.intValue ){
                 case SDStoryType_Photo:
-                case SDStoryType_Event:
-                    story.imageName = toggle ? @"dump_03.jpg" : @"dump_03.jpg";
+                    story.imageName = toggle ? @"dump_02.jpg" : @"dump_02.jpg";
                     toggle = !toggle;
+                    break;
+                case SDStoryType_Event:
+                {
+                    story.imageName = toggle ? @"dump_02.jpg" : @"dump_02.jpg";
+                    toggle = !toggle;
+                    
+                    NSMutableArray* members = [NSMutableArray array];
+                    for( int i = 0; i < arc4random() % 20; i++ ){
+                        [members addObject:@"dump_user"];
+                    }
+                    story.members = members;
+                    story.startDate = [NSDate date];
+                    story.endDate = [NSDate dateWithTimeIntervalSinceNow:60*60*2];
+                }
                     break;
                 case SDStoryType_Voice:
                     story.audioName = toggle2 ? @"1kHz_44100Hz_16bit_05sec.mp3" : @"440Hz_44100Hz_16bit_05sec.mp3";

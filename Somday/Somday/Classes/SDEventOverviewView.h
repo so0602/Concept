@@ -8,6 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
+#import "SDStory.h"
+
 @interface SDEventOverviewView : UIView
+
+@property (nonatomic, strong) SDStory* story;
 
 @end

@@ -75,11 +75,10 @@ typedef NS_ENUM(NSUInteger, SDEventPageType){
     [super awakeFromNib];
     self.scrollView.layout = JTListViewLayoutLeftToRight;
     
-    [self.eventDay changeFont:SDFontFamily_JosefinSans style:18];
-    [self.eventMonth changeFont:SDFontFamily_JosefinSans style:14];
-    
-    self.eventName.font = [UIFont boldSystemFontOfSize:12];
-    self.eventOwner.font = [UIFont systemFontOfSize:9];
+    [self.eventDay changeFont:SDFontFamily_JosefinSans style:SDFontStyle_Regular];
+    [self.eventMonth changeFont:SDFontFamily_JosefinSans style:SDFontStyle_Regular];
+    [self.eventName changeFont:SDFontFamily_Montserrat style:SDFontStyle_Bold];
+    [self.eventOwner changeFont:SDFontFamily_Montserrat style:SDFontStyle_Regular];
 }
 
 - (void)prepareForReuse
@@ -93,28 +92,14 @@ typedef NS_ENUM(NSUInteger, SDEventPageType){
     [_mapView reset];
     [_scrollView scrollToItemAtIndex:0 atScrollPosition:JTListViewScrollPositionNone animated:NO];
     
+    self.backgroundImageViewImage = nil;
+    
+    self.backgroundImageView.x = self.scrollView.width;
 }
 
 - (void)layoutSubviews
 {
     [super layoutSubviews];
-    
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
-        dispatch_async(dispatch_get_main_queue(), ^{
-            self.backgroundImageViewImage = self.backgroundImageView.convertViewToImage.defaultBlur;
-//            UIImage* image = [self.backgroundImageView.convertViewToImage resizeImageProportionallyWithScaleFactor:1];
-//            image = image.defaultBlur;
-            UIImage* image = self.backgroundImageViewImage;
-            self.bottomImageView.targetView = self.backgroundImageView;
-            self.bottomImageView.targetImage = image;
-            [self.bottomImageView layoutSubviews];
-            
-//            self.scrollBackgroundImageView.targetView = self.backgroundImageView;
-//            self.scrollBackgroundImageView.targetImage = image;
-//            [self.scrollBackgroundImageView setNeedsLayout];
-            
-        });
-    });
 }
 
 #pragma mark - JTListViewDataSource
@@ -144,6 +129,7 @@ typedef NS_ENUM(NSUInteger, SDEventPageType){
         case SDEventPageType_Overview:
         {
             SDEventOverviewView* overviewView = [[NSBundle mainBundle] loadNibNamed:@"SDEventOverviewView" owner:nil options:nil].lastObject;
+            overviewView.story = self.story;
             view = overviewView;
             break;
         }
@@ -187,11 +173,14 @@ typedef NS_ENUM(NSUInteger, SDEventPageType){
     
     if( scrollView.contentOffset.x > 0 && scrollView.contentOffset.x < scrollView.width ){
         self.scrollBackgroundImageView.x = scrollView.width - scrollView.contentOffset.x;
-        if( !self.scrollBackgroundImageView.targetImage ){
-            self.scrollBackgroundImageView.targetView = self.backgroundImageView;
-            self.scrollBackgroundImageView.targetImage = self.backgroundImageViewImage;
-        }
-        self.scrollBackgroundImageView.keepUpdate = TRUE;
+//        if( !self.scrollBackgroundImageView.targetImage ){
+//            if( !self.backgroundImageViewImage ){
+//                self.backgroundImageViewImage = self.backgroundImageView.convertViewToImage.defaultBlur;
+//            }
+//            self.scrollBackgroundImageView.targetView = self.backgroundImageView;
+//            self.scrollBackgroundImageView.targetImage = self.backgroundImageViewImage;
+//        }
+//        self.scrollBackgroundImageView.keepUpdate = TRUE;
     }
     if (scrollView.contentOffset.x == scrollView.contentSize.width - CGRectGetWidth(scrollView.frame)) {
         if (!_mapView.waypoints.count)
