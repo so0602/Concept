@@ -98,7 +98,8 @@ typedef NS_ENUM(NSUInteger, SDEventPageType){
 - (void)layoutSubviews
 {
     [super layoutSubviews];
-    
+
+    return;
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
         dispatch_async(dispatch_get_main_queue(), ^{
             self.backgroundImageViewImage = self.backgroundImageView.convertViewToImage.defaultBlur;
