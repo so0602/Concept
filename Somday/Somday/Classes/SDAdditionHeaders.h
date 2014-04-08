@@ -12,6 +12,7 @@
 
 #import "NSNotificationCenter+Name.h"
 #import "NSString+Addition.h"
+#import "NSDate+NSCategory.h"
 
 #import "UICollectionView+Addition.h"
 #import "UIColor+Extensions.h"

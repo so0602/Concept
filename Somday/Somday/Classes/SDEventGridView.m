@@ -94,7 +94,7 @@ typedef NS_ENUM(NSUInteger, SDEventPageType){
     
     self.backgroundImageViewImage = nil;
     
-    self.backgroundImageView.x = self.scrollView.width;
+    self.scrollBackgroundImageView.x = self.scrollView.width;
 }
 
 - (void)layoutSubviews

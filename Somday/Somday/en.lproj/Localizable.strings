@@ -11,3 +11,7 @@
 "ErrorMessage_PasswordFormat" = "Must be at least 8 characters";
 "ErrorMessage_ConfirmPasswordFormat" = "Confirm Password is not match";
 "ErrorMessage_NotMatch" = "Your email and password do not match";
+
+"DateFormat_Today" = "Today";
+"DateFormat_Yesterday" = "Yesterday";
+"DateFormat_Tomorrow" = "Tomorrow";
