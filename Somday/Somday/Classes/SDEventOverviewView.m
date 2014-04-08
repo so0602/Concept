@@ -65,30 +65,8 @@
     }
     
     if( self.dateLabel && story.startDate && story.endDate ){
-        BOOL isSameDay = [story.startDate isSameDay:story.endDate];
-        NSMutableString* string = nil;
-        if( isSameDay ){
-            NSDateInformation startInfo = story.startDate.dateInformation;
-            NSDateInformation endInfo = story.endDate.dateInformation;
-            
-            NSDate* currentDate = [NSDate date];
-            if( [story.startDate isSameDay:currentDate] ){
-                string = [NSLocalizedString(@"DateFormat_Today", nil) mutableCopy];
-            }else{
-                NSDateInformation currentInfo = currentDate.dateInformation;
-                if( currentInfo.day == startInfo.day - 1 ){
-                    string = [NSLocalizedString(@"DateFormat_Tomorrow", nil) mutableCopy];
-                }else if( currentInfo.day == startInfo.day + 1 ){
-                    string = [NSLocalizedString(@"DateFormat_Yesterday", nil) mutableCopy];
-                }
-            }
-            
-            [string appendFormat:@"\n%d:%d%@ - %d:%d%@",
-             startInfo.hour % 12, startInfo.minute, startInfo.hour / 12 >= 1 ? @"PM" : @"AM",
-             endInfo.hour % 12, endInfo.minute, endInfo.hour / 12 >= 1 ? @"PM" : @"AM"];
-        }
         CGPoint center = self.dateLabel.center;
-        self.dateLabel.text = string;
+        self.dateLabel.text = [SDUtils dateString:story.startDate endDate:story.endDate];
         [self.dateLabel sizeToFitWidth];
         center.x = self.dateLabel.center.x;
         self.dateLabel.center = center;

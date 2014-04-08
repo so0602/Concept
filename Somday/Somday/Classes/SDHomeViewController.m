@@ -128,8 +128,8 @@ static NSString *HeaderCellIdentifier = @"HeaderCollectionViewCell";
                         [members addObject:@"dump_user"];
                     }
                     story.members = members;
-                    story.startDate = [NSDate dateWithTimeIntervalSinceNow:24*60*60];
-                    story.endDate = [NSDate dateWithTimeIntervalSinceNow:26*60*60];
+                    story.startDate = [NSDate dateWithTimeIntervalSinceNow:(24*6)*60*60];
+                    story.endDate = [NSDate dateWithTimeIntervalSinceNow:story.startDate.timeIntervalSinceNow + (24) * 60 * 60];
                 }
                     break;
                 case SDStoryType_Voice:

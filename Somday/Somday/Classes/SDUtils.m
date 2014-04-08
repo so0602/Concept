@@ -106,19 +106,6 @@
     return viewImage;
 }
 
-#pragma mark - Private Functions
-
-+(UIViewController*)loadingViewController{
-    static UIViewController* loadingViewController = nil;
-    static dispatch_once_t oncePredicate;
-    
-    dispatch_once(&oncePredicate, ^{
-        loadingViewController = [SDLoadingViewController viewControllerFromStoryboardWithIdentifier:@"Loading"];
-    });
-    
-    return loadingViewController;
-}
-
 +(void)showLoading{
     UIViewController* viewController = [SDUtils loadingViewController];
     if( !viewController.isViewLoaded ){
@@ -136,6 +123,81 @@
     if( viewController.view.superview ){
         [viewController.view removeFromSuperview];
     }
+}
+
++(NSString*)dateString:(NSDate*)date{
+    return nil;
+}
+
++(NSString*)dateString:(NSDate*)startDate endDate:(NSDate*)endDate{
+    NSMutableString* string = nil;
+    if( [startDate isSameDay:endDate] ){
+        NSDateInformation startInfo = startDate.dateInformation;
+        NSDate* currentDate = [NSDate date];
+        if( [startDate isSameDay:currentDate] ){
+            string = [NSLocalizedString(@"DateFormat_Today", nil) mutableCopy];
+        }else{
+            NSDateInformation currentInfo = currentDate.dateInformation;
+            if( currentInfo.day == startInfo.day - 1 ){
+                string = [NSLocalizedString(@"DateFormat_Tomorrow", nil) mutableCopy];
+            }else if( currentInfo.day == startInfo.day + 1 ){
+                string = [NSLocalizedString(@"DateFormat_Yesterday", nil) mutableCopy];
+            }else if( startInfo.day > currentInfo.day && (startInfo.weekday > currentInfo.weekday || startInfo.weekday == 1) ){
+                NSString* key = nil;
+                switch( startInfo.weekday - 1 ){
+                    case 0:
+                        key = @"DateFormat_ThisSunday";
+                        break;
+                    case 1:
+                        key = @"DateFormat_ThisMonday";
+                        break;
+                    case 2:
+                        key = @"DateFormat_ThisTueday";
+                        break;
+                    case 3:
+                        key = @"DateFormat_ThisWednesday";
+                        break;
+                    case 4:
+                        key = @"DateFormat_ThisThursday";
+                        break;
+                    case 5:
+                        key = @"DateFormat_ThisFriday";
+                        break;
+                    case 6:
+                        key = @"DateFormat_ThisSaturday";
+                        break;
+                }
+                string = [NSLocalizedString(key, nil) mutableCopy];
+            }else{
+                NSDateFormatter* formatter = [[NSDateFormatter alloc] init];
+                formatter.dateFormat = @"d MMMM yyyy";
+                string = [[formatter stringFromDate:startDate] mutableCopy];
+            }
+        }
+        
+        NSDateFormatter* formatter = [[NSDateFormatter alloc] init];
+        formatter.dateFormat = @"h:mma";
+        NSString* timeString = [[NSString stringWithFormat:@"%@ - %@", [formatter stringFromDate:startDate], [formatter stringFromDate:endDate]] uppercaseString];
+        [string appendFormat:@"\n%@", timeString];
+    }else{
+        NSDateFormatter* formatter = [[NSDateFormatter alloc] init];
+        formatter.dateFormat = @"d MMMM yyyy";
+        string = [NSMutableString stringWithFormat:@"%@ \n- %@", [formatter stringFromDate:startDate], [formatter stringFromDate:endDate]];
+    }
+    return string;
+}
+
+#pragma mark - Private Functions
+
++(UIViewController*)loadingViewController{
+    static UIViewController* loadingViewController = nil;
+    static dispatch_once_t oncePredicate;
+    
+    dispatch_once(&oncePredicate, ^{
+        loadingViewController = [SDLoadingViewController viewControllerFromStoryboardWithIdentifier:@"Loading"];
+    });
+    
+    return loadingViewController;
 }
 
 @end
