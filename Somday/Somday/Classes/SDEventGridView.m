@@ -27,7 +27,7 @@ typedef NS_ENUM(NSUInteger, SDEventPageType){
 
 @end
 
-@interface SDEventGridView()
+@interface SDEventGridView()<JTListViewDelegate>
 @property (nonatomic, strong) IBOutlet JTListView *scrollView;
 @property (nonatomic, strong) IBOutlet SDTranslucentImageView* scrollBackgroundImageView;
 @property (nonatomic, strong) IBOutlet SDTranslucentImageView* bottomImageView;
@@ -39,6 +39,9 @@ typedef NS_ENUM(NSUInteger, SDEventPageType){
 @property (nonatomic, strong) IBOutlet UILabel *eventMonth;
 @property (nonatomic, strong) SDEventMapView * mapView;
 @property (nonatomic, strong) NSMutableArray *pages;
+
+@property (nonatomic, strong) IBOutlet UIImage *backgroundImageViewImage;
+
 @end
 
 @interface SDTranslucentImageView ()
@@ -71,8 +74,10 @@ typedef NS_ENUM(NSUInteger, SDEventPageType){
 - (void)awakeFromNib{
     [super awakeFromNib];
     self.scrollView.layout = JTListViewLayoutLeftToRight;
-    self.eventDay.font = [UIFont josefinSansFontOfSize:18];
-    self.eventMonth.font = [UIFont josefinSansFontOfSize:14];
+    
+    [self.eventDay changeFont:SDFontFamily_JosefinSans style:18];
+    [self.eventMonth changeFont:SDFontFamily_JosefinSans style:14];
+    
     self.eventName.font = [UIFont boldSystemFontOfSize:12];
     self.eventOwner.font = [UIFont systemFontOfSize:9];
 }
@@ -94,20 +99,22 @@ typedef NS_ENUM(NSUInteger, SDEventPageType){
 {
     [super layoutSubviews];
     
-    UIImage* image = self.backgroundImageView.convertViewToImage.defaultBlur;
-    
-    NSData* p1 = UIImagePNGRepresentation(image);
-    NSData* p2 = UIImagePNGRepresentation(self.backgroundImageView.convertViewToImage);
-    [p1 writeToFile:[[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"p1.png"] atomically:TRUE];
-    [p2 writeToFile:[[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"p2.png"] atomically:TRUE];
-    
-    self.bottomImageView.targetView = self.backgroundImageView;
-    self.bottomImageView.targetImage = image;
-    [self.bottomImageView layoutSubviews];
-    
-    self.scrollBackgroundImageView.targetView = self.backgroundImageView;
-    self.scrollBackgroundImageView.targetImage = image;
-    [self.scrollBackgroundImageView layoutSubviews];
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
+        dispatch_async(dispatch_get_main_queue(), ^{
+            self.backgroundImageViewImage = self.backgroundImageView.convertViewToImage.defaultBlur;
+//            UIImage* image = [self.backgroundImageView.convertViewToImage resizeImageProportionallyWithScaleFactor:1];
+//            image = image.defaultBlur;
+            UIImage* image = self.backgroundImageViewImage;
+            self.bottomImageView.targetView = self.backgroundImageView;
+            self.bottomImageView.targetImage = image;
+            [self.bottomImageView layoutSubviews];
+            
+//            self.scrollBackgroundImageView.targetView = self.backgroundImageView;
+//            self.scrollBackgroundImageView.targetImage = image;
+//            [self.scrollBackgroundImageView setNeedsLayout];
+            
+        });
+    });
 }
 
 #pragma mark - JTListViewDataSource
@@ -143,7 +150,7 @@ typedef NS_ENUM(NSUInteger, SDEventPageType){
         case SDEventPageType_Calendar:
         {
             view = [[UIView alloc] init];
-            view.backgroundColor = [UIColor blueColor];
+            view.backgroundColor = [UIColor clearColor];
             break;
         }
         case SDEventPageType_Image:
@@ -180,6 +187,10 @@ typedef NS_ENUM(NSUInteger, SDEventPageType){
     
     if( scrollView.contentOffset.x > 0 && scrollView.contentOffset.x < scrollView.width ){
         self.scrollBackgroundImageView.x = scrollView.width - scrollView.contentOffset.x;
+        if( !self.scrollBackgroundImageView.targetImage ){
+            self.scrollBackgroundImageView.targetView = self.backgroundImageView;
+            self.scrollBackgroundImageView.targetImage = self.backgroundImageViewImage;
+        }
         self.scrollBackgroundImageView.keepUpdate = TRUE;
     }
     if (scrollView.contentOffset.x == scrollView.contentSize.width - CGRectGetWidth(scrollView.frame)) {

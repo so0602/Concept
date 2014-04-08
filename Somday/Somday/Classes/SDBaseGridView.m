@@ -73,6 +73,7 @@ typedef NSUInteger SDGridMenuState;
 @property (nonatomic, strong) GHContextMenuView* menuOverlay;
 
 -(IBAction)actionForItem:(id)sender;
+-(void)updateUI;
 
 @end
 
@@ -220,27 +221,49 @@ typedef NSUInteger SDGridMenuState;
 {
     [super layoutSubviews];
     
-    if( self.story.title ){
-        self.titleLabel.text = self.story.title;
+    SDStory* story = self.story;
+    if( !story ) return;
+    
+    if( self.titleLabel && story.title ){
+        self.titleLabel.text = story.title;
     }
     
-    self.backgroundImageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@", self.story.imageName]];
+    if( self.backgroundImageView && story.imageName ){
+        self.backgroundImageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@", story.imageName]];
+    }
     
-    [self.userButton setImage:[UIImage imageNamed:self.story.userIconName] forState:UIControlStateNormal];
+    if( self.userButton && story.userIconName ){
+        [self.userButton setImage:[UIImage imageNamed:story.userIconName] forState:UIControlStateNormal];
+    }
     
-    self.userNameLabel.text = self.story.userName;
+    if( self.userNameLabel && story.userIconName ){
+        self.userNameLabel.text = story.userName;
+    }
     
-    NSDateFormatter* dateFormatter = [[NSDateFormatter alloc] init];
-    dateFormatter.dateFormat = @"h:mm a";
-    self.infoLabel.text = [NSString stringWithFormat:@"%@ at %@", [dateFormatter stringFromDate:self.story.date], self.story.address];
+    if( self.infoLabel && story.date ){
+        NSDateFormatter* dateFormatter = [[NSDateFormatter alloc] init];
+        dateFormatter.dateFormat = @"h:mm a";
+        
+        NSString* string = [dateFormatter stringFromDate:story.date];
+        
+        if( story.address ){
+            string = [NSString stringWithFormat:@"%@ at %@", string, story.address];
+        }
+        
+        self.infoLabel.text = string;
+    }
     
-    NSInteger count = self.story.likeCount.intValue;
-    NSString* string = count >= 1000 ? [NSString stringWithFormat:@"%ldk", count / 1000] : [NSString stringWithFormat:@"%ld", count];
-    [self.likeButton setTitle:string forState:UIControlStateNormal];
+    if( self.likeButton && story.likeCount ){
+        NSInteger count = story.likeCount.intValue;
+        NSString* string = count >= 1000 ? [NSString stringWithFormat:@"%ldk", count / 1000] : [NSString stringWithFormat:@"%ld", count];
+        [self.likeButton setTitle:string forState:UIControlStateNormal];
+    }
     
-    count = self.story.commentCount.intValue;
-    string = count >= 1000 ? [NSString stringWithFormat:@"%ldk", count / 1000] : [NSString stringWithFormat:@"%ld", count];
-    [self.commentButton setTitle:string forState:UIControlStateNormal];
+    if( self.commentButton && story.commentCount ){
+        NSInteger count = story.commentCount.intValue;
+        NSString* string = count >= 1000 ? [NSString stringWithFormat:@"%ldk", count / 1000] : [NSString stringWithFormat:@"%ld", count];
+        [self.commentButton setTitle:string forState:UIControlStateNormal];
+    }
 }
 
 - (void)prepareForReuse
