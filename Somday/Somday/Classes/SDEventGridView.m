@@ -12,12 +12,12 @@
 #import "SDEventOverviewView.h"
 #import "SDTranslucentImageView.h"
 
-#define numberOfEventPage 4
+#define numberOfEventPage 2
 
 typedef NS_ENUM(NSUInteger, SDEventPageType){
     SDEventPageType_Image,
-    SDEventPageType_Overview,
-    SDEventPageType_Calendar,
+//    SDEventPageType_Overview,
+//    SDEventPageType_Calendar,
     SDEventPageType_Map,
 };
 
@@ -123,18 +123,18 @@ typedef NS_ENUM(NSUInteger, SDEventPageType){
             view = mapView;
             break;
         }
-        case SDEventPageType_Overview:
-        {
-            SDEventOverviewView* overviewView = [[NSBundle mainBundle] loadNibNamed:@"SDEventOverviewView" owner:nil options:nil].lastObject;
-            view = overviewView;
-            break;
-        }
-        case SDEventPageType_Calendar:
-        {
-            view = [[UIView alloc] init];
-            view.backgroundColor = [UIColor blueColor];
-            break;
-        }
+//        case SDEventPageType_Overview:
+//        {
+//            SDEventOverviewView* overviewView = [[NSBundle mainBundle] loadNibNamed:@"SDEventOverviewView" owner:nil options:nil].lastObject;
+//            view = overviewView;
+//            break;
+//        }
+//        case SDEventPageType_Calendar:
+//        {
+//            view = [[UIView alloc] init];
+//            view.backgroundColor = [UIColor blueColor];
+//            break;
+//        }
         case SDEventPageType_Image:
         default:
         {
