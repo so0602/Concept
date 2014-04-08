@@ -969,7 +969,7 @@
                                                                 <outlet property="delegate" destination="tzJ-GC-LbW" id="FQp-4d-oIk"/>
                                                             </connections>
                                                         </scrollView>
-                                                        <pageControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="4" translatesAutoresizingMaskIntoConstraints="NO" id="vQ2-nH-yRe">
+                                                        <pageControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="2" translatesAutoresizingMaskIntoConstraints="NO" id="vQ2-nH-yRe">
                                                             <rect key="frame" x="117" y="218" width="70" height="37"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                         </pageControl>
