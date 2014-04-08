@@ -306,7 +306,7 @@
                 CGFloat alpha = (position.x - SDDynamicsDrawerViewController_MenuWidth) / (width - SDDynamicsDrawerViewController_MenuWidth);
                 viewController.view.alpha = alpha;
                 self.tableView.alpha = 1 - alpha;
-                SDLog(@"x,y: %@, alpha: %f", NSStringFromCGPoint(position), alpha);
+//                SDLog(@"x,y: %@, alpha: %f", NSStringFromCGPoint(position), alpha);
             }
         });
     });
