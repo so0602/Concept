@@ -318,29 +318,7 @@ static NSString *HeaderCellIdentifier = @"HeaderCollectionViewCell";
 -(void)updateVisibleCollectionViewCellsBackground{
     NSArray* cells = self.collectionView.visibleCells;
     for( UICollectionViewCell* cell in cells ){
-        UIImageView* view = nil;
-        SEL selector = @selector(blurBackgroundImageView);
-        if( [cell respondsToSelector:selector] ){
-            view = objc_msgSend(cell, selector);
-        }
-        if( view ){
-            SDAppDelegate* delegate = (id)[UIApplication sharedApplication].delegate;
-            SDMainNavigationController* viewController = delegate.navigationController;
-            CGRect frame = [view convertRect:view.frame toView:delegate.window];
-            UIImage* image = [viewController processedBackgroundImageWithFrame:frame];
-            if( frame.size.height != image.size.height ){
-                UIGraphicsBeginImageContext(CGSizeMake(frame.size.width * 2, frame.size.height * 2));
-                if( frame.origin.y < 0 ){
-                    [image drawInRect:CGRectMake(0, frame.size.height * 2 - image.size.height, image.size.width, image.size.height)];
-                }else{
-                    [image drawInRect:CGRectMake(0, 0, image.size.width, image.size.height)];
-                }
-                image = UIGraphicsGetImageFromCurrentImageContext();
-                UIGraphicsEndImageContext();
-            }
-            view.image = image;
-//            view.image = [viewController processedBackgroundImageWithFrame:frame];
-        }
+        [self updateCollectionViewCellBackground:cell];
     }
 }
 
@@ -353,10 +331,9 @@ static NSString *HeaderCellIdentifier = @"HeaderCollectionViewCell";
     if( view ){
         SDAppDelegate* delegate = (id)[UIApplication sharedApplication].delegate;
         SDMainNavigationController* viewController = delegate.navigationController;
-        CGRect frame = [view convertRect:view.frame toView:self.view];
+        CGRect frame = [view.superview convertRect:view.frame toView:delegate.window];
         UIImage* image = [viewController processedBackgroundImageWithFrame:frame];
         if( frame.size.height != image.size.height ){
-            NSLog(@"frame: %@", NSStringFromCGRect(frame));
             UIGraphicsBeginImageContext(CGSizeMake(frame.size.width * 2, frame.size.height * 2));
             if( frame.origin.y < 0 ){
                 [image drawInRect:CGRectMake(0, frame.size.height * 2 - image.size.height, image.size.width, image.size.height)];
@@ -367,7 +344,6 @@ static NSString *HeaderCellIdentifier = @"HeaderCollectionViewCell";
             UIGraphicsEndImageContext();
         }
         view.image = image;
-//        view.image = [viewController processedBackgroundImageWithFrame:frame];
     }
 }
 

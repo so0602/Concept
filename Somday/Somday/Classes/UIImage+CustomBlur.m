@@ -13,11 +13,26 @@
 @implementation UIImage (CustomBlur)
 
 -(UIImage*)defaultBlur{
-    return [self applyBlurWithRadius:1 tintColor:[UIColor colorWithWhite:0 alpha:0.2] saturationDeltaFactor:1 maskImage:nil];
+    CGFloat scale = self.scale;
+    UIImage* image = [self applyBlurWithRadius:1 tintColor:[UIColor colorWithWhite:0 alpha:0.2]saturationDeltaFactor:1 maskImage:nil];
+    
+    if( image.scale != scale ){
+        image = [image resizeImageProportionallyWithScaleFactor:1];
+    }
+    
+    return image;
+//    return [self applyBlurWithRadius:1 tintColor:[UIColor colorWithWhite:0 alpha:0.2] saturationDeltaFactor:1 maskImage:nil];
 }
 
 -(UIImage*)defaultDarkBlur{
-    return [self applyBlurWithRadius:1 tintColor:[UIColor colorWithWhite:0 alpha:0.3] saturationDeltaFactor:1 maskImage:nil];
+    CGFloat scale = self.scale;
+    UIImage* image = [self applyBlurWithRadius:1 tintColor:[UIColor colorWithWhite:0 alpha:0.3] saturationDeltaFactor:1 maskImage:nil];
+    
+    if( image.scale != scale ){
+        image = [image resizeImageProportionallyWithScaleFactor:1];
+    }
+    
+    return image;
 }
 
 @end

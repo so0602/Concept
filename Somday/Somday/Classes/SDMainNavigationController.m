@@ -91,7 +91,7 @@ static const CGFloat ProcessedBackgroundImageScaleFactor = 1;
                 
                 self.processedBackgroundImage = [imageView.convertViewToImage resizeImageProportionallyWithScaleFactor:ProcessedBackgroundImageScaleFactor];
                 self.processedBackgroundImageWithDarkLayer = self.processedBackgroundImage.defaultDarkBlur;
-                self.processedBackgroundImageWithDarkLayer = self.processedBackgroundImage;
+//                self.processedBackgroundImageWithDarkLayer = self.processedBackgroundImage;
                 
                 __block UIImageView* prevImageView = (id)self.currentBackgroundView;
                 
@@ -135,7 +135,7 @@ static const CGFloat ProcessedBackgroundImageScaleFactor = 1;
     UIImage *image = [UIImage imageWithCGImage:imageRef];
     float scale = [UIScreen mainScreen].scale;
     if( scale > 1 ){
-        image = [UIImage imageWithCGImage:image.CGImage scale:0.5 orientation:image.imageOrientation];
+        image = [UIImage imageWithCGImage:image.CGImage scale:1 / scale orientation:image.imageOrientation];
     }
     CGImageRelease(imageRef);
     return image;

@@ -23,7 +23,7 @@
         dispatch_async(dispatch_get_main_queue(), ^{
             
             if( self.targetView && self.targetImage ){
-                CGRect frame = [self convertRect:self.frame toView:self.targetView];
+                CGRect frame = [self.superview convertRect:self.frame toView:self.targetView];
                 UIImage* image = self.targetImage;
                 
                 CGImageRef imageRef = CGImageCreateWithImageInRect(image.CGImage, frame);
@@ -50,6 +50,13 @@
             }
         });
     });
+}
+
+-(void)setKeepUpdate:(BOOL)keepUpdate{
+    _keepUpdate = keepUpdate;
+    if( keepUpdate ){
+        [self setNeedsLayout];
+    }
 }
 
 @end
