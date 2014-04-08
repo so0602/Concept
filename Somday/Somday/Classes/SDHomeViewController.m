@@ -106,7 +106,6 @@ static NSString *HeaderCellIdentifier = @"HeaderCollectionViewCell";
     {
         // Debug
         self.dataSource = [NSMutableArray new];
-        BOOL toggle = TRUE;
         BOOL toggle2 = TRUE;
         int min = SDStoryType_Min;
         int max = SDStoryType_Max + 1;
@@ -115,13 +114,11 @@ static NSString *HeaderCellIdentifier = @"HeaderCollectionViewCell";
             story.type = [NSNumber numberWithInt:min + arc4random() % (max-min)];
             switch( story.type.intValue ){
                 case SDStoryType_Photo:
-                    story.imageName = toggle ? @"dump_02.jpg" : @"dump_02.jpg";
-                    toggle = !toggle;
+                    story.imageName = [NSString stringWithFormat:@"dump_%02d.jpg", arc4random() % 4];
                     break;
                 case SDStoryType_Event:
                 {
-                    story.imageName = toggle ? @"dump_02.jpg" : @"dump_02.jpg";
-                    toggle = !toggle;
+                    story.imageName = [NSString stringWithFormat:@"dump_%02d.jpg", arc4random() % 4];
                     
                     NSMutableArray* members = [NSMutableArray array];
                     for( int i = 0; i < arc4random() % 20; i++ ){
@@ -149,6 +146,7 @@ static NSString *HeaderCellIdentifier = @"HeaderCollectionViewCell";
             story.likeCount = [NSNumber numberWithInt:arc4random() % 10000];
             story.commentCount = [NSNumber numberWithInt:arc4random() % 10000];
             [_dataSource addObject:story];
+            story.content = @"World-renowned Kojima Productions showcases the latest masterpiece in the Metal Gear Solid franchise with Metal Gear Solid V: Ground Zeroes.";
             NSLog(@"type: %@", story.type);
         }
     }
