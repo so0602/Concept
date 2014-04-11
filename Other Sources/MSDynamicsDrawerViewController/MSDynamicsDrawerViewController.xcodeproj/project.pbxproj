@@ -31,8 +31,6 @@
 		3AAD49231830929B003FAFA8 /* libMSDynamicsDrawerViewController.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3AAD490B1830929B003FAFA8 /* libMSDynamicsDrawerViewController.a */; };
 		3AAD49291830929B003FAFA8 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3AAD49271830929B003FAFA8 /* InfoPlist.strings */; };
 		3AAD492B1830929B003FAFA8 /* MSDynamicsDrawerViewControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AAD492A1830929B003FAFA8 /* MSDynamicsDrawerViewControllerTests.m */; };
-		B6BE4A6418D1638400DA7313 /* MSDynamicsDrawerStyler.h in Headers */ = {isa = PBXBuildFile; fileRef = 3A210B6C18309E6E00A49F11 /* MSDynamicsDrawerStyler.h */; };
-		B6BE4A6518D1638400DA7313 /* MSDynamicsDrawerViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 3AAD49131830929B003FAFA8 /* MSDynamicsDrawerViewController.h */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -72,7 +70,6 @@
 		3AAD49261830929B003FAFA8 /* MSDynamicsDrawerViewControllerTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "MSDynamicsDrawerViewControllerTests-Info.plist"; sourceTree = "<group>"; };
 		3AAD49281830929B003FAFA8 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		3AAD492A1830929B003FAFA8 /* MSDynamicsDrawerViewControllerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MSDynamicsDrawerViewControllerTests.m; sourceTree = "<group>"; };
-		EF3B653118D0546300B0CF1C /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -167,18 +164,6 @@
 		};
 /* End PBXGroup section */
 
-/* Begin PBXHeadersBuildPhase section */
-		B6BE4A6318D1637100DA7313 /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				B6BE4A6418D1638400DA7313 /* MSDynamicsDrawerStyler.h in Headers */,
-				B6BE4A6518D1638400DA7313 /* MSDynamicsDrawerViewController.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXHeadersBuildPhase section */
-
 /* Begin PBXNativeTarget section */
 		3AAD490A1830929B003FAFA8 /* MSDynamicsDrawerViewController */ = {
 			isa = PBXNativeTarget;
@@ -187,7 +172,6 @@
 				3AAD49071830929B003FAFA8 /* Sources */,
 				3AAD49081830929B003FAFA8 /* Frameworks */,
 				3AAD49091830929B003FAFA8 /* CopyFiles */,
-				B6BE4A6318D1637100DA7313 /* Headers */,
 			);
 			buildRules = (
 			);
@@ -231,7 +215,6 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
-				"zh-Hant",
 			);
 			mainGroup = 3AAD49021830929B003FAFA8;
 			productRefGroup = 3AAD490C1830929B003FAFA8 /* Products */;
@@ -306,7 +289,6 @@
 			isa = PBXVariantGroup;
 			children = (
 				3AAD49281830929B003FAFA8 /* en */,
-				EF3B653118D0546300B0CF1C /* zh-Hant */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -390,8 +372,6 @@
 				DSTROOT = /tmp/MSDynamicsDrawerViewController.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MSDynamicsDrawerViewController/MSDynamicsDrawerViewController-Prefix.pch";
-				INSTALL_GROUP = "";
-				INSTALL_OWNER = "";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -404,8 +384,6 @@
 				DSTROOT = /tmp/MSDynamicsDrawerViewController.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MSDynamicsDrawerViewController/MSDynamicsDrawerViewController-Prefix.pch";
-				INSTALL_GROUP = "";
-				INSTALL_OWNER = "";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;

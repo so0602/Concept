@@ -49,6 +49,7 @@
 #endif
     
     self.dynamicsDrawerViewController.delegate = self;
+    [self.dynamicsDrawerViewController setRevealWidth:320 forDirection:MSDynamicsDrawerDirectionLeft];
     
     // Add some example stylers
     [self.dynamicsDrawerViewController addStylersFromArray:@[[MSDynamicsDrawerScaleStyler styler], [MSDynamicsDrawerFadeStyler styler]] forDirection:MSDynamicsDrawerDirectionLeft];
