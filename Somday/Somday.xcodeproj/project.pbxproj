@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2E278C0518F7D73A00C4D3FF /* SDChatListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E278C0418F7D73A00C4D3FF /* SDChatListTableViewCell.m */; };
 		2E33BB6518EE9F65004F9CF4 /* GoogleMaps.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E33BB6418EE9F65004F9CF4 /* GoogleMaps.framework */; };
 		2E33BB6E18EEA040004F9CF4 /* GoogleMaps.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 2E33BB6D18EEA040004F9CF4 /* GoogleMaps.bundle */; };
 		2E33BB7018EEA073004F9CF4 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E33BB6F18EEA073004F9CF4 /* AVFoundation.framework */; };
@@ -21,6 +22,7 @@
 		2E33BB8218EEA0D7004F9CF4 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E33BB8118EEA0D7004F9CF4 /* QuartzCore.framework */; };
 		2E33BB8518EEA2F8004F9CF4 /* SDEventMapView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E33BB8418EEA2F8004F9CF4 /* SDEventMapView.m */; };
 		2E33BB8718EEA30A004F9CF4 /* SDEventMapView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2E33BB8618EEA30A004F9CF4 /* SDEventMapView.xib */; };
+		2E4BBEEB18F7D365007F5576 /* SDRecentChatsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E4BBEEA18F7D365007F5576 /* SDRecentChatsViewController.m */; };
 		2E54CABF18C5D1D900B23A96 /* SDHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E54CABE18C5D1D900B23A96 /* SDHomeViewController.m */; };
 		2E54CAC618C5D2C200B23A96 /* SDCollectionViewFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E54CAC518C5D2C200B23A96 /* SDCollectionViewFlowLayout.m */; };
 		2E54CACF18C5D7BF00B23A96 /* SDHomeHeaderCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E54CACE18C5D7BF00B23A96 /* SDHomeHeaderCollectionViewCell.m */; };
@@ -1104,6 +1106,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		2E278C0318F7D73A00C4D3FF /* SDChatListTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SDChatListTableViewCell.h; path = Classes/SDChatListTableViewCell.h; sourceTree = "<group>"; };
+		2E278C0418F7D73A00C4D3FF /* SDChatListTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SDChatListTableViewCell.m; path = Classes/SDChatListTableViewCell.m; sourceTree = "<group>"; };
 		2E33BB6418EE9F65004F9CF4 /* GoogleMaps.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleMaps.framework; sourceTree = "<group>"; };
 		2E33BB6D18EEA040004F9CF4 /* GoogleMaps.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = GoogleMaps.bundle; path = GoogleMaps.framework/Versions/A/Resources/GoogleMaps.bundle; sourceTree = "<group>"; };
 		2E33BB6F18EEA073004F9CF4 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
@@ -1119,6 +1123,8 @@
 		2E33BB8318EEA2F8004F9CF4 /* SDEventMapView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SDEventMapView.h; path = Classes/SDEventMapView.h; sourceTree = "<group>"; };
 		2E33BB8418EEA2F8004F9CF4 /* SDEventMapView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SDEventMapView.m; path = Classes/SDEventMapView.m; sourceTree = "<group>"; };
 		2E33BB8618EEA30A004F9CF4 /* SDEventMapView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SDEventMapView.xib; path = Classes/SDEventMapView.xib; sourceTree = "<group>"; };
+		2E4BBEE918F7D365007F5576 /* SDRecentChatsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SDRecentChatsViewController.h; path = Classes/SDRecentChatsViewController.h; sourceTree = "<group>"; };
+		2E4BBEEA18F7D365007F5576 /* SDRecentChatsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SDRecentChatsViewController.m; path = Classes/SDRecentChatsViewController.m; sourceTree = "<group>"; };
 		2E54CABD18C5D1D900B23A96 /* SDHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SDHomeViewController.h; path = Classes/SDHomeViewController.h; sourceTree = "<group>"; };
 		2E54CABE18C5D1D900B23A96 /* SDHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SDHomeViewController.m; path = Classes/SDHomeViewController.m; sourceTree = "<group>"; };
 		2E54CAC418C5D2C200B23A96 /* SDCollectionViewFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SDCollectionViewFlowLayout.h; path = Classes/SDCollectionViewFlowLayout.h; sourceTree = "<group>"; };
@@ -2255,6 +2261,25 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2E278BFB18F7D6AE00C4D3FF /* View */ = {
+			isa = PBXGroup;
+			children = (
+				2E278C0318F7D73A00C4D3FF /* SDChatListTableViewCell.h */,
+				2E278C0418F7D73A00C4D3FF /* SDChatListTableViewCell.m */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		2E4BBEDE18F7D2F8007F5576 /* Chat */ = {
+			isa = PBXGroup;
+			children = (
+				2E4BBEE918F7D365007F5576 /* SDRecentChatsViewController.h */,
+				2E4BBEEA18F7D365007F5576 /* SDRecentChatsViewController.m */,
+				2E278BFB18F7D6AE00C4D3FF /* View */,
+			);
+			name = Chat;
+			sourceTree = "<group>";
+		};
 		2E54CACC18C5D78E00B23A96 /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -3762,6 +3787,7 @@
 				EF3B651B18CDB6AB00B0CF1C /* Login */,
 				B65DDC1418C5865C0076408C /* Main */,
 				B663F00C18E9BB030077E3FF /* Main Navigation */,
+				2E4BBEDE18F7D2F8007F5576 /* Chat */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -5026,6 +5052,7 @@
 				B6BE49D018CF457500DA7313 /* SDForgotPasswordViewController.m in Sources */,
 				B663F00F18E9D2B90077E3FF /* SDMainTranslucentImageView.m in Sources */,
 				2E7A351718D888D100662504 /* AFKPageFlipper.m in Sources */,
+				2E278C0518F7D73A00C4D3FF /* SDChatListTableViewCell.m in Sources */,
 				B65DDC1818C586760076408C /* SDMenuTableViewCell.m in Sources */,
 				B6DC7C0118DAB2C300023862 /* SDNewStoryViewController.m in Sources */,
 				2E880B0D18D805E20049446F /* SDStoryBookGridView.m in Sources */,
@@ -5066,6 +5093,7 @@
 				B6BE49DD18CF699F00DA7313 /* SDEmailTextField.m in Sources */,
 				B6DC7C0F18DAE1B000023862 /* UITabBarController+Additions.m in Sources */,
 				B6BE49E418CF707200DA7313 /* UITextField+Addition.m in Sources */,
+				2E4BBEEB18F7D365007F5576 /* SDRecentChatsViewController.m in Sources */,
 				B65DDC1218C57FB30076408C /* UIViewController+Addition.m in Sources */,
 				EFA8EBCC18BDD87100144B75 /* main.m in Sources */,
 				EF3B65B918D3008C00B0CF1C /* UIImageView+LBBlurredImage.m in Sources */,
