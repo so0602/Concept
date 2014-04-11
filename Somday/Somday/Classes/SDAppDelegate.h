@@ -16,7 +16,8 @@
 
 @property (nonatomic, strong) UIWindow *window;
 
-@property (nonatomic, strong) SDMainNavigationController* navigationController;
+//@property (nonatomic, strong) SDMainNavigationController* navigationController;
+@property (nonatomic, strong) UINavigationController* navigationController;
 @property (nonatomic, strong) SDLoginViewController* loginViewController;
 @property (nonatomic, strong) SDDynamicsDrawerViewController* mainViewController;
 

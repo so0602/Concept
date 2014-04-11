@@ -80,17 +80,21 @@
     
     [[NSNotificationCenter defaultCenter] removeObserver:self];
     
+#if defined(LeftNavigationControl) && LeftNavigationControl
     SDAppDelegate* delegate = [UIApplication sharedApplication].delegate;
     [delegate.navigationController removeDelegate:self];
+#endif
 }
 
 -(void)viewControllerWillUpdate:(NSNotification *)notification{
     self.keepUpdate = TRUE;
     
+#if defined(LeftNavigationControl) && LeftNavigationControl
     SDAppDelegate* delegate = (id)[UIApplication sharedApplication].delegate;
     SDMainNavigationController* viewController = delegate.navigationController;
     self.targetImage = viewController.processedBackgroundImage;
     self.targetView = viewController.currentBackgroundView.superview;
+#endif
     
     [self setNeedsLayout];
 }

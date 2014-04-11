@@ -11,3 +11,15 @@
 "ErrorMessage_PasswordFormat" = "Must be at least 8 characters";
 "ErrorMessage_ConfirmPasswordFormat" = "Confirm Password is not match";
 "ErrorMessage_NotMatch" = "Your email and password do not match";
+
+"DateFormat_Today" = "Today";
+"DateFormat_Yesterday" = "Yesterday";
+"DateFormat_Tomorrow" = "Tomorrow";
+
+"DateFormat_ThisMonday" = "This Monday";
+"DateFormat_ThisTueday" = "This Tueday";
+"DateFormat_ThisWednesday" = "This Wednesday";
+"DateFormat_ThisThursday" = "This Thursday";
+"DateFormat_ThisFriday" = "This Friday";
+"DateFormat_ThisSaturday" = "This Saturday";
+"DateFormat_ThisSunday" = "This Sunday";

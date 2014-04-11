@@ -61,9 +61,14 @@ const CGFloat SDPaneViewFilterViewTag = 7777;
 {
     [super viewDidLoad];
 
-    [self.paneView setY:20];
-    [self.paneView setHeight:self.paneView.height - 20];
-
+//    [self.paneView setY:20];
+//    [self.paneView setHeight:self.paneView.height - 20];
+    
+    self.shouldAlignStatusBarToPaneView = FALSE;
+    
+#if defined(LeftNavigationControl) && !LeftNavigationControl
+    [self addStylersFromArray:@[[MSDynamicsDrawerParallaxStyler styler]] forDirection:MSDynamicsDrawerDirectionLeft];
+#endif
 }
 
 -(void)viewDidAppear:(BOOL)animated{
@@ -87,7 +92,7 @@ const CGFloat SDPaneViewFilterViewTag = 7777;
     
     [self.topMenuViewController.view removeFromSuperview];
     
-    [self setPaneState:MSDynamicsDrawerPaneStateMenu inDirection:MSDynamicsDrawerDirectionLeft animated:TRUE allowUserInterruption:FALSE completion:nil];
+    [self setPaneState:MSDynamicsDrawerPaneStateOpen inDirection:MSDynamicsDrawerDirectionLeft animated:TRUE allowUserInterruption:FALSE completion:nil];
     
     [self updatePeneViewCornerRadius:SDPaneViewCornerRadius];
 }
@@ -109,7 +114,7 @@ const CGFloat SDPaneViewFilterViewTag = 7777;
     self.delegate = self.topMenuViewController;
     self.customDelegate = self.topMenuViewController;
     
-    [self setPaneState:MSDynamicsDrawerPaneStateMenu inDirection:MSDynamicsDrawerDirectionTop animated:TRUE allowUserInterruption:FALSE completion:nil];
+    [self setPaneState:MSDynamicsDrawerPaneStateOpen inDirection:MSDynamicsDrawerDirectionTop animated:TRUE allowUserInterruption:FALSE completion:nil];
     
     [self updatePeneViewCornerRadius:SDPaneViewCornerRadius];
 }
@@ -118,7 +123,7 @@ const CGFloat SDPaneViewFilterViewTag = 7777;
     UIView* view = self.addBarButtonItem.customView;
     view = view.subviews.firstObject;
     [SDUtils rotateBackView:view];
-    [super topMenuWillClose];
+//    [super topMenuWillClose];
     self.delegate = self.menuViewController;
     self.customDelegate = self.menuViewController;
     if( [self drawerViewControllerForDirection:MSDynamicsDrawerDirectionTop] ){
@@ -200,8 +205,6 @@ const CGFloat SDPaneViewFilterViewTag = 7777;
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(topMenuDidClosed) name:TopMenuDidClosed object:nil];
 }
 
-#pragma mark - MSDynamicsDrawerViewController Override
-
 -(void)updatePeneViewCornerRadius:(CGFloat)radius
 {
     UIView *filterView = [self.paneView viewWithTag:SDPaneViewFilterViewTag];
@@ -238,6 +241,9 @@ const CGFloat SDPaneViewFilterViewTag = 7777;
     contentView.layer.cornerRadius = radius;
     
 }
+
+#if defined(LeftNavigationControl) && LeftNavigationControl
+#pragma mark - MSDynamicsDrawerViewController Override
 
 - (void)paneTapped:(UIPanGestureRecognizer *)gestureRecognizer
 {
@@ -477,5 +483,6 @@ const CGFloat SDPaneViewFilterViewTag = 7777;
     }
     NSLog(@"replaceViewController2 frame!!!: %@", NSStringFromCGRect(self.paneView.frame));
 }
+#endif
 
 @end

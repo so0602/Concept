@@ -16,3 +16,5 @@
     #import "SDUtils.h"
     #import "SDAdditionHeaders.h"
 #endif
+
+#define LeftNavigationControl FALSE

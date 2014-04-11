@@ -43,4 +43,7 @@
 +(void)showLoading;
 +(void)dismissLoading;
 
++(NSString*)dateString:(NSDate*)date;
++(NSString*)dateString:(NSDate*)startDate endDate:(NSDate*)endDate;
+
 @end

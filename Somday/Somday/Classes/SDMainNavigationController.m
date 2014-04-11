@@ -44,84 +44,84 @@ static const CGFloat ProcessedBackgroundImageScaleFactor = 1;
     }
     _backgroundImage = backgroundImage;
     
-    NSPredicate* predicate = [NSPredicate predicateWithFormat:@"self = %@", [NSNull null]];
-    __block BOOL isFirstView = [self.backgroundImageViews filteredArrayUsingPredicate:predicate].count == self.backgroundImageViews.count;
-    
-    if( isFirstView ){
-        UIImage* image = [_backgroundImage resizeImageProportionallyWithScaleFactor:0.4].defaultBlur;
-        
-        UIImageView* imageView = [[UIImageView alloc] initWithFrame:self.view.bounds];
-        imageView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-        imageView.clipsToBounds = TRUE;
-        imageView.contentMode = UIViewContentModeScaleAspectFill;
-        imageView.image = image;
-        
-        UIViewController* viewController = self.viewControllers.firstObject;
-        UIView* view = viewController.view;
-        [view insertSubview:imageView atIndex:0];
-        
-        [self.backgroundImageViews replaceObjectAtIndex:0 withObject:imageView];
-        self.currentIndex = 0;
-        
-        self.processedBackgroundImage = imageView.convertViewToImage;
-        self.processedBackgroundImageWithDarkLayer = self.processedBackgroundImage.defaultDarkBlur;
-        
-        for( id<SDMainNavigationControllerDelegate> delegate in self.delegates ){
-            [delegate navigationController:self backgroundDidChange:self.processedBackgroundImage];
-        }
-        
-        [[NSNotificationCenter defaultCenter] postNotificationName:MainBackgroundImageDidChangeNotification object:self userInfo:nil];
-    }else{
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
-            __block UIImage* image = [_backgroundImage resizeImageProportionallyWithScaleFactor:0.4].defaultBlur;
-            
-            dispatch_async(dispatch_get_main_queue(), ^{
-                __block UIImageView* imageView = nil;
-                
-                NSInteger index = isFirstView ? self.currentIndex : (self.currentIndex + 1) % BackgroundImageCount;
-                imageView = [self.backgroundImageViews objectAtIndex:index];
-                
-                if( ![imageView isKindOfClass:[UIImageView class]] ){
-                    imageView = [[UIImageView alloc] initWithFrame:self.view.bounds];
-                    imageView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-                    imageView.clipsToBounds = TRUE;
-                    imageView.contentMode = UIViewContentModeScaleAspectFill;
-                }
-                imageView.image = image;
-                
-                self.processedBackgroundImage = [imageView.convertViewToImage resizeImageProportionallyWithScaleFactor:ProcessedBackgroundImageScaleFactor];
-                self.processedBackgroundImageWithDarkLayer = self.processedBackgroundImage.defaultDarkBlur;
-//                self.processedBackgroundImageWithDarkLayer = self.processedBackgroundImage;
-                
-                __block UIImageView* prevImageView = (id)self.currentBackgroundView;
-                
-                imageView.alpha = 0.0f;
-                UIViewController* viewController = self.viewControllers.firstObject;
-                UIView* view = viewController.view;
-                [view insertSubview:imageView atIndex:1];
-                [UIView animateWithDuration:0.4 animations:^{
-                    prevImageView.alpha = 0.0f;
-                    imageView.alpha = 1.0f;
-                } completion:^(BOOL finished) {
-                    [prevImageView removeFromSuperview];
-                    prevImageView.alpha = 1.0;
-                    
-                    for( id<SDMainNavigationControllerDelegate> delegate in self.delegates ){
-                        [delegate navigationController:self backgroundDidChange:self.processedBackgroundImage];
-                    }
-                    [[NSNotificationCenter defaultCenter] postNotificationName:MainBackgroundImageDidChangeNotification object:self userInfo:nil];
-                }];
-                
-                [self.backgroundImageViews replaceObjectAtIndex:index withObject:imageView];
-                self.currentIndex = index;
-                
-                for( id<SDMainNavigationControllerDelegate> delegate in self.delegates ){
-                    [delegate navigationController:self backgroundWillChange:self.processedBackgroundImage];
-                }
-                [[NSNotificationCenter defaultCenter] postNotificationName:MainBackgroundImageWillChangeNotification object:self userInfo:nil];
-            });
-        });
-    }
+//    NSPredicate* predicate = [NSPredicate predicateWithFormat:@"self = %@", [NSNull null]];
+//    __block BOOL isFirstView = [self.backgroundImageViews filteredArrayUsingPredicate:predicate].count == self.backgroundImageViews.count;
+//    
+//    if( isFirstView ){
+//        UIImage* image = [_backgroundImage resizeImageProportionallyWithScaleFactor:0.4].defaultBlur;
+//        
+//        UIImageView* imageView = [[UIImageView alloc] initWithFrame:self.view.bounds];
+//        imageView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+//        imageView.clipsToBounds = TRUE;
+//        imageView.contentMode = UIViewContentModeScaleAspectFill;
+//        imageView.image = image;
+//        
+//        UIViewController* viewController = self.viewControllers.firstObject;
+//        UIView* view = viewController.view;
+//        [view insertSubview:imageView atIndex:0];
+//        
+//        [self.backgroundImageViews replaceObjectAtIndex:0 withObject:imageView];
+//        self.currentIndex = 0;
+//        
+//        self.processedBackgroundImage = imageView.convertViewToImage;
+//        self.processedBackgroundImageWithDarkLayer = self.processedBackgroundImage.defaultDarkBlur;
+//        
+//        for( id<SDMainNavigationControllerDelegate> delegate in self.delegates ){
+//            [delegate navigationController:self backgroundDidChange:self.processedBackgroundImage];
+//        }
+//        
+//        [[NSNotificationCenter defaultCenter] postNotificationName:MainBackgroundImageDidChangeNotification object:self userInfo:nil];
+//    }else{
+//        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
+//            __block UIImage* image = [_backgroundImage resizeImageProportionallyWithScaleFactor:0.4].defaultBlur;
+//            
+//            dispatch_async(dispatch_get_main_queue(), ^{
+//                __block UIImageView* imageView = nil;
+//                
+//                NSInteger index = isFirstView ? self.currentIndex : (self.currentIndex + 1) % BackgroundImageCount;
+//                imageView = [self.backgroundImageViews objectAtIndex:index];
+//                
+//                if( ![imageView isKindOfClass:[UIImageView class]] ){
+//                    imageView = [[UIImageView alloc] initWithFrame:self.view.bounds];
+//                    imageView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+//                    imageView.clipsToBounds = TRUE;
+//                    imageView.contentMode = UIViewContentModeScaleAspectFill;
+//                }
+//                imageView.image = image;
+//                
+//                self.processedBackgroundImage = [imageView.convertViewToImage resizeImageProportionallyWithScaleFactor:ProcessedBackgroundImageScaleFactor];
+//                self.processedBackgroundImageWithDarkLayer = self.processedBackgroundImage.defaultDarkBlur;
+////                self.processedBackgroundImageWithDarkLayer = self.processedBackgroundImage;
+//                
+//                __block UIImageView* prevImageView = (id)self.currentBackgroundView;
+//                
+//                imageView.alpha = 0.0f;
+//                UIViewController* viewController = self.viewControllers.firstObject;
+//                UIView* view = viewController.view;
+//                [view insertSubview:imageView atIndex:1];
+//                [UIView animateWithDuration:0.4 animations:^{
+//                    prevImageView.alpha = 0.0f;
+//                    imageView.alpha = 1.0f;
+//                } completion:^(BOOL finished) {
+//                    [prevImageView removeFromSuperview];
+//                    prevImageView.alpha = 1.0;
+//                    
+//                    for( id<SDMainNavigationControllerDelegate> delegate in self.delegates ){
+//                        [delegate navigationController:self backgroundDidChange:self.processedBackgroundImage];
+//                    }
+//                    [[NSNotificationCenter defaultCenter] postNotificationName:MainBackgroundImageDidChangeNotification object:self userInfo:nil];
+//                }];
+//                
+//                [self.backgroundImageViews replaceObjectAtIndex:index withObject:imageView];
+//                self.currentIndex = index;
+//                
+//                for( id<SDMainNavigationControllerDelegate> delegate in self.delegates ){
+//                    [delegate navigationController:self backgroundWillChange:self.processedBackgroundImage];
+//                }
+//                [[NSNotificationCenter defaultCenter] postNotificationName:MainBackgroundImageWillChangeNotification object:self userInfo:nil];
+//            });
+//        });
+//    }
 }
 
 -(UIImage*)processedBackgroundImageWithFrame:(CGRect)_frame{

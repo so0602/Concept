@@ -62,8 +62,11 @@
 
 -(void)viewDidLoad{
     [super viewDidLoad];
-    
+#if defined(LeftNavigationControl) && LeftNavigationControl
     self.backgroundImageView.image = self.backgroundImage;
+#endif
+    
+    [self showSearchView];
 }
 
 -(void)dealloc{
@@ -115,13 +118,17 @@
 }
 
 -(void)showSearchView{
+#if defined(LeftNavigationControl) && LeftNavigationControl
     [self.dynamicsDrawerViewController setPaneState:MSDynamicsDrawerPaneStateOpen animated:TRUE allowUserInterruption:TRUE completion:nil];
     
     SDSearchViewController* viewController = self.searchViewController;
+#endif
+    
     [self addSearchView:TRUE];
     
     [self.dynamicsDrawerViewController updatePeneViewCornerRadius:0.0f];
-    
+
+#if defined(LeftNavigationControl) && LeftNavigationControl
     if( viewController.view.alpha == 1.0 ){
         viewController.view.alpha = 0.0;
     }
@@ -130,6 +137,7 @@
     } completion:^(BOOL finished) {
 
     }];
+#endif
 }
 
 -(void)hideSearchView{
@@ -137,6 +145,7 @@
     
     [self.dynamicsDrawerViewController updatePeneViewCornerRadius:8.0f];
     
+#if defined(LeftNavigationControl) && LeftNavigationControl
     SDSearchViewController* viewController = self.searchViewController;
     
     [UIView animateWithDuration:0.7 delay:0.0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
@@ -145,6 +154,7 @@
     } completion:^(BOOL finished) {
         [viewController.view removeFromSuperview];
     }];
+#endif
 }
 
 -(void)addSearchView:(BOOL)screenCapture{
@@ -261,10 +271,13 @@
 #pragma mark - MSDynamicsDrawerViewControllerDelegate
 
 -(void)dynamicsDrawerViewController:(MSDynamicsDrawerViewController *)drawerViewController mayUpdateToPaneState:(MSDynamicsDrawerPaneState)paneState forDirection:(MSDynamicsDrawerDirection)direction{
+#if defined(LeftNavigationControl) && LeftNavigationControl
     [[NSNotificationCenter defaultCenter] postNotificationName:DynamicsDrawerViewControllerMayUpdateNotification object:nil];
     SDLog(@"paneState: %ld", paneState);
+#endif
 }
 -(void)dynamicsDrawerViewController:(MSDynamicsDrawerViewController *)drawerViewController didUpdateToPaneState:(MSDynamicsDrawerPaneState)paneState forDirection:(MSDynamicsDrawerDirection)direction{
+#if defined(LeftNavigationControl) && LeftNavigationControl
     [[NSNotificationCenter defaultCenter] postNotificationName:DynamicsDrawerViewControllerDidUpdateNotification object:nil];
     if( !self.changingTab ){
         if( paneState == MSDynamicsDrawerPaneStateOpen || paneState == MSDynamicsDrawerPaneStateOpenWide ){
@@ -280,19 +293,24 @@
         [self.animationTimer invalidate];
         self.animationTimer = nil;
     }
+#endif
 }
 -(BOOL)dynamicsDrawerViewController:(MSDynamicsDrawerViewController *)drawerViewController shouldBeginPanePan:(UIPanGestureRecognizer *)panGestureRecognizer{
+#if defined(LeftNavigationControl) && LeftNavigationControl
     [[NSNotificationCenter defaultCenter] postNotificationName:DynamicsDrawerViewControllerShouldBeginPanePanNotification object:nil];
+#endif
     return TRUE;
 }
 
 #pragma mark - SDDynamicsDrawerViewControllerDelegate
 
 -(void)dynamicsDrawerViewController:(MSDynamicsDrawerViewController *)drawerViewController paneViewPositionDidChanged:(CGPoint)position{
-    // To Freddy: what's that??
+
+#if defined(LeftNavigationControl) && LeftNavigationControl
     if( !self.animationTimer && [drawerViewController drawerViewControllerForDirection:MSDynamicsDrawerDirectionLeft] ){
         self.animationTimer = [NSTimer scheduledTimerWithTimeInterval:0.1 target:self selector:@selector(searchViewAnimationUpdate) userInfo:nil repeats:TRUE];
     }
+#endif
 }
 
 -(void)searchViewAnimationUpdate{
@@ -306,7 +324,6 @@
                 CGFloat alpha = (position.x - SDDynamicsDrawerViewController_MenuWidth) / (width - SDDynamicsDrawerViewController_MenuWidth);
                 viewController.view.alpha = alpha;
                 self.tableView.alpha = 1 - alpha;
-                SDLog(@"x,y: %@, alpha: %f", NSStringFromCGPoint(position), alpha);
             }
         });
     });

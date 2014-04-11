@@ -12,4 +12,6 @@
 
 -(void)setFontSize:(CGFloat)fontSize;
 
+-(void)sizeToFitWidth;
+
 @end

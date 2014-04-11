@@ -30,7 +30,7 @@
 #define HeightForFullyDisplayNavigationBar 57.0f
 #define HeightForTriggerNavigationBarAnimation 23.0f
 
-#define Debug_count 30
+#define Debug_count 50
 
 @interface SDHomeViewController ()
 @property (nonatomic) NSMutableArray *dataSource;
@@ -106,7 +106,6 @@ static NSString *HeaderCellIdentifier = @"HeaderCollectionViewCell";
     {
         // Debug
         self.dataSource = [NSMutableArray new];
-        BOOL toggle = TRUE;
         BOOL toggle2 = TRUE;
         int min = SDStoryType_Min;
         int max = SDStoryType_Max + 1;
@@ -115,9 +114,20 @@ static NSString *HeaderCellIdentifier = @"HeaderCollectionViewCell";
             story.type = [NSNumber numberWithInt:min + arc4random() % (max-min)];
             switch( story.type.intValue ){
                 case SDStoryType_Photo:
+                    story.imageName = [NSString stringWithFormat:@"dump_%02d.jpg", arc4random() % 4];
+                    break;
                 case SDStoryType_Event:
-                    story.imageName = toggle ? @"dump_03.jpg" : @"dump_03.jpg";
-                    toggle = !toggle;
+                {
+                    story.imageName = [NSString stringWithFormat:@"dump_%02d.jpg", arc4random() % 4];
+                    
+                    NSMutableArray* members = [NSMutableArray array];
+                    for( int i = 0; i < arc4random() % 20; i++ ){
+                        [members addObject:@"dump_user"];
+                    }
+                    story.members = members;
+                    story.startDate = [NSDate dateWithTimeIntervalSinceNow:(24*6)*60*60];
+                    story.endDate = [NSDate dateWithTimeIntervalSinceNow:story.startDate.timeIntervalSinceNow + (24) * 60 * 60];
+                }
                     break;
                 case SDStoryType_Voice:
                     story.audioName = toggle2 ? @"1kHz_44100Hz_16bit_05sec.mp3" : @"440Hz_44100Hz_16bit_05sec.mp3";
@@ -136,6 +146,7 @@ static NSString *HeaderCellIdentifier = @"HeaderCollectionViewCell";
             story.likeCount = [NSNumber numberWithInt:arc4random() % 10000];
             story.commentCount = [NSNumber numberWithInt:arc4random() % 10000];
             [_dataSource addObject:story];
+            story.content = @"World-renowned Kojima Productions showcases the latest masterpiece in the Metal Gear Solid franchise with Metal Gear Solid V: Ground Zeroes.";
             NSLog(@"type: %@", story.type);
         }
     }
@@ -306,6 +317,7 @@ static NSString *HeaderCellIdentifier = @"HeaderCollectionViewCell";
     [SDUtils rotateBackView:_buttons[1]];
 }
 
+#if defined(LeftNavigationControl) && LeftNavigationControl
 -(UIImage*)background{
     SDAppDelegate* delegate = (id)[UIApplication sharedApplication].delegate;
     return delegate.navigationController.backgroundImage;
@@ -314,6 +326,7 @@ static NSString *HeaderCellIdentifier = @"HeaderCollectionViewCell";
     SDAppDelegate* delegate = (id)[UIApplication sharedApplication].delegate;
     delegate.navigationController.backgroundImage = background;
 }
+#endif
 
 -(void)updateVisibleCollectionViewCellsBackground{
     NSArray* cells = self.collectionView.visibleCells;
@@ -323,6 +336,7 @@ static NSString *HeaderCellIdentifier = @"HeaderCollectionViewCell";
 }
 
 -(void)updateCollectionViewCellBackground:(UICollectionViewCell*)cell{
+#if defined(LeftNavigationControl) && LeftNavigationControl
     UIImageView* view = nil;
     SEL selector = @selector(blurBackgroundImageView);
     if( [cell respondsToSelector:selector] ){
@@ -345,9 +359,11 @@ static NSString *HeaderCellIdentifier = @"HeaderCollectionViewCell";
         }
         view.image = image;
     }
+#endif
 }
 
 -(void)mainBackgroundImageWillChange:(NSNotification*)notification{
+#if defined(LeftNavigationControl) && LeftNavigationControl
     SDMainNavigationController* viewController = notification.object;
     if( !viewController ){
         SDAppDelegate* delegate = (id)[UIApplication sharedApplication].delegate;
@@ -355,8 +371,8 @@ static NSString *HeaderCellIdentifier = @"HeaderCollectionViewCell";
     }
     self.backgroundView.targetImage = viewController.processedBackgroundImage;
     self.backgroundView.targetView = viewController.currentBackgroundView.superview;
-//    [self.backgroundView setNeedsLayout];
     [self updateVisibleCollectionViewCellsBackground];
+#endif
 }
 
 - (void)updateBackgroundImageToCurrentIndex:(BOOL)toCurrentIndex

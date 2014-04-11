@@ -60,10 +60,8 @@ typedef NS_OPTIONS(NSInteger, MSDynamicsDrawerDirection) {
  */
 typedef NS_ENUM(NSInteger, MSDynamicsDrawerPaneState) {
     MSDynamicsDrawerPaneStateClosed,   // Drawer view entirely hidden by pane view
-    MSDynamicsDrawerPaneStateMenu,   // Drawer view revealed to menu
     MSDynamicsDrawerPaneStateOpen,     // Drawer view revealed to open width
     MSDynamicsDrawerPaneStateOpenWide, // Drawer view entirely visible with pane opened to `paneStateOpenWideEdgeOffset`
-    MSDynamicsDrawerPaneStateMax = MSDynamicsDrawerPaneStateOpenWide,
 };
 
 @class MSDynamicsDrawerViewController;
@@ -151,8 +149,6 @@ typedef NS_ENUM(NSInteger, MSDynamicsDrawerPaneState) {
  @see setPaneState:inDirection:animated:allowUserInterruption:completion:
  */
 @property (nonatomic, assign) MSDynamicsDrawerPaneState paneState;
-
--(void)topMenuWillClose;
 
 /**
  The state of the pane view as defined in a `MSDynamicsDrawerPaneState`.

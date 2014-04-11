@@ -9,28 +9,28 @@
 #import "SDDataObjectBase.h"
 
 typedef NS_ENUM(NSUInteger, SDStoryType){
-    SDStoryType_Text,
     SDStoryType_Photo,
+    SDStoryType_Text,
     SDStoryType_Voice,
     SDStoryType_Event,
     SDStoryType_Storybook,
     SDStoryType_Link,
     
-    SDStoryType_Min = SDStoryType_Text,
+    SDStoryType_Min = SDStoryType_Photo,
     SDStoryType_Max = SDStoryType_Link,
 };
 
 //typedef NS_ENUM(NSUInteger, SDStoryType){
+//    SDStoryType_Photo,
+//    SDStoryType_Event,
 //    SDStoryType_Link,
 //    SDStoryType_Voice,
-//    SDStoryType_Photo,
 //    SDStoryType_Text,
-//    SDStoryType_Event,
 //    SDStoryType_Storybook,
 //    
 //    
-//    SDStoryType_Min = SDStoryType_Link,
-//    SDStoryType_Max = SDStoryType_Photo,
+//    SDStoryType_Min = SDStoryType_Photo,
+//    SDStoryType_Max = SDStoryType_Event,
 //};
 
 @interface SDStory : NSObject<SDDataObjectBase>
@@ -38,7 +38,7 @@ typedef NS_ENUM(NSUInteger, SDStoryType){
 @property (nonatomic, strong, readonly) NSNumber* ID;
 //@property (nonatomic, strong, readonly) NSString* title;
 @property (nonatomic, strong, readonly) NSString* summary;
-@property (nonatomic, strong, readonly) NSString* content;
+//@property (nonatomic, strong, readonly) NSString* content;
 @property (nonatomic, strong, readonly) NSString* videoUrl;
 @property (nonatomic, strong, readonly) NSString* displayLevel;
 @property (nonatomic, strong, readonly) NSNumber* profileId;
@@ -61,6 +61,11 @@ typedef NS_ENUM(NSUInteger, SDStoryType){
 @property (nonatomic, strong) NSString* audioName;
 @property (nonatomic, strong) NSString* websiteLink;
 @property (nonatomic, strong) UIImage* websiteImage;
+
+@property (nonatomic, strong) NSArray* members;
+@property (nonatomic, strong) NSDate* startDate;
+@property (nonatomic, strong) NSDate* endDate;
+@property (nonatomic, strong) NSString* content;
 
 @end
 

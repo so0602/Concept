@@ -230,6 +230,7 @@ typedef NSUInteger SDGridMenuState;
     
     if( self.backgroundImageView && story.imageName ){
         self.backgroundImageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@", story.imageName]];
+        NSLog(@"imageName: %@, image: %@", story.imageName, self.backgroundImageView.image);
     }
     
     if( self.userButton && story.userIconName ){
