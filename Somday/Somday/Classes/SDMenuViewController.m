@@ -85,6 +85,7 @@
 
 -(void)initialize{
     self.paneViewControllerType = NSUIntegerMax;
+#if defined(LeftNavigationControl) && LeftNavigationControl
     self.paneViewControllerTitles = @{
                                       @(SDPaneViewControllerType_Search) : @"Search",
                                       @(SDPaneViewControllerType_Home) : @"Home",
@@ -112,7 +113,32 @@
                                      @(SDPaneViewControllerType_Chats) : @"icons-shadow-24px_chats",
                                      @(SDPaneViewControllerType_Settings) : @"icons-shadow-24px_setting"
                                      };
-    
+#else
+    self.paneViewControllerTitles = @{
+                                      @(SDPaneViewControllerType_Search) : @"Search",
+                                      @(SDPaneViewControllerType_Home) : @"Home",
+                                      @(SDPaneViewControllerType_User) : @"User",
+                                      @(SDPaneViewControllerType_Discover) : @"Discover",
+                                      @(SDPaneViewControllerType_Agenda) : @"Agenda",
+                                      @(SDPaneViewControllerType_Notifications) : @"Notifications",
+                                      };
+    self.paneViewControllerIdentifiers = @{
+                                           @(SDPaneViewControllerType_Search) : @"Search",
+                                           @(SDPaneViewControllerType_Home) : @"Home",
+                                           @(SDPaneViewControllerType_User) : @"User",
+                                           @(SDPaneViewControllerType_Discover) : @"Discover",
+                                           @(SDPaneViewControllerType_Agenda) : @"Agenda",
+                                           @(SDPaneViewControllerType_Notifications) : @"Notifications"
+                                           };
+    self.paneViewControllerIcons = @{
+                                     @(SDPaneViewControllerType_Search) : @"icons-shadow-24px_search",
+                                     @(SDPaneViewControllerType_Home) : @"icons-shadow-24px_home",
+                                     @(SDPaneViewControllerType_User) : @"icons-shadow-24px_myself",
+                                     @(SDPaneViewControllerType_Discover) : @"icons-shadow-24px_closeFriends",
+                                     @(SDPaneViewControllerType_Agenda) : @"icons-shadow-24px_calendar",
+                                     @(SDPaneViewControllerType_Notifications) : @"icons-shadow-24px_setting"
+                                     };
+#endif
     [[NSNotificationCenter defaultCenter] removeObserver:self name:HomeBackgroundImageChangedNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(homeBackgroundImageDidChange:) name:HomeBackgroundImageChangedNotification object:nil];
 }

@@ -10,6 +10,7 @@
 
 #import "SDDynamicsDrawerViewController.h"
 
+#if defined(LeftNavigationControl) && LeftNavigationControl
 typedef NS_ENUM(NSUInteger, SDPaneViewControllerType){
     SDPaneViewControllerType_Search,
     SDPaneViewControllerType_Home,
@@ -19,6 +20,16 @@ typedef NS_ENUM(NSUInteger, SDPaneViewControllerType){
     SDPaneViewControllerType_Chats,
     SDPaneViewControllerType_Settings
 };
+#else
+typedef NS_ENUM(NSUInteger, SDPaneViewControllerType){
+    SDPaneViewControllerType_Search,
+    SDPaneViewControllerType_Home,
+    SDPaneViewControllerType_User, // Profile
+    SDPaneViewControllerType_Discover,
+    SDPaneViewControllerType_Agenda,
+    SDPaneViewControllerType_Notifications,
+};
+#endif
 
 @interface SDMenuViewController : UIViewController<MSDynamicsDrawerViewControllerDelegate, SDDynamicsDrawerViewControllerDelegate>
 
