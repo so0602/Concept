@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		2E278C0518F7D73A00C4D3FF /* SDChatListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E278C0418F7D73A00C4D3FF /* SDChatListTableViewCell.m */; };
+		2E278C1418F7E4FC00C4D3FF /* SDChat.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E278C1318F7E4FC00C4D3FF /* SDChat.m */; };
+		2E278C1818F7E5FE00C4D3FF /* SDUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E278C1718F7E5FE00C4D3FF /* SDUser.m */; };
+		2E278C1B18F7E6A600C4D3FF /* SDMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E278C1A18F7E6A600C4D3FF /* SDMessage.m */; };
 		2E33BB6518EE9F65004F9CF4 /* GoogleMaps.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E33BB6418EE9F65004F9CF4 /* GoogleMaps.framework */; };
 		2E33BB6E18EEA040004F9CF4 /* GoogleMaps.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 2E33BB6D18EEA040004F9CF4 /* GoogleMaps.bundle */; };
 		2E33BB7018EEA073004F9CF4 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E33BB6F18EEA073004F9CF4 /* AVFoundation.framework */; };
@@ -1109,6 +1112,12 @@
 /* Begin PBXFileReference section */
 		2E278C0318F7D73A00C4D3FF /* SDChatListTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SDChatListTableViewCell.h; path = Classes/SDChatListTableViewCell.h; sourceTree = "<group>"; };
 		2E278C0418F7D73A00C4D3FF /* SDChatListTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SDChatListTableViewCell.m; path = Classes/SDChatListTableViewCell.m; sourceTree = "<group>"; };
+		2E278C1218F7E4FC00C4D3FF /* SDChat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SDChat.h; path = Classes/SDChat.h; sourceTree = "<group>"; };
+		2E278C1318F7E4FC00C4D3FF /* SDChat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SDChat.m; path = Classes/SDChat.m; sourceTree = "<group>"; };
+		2E278C1618F7E5FE00C4D3FF /* SDUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SDUser.h; path = Classes/SDUser.h; sourceTree = "<group>"; };
+		2E278C1718F7E5FE00C4D3FF /* SDUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SDUser.m; path = Classes/SDUser.m; sourceTree = "<group>"; };
+		2E278C1918F7E6A600C4D3FF /* SDMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SDMessage.h; path = Classes/SDMessage.h; sourceTree = "<group>"; };
+		2E278C1A18F7E6A600C4D3FF /* SDMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SDMessage.m; path = Classes/SDMessage.m; sourceTree = "<group>"; };
 		2E33BB6418EE9F65004F9CF4 /* GoogleMaps.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleMaps.framework; sourceTree = "<group>"; };
 		2E33BB6D18EEA040004F9CF4 /* GoogleMaps.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = GoogleMaps.bundle; path = GoogleMaps.framework/Versions/A/Resources/GoogleMaps.bundle; sourceTree = "<group>"; };
 		2E33BB6F18EEA073004F9CF4 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
@@ -2271,6 +2280,26 @@
 				2E278C0418F7D73A00C4D3FF /* SDChatListTableViewCell.m */,
 			);
 			name = View;
+			sourceTree = "<group>";
+		};
+		2E278C0A18F7E4DC00C4D3FF /* Chat */ = {
+			isa = PBXGroup;
+			children = (
+				2E278C1218F7E4FC00C4D3FF /* SDChat.h */,
+				2E278C1318F7E4FC00C4D3FF /* SDChat.m */,
+				2E278C1918F7E6A600C4D3FF /* SDMessage.h */,
+				2E278C1A18F7E6A600C4D3FF /* SDMessage.m */,
+			);
+			name = Chat;
+			sourceTree = "<group>";
+		};
+		2E278C1518F7E5E800C4D3FF /* User */ = {
+			isa = PBXGroup;
+			children = (
+				2E278C1618F7E5FE00C4D3FF /* SDUser.h */,
+				2E278C1718F7E5FE00C4D3FF /* SDUser.m */,
+			);
+			name = User;
 			sourceTree = "<group>";
 		};
 		2E4BBEDE18F7D2F8007F5576 /* Chat */ = {
@@ -3524,6 +3553,8 @@
 				EF3B650C18CDAC1000B0CF1C /* Check User Exist */,
 				EF3B651018CDACE400B0CF1C /* Create User */,
 				EF3B650B18CDAC0600B0CF1C /* Login */,
+				2E278C0A18F7E4DC00C4D3FF /* Chat */,
+				2E278C1518F7E5E800C4D3FF /* User */,
 				EF3B64FE18CDA27700B0CF1C /* SDResponseBase.h */,
 				EF3B64FF18CDA27700B0CF1C /* SDResponseBase.m */,
 				EF3B650118CDA2C200B0CF1C /* SDStatus.h */,
@@ -5065,6 +5096,7 @@
 				B65DE2B218C884D50076408C /* SDTopMenuViewController.m in Sources */,
 				EF3B650F18CDAC2500B0CF1C /* SDCheckUserExist.m in Sources */,
 				B6BE4ABD18D8167C00DA7313 /* SDTextGridView.m in Sources */,
+				2E278C1B18F7E6A600C4D3FF /* SDMessage.m in Sources */,
 				EFA8EBD618BDD87100144B75 /* SDDynamicsDrawerViewController.m in Sources */,
 				B6BE49EB18CF739700DA7313 /* SDPasswordTextField.m in Sources */,
 				2E33BB8518EEA2F8004F9CF4 /* SDEventMapView.m in Sources */,
@@ -5099,6 +5131,7 @@
 				B6DC7C0F18DAE1B000023862 /* UITabBarController+Additions.m in Sources */,
 				B6BE49E418CF707200DA7313 /* UITextField+Addition.m in Sources */,
 				2E4BBEEB18F7D365007F5576 /* SDRecentChatsViewController.m in Sources */,
+				2E278C1818F7E5FE00C4D3FF /* SDUser.m in Sources */,
 				B65DDC1218C57FB30076408C /* UIViewController+Addition.m in Sources */,
 				EFA8EBCC18BDD87100144B75 /* main.m in Sources */,
 				EF3B65B918D3008C00B0CF1C /* UIImageView+LBBlurredImage.m in Sources */,
@@ -5117,6 +5150,7 @@
 				B6B8275018E3DB4A009C8A37 /* SDErrorBubbleView.m in Sources */,
 				B6DC7C0B18DAB35C00023862 /* KeychainItemWrapper.m in Sources */,
 				B663F00B18E9BA3C0077E3FF /* SDMainNavigationController.m in Sources */,
+				2E278C1418F7E4FC00C4D3FF /* SDChat.m in Sources */,
 				B682DBFC18ED32B9007FC041 /* UIImage+Resizing.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
