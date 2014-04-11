@@ -1105,7 +1105,7 @@
         <!--Navigation Controller-->
         <scene sceneID="QnH-rS-IxB">
             <objects>
-                <navigationController definesPresentationContext="YES" id="QtS-3L-Lyj" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="ChatNavigation" definesPresentationContext="YES" id="QtS-3L-Lyj" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="FCe-gM-BLx">
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" red="0.098039224743843079" green="0.51372551918029785" blue="0.45490199327468872" alpha="1" colorSpace="deviceRGB"/>
@@ -1124,7 +1124,7 @@
         <!--Recent Chats View Controller-->
         <scene sceneID="g27-SO-4PZ">
             <objects>
-                <viewController id="sX5-eL-mk8" customClass="SDRecentChatsViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="RecentChats" id="sX5-eL-mk8" customClass="SDRecentChatsViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Jcd-0N-R7L"/>
                         <viewControllerLayoutGuide type="bottom" id="8Rw-2E-u8H"/>
