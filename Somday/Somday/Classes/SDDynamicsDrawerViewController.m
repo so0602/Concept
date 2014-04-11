@@ -60,14 +60,13 @@ const CGFloat SDPaneViewFilterViewTag = 7777;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
-//    [self.paneView setY:20];
-//    [self.paneView setHeight:self.paneView.height - 20];
     
+#if defined(LeftNavigationControl) && LeftNavigationControl
+    [self.paneView setY:20];
+    [self.paneView setHeight:self.paneView.height - 20];
+#else
     self.shouldAlignStatusBarToPaneView = FALSE;
-    
-#if defined(LeftNavigationControl) && !LeftNavigationControl
-    [self addStylersFromArray:@[[MSDynamicsDrawerParallaxStyler styler]] forDirection:MSDynamicsDrawerDirectionLeft];
+    [self addStylersFromArray:@[[MSDynamicsDrawerParallaxStyler styler], [MSDynamicsDrawerFadeStyler styler]] forDirection:MSDynamicsDrawerDirectionLeft];
 #endif
 }
 
@@ -195,7 +194,7 @@ const CGFloat SDPaneViewFilterViewTag = 7777;
     dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
     dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
         [self setRevealWidth:CGRectGetWidth(self.view.frame) forDirection:MSDynamicsDrawerDirectionLeft];
-        [self setRevealWidth:80 forDirection:MSDynamicsDrawerDirectionTop];
+        [self setRevealWidth:CGRectGetHeight(self.view.frame) forDirection:MSDynamicsDrawerDirectionTop];
     });
     
     self.paneViewSlideOffAnimationEnabled = FALSE;
