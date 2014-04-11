@@ -190,11 +190,11 @@ const CGFloat SDPaneViewFilterViewTag = 7777;
     self.topMenuViewController.dynamicsDrawerViewController = self;
     
     self.chatNavigationViewController = [UINavigationController viewControllerFromStoryboardWithIdentifier:@"ChatNavigation"];
-    UIViewController* viewController = [SDRecentChatsViewController viewControllerFromStoryboardWithIdentifier:@"RecentChats"];
-    NSMutableArray* viewControllers = [NSMutableArray array];
-    [viewControllers addObject:[[UIViewController alloc] init]];
-    [viewControllers addObject:viewController];
-    self.chatNavigationViewController.viewControllers = viewControllers;
+//    UIViewController* viewController = [SDRecentChatsViewController viewControllerFromStoryboardWithIdentifier:@"RecentChats"];
+//    NSMutableArray* viewControllers = [NSMutableArray array];
+//    [viewControllers addObject:[[UIViewController alloc] init]];
+//    [viewControllers addObject:viewController];
+//    self.chatNavigationViewController.viewControllers = viewControllers;
     
     
     [self setDrawerViewController:self.menuViewController forDirection:MSDynamicsDrawerDirectionLeft];

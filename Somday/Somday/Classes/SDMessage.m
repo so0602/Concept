@@ -10,4 +10,16 @@
 
 @implementation SDMessage
 
+-(id)initWithDictionary:(id)dictionary{
+    if( self = [super init] ){
+        self.rawData = dictionary;
+        self.ID = [dictionary objectForKey:@""];
+        self.userID = [dictionary objectForKey:@""];
+        self.message = [dictionary objectForKey:@""];
+        self.isRead = [dictionary objectForKey:@""];
+        self.isSend = [dictionary objectForKey:@""];
+    }
+    return self;
+}
+
 @end

@@ -178,11 +178,11 @@ static const CGFloat ProcessedBackgroundImageScaleFactor = 1;
 -(void)viewDidLoad{
     [super viewDidLoad];
     
-    CGRect frame = self.view.bounds;
-    frame.size.height = 20;
-    UIView* view = [[UIView alloc] initWithFrame:frame];
-    view.backgroundColor = [UIColor whiteColor];
-    [self.view addSubview:view];
+//    CGRect frame = self.view.bounds;
+//    frame.size.height = 20;
+//    UIView* view = [[UIView alloc] initWithFrame:frame];
+//    view.backgroundColor = [UIColor whiteColor];
+//    [self.view addSubview:view];
 }
 
 @end

@@ -7,8 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "SDDataObject.h"
 
-@interface SDMessage : NSObject
+@interface SDMessage : SDDataObject
 
 @property (nonatomic,strong) NSNumber *ID;
 @property (nonatomic,strong) NSNumber *userID;

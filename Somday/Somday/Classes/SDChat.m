@@ -10,4 +10,19 @@
 
 @implementation SDChat
 
+-(id)initWithDictionary:(id)dictionary{
+    if( self = [super init] ){
+        self.rawData = dictionary;
+        self.ID = [dictionary objectForKey:@""];
+        self.groupImageUrl = [dictionary objectForKey:@""];
+        self.groupName = [dictionary objectForKey:@""];
+        self.groupNumOfPeople = [dictionary objectForKey:@""];
+        self.users = [dictionary objectForKey:@""];
+        self.lastMessage = [dictionary objectForKey:@""];
+        self.date = [dictionary objectForKey:@""];
+        self.isGroup = _users.count>1;
+    }
+    return self;
+}
+
 @end

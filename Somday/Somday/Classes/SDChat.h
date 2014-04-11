@@ -7,16 +7,19 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "SDMessage.h"
+#import "SDDataObject.h"
 
-@interface SDChat : NSObject<SDDataObjectBase>
+@class SDMessage;
 
-@property (nonatomic, strong, readonly) NSNumber* ID;
-@property (nonatomic, strong, readonly) NSString* groupImageUrl;
-@property (nonatomic, strong, readonly) NSString* groupName;
-@property (nonatomic, strong, readonly) NSString* groupNumOfPeople;
-@property (nonatomic, strong, readonly) NSArray* users;
-@property (nonatomic, strong, readonly) SDMessage* lastMessage;
-@property (nonatomic, strong, readonly) NSDate* date;
+@interface SDChat : SDDataObject
+
+@property (nonatomic, strong) NSNumber* ID;
+@property (nonatomic, strong) NSString* groupImageUrl;
+@property (nonatomic, strong) NSString* groupName;
+@property (nonatomic, strong) NSString* groupNumOfPeople;
+@property (nonatomic, strong) NSArray* users;
+@property (nonatomic, strong) SDMessage* lastMessage;
+@property (nonatomic, strong) NSDate* date;
+@property (nonatomic) BOOL isGroup;
 
 @end

@@ -1133,7 +1133,7 @@
                         <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="58" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="gFv-km-G1k">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="58" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="gFv-km-G1k">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1147,6 +1147,9 @@
                                             <state key="normal" title="New Group">
                                                 <color key="titleColor" red="0.27450981736183167" green="0.68627452850341797" blue="0.62745100259780884" alpha="1" colorSpace="deviceRGB"/>
                                             </state>
+                                            <connections>
+                                                <action selector="actionForItem:" destination="sX5-eL-mk8" eventType="touchUpInside" id="lYy-Ce-oDL"/>
+                                            </connections>
                                         </button>
                                         <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ccI-0M-DZR">
                                             <rect key="frame" x="207" y="2" width="98" height="30"/>
@@ -1154,6 +1157,9 @@
                                             <state key="normal" title="Hide Message">
                                                 <color key="titleColor" red="0.27450981740000002" green="0.68627452850000004" blue="0.62745100259999997" alpha="1" colorSpace="deviceRGB"/>
                                             </state>
+                                            <connections>
+                                                <action selector="actionForItem:" destination="sX5-eL-mk8" eventType="touchUpInside" id="83U-Mg-6Sd"/>
+                                            </connections>
                                         </button>
                                         <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="auz-jc-60F">
                                             <rect key="frame" x="0.0" y="33" width="320" height="1"/>
@@ -1168,7 +1174,7 @@
                                         <rect key="frame" x="0.0" y="56" width="320" height="58"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="IxS-v9-3ND" id="Wkd-bn-bJx">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="57"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="58"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kYM-Eb-yRT">
@@ -1215,11 +1221,34 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="delegate" destination="sX5-eL-mk8" id="yUy-dQ-cm7"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="8mN-op-Xid"/>
+                    <navigationItem key="navigationItem" id="8mN-op-Xid">
+                        <barButtonItem key="leftBarButtonItem" title="News" id="PSV-MI-kuw">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <action selector="actionForItem:" destination="sX5-eL-mk8" id="E7E-Py-Ydu"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Add" id="baM-ix-v4e">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <action selector="actionForItem:" destination="sX5-eL-mk8" id="BsZ-4j-x2y"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="addButton" destination="baM-ix-v4e" id="UOP-BE-sW7"/>
+                        <outlet property="backButton" destination="PSV-MI-kuw" id="Elc-10-WtG"/>
+                        <outlet property="createGroupButton" destination="4uv-1f-LYz" id="isi-Ms-s3d"/>
+                        <outlet property="hiddenMsgButton" destination="ccI-0M-DZR" id="Ewr-kR-Tth"/>
+                        <outlet property="tableView" destination="gFv-km-G1k" id="1Bw-d2-o9f"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2O4-uT-idu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1245,7 +1274,7 @@
                             <view alpha="0.94999998807907104" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KXY-T6-mCh">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="20"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8jw-4H-4YY">
                                 <rect key="frame" x="0.0" y="30" width="50" height="44"/>
@@ -1678,7 +1707,7 @@
                             <view alpha="0.94999999999999996" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="F6D-Lk-GTa">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="20"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="60" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="Wyi-UC-csH">
                                 <rect key="frame" x="0.0" y="20" width="320" height="548"/>

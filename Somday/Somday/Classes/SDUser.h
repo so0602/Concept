@@ -7,7 +7,13 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "SDDataObject.h"
 
-@interface SDUser : NSObject
+@interface SDUser : SDDataObject
+
+@property (nonatomic, strong) NSNumber *ID;
+@property (nonatomic, strong) NSString *name;
+@property (nonatomic, strong) NSString *profileImageURL;
+@property (nonatomic) BOOL isFriend;
 
 @end

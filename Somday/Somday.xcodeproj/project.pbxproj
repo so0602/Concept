@@ -50,6 +50,8 @@
 		2E880B0918D8054F0049446F /* FlipView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E880B0418D8054F0049446F /* FlipView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		2E880B0A18D8054F0049446F /* GenericAnimationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E880B0618D8054F0049446F /* GenericAnimationView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		2E880B0D18D805E20049446F /* SDStoryBookGridView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E880B0C18D805E20049446F /* SDStoryBookGridView.m */; };
+		2EA863A218F83E69003BFFED /* SDDataObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EA863A118F83E69003BFFED /* SDDataObject.m */; };
+		2EA863AC18F8418C003BFFED /* ArrayDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EA863AB18F8418C003BFFED /* ArrayDataSource.m */; };
 		2EC362C318F279CD00DD8B8A /* SDDirectionService.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EC362C218F279CD00DD8B8A /* SDDirectionService.m */; };
 		2EC3784918C5F0BA00D4161B /* SDHomeNavigationTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EC3784818C5F0BA00D4161B /* SDHomeNavigationTitleView.m */; };
 		2EC3784F18C5F0D100D4161B /* SDHomeNavigationTitleView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2EC3784E18C5F0D100D4161B /* SDHomeNavigationTitleView.xib */; };
@@ -1173,6 +1175,10 @@
 		2E880B0618D8054F0049446F /* GenericAnimationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GenericAnimationView.m; sourceTree = "<group>"; };
 		2E880B0B18D805E20049446F /* SDStoryBookGridView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SDStoryBookGridView.h; path = Classes/SDStoryBookGridView.h; sourceTree = "<group>"; };
 		2E880B0C18D805E20049446F /* SDStoryBookGridView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SDStoryBookGridView.m; path = Classes/SDStoryBookGridView.m; sourceTree = "<group>"; };
+		2EA863A018F83E69003BFFED /* SDDataObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SDDataObject.h; path = Classes/SDDataObject.h; sourceTree = "<group>"; };
+		2EA863A118F83E69003BFFED /* SDDataObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SDDataObject.m; path = Classes/SDDataObject.m; sourceTree = "<group>"; };
+		2EA863AA18F8418C003BFFED /* ArrayDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArrayDataSource.h; sourceTree = "<group>"; };
+		2EA863AB18F8418C003BFFED /* ArrayDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArrayDataSource.m; sourceTree = "<group>"; };
 		2EC362C118F279CD00DD8B8A /* SDDirectionService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SDDirectionService.h; path = Classes/SDDirectionService.h; sourceTree = "<group>"; };
 		2EC362C218F279CD00DD8B8A /* SDDirectionService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SDDirectionService.m; path = Classes/SDDirectionService.m; sourceTree = "<group>"; };
 		2EC3784718C5F0BA00D4161B /* SDHomeNavigationTitleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SDHomeNavigationTitleView.h; path = Classes/SDHomeNavigationTitleView.h; sourceTree = "<group>"; };
@@ -2413,6 +2419,8 @@
 		B65DDC0A18C57D050076408C /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				2EA863AA18F8418C003BFFED /* ArrayDataSource.h */,
+				2EA863AB18F8418C003BFFED /* ArrayDataSource.m */,
 				2E54CAC418C5D2C200B23A96 /* SDCollectionViewFlowLayout.h */,
 				2E54CAC518C5D2C200B23A96 /* SDCollectionViewFlowLayout.m */,
 				B65DDC0D18C57D1E0076408C /* SDUtils.h */,
@@ -3541,7 +3549,6 @@
 			isa = PBXGroup;
 			children = (
 				EF3B650718CDA87500B0CF1C /* Responses */,
-				EF3B650418CDA42500B0CF1C /* SDDataObjectBase.h */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -3559,6 +3566,9 @@
 				EF3B64FF18CDA27700B0CF1C /* SDResponseBase.m */,
 				EF3B650118CDA2C200B0CF1C /* SDStatus.h */,
 				EF3B650218CDA2C200B0CF1C /* SDStatus.m */,
+				2EA863A018F83E69003BFFED /* SDDataObject.h */,
+				2EA863A118F83E69003BFFED /* SDDataObject.m */,
+				EF3B650418CDA42500B0CF1C /* SDDataObjectBase.h */,
 			);
 			name = Responses;
 			sourceTree = "<group>";
@@ -5066,6 +5076,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2EA863A218F83E69003BFFED /* SDDataObject.m in Sources */,
 				B65DDC0F18C57D1E0076408C /* SDUtils.m in Sources */,
 				B6B8275518E4145E009C8A37 /* SDGradientView.m in Sources */,
 				2ED985D618ED406D005CB4F9 /* SDEventGridView.m in Sources */,
@@ -5127,6 +5138,7 @@
 				B64444A918CA374800CDD2D4 /* NSNotificationCenter+Name.m in Sources */,
 				B6777A5618E0A9F900BD8F05 /* SDViewController.m in Sources */,
 				B6B8274618E3DABF009C8A37 /* FTAnimation+UIView.m in Sources */,
+				2EA863AC18F8418C003BFFED /* ArrayDataSource.m in Sources */,
 				B6BE49DD18CF699F00DA7313 /* SDEmailTextField.m in Sources */,
 				B6DC7C0F18DAE1B000023862 /* UITabBarController+Additions.m in Sources */,
 				B6BE49E418CF707200DA7313 /* UITextField+Addition.m in Sources */,
