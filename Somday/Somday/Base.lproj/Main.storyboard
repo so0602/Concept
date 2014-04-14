@@ -1108,7 +1108,7 @@
                 <navigationController storyboardIdentifier="ChatNavigation" definesPresentationContext="YES" id="QtS-3L-Lyj" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="FCe-gM-BLx">
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="barTintColor" red="0.098039224743843079" green="0.51372551918029785" blue="0.45490199327468872" alpha="1" colorSpace="deviceRGB"/>
+                        <color key="barTintColor" red="0.12156862745098039" green="0.62745098039215685" blue="0.55686274509803924" alpha="1" colorSpace="deviceRGB"/>
                         <textAttributes key="titleTextAttributes">
                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         </textAttributes>
@@ -1121,7 +1121,7 @@
             </objects>
             <point key="canvasLocation" x="1584" y="133"/>
         </scene>
-        <!--Recent Chats View Controller-->
+        <!--Recent Chats View Controller - Recent Chats-->
         <scene sceneID="g27-SO-4PZ">
             <objects>
                 <viewController storyboardIdentifier="RecentChats" id="sX5-eL-mk8" customClass="SDRecentChatsViewController" sceneMemberID="viewController">
@@ -1228,7 +1228,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="8mN-op-Xid">
+                    <navigationItem key="navigationItem" title="Recent Chats" id="8mN-op-Xid">
                         <barButtonItem key="leftBarButtonItem" title="News" id="PSV-MI-kuw">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
